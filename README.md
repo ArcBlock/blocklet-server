@@ -1,9 +1,5 @@
 # Blocklet Server
 
-<p align="center">
-  <img src="core/webapp/public/static/images/logo.png" alt="Blocklet Server Logo" width="120">
-</p>
-
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 [![docs](https://img.shields.io/badge/powered%20by-arcblock-green.svg)](https://developer.blocklet.io/docs)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
