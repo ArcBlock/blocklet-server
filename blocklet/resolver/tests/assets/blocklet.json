@@ -1,0 +1,251 @@
+{
+  "name": "nft-maker",
+  "version": "0.7.4",
+  "title": "NFT Maker",
+  "description": "Easily “Make” your own NFTs",
+  "keywords": [
+    "blocklet",
+    "react"
+  ],
+  "group": "dapp",
+  "did": "z8ia2birZzhjbXqKnxPUUivmqErdsf3724tr6",
+  "main": "blocklet.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blocklet/nft-maker.git",
+    "parsedUrl": "https://github.com/blocklet/nft-maker"
+  },
+  "specVersion": "1.2.8",
+  "logo": "logo.png",
+  "files": [
+    "dist",
+    "logo.png",
+    "migration/*.js",
+    "README.md",
+    "blocklet.md",
+    "screenshots",
+    "api/hooks/pre-start.js",
+    "uploads"
+  ],
+  "interfaces": [
+    {
+      "type": "web",
+      "name": "publicUrl",
+      "path": "/",
+      "prefix": "*",
+      "port": "BLOCKLET_PORT",
+      "protocol": "tcp",
+      "services": [
+        {
+          "name": "auth",
+          "config": {
+            "blockUnauthenticated": false,
+            "ignoreUrls": [
+              "/nft",
+              "/factory",
+              "/",
+              "/uploads/**",
+              "/api/**",
+              "/manifest.json",
+              "/mint/**",
+              "/mint",
+              "/blender/api/**",
+              "/store/api/**"
+            ],
+            "whoCanAccess": "invited",
+            "profileFields": [
+              "fullName",
+              "email",
+              "avatar"
+            ],
+            "allowSwitchProfile": true,
+            "blockUnauthorized": false
+          }
+        }
+      ],
+      "proxyBehavior": "service"
+    }
+  ],
+  "community": "https://community.arcblock.io",
+  "documentation": "https://developer.blocklet.io",
+  "homepage": "https://store.blocklet.dev",
+  "license": "",
+  "timeout": {
+    "start": 60
+  },
+  "requirements": {
+    "server": ">=1.16.0",
+    "os": "*",
+    "cpu": "*"
+  },
+  "scripts": {
+    "preStart": "node api/hooks/pre-start.js",
+    "dev": "npm run start"
+  },
+  "environments": [
+    {
+      "name": "CHAIN_HOST",
+      "description": "What's endpoint of the chain?",
+      "required": true,
+      "default": "https://main.abtnetwork.io/api/",
+      "secure": false,
+      "shared": true
+    },
+    {
+      "name": "LOCAL_TOKEN_ADDRESS",
+      "description": "What's the default token address of the chain?",
+      "required": true,
+      "default": "z35nNRvYxBoHitx9yZ5ATS88psfShzPPBLxYD",
+      "secure": false,
+      "shared": true
+    },
+    {
+      "name": "TEMPLATE_OR_FACTORY_MAX_MINT_COUNT",
+      "description": "What's maximum number of minted a template or a factory?",
+      "required": true,
+      "default": "1000000",
+      "secure": false,
+      "shared": true
+    }
+  ],
+  "capabilities": {
+    "clusterMode": false,
+    "component": true,
+    "navigation": true,
+    "didSpace": "required",
+    "serverless": true
+  },
+  "screenshots": [
+    "QmPSM67JzdSk83YYX4YDfzsMkFZUrHPbBEj1swLeSiFNwR.png",
+    "QmXpe5E97jJUTKG2WxnZzAwss1ecVbugKyypxNMVrP55qw.png",
+    "QmVKNMRDR6csA4QynMtjkDt1M3b5aScxdMbJereThF131S.png"
+  ],
+  "navigation": [
+    {
+      "id": "makerHeader",
+      "title": {
+        "en": "NFT Maker",
+        "zh": "NFT Maker"
+      },
+      "link": "/",
+      "icon": "material-symbols:arrow-circle-up-outline",
+      "section": [
+        "header",
+        "sessionManager",
+        "dashboard"
+      ],
+      "role": [
+        "admin",
+        "owner"
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "nft-store",
+      "mountPoint": "/store",
+      "source": {
+        "name": "nft-store",
+        "version": "latest",
+        "store": "https://test.store.blocklet.dev"
+      }
+    },
+    {
+      "name": "nft-blender",
+      "mountPoint": "/blender",
+      "source": {
+        "name": "nft-blender",
+        "version": "latest",
+        "store": "https://test.store.blocklet.dev"
+      }
+    }
+  ],
+  "egress": true,
+  "gitHash": "4ed979fe09412493ecdbf03a92d4031bc22e9ed6",
+  "nftFactory": "z3Ct79T2bYyibBgudThXZguzCUrxPsJCp3wLM",
+  "dist": {
+    "tarball": "nft-maker-0.7.4.tgz",
+    "integrity": "sha512-nBFwFozvJiuFzso6g2xc3sX+1yPop3K2vOsC0hBceafGBILIL5dUSSusyJqZP6/13EOVRMeXOwF0kd6+Nan5Pg==",
+    "size": 5984952
+  },
+  "signatures": [
+    {
+      "type": "ED25519",
+      "name": "Test Store",
+      "signer": "zNKirQVRx4xbyTPMkvH3kguRfofTJana8WBK",
+      "pk": "z43JwApdmbEKtdwKKXi5byUTYhxEThb3Yj7tm3BgP8kK2",
+      "excludes": [
+        "htmlAst",
+        "lastPublishedAt",
+        "stats",
+        "readme"
+      ],
+      "appended": [
+        "htmlAst",
+        "lastPublishedAt",
+        "stats",
+        "readme"
+      ],
+      "created": "2025-10-09T08:18:42.936Z",
+      "sig": "ziaPuQ5HdB2uXAxgrbyv658eXT5xhK442fhU1nRNfTMnFsAgfJiyNzf3Z5a9KG6Rz9WjVWNY8TWnGJKbxMVPQVqz"
+    },
+    {
+      "type": "ED25519",
+      "name": "nft-maker",
+      "signer": "z1aRwBLojgqGPeUhPZfAdzgBTjDRC5vPu6g",
+      "pk": "z6cZ2KztVYC9XSeBqBgdw21o2XgFhCpecU1mchQ99RBrQ",
+      "delegatee": "zNKirQVRx4xbyTPMkvH3kguRfofTJana8WBK",
+      "delegateePk": "z43JwApdmbEKtdwKKXi5byUTYhxEThb3Yj7tm3BgP8kK2",
+      "delegation": "eyJhbGciOiJFZDI1NTE5IiwidHlwZSI6IkpXVCJ9.eyJleHAiOjQ4MDY4OTczMTAuOTE5LCJmcm9tIjoiejFhUndCTG9qZ3FHUGVVaFBaZkFkemdCVGpEUkM1dlB1NmciLCJpYXQiOiIxNjUxMjIzNzEwIiwiaXNzIjoiZGlkOmFidDp6MWFSd0JMb2pncUdQZVVoUFpmQWR6Z0JUakRSQzV2UHU2ZyIsIm5iZiI6IjE2NTEyMjM3MTAiLCJwZXJtaXNzaW9ucyI6WyJwdWJsaXNoX2Jsb2NrbGV0Il0sInRvIjoiek5LZEZtODVyRURZVGZYSkR1d3RvU2M0RE5OQ0pmZ1lGd1Z5IiwidXNlclBrIjoiejZjWjJLenRWWUM5WFNlQnFCZ2R3MjFvMlhnRmhDcGVjVTFtY2hROTlSQnJRIiwidmVyc2lvbiI6IjEuMS4wIn0.GU18OQplaHYEuVKxICsRfIoza4iDPraxXFRNiLdlJgdCC579p1ZwMBpO4btqRpIQOWkNJnzvmAUHR_btepXBBQ",
+      "excludes": [
+        "htmlAst",
+        "lastPublishedAt",
+        "stats",
+        "readme"
+      ],
+      "appended": [
+        "htmlAst",
+        "lastPublishedAt",
+        "stats",
+        "readme"
+      ],
+      "created": "2025-10-09T08:18:42.929Z",
+      "sig": "z2rGGvZrb35tzKfct4p34V3B7tD9nRUn3retzcQKuTNFTsCeVj42myboui6Sam3BQFNTrdAKrTse7tLbyTZt1RDHK"
+    },
+    {
+      "type": "ED25519",
+      "name": "nft-maker",
+      "signer": "z1QYAYuyFFyvDTJq71soK6tSnRjtw3GJmxq",
+      "pk": "zB1HjJ39ptYryQRx3RatwrqnD5bxWjzDoxZghyALozvHs",
+      "created": "2025-10-09T08:18:41.367Z",
+      "sig": "z4DAGkqv4V8hPvJ5ypCLx1fD5JKYVbxxpPBh2iVN8QY91JhX5kHLYo7p39W1yjYv2QEF9madniYRhdLrS2jMgYzQA"
+    }
+  ],
+  "stats": {
+    "downloads": 4540
+  },
+  "_id": "bKQxTdH2ooCSMNwi",
+  "id": "bKQxTdH2ooCSMNwi",
+  "category": {
+    "id": "LuOPxEslsBnM64Vt",
+    "name": "Photos",
+    "locales": {
+      "en": "Photos",
+      "zh": "照片"
+    },
+    "updatedAt": "2022-01-04T06:06:24.450Z",
+    "createdAt": "2022-01-04T01:51:37.281Z",
+    "_id": "LuOPxEslsBnM64Vt"
+  },
+  "owner": {
+    "did": "z1aRwBLojgqGPeUhPZfAdzgBTjDRC5vPu6g",
+    "fullName": "ArcBlock",
+    "avatar": "/.well-known/service/user/avatar/7534731d00abc5b65f655513c958b3c0.png"
+  },
+  "ownerDid": "z1aRwBLojgqGPeUhPZfAdzgBTjDRC5vPu6g",
+  "pricing": null,
+  "lastPublishedAt": "2025-10-09T08:18:42.948Z",
+  "createdAt": 1649946098349,
+  "paymentShares": [],
+  "isOfficial": true
+}

@@ -1,0 +1,13 @@
+name: "@abtnode/webapp"
+description: Server Dashboard
+group: dapp
+version: 1.0.31
+homepage: "https://www.blocklet.io"
+main: api/index.js
+author: "wangshijun <shijun@arcblock.io> https://github.com/wangshijun"
+did: z8ia4j7CLkF3VwpQE7Ee677eostWTu2FTxsip
+specVersion: 1.0.0
+logo: public/images/blocklet.png
+files:
+  - dist
+  - "!api/**"

@@ -1,0 +1,27 @@
+title: Resource Blocklet
+description: Resource Blocklet Description
+author:
+  name: linchen1987
+specVersion: 1.0.1
+files:
+logo: logo.png
+did: z2qaDtgwzCcbWp5qkBdNDfhPCrD54958vDZLF
+name: z2qaDtgwzCcbWp5qkBdNDfhPCrD54958vDZLF
+version: 1.0.2
+community: ''
+documentation: ''
+homepage: ''
+license: ''
+timeout:
+  start: 60
+requirements:
+  abtnode: '>=1.1.0'
+  os: '*'
+  cpu: '*'
+screenshots: []
+resource:
+  bundles:
+    - did: z2qaDtgwzCcbWp5qkBdNDfhPCrD54958vDZLF
+      type: a
+    - did: z2qaKbaHXnh6h4aorKABShAA2Pkh4T3MjDCqd
+      type: b

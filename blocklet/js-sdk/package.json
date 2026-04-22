@@ -1,0 +1,78 @@
+{
+  "name": "@blocklet/js-sdk",
+  "version": "1.17.12",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArcBlock/blocklet-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "homepage": "https://www.arcblock.io/docs/blocklet-sdk-browser",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "description": "sdk for blocklet development, client only",
+  "keywords": [
+    "blocklet",
+    "client",
+    "sdk"
+  ],
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "scripts": {
+    "build:blocklet-js-sdk": "npm run build",
+    "lint": "eslint src",
+    "lint:fix": "npm run lint -- --fix",
+    "prebuild": "npm run clean",
+    "clean": "rm -fr dist",
+    "build": "tsdown",
+    "watch": "nodemon -w src -e ts -x 'npm run build'",
+    "test": "bun test",
+    "coverage": "bun test --coverage"
+  },
+  "dependencies": {
+    "@abtnode/constant": "1.17.12",
+    "@blocklet/meta": "1.17.12",
+    "axios": "^1.7.9",
+    "is-url": "^1.2.4",
+    "js-cookie": "^3.0.5",
+    "json-stable-stringify": "^1.0.1",
+    "keyv": "^5.5.5",
+    "keyv-browser": "^0.1.1",
+    "lodash": "^4.17.21",
+    "quick-lru": "^7.0.0",
+    "ufo": "^1.5.3"
+  },
+  "devDependencies": {
+    "@arcblock/eslint-config-ts": "^0.3.3",
+    "@types/is-url": "^1.2.32",
+    "@types/json-stable-stringify": "^1.0.36",
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^22.7.5",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "@typescript/native-preview": "^7.0.0-dev.20251230.1",
+    "eslint": "^8.57.0",
+    "json-stable-stringify": "^1.0.1",
+    "prettier": "^3.3.2",
+    "tsdown": "^0.20.0-beta.3"
+  }
+}

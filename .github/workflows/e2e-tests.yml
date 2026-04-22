@@ -1,0 +1,114 @@
+name: e2e-tests
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  CACHE_VERSION: 20260130
+  E2E_ENABLE_VIDEO: false
+  CYPRESS_INSTALL_BINARY: '15.5.0'
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  e2e-test:
+    timeout-minutes: 35
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Install Bun
+        run: curl -fsSL https://bun.sh/install | bash
+
+      - name: Use Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Nginx with stream module
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nginx-extras dnsutils
+          sudo nginx -t
+          sudo setcap 'cap_net_bind_service=+ep' $(which nginx)
+          nginx -V
+
+      - name: Cache Cypress binary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{env.CACHE_VERSION}}-${{ hashFiles('**/package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-${{env.CACHE_VERSION}}
+
+      - name: Test Docker is available
+        run: |
+          echo "Checking Docker availability..."
+          docker ps || echo "❌ Docker is not available (might not be installed or permission denied)"
+
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-
+
+      - name: Install dependencies
+        run: make github-init
+
+      - name: Build
+        run: |
+          make build
+          git checkout .
+
+      - name: Install Cypress
+        run: cd core/webapp && npm run cypress-install
+
+      - name: Install cross-env
+        run: npm install -g cross-env
+
+      - name: Install nyc
+        run: npm install -g nyc
+
+      - uses: browser-actions/setup-chrome@v1
+      - run: chrome --version
+
+      - name: Set CLUSTER ENV
+        run: |
+          echo "ABT_NODE_DAEMON_CLUSTER_SIZE=2" >> $GITHUB_ENV
+          echo "ABT_NODE_MAX_CLUSTER_SIZE=2" >> $GITHUB_ENV
+
+      - name: Run e2e tests
+        uses: cypress-io/github-action@v6
+        with:
+          record: ${{ secrets.CYPRESS_TOKEN != '' }}
+          install: false
+          browser: chrome
+          command: npm run e2e
+          working-directory: ./
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_TOKEN || '' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload cypress screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: '**/cypress/screenshots/**'
+          retention-days: 3
+
+      - name: Upload cypress videos
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: '**/cypress/videos/**'
+          retention-days: 1

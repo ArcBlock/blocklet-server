@@ -1,0 +1,54 @@
+{
+  "name": "@abtnode/certificate-manager",
+  "version": "1.17.12",
+  "description": "Manage ABT Node SSL certificates",
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/core/certificate-manager#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArcBlock/blocklet-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "libs",
+    "routes",
+    "sdk",
+    "states",
+    "validators",
+    "index.js",
+    "README.md"
+  ],
+  "scripts": {
+    "lint": "eslint libs routes sdk states validators index.js",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "dependencies": {
+    "@abtnode/cron": "1.17.12",
+    "@abtnode/logger": "1.17.12",
+    "@abtnode/models": "1.17.12",
+    "@abtnode/queue": "1.17.12",
+    "@abtnode/util": "1.17.12",
+    "@blocklet/error": "^0.3.5",
+    "@fidm/x509": "^1.2.1",
+    "@greenlock/manager": "^3.1.0",
+    "@root/acme": "^3.1.0",
+    "@root/csr": "^0.8.1",
+    "@root/keypairs": "^0.10.3",
+    "@root/pem": "^1.0.4",
+    "debug": "^4.4.1",
+    "express": "^4.18.2",
+    "joi": "17.12.2",
+    "punycode": "^2.3.1"
+  }
+}

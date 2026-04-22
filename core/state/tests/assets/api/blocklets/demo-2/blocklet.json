@@ -1,0 +1,90 @@
+{
+  "title": "demo-2",
+  "description": "A Blocklet Api blocklet",
+  "keywords": [
+    "blocklet",
+    "react"
+  ],
+  "group": "dapp",
+  "did": "z2qa9iB3cvQGgEkhdfNx3bnYrny4cdv3rhd6m",
+  "main": "blocklet.js",
+  "author": {
+    "name": "Zhu Liang",
+    "email": "ymblender@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blocklet/create-blocklet.git"
+  },
+  "specVersion": "1.2.8",
+  "version": "0.1.0",
+  "logo": "logo.png",
+  "files": [
+    "logo.png",
+    "screenshots"
+  ],
+  "interfaces": [
+    {
+      "type": "web",
+      "name": "publicUrl",
+      "path": "/",
+      "prefix": "*",
+      "port": "BLOCKLET_PORT",
+      "protocol": "http",
+      "proxyBehavior": "service"
+    }
+  ],
+  "community": "",
+  "documentation": "",
+  "homepage": "",
+  "license": "",
+  "payment": {
+    "price": [],
+    "share": []
+  },
+  "timeout": {
+    "start": 60
+  },
+  "requirements": {
+    "server": ">=1.16.28",
+    "os": "*",
+    "cpu": "*"
+  },
+  "scripts": {
+    "dev": "npm run start"
+  },
+  "environments": [
+    {
+      "name": "CHAIN_HOST",
+      "description": "What's endpoint of the chain?",
+      "required": true,
+      "default": "https://beta.abtnetwork.io/api/",
+      "secure": false
+    }
+  ],
+  "capabilities": {
+    "navigation": true
+  },
+  "screenshots": [],
+  "components": [
+    {
+      "name": "mock0_components",
+      "mountPoint": "/mock-components",
+      "required": true,
+      "source": {
+        "name": "z2qZysTWoS7xKMmdVBPFw35w5oSwGeL4ET5rN",
+        "version": "1.0.1",
+        "store": "https://store.blocklet.dev"
+      }
+    }
+  ],
+  "name": "z2qa9iB3cvQGgEkhdfNx3bnYrny4cdv3rhd6m",
+  "egress": true,
+  "gitHash": "da902da4d33d77f964f05892d073dbc433017387",
+  "nftFactory": "",
+  "dist": {
+    "tarball": "z2qa9iB3cvQGgEkhdfNx3bnYrny4cdv3rhd6m-0.1.0.tgz",
+    "integrity": "sha512-Bhoj3Xrxj62gqCeoCjZ+wyJz23ij+a15RX0RLK9XWcSoTXWBPqU8x75j4VOjOICreqZzlaA64w+j62CtISWv3g==",
+    "size": 284366
+  }
+}

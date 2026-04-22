@@ -1,0 +1,30 @@
+{
+  "name": "@abtnode/mocks",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.17.12",
+  "description": "Mocks for ABT Node to produce smaller bundles",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "lint": "eslint lib",
+    "lint:fix": "eslint --fix lib"
+  },
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server.git",
+    "directory": "core/mocks"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/core/mocks#readme"
+}

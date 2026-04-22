@@ -1,0 +1,1902 @@
+{
+  "requestProfile": {
+    "en": "Provide the following information to continue",
+    "value": {
+      "en": "Provide the following information to continue",
+      "es": "Proporcione la siguiente información para continuar.",
+      "zh": "请提供以下信息以继续。",
+      "zh-TW": "請提供以下資訊以繼續。",
+      "ja": "続行するには、以下の情報を提供してください。",
+      "ko": "계속하려면 아래 정보를 제공하십시오.",
+      "de": "Geben Sie die folgenden Informationen ein, um fortzufahren.",
+      "hi": "जारी रखने के लिए निम्नलिखित जानकारी दें।",
+      "fr": "Fournissez les informations suivantes pour continuer.",
+      "ar": "يرجى تقديم المعلومات التالية للمتابعة.",
+      "ru": "Предоставьте следующую информацию, чтобы продолжить.",
+      "pt": "Forneça as informações a seguir para continuar.",
+      "id": "Berikan informasi berikut untuk melanjutkan.",
+      "vi": "Cung cấp các thông tin sau để tiếp tục.",
+      "th": "โปรดระบุข้อมูลต่อไปเพื่อดำเนินการ"
+    }
+  },
+  "description": {
+    "en": "Connect your wallet",
+    "value": {
+      "en": "Connect your wallet",
+      "es": "Conecta tu billetera",
+      "zh": "连接你的钱包",
+      "zh-TW": "連接你的錢包",
+      "ja": "ウォレットを接続する",
+      "ko": "지갑을 연결하세요",
+      "de": "Verbinde deine Wallet",
+      "hi": "अपने वॉलेट को कनेक्ट करें",
+      "fr": "Connectez votre portefeuille",
+      "ar": "قم بتوصيل محفظتك",
+      "ru": "Подключите ваш кошелек",
+      "pt": "Conecte a sua carteira",
+      "id": "Hubungkan dompet Anda",
+      "vi": "Kết nối ví của bạn",
+      "th": "เชื่อมต่อกระเป๋าเงินของคุณ"
+    }
+  },
+  "requestDidSpace": {
+    "en": "Authorize DID Spaces to continue",
+    "value": {
+      "en": "Authorize DID Spaces to continue",
+      "es": "Autorizar DID Spaces para continuar",
+      "zh": "授权 DID Spaces 继续",
+      "zh-TW": "授權 DID Spaces 繼續",
+      "ja": "DID Spaces の継続を許可",
+      "ko": "DID Spaces 계속 진행을 허용",
+      "de": "DID Spaces zur Fortsetzung autorisieren.",
+      "hi": "DID Spaces को जारी रखने के लिए अनुमति दें.",
+      "fr": "Autoriser DID Spaces à continuer.",
+      "ar": "الموافقة على DID Spaces للاستمرار.",
+      "ru": "Разрешить DID Spaces продолжать.",
+      "pt": "Autorize DID Spaces para continuar",
+      "id": "Izinkan DID Spaces untuk melanjutkan",
+      "vi": "Cho phép DID Spaces tiếp tục",
+      "th": "อนุญาต DID Spaces เพื่อดำเนินการต่อ"
+    }
+  },
+  "requestCredential": {
+    "en": "Provide your credential",
+    "value": {
+      "en": "Provide your credential",
+      "es": "Proporciona tu credencial",
+      "zh": "请提供你的凭证",
+      "zh-TW": "請提供你的憑證",
+      "ja": "資格情報を提供してください",
+      "ko": "자격 증명을 제공하세요",
+      "de": "Geben Sie Ihre Anmeldeinformationen an",
+      "hi": "अपने प्रमाण-पत्र दें",
+      "fr": "Fournissez vos informations d'identification",
+      "ar": "قدم بيانات الاعتماد الخاصة بك",
+      "ru": "Предоставьте ваши учетные данные",
+      "pt": "Forneça sua credencial",
+      "id": "Berikan kredensial Anda",
+      "vi": "Cung cấp thông tin xác thực của bạn",
+      "th": "กรุณาให้ข้อมูลประจำตัวของคุณ"
+    }
+  },
+  "requestPassport": {
+    "en": "Provide your passport",
+    "value": {
+      "en": "Provide your passport",
+      "es": "Proporcione su pasaporte",
+      "zh": "请出示您的护照",
+      "zh-TW": "請出示您的護照",
+      "ja": "パスポートを提示してください",
+      "ko": "여권을 제시해 주세요",
+      "de": "Bitte legen Sie Ihren Reisepass vor",
+      "hi": "कृपया अपना पासपोर्ट प्रस्तुत करें",
+      "fr": "Veuillez présenter votre passeport",
+      "ar": "يرجى تقديم جواز سفرك",
+      "ru": "Пожалуйста, предъявите ваш паспорт",
+      "pt": "Forneça o seu passaporte.",
+      "id": "Berikan paspor Anda.",
+      "vi": "Cung cấp hộ chiếu của bạn.",
+      "th": "โปรดแสดงหนังสือเดินทางของคุณ"
+    }
+  },
+  "requestNFT": {
+    "en": "Present your NFT to get a passport",
+    "value": {
+      "en": "Present your NFT to get a passport",
+      "es": "Presenta tu NFT para obtener un pasaporte.",
+      "zh": "出示你的 NFT 以获得护照",
+      "zh-TW": "出示你的 NFT 以取得護照",
+      "ja": "NFT を提示してパスポートを取得してください",
+      "ko": "NFT 를 제시하여 여권을 받으세요",
+      "de": "Zeigen Sie Ihr NFT, um einen Reisepass zu erhalten.",
+      "hi": "अपने NFT को दिखाकर पासपोर्ट प्राप्त करें.",
+      "fr": "Présentez votre NFT pour obtenir un passeport.",
+      "ar": "قدّم NFT الخاص بك للحصول على جواز سفر.",
+      "ru": "Покажите свой NFT, чтобы получить паспорт.",
+      "pt": "Apresente seu NFT para obter um passaporte",
+      "id": "Tampilkan NFT Anda untuk mendapatkan paspor",
+      "vi": "Trình bày NFT của bạn để nhận hộ chiếu",
+      "th": "นำ NFT ของคุณเพื่อรับหนังสือเดินทาง"
+    }
+  },
+  "receivePassport": {
+    "en": "Sign to claim your passport",
+    "value": {
+      "en": "Sign to claim your passport",
+      "es": "Firma para reclamar tu pasaporte",
+      "zh": "签名以领取你的护照",
+      "zh-TW": "簽名以領取你的護照",
+      "ja": "署名してパスポートを受け取ってください",
+      "ko": "서명하고 여권을 수령하세요",
+      "de": "Anmelden, um Ihren Reisepass abzuholen.",
+      "hi": "पासपोर्ट के लिए साइन इन करें.",
+      "fr": "Connectez-vous pour réclamer votre passeport.",
+      "ar": "سجّل الدخول للمطالبة بجواز سفرك.",
+      "ru": "Войдите, чтобы получить ваш паспорт.",
+      "pt": "Faça login para reivindicar seu passaporte",
+      "id": "Masuk untuk mengklaim paspor Anda",
+      "vi": "Đăng nhập để nhận hộ chiếu của bạn",
+      "th": "เข้าสู่ระบบเพื่อรับพาสปอร์ตของคุณ"
+    }
+  },
+  "requestBlockletNft": {
+    "en": "Provide Blocklet Purchase NFT",
+    "value": {
+      "en": "Provide Blocklet Purchase NFT",
+      "es": "Proporcionar la compra de Blocklet NFT",
+      "zh": "提供 Blocklet NFT 的购买",
+      "zh-TW": "提供 Blocklet NFT 的購買",
+      "ja": "Blocklet NFT の購入を提供する",
+      "ko": "Blocklet NFT 구매를 제공합니다",
+      "de": "Bereitstellen von Blocklet Purchase NFT",
+      "hi": "Blocklet Purchase NFT प्रदान करें",
+      "fr": "Fournir Blocklet Purchase NFT",
+      "ar": "توفير Blocklet Purchase NFT",
+      "ru": "Обеспечить Blocklet Purchase NFT",
+      "pt": "Fornecer Blocklet NFT de compra",
+      "id": "Sediakan Blocklet NFT pembelian",
+      "vi": "Cung cấp Blocklet NFT mua",
+      "th": "ให้ Blocklet NFT ซื้อ"
+    }
+  },
+  "requestOwnerPassport": {
+    "en": "Provide owner passport",
+    "value": {
+      "en": "Provide owner passport",
+      "es": "Proporcione el pasaporte del propietario",
+      "zh": "请提供业主的护照",
+      "zh-TW": "請提供業主的護照",
+      "ja": "所有者のパスポートを提供してください",
+      "ko": "소유자의 여권을 제공해 주세요",
+      "de": "Pass des Eigentümers bereitstellen",
+      "hi": "مالک کا پاسپورٹ فراہم کریں",
+      "fr": "Fournissez le passeport du propriétaire",
+      "ar": "قدم جواز سفر المالك",
+      "ru": "Предоставьте паспорт владельца",
+      "pt": "Forneça o passaporte do proprietário.",
+      "id": "Berikan paspor milik pemilik.",
+      "vi": "Cung cấp hộ chiếu của chủ sở hữu.",
+      "th": "โปรดระบุหนังสือเดินทางของเจ้าของ."
+    }
+  },
+  "receiveEmailKyc": {
+    "en": "Sign to claim email verification NFT",
+    "value": {
+      "en": "Sign to claim email verification NFT",
+      "es": "Firma para reclamar NFT de verificación de correo electrónico",
+      "zh": "签名以领取邮箱验证 NFT",
+      "zh-TW": "簽名以領取電子郵件驗證 NFT",
+      "ja": "メール認証 NFT を受け取るには署名してください",
+      "ko": "이메일 인증 NFT 를 받으려면 서명하세요",
+      "de": "Anmelden, um den E-Mail-Verifizierungs-NFT zu beanspruchen",
+      "hi": "ईमेल सत्यापन NFT पाने के लिए साइन इन करें",
+      "fr": "Connectez-vous pour réclamer le NFT de vérification par e-mail",
+      "ar": "سجّل الدخول للمطالبة بـ NFT التحقق من البريد الإلكتروني",
+      "ru": "Войдите, чтобы получить NFT для проверки электронной почты",
+      "pt": "Entre para reivindicar o NFT de verificação de e-mail",
+      "id": "Masuk untuk mengklaim NFT verifikasi email",
+      "vi": "Đăng nhập để nhận NFT xác thực email",
+      "th": "เข้าสู่ระบบเพื่อรับ NFT ยืนยันอีเมล"
+    }
+  },
+  "requestPhoneKyc": {
+    "en": "Provide phone verification NFT",
+    "value": {
+      "en": "Provide phone verification NFT",
+      "es": "Proporcionar NFT de verificación telefónica",
+      "zh": "提供手机验证 NFT",
+      "zh-TW": "提供手機驗證 NFT",
+      "ja": "電話認証 NFT を提供する",
+      "ko": "전화 인증 NFT 를 제공",
+      "de": "Telefonverifizierungs-NFT bereitstellen",
+      "hi": "फोन सत्यापन NFT प्रदान करें",
+      "fr": "Fournir le NFT de vérification du téléphone",
+      "ar": "توفير NFT للتحقق من الهاتف",
+      "ru": "Предоставить NFT проверки номера телефона",
+      "pt": "Fornecer NFT de verificação de telefone",
+      "id": "Berikan NFT verifikasi telepon",
+      "vi": "Cung cấp NFT xác thực số điện thoại",
+      "th": "ให้ NFT ตรวจสอบหมายเลขโทรศัพท์"
+    }
+  },
+  "requestEmailKyc": {
+    "en": "Provide email verification NFT",
+    "value": {
+      "en": "Provide email verification NFT",
+      "es": "Proporciona NFT de verificación de correo electrónico",
+      "zh": "提供电子邮件验证 NFT",
+      "zh-TW": "提供電子郵件驗證 NFT",
+      "ja": "メールアドレス検証 NFT を提供",
+      "ko": "이메일 인증 NFT 제공",
+      "de": "E-Mail-Verifizierungs-NFT bereitstellen",
+      "hi": "ईमेल सत्यापन NFT प्रदान करें",
+      "fr": "Fournir NFT de vérification d'e-mail",
+      "ar": "توفير NFT للتحقق من البريد الإلكتروني",
+      "ru": "Предоставьте NFT для проверки электронной почты",
+      "pt": "Fornecer NFT de verificação de e-mail",
+      "id": "Sediakan NFT verifikasi email",
+      "vi": "Cung cấp NFT xác thực email",
+      "th": "ให้ NFT ยืนยันอีเมล"
+    }
+  },
+  "actionForbidden": {
+    "en": "You don't have permission for this action",
+    "value": {
+      "en": "You don't have permission for this action",
+      "es": "No tienes permiso para esta acción.",
+      "zh": "您没有执行此操作的权限。",
+      "zh-TW": "您沒有執行此操作的權限。",
+      "ja": "この操作を行う権限がありません。",
+      "ko": "이 작업에 대한 권한이 없습니다.",
+      "de": "Sie haben für diese Aktion keine Berechtigung.",
+      "hi": "इस क्रिया के लिए आपके पास अनुमति नहीं है.",
+      "fr": "Vous n'avez pas l'autorisation pour cette action.",
+      "ar": "ليس لديك إذن لهذا الإجراء.",
+      "ru": "У вас нет разрешения на это действие.",
+      "pt": "Você não tem permissão para esta ação.",
+      "id": "Anda tidak memiliki izin untuk tindakan ini.",
+      "vi": "Bạn không có quyền thực hiện hành động này.",
+      "th": "คุณไม่มีสิทธิ์สำหรับการดำเนินการนี้"
+    }
+  },
+  "notInitialized": {
+    "en": "This server isn't set up yet. Login is unavailable.",
+    "value": {
+      "en": "This server isn't set up yet. Login is unavailable.",
+      "es": "Este servidor aún no está configurado. El inicio de sesión no está disponible.",
+      "zh": "此服务器尚未设置。无法登录。",
+      "zh-TW": "此伺服器尚未設定。無法登入。",
+      "ja": "このサーバーはまだ設定されていません。ログインは利用できません。",
+      "ko": "이 서버는 아직 설정되지 않았습니다. 로그인을 사용할 수 없습니다.",
+      "de": "Dieser Server ist noch nicht eingerichtet. Der Login ist nicht verfügbar.",
+      "hi": "यह सर्वर अभी तक सेटअप नहीं है. लॉगिन उपलब्ध नहीं है.",
+      "fr": "Ce serveur n'est pas encore configuré. La connexion n'est pas disponible.",
+      "ar": "لم يتم إعداد هذا الخادم بعد. تسجيل الدخول غير متاح.",
+      "ru": "Этот сервер ещё не настроен. Вход недоступен.",
+      "pt": "Este servidor ainda não está configurado. O login não está disponível.",
+      "id": "Server ini belum dikonfigurasi. Login tidak tersedia.",
+      "vi": "Máy chủ này chưa được thiết lập. Đăng nhập không khả dụng.",
+      "th": "เซิร์ฟเวอร์นี้ยังไม่ได้ตั้งค่า. การเข้าสู่ระบบใช้งานไม่ได้."
+    }
+  },
+  "receivePhoneKyc": {
+    "en": "Sign to claim phone verification NFT",
+    "value": {
+      "en": "Sign to claim phone verification NFT",
+      "es": "Firma para reclamar NFT de verificación de teléfono",
+      "zh": "签名以领取手机验证 NFT",
+      "zh-TW": "簽名以領取手機驗證 NFT",
+      "ja": "署名して電話番号認証 NFT を取得",
+      "ko": "서명하여 전화 인증 NFT 를 받으세요",
+      "de": "Signieren Sie, um das Telefonverifizierungs-NFT zu beanspruchen",
+      "hi": "फोन सत्यापन NFT पाने के लिए साइन करें",
+      "fr": "Signez pour réclamer le NFT de vérification du téléphone",
+      "ar": "وقّع لاستلام NFT للتحقق من الهاتف",
+      "ru": "Подпишитесь, чтобы получить NFT для проверки телефона",
+      "pt": "Assine para reivindicar o NFT de verificação de telefone.",
+      "id": "Tandatangani untuk mengklaim NFT verifikasi nomor telepon.",
+      "vi": "Đăng ký để nhận NFT xác thực số điện thoại.",
+      "th": "ลงชื่อเพื่อรับ NFT สำหรับการยืนยันหมายเลขโทรศัพท์"
+    }
+  },
+  "appNotInitialized": {
+    "en": "This application isn't set up yet",
+    "value": {
+      "en": "This application isn't set up yet",
+      "es": "Esta aplicación aún no está configurada.",
+      "zh": "此应用尚未设置好。",
+      "zh-TW": "此應用程式尚未設定好。",
+      "ja": "このアプリはまだ設定されていません。",
+      "ko": "이 애플리케이션은 아직 설정되지 않았습니다.",
+      "de": "Diese Anwendung ist noch nicht eingerichtet.",
+      "hi": "यह एप्लिकेशन अभी सेटअप नहीं किया गया है.",
+      "fr": "Cette application n'est pas encore configurée.",
+      "ar": "لم يتم إعداد هذا التطبيق بعد.",
+      "ru": "Это приложение ещё не настроено.",
+      "pt": "Este aplicativo ainda não está configurado.",
+      "id": "Aplikasi ini belum disiapkan.",
+      "vi": "Ứng dụng này chưa được thiết lập.",
+      "th": "แอปพลิเคชันนี้ยังไม่ได้ตั้งค่า."
+    }
+  },
+  "alreadyInitiated": {
+    "en": "This server already has an owner",
+    "value": {
+      "en": "This server already has an owner",
+      "es": "Este servidor ya tiene un propietario",
+      "zh": "此服务器已经有一个所有者",
+      "zh-TW": "此伺服器已經有一個所有者",
+      "ja": "このサーバーにはすでに所有者がいます",
+      "ko": "이 서버에는 이미 소유자가 있습니다",
+      "de": "Dieser Server hat bereits einen Besitzer.",
+      "hi": "इस सर्वर के पास पहले से ही एक मालिक है.",
+      "fr": "Ce serveur a déjà un propriétaire.",
+      "ar": "هذا الخادم لديه مالك بالفعل.",
+      "ru": "У этого сервера уже есть владелец.",
+      "pt": "Este servidor já tem um proprietário.",
+      "id": "Server ini sudah memiliki pemilik.",
+      "vi": "Máy chủ này đã có chủ sở hữu.",
+      "th": "เซิร์ฟเวอร์นี้มีเจ้าของแล้ว."
+    }
+  },
+  "notAllowed": {
+    "en": "You don't have access to this server",
+    "value": {
+      "en": "You don't have access to this server",
+      "es": "No tienes acceso a este servidor",
+      "zh": "你无法访问此服务器",
+      "zh-TW": "您無法存取此伺服器",
+      "ja": "このサーバーにアクセスできません",
+      "ko": "이 서버에 접근할 수 없습니다",
+      "de": "Du hast keinen Zugriff auf diesen Server.",
+      "hi": "आपको इस सर्वर तक पहुँच नहीं है.",
+      "fr": "Vous n'avez pas accès à ce serveur.",
+      "ar": "ليس لديك وصول إلى هذا الخادم.",
+      "ru": "У вас нет доступа к этому серверу.",
+      "pt": "Você não tem acesso a este servidor.",
+      "id": "Anda tidak memiliki akses ke server ini.",
+      "vi": "Bạn không có quyền truy cập vào máy chủ này.",
+      "th": "คุณไม่มีสิทธิ์เข้าถึงเซิร์ฟเวอร์นี้."
+    }
+  },
+  "notAllowedAppUser": {
+    "en": "Your access to this app has been revoked",
+    "value": {
+      "en": "Your access to this app has been revoked",
+      "es": "Tu acceso a esta aplicación ha sido revocado",
+      "zh": "您对本应用的访问已被撤销",
+      "zh-TW": "您對本應用的存取已被撤銷",
+      "ja": "このアプリへのアクセスは取り消されました",
+      "ko": "이 앱에 대한 접근이 취소되었습니다",
+      "de": "Ihr Zugriff auf diese App wurde widerrufen.",
+      "hi": "इस ऐप तक आपकी पहुँच रद्द कर दी गई है।",
+      "fr": "Votre accès à cette application a été révoqué.",
+      "ar": "تم إلغاء وصولك إلى هذا التطبيق.",
+      "ru": "Ваш доступ к этому приложению был отозван.",
+      "pt": "Seu acesso a este aplicativo foi revogado.",
+      "id": "Akses Anda ke aplikasi ini telah dicabut.",
+      "vi": "Quyền truy cập của bạn vào ứng dụng này đã bị thu hồi.",
+      "th": "การเข้าถึงแอปนี้ของคุณถูกเพิกถอน"
+    }
+  },
+  "notAppOwner": {
+    "en": "Only the app owner can access this",
+    "value": {
+      "en": "Only the app owner can access this",
+      "es": "Solo el propietario de la aplicación puede acceder a esto.",
+      "zh": "只有应用所有者可以访问此处。",
+      "zh-TW": "只有應用程式所有者可以存取此處。",
+      "ja": "アプリの所有者のみがアクセスできます。",
+      "ko": "앱 소유자만 이 항목에 접근할 수 있습니다.",
+      "de": "Nur der App-Besitzer kann darauf zugreifen.",
+      "hi": "केवल ऐप के मालिक ही इसे एक्सेस कर सकते हैं.",
+      "fr": "Seul le propriétaire de l'app peut accéder à cela.",
+      "ar": "يمكن فقط لمالك التطبيق الوصول إلى هذا.",
+      "ru": "Только владелец приложения может получить доступ к этому.",
+      "pt": "Somente o proprietário do aplicativo pode acessar isto",
+      "id": "Hanya pemilik aplikasi yang dapat mengaksesnya",
+      "vi": "Chỉ chủ sở hữu ứng dụng mới có thể truy cập cái này",
+      "th": "เฉพาะเจ้าของแอปพลิเคชันเท่านั้นที่สามารถเข้าถึงสิ่งนี้"
+    }
+  },
+  "notInvited": {
+    "en": "This app is invite-only. Please request an invitation.",
+    "value": {
+      "en": "This app is invite-only. Please request an invitation.",
+      "es": "Esta aplicación es solo por invitación. Por favor, solicita una invitación.",
+      "zh": "本应用仅限受邀使用。请申请邀请。",
+      "zh-TW": "本應用程式僅限受邀使用。請申請邀請。",
+      "ja": "このアプリは招待制です。招待を申請してください。",
+      "ko": "이 앱은 초대 전용입니다. 초대를 요청해 주세요.",
+      "de": "Diese App ist nur auf Einladung erhältlich. Bitte beantragen Sie eine Einladung.",
+      "hi": "यह ऐप केवल निमंत्रण पर है. कृपया एक निमंत्रण का अनुरोध करें।",
+      "fr": "Cette application est accessible uniquement sur invitation. Veuillez demander une invitation.",
+      "ar": "هذا التطبيق متاح بدعوة فقط. يرجى تقديم طلب دعوة.",
+      "ru": "Это приложение доступно только по приглашению. Пожалуйста, подайте заявку на приглашение.",
+      "pt": "Este aplicativo é restrito por convite. Por favor, solicite um convite.",
+      "id": "Aplikasi ini hanya bisa diundang. Silakan ajukan undangan.",
+      "vi": "Ứng dụng này chỉ dành cho người được mời. Vui lòng yêu cầu lời mời.",
+      "th": "แอปนี้เฉพาะผู้ที่ได้รับเชิญเท่านั้น. กรุณายื่นคำขอเชิญ."
+    }
+  },
+  "missingPassport": {
+    "en": "Passport required",
+    "value": {
+      "en": "Passport required",
+      "es": "Pasaporte requerido",
+      "zh": "需要护照",
+      "zh-TW": "需要護照",
+      "ja": "パスポートが必要です",
+      "ko": "여권이 필요합니다",
+      "de": "Reisepass erforderlich",
+      "hi": "पासपोर्ट आवश्यक",
+      "fr": "Passeport requis",
+      "ar": "جواز سفر مطلوب",
+      "ru": "Требуется паспорт",
+      "pt": "Passaporte obrigatório",
+      "id": "Paspor diperlukan",
+      "vi": "Hộ chiếu bắt buộc",
+      "th": "ต้องมีหนังสือเดินทาง"
+    }
+  },
+  "notSupported": {
+    "en": "This application isn't supported on this server",
+    "value": {
+      "en": "This application isn't supported on this server",
+      "es": "Esta aplicación no es compatible con este servidor.",
+      "zh": "此应用程序在此服务器上不受支持。",
+      "zh-TW": "此應用程式在此伺服器上不受支援。",
+      "ja": "このアプリケーションはこのサーバーではサポートされていません。",
+      "ko": "이 애플리케이션은 이 서버에서 지원되지 않습니다.",
+      "de": "Diese Anwendung wird auf diesem Server nicht unterstützt.",
+      "hi": "यह एप्लिकेशन इस सर्वर पर समर्थित नहीं है.",
+      "fr": "Cette application n'est pas prise en charge sur ce serveur.",
+      "ar": "هذا التطبيق غير مدعوم على هذا الخادم.",
+      "ru": "Это приложение не поддерживается на этом сервере.",
+      "pt": "Este aplicativo não é suportado neste servidor",
+      "id": "Aplikasi ini tidak didukung di server ini",
+      "vi": "Ứng dụng này không được hỗ trợ trên máy chủ này",
+      "th": "แอปพลิเคชันนี้ไม่รองรับบนเซิร์ฟเวอร์นี้"
+    }
+  },
+  "emailAlreadyUsed": {
+    "en": "This email is already in use",
+    "value": {
+      "en": "This email is already in use",
+      "es": "Este correo electrónico ya está en uso",
+      "zh": "该邮箱已被使用",
+      "zh-TW": "該電子郵件已被使用",
+      "ja": "このメールはすでに使用されています",
+      "ko": "이 이메일은 이미 사용 중입니다",
+      "de": "Diese E-Mail wird bereits verwendet.",
+      "hi": "यह ईमेल पहले से ही उपयोग में है",
+      "fr": "Cet e-mail est déjà utilisé.",
+      "ar": "هذا البريد الإلكتروني مستخدم بالفعل",
+      "ru": "Этот адрес электронной почты уже используется.",
+      "pt": "Este e-mail já está em uso.",
+      "id": "Email ini sudah digunakan.",
+      "vi": "Email này đã được sử dụng.",
+      "th": "อีเมลนี้ถูกใช้งานแล้ว"
+    }
+  },
+  "noKycRequired": {
+    "en": "Email verification not required or already complete",
+    "value": {
+      "en": "Email verification not required or already complete",
+      "es": "La verificación de correo electrónico no es obligatoria o ya está completa",
+      "zh": "邮箱验证不需要或已完成",
+      "zh-TW": "電子郵件驗證不需要或已完成",
+      "ja": "メール認証は不要、またはすでに完了しています",
+      "ko": "이메일 인증이 필요하지 않거나 이미 완료되었습니다",
+      "de": "E-Mail-Verifizierung ist nicht erforderlich oder bereits abgeschlossen",
+      "hi": "ईमेल सत्यापन आवश्यक नहीं है या पहले से ही पूरा है",
+      "fr": "La vérification de l'e-mail n'est pas requise ou déjà complète",
+      "ar": "التحقق من البريد الإلكتروني غير مطلوب أو مكتمل بالفعل",
+      "ru": "Проверка электронной почты не требуется или уже завершена",
+      "pt": "A verificação de e-mail não é necessária ou já está concluída.",
+      "id": "Verifikasi email tidak diperlukan atau sudah selesai.",
+      "vi": "Xác thực email không bắt buộc hoặc đã hoàn tất.",
+      "th": "การยืนยันอีเมลไม่จำเป็นหรือได้ดำเนินการเสร็จแล้ว."
+    }
+  },
+  "missingEmailKyc": {
+    "en": "Email verification NFT required",
+    "value": {
+      "en": "Email verification NFT required",
+      "es": "NFT de verificación de correo requerido",
+      "zh": "需要邮箱验证的 NFT",
+      "zh-TW": "需要電子郵件驗證的 NFT",
+      "ja": "メール認証 NFT が必要です",
+      "ko": "이메일 인증 NFT 가 필요합니다",
+      "de": "E-Mail-Verifizierung NFT erforderlich",
+      "hi": "ईमेल सत्यापन NFT आवश्यक",
+      "fr": "Vérification par e-mail NFT requise",
+      "ar": "تأكيد البريد الإلكتروني NFT مطلوب",
+      "ru": "Проверка электронной почты NFT требуется",
+      "pt": "NFT de verificação de e-mail obrigatório",
+      "id": "NFT verifikasi email diwajibkan",
+      "vi": "NFT xác thực email bắt buộc",
+      "th": "NFT การยืนยันอีเมลที่จำเป็น"
+    }
+  },
+  "emailBlocked": {
+    "en": "This email domain isn't allowed",
+    "value": {
+      "en": "This email domain isn't allowed",
+      "es": "Este dominio de correo electrónico no está permitido.",
+      "zh": "该邮箱域名不被允许。",
+      "zh-TW": "該電子郵件域名不被允許。",
+      "ja": "このメールドメインは許可されていません。",
+      "ko": "이 이메일 도메인은 허용되지 않습니다.",
+      "de": "Diese E-Mail-Domain ist nicht erlaubt.",
+      "hi": "यह ईमेल डोमेन अनुमति नहीं है.",
+      "fr": "Ce domaine d’e-mail n’est pas autorisé.",
+      "ar": "هذا النطاق البريدي غير مسموح به.",
+      "ru": "Этот домен электронной почты не допускается.",
+      "pt": "Este domínio de e-mail não é permitido",
+      "id": "Domain email ini tidak diizinkan",
+      "vi": "Tên miền email này không được phép",
+      "th": "โดเมนอีเมลนี้ไม่อนุญาต"
+    }
+  },
+  "missingPhoneKyc": {
+    "en": "Phone verification NFT required",
+    "value": {
+      "en": "Phone verification NFT required",
+      "es": "Verificación de teléfono NFT requerida",
+      "zh": "需要手机验证的 NFT",
+      "zh-TW": "需要手機驗證的 NFT",
+      "ja": "電話認証 NFT が必要です",
+      "ko": "폰 인증 NFT 가 필요합니다",
+      "de": "Telefonverifizierung NFT erforderlich",
+      "hi": "फोन सत्यापन NFT आवश्यक",
+      "fr": "Vérification du téléphone NFT requise",
+      "ar": "مطلوب NFT للتحقق من الهاتف",
+      "ru": "Требуется NFT для проверки телефона",
+      "pt": "Verificação de telefone NFT necessária",
+      "id": "Verifikasi nomor telepon NFT diperlukan",
+      "vi": "Xác thực số điện thoại NFT cần thiết",
+      "th": "การตรวจสอบหมายเลขโทรศัพท์ NFT จำเป็น"
+    }
+  },
+  "emailMismatch": {
+    "en": "Email doesn't match your verification NFT",
+    "value": {
+      "en": "Email doesn't match your verification NFT",
+      "es": "El correo electrónico no coincide con tu NFT de verificación",
+      "zh": "电子邮件与您的验证 NFT 不匹配",
+      "zh-TW": "電子郵件與您的驗證 NFT 不匹配",
+      "ja": "メールは検証用 NFT と一致しません",
+      "ko": "이메일이 귀하의 인증 NFT와 일치하지 않습니다",
+      "de": "Die E-Mail-Adresse stimmt nicht mit Ihrem Verifizierungs-NFT überein",
+      "hi": "ईमेल आपके सत्यापन NFT से मेल नहीं खाता",
+      "fr": "L’e-mail ne correspond pas à votre NFT de vérification",
+      "ar": "البريد الإلكتروني لا يتطابق مع NFT الخاص بالتحقق",
+      "ru": "Электронная почта не совпадает с вашим NFT для проверки",
+      "pt": "O e-mail não corresponde ao seu NFT de verificação.",
+      "id": "Surel tidak cocok dengan NFT verifikasi Anda.",
+      "vi": "Email không khớp với NFT xác thực của bạn.",
+      "th": "อีเมลไม่ตรงกับ NFT สำหรับการยืนยันของคุณ"
+    }
+  },
+  "phoneAlreadyUsed": {
+    "en": "This phone number is already in use",
+    "value": {
+      "en": "This phone number is already in use",
+      "es": "Este número de teléfono ya está en uso",
+      "zh": "该电话号码已被使用。",
+      "zh-TW": "該電話號碼已經在使用。",
+      "ja": "この電話番号はすでに使用されています。",
+      "ko": "이 전화번호는 이미 사용 중입니다.",
+      "de": "Diese Telefonnummer ist bereits in Verwendung.",
+      "hi": "यह फोन नंबर पहले से ही उपयोग में है.",
+      "fr": "Ce numéro de téléphone est déjà utilisé.",
+      "ar": "هذا الرقم قيد الاستخدام بالفعل.",
+      "ru": "Этот номер телефона уже используется.",
+      "pt": "Este número de telefone já está em uso",
+      "id": "Nomor telepon ini sudah digunakan",
+      "vi": "Số điện thoại này đã được sử dụng",
+      "th": "เบอร์โทรนี้ถูกใช้งานแล้ว"
+    }
+  },
+  "phoneMismatch": {
+    "en": "Phone number doesn't match your verification NFT",
+    "value": {
+      "en": "Phone number doesn't match your verification NFT",
+      "es": "El número de teléfono no coincide con tu NFT de verificación.",
+      "zh": "电话号码与您的验证 NFT 不匹配。",
+      "zh-TW": "電話號碼與您的驗證 NFT 不匹配。",
+      "ja": "電話番号は検証NFTと一致しません。",
+      "ko": "전화번호가 인증 NFT와 일치하지 않습니다.",
+      "de": "Die Telefonnummer stimmt nicht mit Ihrer Verifizierungs-NFT überein.",
+      "hi": "फोन नंबर आपके सत्यापन NFT से मेल नहीं खाता.",
+      "fr": "Le numéro de téléphone ne correspond pas à votre NFT de vérification.",
+      "ar": "رقم الهاتف لا يتطابق مع NFT للتحقق الخاص بك.",
+      "ru": "Номер телефона не совпадает с вашим NFT для верификации.",
+      "pt": "O número de telefone não corresponde ao seu NFT de verificação",
+      "id": "Nomor telepon Anda tidak cocok dengan NFT verifikasi Anda",
+      "vi": "Số điện thoại của bạn không khớp với NFT xác thực",
+      "th": "หมายเลขโทรศัพท์ของคุณไม่ตรงกับ NFT ยืนยันของคุณ"
+    }
+  },
+  "missingBlockletCredentialClaim": {
+    "en": "Blocklet credential required",
+    "value": {
+      "en": "Blocklet credential required",
+      "es": "Se requiere credencial de Blocklet",
+      "zh": "需要 Blocklet 的凭据",
+      "zh-TW": "需要 Blocklet 的憑證",
+      "ja": "Blocklet の認証情報が必要です",
+      "ko": "Blocklet 자격 증명이 필요합니다",
+      "de": "Blocklet-Anmeldeinformationen erforderlich",
+      "hi": "Blocklet प्रमाण आवश्यक",
+      "fr": "Identifiants Blocklet requis",
+      "ar": "Blocklet الاعتماد مطلوب",
+      "ru": "Blocklet учетные данные необходимы",
+      "pt": "Blocklet credencial necessária",
+      "id": "Blocklet kredensial diperlukan",
+      "vi": "Blocklet chứng chỉ được yêu cầu",
+      "th": "Blocklet ข้อมูลรับรองที่จำเป็น"
+    }
+  },
+  "invalidCredentialProof": {
+    "en": "Credential signature is invalid",
+    "value": {
+      "en": "Credential signature is invalid",
+      "es": "La firma de credenciales no es válida",
+      "zh": "凭证签名无效",
+      "zh-TW": "憑證簽名無效",
+      "ja": "クレデンシャルの署名が無効です",
+      "ko": "자격 증명 서명이 유효하지 않습니다",
+      "de": "Die Signatur der Anmeldeinformationen ist ungültig.",
+      "hi": "क्रेडेंशियल हस्ताक्षर अमान्य है.",
+      "fr": "La signature des identifiants est invalide.",
+      "ar": "توقيع بيانات الاعتماد غير صالح.",
+      "ru": "Подпись учетных данных недействительна.",
+      "pt": "A assinatura da credencial é inválida.",
+      "id": "Tanda tangan kredensial tidak valid.",
+      "vi": "Chữ ký xác thực không hợp lệ.",
+      "th": "ลายเซ็นข้อมูลประจำตัวไม่ถูกต้อง."
+    }
+  },
+  "invalidCredentialHolder": {
+    "en": "Credential holder is invalid",
+    "value": {
+      "en": "Credential holder is invalid",
+      "es": "El titular de la credencial es inválido",
+      "zh": "凭证持有者无效",
+      "zh-TW": "憑證持有者無效",
+      "ja": "認証情報の保持者は無効です",
+      "ko": "자격 증명 보유자는 유효하지 않습니다",
+      "de": "Berechtigungsinhaber ist ungültig.",
+      "hi": "क्रेडेंशियल धारक मान्य नहीं है.",
+      "fr": "Le titulaire des identifiants est invalide.",
+      "ar": "حامل الاعتماد غير صالح.",
+      "ru": "Владелец учетных данных недействителен.",
+      "pt": "O titular da credencial é inválido",
+      "id": "Pemegang kredensial tidak valid",
+      "vi": "Người giữ chứng chỉ không hợp lệ",
+      "th": "ผู้ถือข้อมูลประจำตัวไม่ถูกต้อง"
+    }
+  },
+  "missingChallenge": {
+    "en": "Credential is missing a valid challenge",
+    "value": {
+      "en": "Credential is missing a valid challenge",
+      "es": "La credencial carece de un desafío válido.",
+      "zh": "凭据缺少有效的挑战。",
+      "zh-TW": "憑證缺少有效的挑戰。",
+      "ja": "資格情報には有効なチャレンジがありません。",
+      "ko": "자격 증명에 유효한 챌린지가 없습니다.",
+      "de": "Credential fehlt eine gültige Challenge.",
+      "hi": "Credential में एक वैध चुनौती गायब है.",
+      "fr": "Le crédentiel manque d'un challenge valide.",
+      "ar": "اعتماد يفتقد إلى تحدٍ صالح.",
+      "ru": "Учетные данные не содержат действительного вызова.",
+      "pt": "A credencial está faltando um desafio válido.",
+      "id": "Kredensial tidak memiliki tantangan yang valid.",
+      "vi": "Thông tin xác thực đang thiếu một thách thức hợp lệ.",
+      "th": "ข้อมูลรับรองขาดความท้าทายที่ถูกต้อง."
+    }
+  },
+  "lowVersion": {
+    "en": "Your wallet version is outdated. Please update to the latest version.",
+    "value": {
+      "en": "Your wallet version is outdated. Please update to the latest version.",
+      "es": "La versión de tu billetera está desactualizada. Por favor, actualízala a la última versión.",
+      "zh": "您的钱包版本已过时。请更新到最新版。",
+      "zh-TW": "您的錢包版本已過時。請更新到最新版。",
+      "ja": "お使いのウォレットのバージョンは古くなっています。最新版に更新してください。",
+      "ko": "귀하의 지갑 버전이 오래되었습니다. 최신 버전으로 업데이트하십시오.",
+      "de": "Ihre Wallet-Version ist veraltet. Bitte aktualisieren Sie auf die neueste Version.",
+      "hi": "आपका वॉलेट संस्करण पुराना है। कृपया नवीनतम संस्करण में अपडेट करें।",
+      "fr": "Votre version du portefeuille est obsolète. Veuillez mettre à jour vers la dernière version.",
+      "ar": "إصدار محفظتك قديم. يرجى التحديث إلى الإصدار الأحدث.",
+      "ru": "Ваша версия кошелька устарела. Пожалуйста, обновитесь до последней версии.",
+      "pt": "A versão da sua carteira está desatualizada. Atualize para a versão mais recente.",
+      "id": "Versi dompet Anda sudah usang. Perbarui ke versi terbaru.",
+      "vi": "Phiên bản ví của bạn đã lỗi thời. Vui lòng cập nhật lên phiên bản mới nhất.",
+      "th": "เวอร์ชันกระเป๋าสตางค์ของคุณล้าสมัย กรุณาอัปเดตเป็นเวอร์ชันล่าสุด."
+    }
+  },
+  "notOwner": {
+    "en": "This passport belongs to a different account. Use the wallet that owns this passport.",
+    "value": {
+      "en": "This passport belongs to a different account. Use the wallet that owns this passport.",
+      "es": "Este pasaporte pertenece a una cuenta diferente. Usa la billetera que posee este pasaporte.",
+      "zh": "此护照属于不同的账户。请使用拥有此护照的钱包。",
+      "zh-TW": "此護照屬於不同的帳戶。請使用擁有此護照的錢包。",
+      "ja": "このパスポートは別のアカウントに属します。このパスポートを所有しているウォレットを使用してください。",
+      "ko": "이 여권은 다른 계정에 속합니다. 이 여권을 소유한 지갑을 사용하십시오.",
+      "de": "Dieser Pass gehört zu einem anderen Konto. Verwenden Sie die Brieftasche, die diesen Pass besitzt.",
+      "hi": "यह पासपोर्ट एक अलग खाते का है। उस वॉलेट का उपयोग करें जो इस पासपोर्ट का स्वामी है।",
+      "fr": "Ce passeport appartient à un autre compte. Utilisez le portefeuille qui possède ce passeport.",
+      "ar": "هذا جواز سفر يعود إلى حساب مختلف. استخدم المحفظة التي تملك هذا الجواز.",
+      "ru": "Этот паспорт принадлежит другому аккаунту. Используйте кошелёк, который владеет этим паспортом.",
+      "pt": "Este passaporte pertence a outra conta. Use a carteira que possui este passaporte.",
+      "id": "Paspor ini milik akun yang berbeda. Gunakan dompet yang memiliki paspor ini.",
+      "vi": "Hộ chiếu này thuộc về một tài khoản khác. Sử dụng ví sở hữu hộ chiếu này.",
+      "th": "พาสปอร์ตนี้เป็นของบัญชีอื่น. ใช้กระเป๋าเงินที่เป็นเจ้าของพาสปอร์ตนี้"
+    }
+  },
+  "userMismatch": {
+    "en": "Account mismatch. Use your connected wallet to continue.",
+    "value": {
+      "en": "Account mismatch. Use your connected wallet to continue.",
+      "es": "La cuenta no coincide. Utiliza tu billetera conectada para continuar.",
+      "zh": "账户不匹配。请使用已连接的钱包继续。",
+      "zh-TW": "帳戶不匹配。請使用已連接的錢包繼續。",
+      "ja": "アカウントが一致しません。接続済みのウォレットを使って続行してください。",
+      "ko": "계정이 일치하지 않습니다. 계속하려면 연결된 지갑을 사용하세요.",
+      "de": "Kontoabgleich stimmt nicht überein. Verwenden Sie Ihre verbundene Wallet, um fortzufahren.",
+      "hi": "खाता मिलान नहीं हुआ. जारी रखने के लिए अपने कनेक्टेड वॉलेट का उपयोग करें.",
+      "fr": "Incompatibilité de compte. Utilisez votre portefeuille connecté pour continuer.",
+      "ar": "عدم تطابق الحساب. استخدم محفظتك المتصلة للمتابعة.",
+      "ru": "Несоответствие учетной записи. Используйте ваш подключенный кошелек, чтобы продолжить.",
+      "pt": "Conta incompatível. Use a sua carteira conectada para continuar.",
+      "id": "Akun tidak cocok. Gunakan dompet yang terhubung untuk melanjutkan.",
+      "vi": "Tài khoản không khớp. Sử dụng ví đã kết nối để tiếp tục.",
+      "th": "บัญชีไม่ตรงกัน. ใช้วอลเล็ตที่เชื่อมต่อของคุณเพื่อดำเนินการต่อ."
+    }
+  },
+  "unKnownStatus": {
+    "en": "Unknown status",
+    "value": {
+      "en": "Unknown status",
+      "es": "Estado desconocido",
+      "zh": "未知状态",
+      "zh-TW": "未知狀態",
+      "ja": "不明な状態",
+      "ko": "알 수 없는 상태",
+      "de": "Unbekannter Status",
+      "hi": "अज्ञात स्थिति",
+      "fr": "Statut inconnu",
+      "ar": "حالة غير معروفة",
+      "ru": "Неизвестный статус",
+      "pt": "Status desconhecido",
+      "id": "Status tidak diketahui",
+      "vi": "Trạng thái không xác định",
+      "th": "สถานะไม่ทราบ"
+    }
+  },
+  "statusLabel": {
+    "en": "Status",
+    "value": {
+      "en": "Status",
+      "es": "Estado",
+      "zh": "状态",
+      "zh-TW": "狀態",
+      "ja": "ステータス",
+      "ko": "상태",
+      "de": "Status",
+      "hi": "स्थिति",
+      "fr": "Statut",
+      "ar": "الحالة",
+      "ru": "Статус",
+      "pt": "Status",
+      "id": "Status",
+      "vi": "Trạng thái",
+      "th": "สถานะ"
+    }
+  },
+  "statusNotFound": {
+    "en": "Status not found",
+    "value": {
+      "en": "Status not found",
+      "es": "Estado no encontrado",
+      "zh": "状态未找到",
+      "zh-TW": "狀態未找到",
+      "ja": "ステータスが見つかりません",
+      "ko": "상태를 찾을 수 없습니다",
+      "de": "Status nicht gefunden",
+      "hi": "स्थिति नहीं मिली",
+      "fr": "Statut introuvable",
+      "ar": "الحالة غير موجودة",
+      "ru": "Статус не найден",
+      "pt": "Status não encontrado",
+      "id": "Status tidak ditemukan",
+      "vi": "Trạng thái không được tìm thấy",
+      "th": "สถานะไม่พบ"
+    }
+  },
+  "passportRevoked": {
+    "en": "Your passport has been revoked",
+    "value": {
+      "en": "Your passport has been revoked",
+      "es": "Su pasaporte ha sido revocado.",
+      "zh": "您的护照已被吊销。",
+      "zh-TW": "您的護照已被吊銷。",
+      "ja": "あなたのパスポートは取り消されました。",
+      "ko": "귀하의 여권이 취소되었습니다.",
+      "de": "Ihr Reisepass wurde widerrufen.",
+      "hi": "आपका पासपोर्ट रद्द कर दिया गया है।",
+      "fr": "Votre passeport a été révoqué.",
+      "ar": "تم سحب جواز سفرك.",
+      "ru": "Ваш паспорт аннулирован.",
+      "pt": "Seu passaporte foi revogado.",
+      "id": "Paspor Anda telah dicabut.",
+      "vi": "Hộ chiếu của bạn đã bị thu hồi.",
+      "th": "พาสปอร์ตของคุณถูกเพิกถอน"
+    }
+  },
+  "passportNotFound": {
+    "en": "Passport not found",
+    "value": {
+      "en": "Passport not found",
+      "es": "Pasaporte no encontrado",
+      "zh": "未找到护照",
+      "zh-TW": "未找到護照",
+      "ja": "パスポートが見つかりません",
+      "ko": "여권을 찾을 수 없습니다",
+      "de": "Reisepass nicht gefunden",
+      "hi": "पासपोर्ट नहीं मिला",
+      "fr": "Passeport non trouvé",
+      "ar": "جواز السفر غير موجود",
+      "ru": "Паспорт не найден",
+      "pt": "Passaporte não encontrado",
+      "id": "Paspor tidak ditemukan",
+      "vi": "Hộ chiếu không tìm thấy",
+      "th": "ไม่พบพาสปอร์ต"
+    }
+  },
+  "passportExpired": {
+    "en": "Your passport has expired",
+    "value": {
+      "en": "Your passport has expired",
+      "es": "Tu pasaporte ha caducado",
+      "zh": "您的护照已过期",
+      "zh-TW": "您的護照已過期",
+      "ja": "あなたのパスポートの有効期限が切れています",
+      "ko": "여권의 유효기간이 만료되었습니다",
+      "de": "Ihr Reisepass ist abgelaufen",
+      "hi": "आपका पासपोर्ट समाप्त हो गया है",
+      "fr": "Votre passeport est expiré",
+      "ar": "جواز سفرك منتهي الصلاحية",
+      "ru": "Ваш паспорт просрочен",
+      "pt": "Seu passaporte expirou",
+      "id": "Paspor Anda telah kedaluwarsa",
+      "vi": "Hộ chiếu của bạn đã hết hạn",
+      "th": "พาสปอร์ตของคุณหมดอายุ"
+    }
+  },
+  "userNotFound": {
+    "en": "User not found",
+    "value": {
+      "en": "User not found",
+      "es": "Usuario no encontrado",
+      "zh": "未找到用户",
+      "zh-TW": "未找到用戶",
+      "ja": "ユーザーが見つかりません",
+      "ko": "사용자를 찾을 수 없습니다",
+      "de": "Benutzer nicht gefunden",
+      "hi": "उपयोगकर्ता नहीं मिला",
+      "fr": "Utilisateur non trouvé",
+      "ar": "المستخدم غير موجود",
+      "ru": "Пользователь не найден",
+      "pt": "Usuário não encontrado.",
+      "id": "Pengguna tidak ditemukan.",
+      "vi": "Người dùng không tìm thấy.",
+      "th": "ไม่พบผู้ใช้."
+    }
+  },
+  "notAuthorized": {
+    "en": "You don't have permission for this operation",
+    "value": {
+      "en": "You don't have permission for this operation",
+      "es": "No tienes permiso para esta operación",
+      "zh": "您没有执行此操作的权限",
+      "zh-TW": "您沒有執行此操作的權限",
+      "ja": "この操作を実行する権限がありません",
+      "ko": "이 작업에 대한 권한이 없습니다",
+      "de": "Sie haben keine Berechtigung für diese Operation.",
+      "hi": "इस ऑपरेशन के लिए आपके पास अनुमति नहीं है।",
+      "fr": "Vous n'avez pas l'autorisation pour cette opération.",
+      "ar": "ليس لديك إذن لهذه العملية.",
+      "ru": "У вас нет разрешения на выполнение этой операции.",
+      "pt": "Você não tem permissão para esta operação.",
+      "id": "Anda tidak memiliki izin untuk operasi ini.",
+      "vi": "Bạn không có quyền thực hiện thao tác này.",
+      "th": "คุณไม่มีสิทธิ์ในการดำเนินการนี้."
+    }
+  },
+  "noPassportFound": {
+    "en": "You don't have a valid passport for this blocklet",
+    "value": {
+      "en": "You don't have a valid passport for this blocklet",
+      "es": "No tienes un pasaporte válido para este blocklet",
+      "zh": "你没有这个 blocklet 的有效护照",
+      "zh-TW": "你沒有這個 blocklet 的有效護照",
+      "ja": "この blocklet の有効なパスポートを持っていません",
+      "ko": "이 blocklet 에 대한 유효한 여권이 없습니다",
+      "de": "Sie haben keinen gültigen Reisepass für dieses blocklet",
+      "hi": "इस blocklet के लिए आपके पास वैध पासपोर्ट नहीं है",
+      "fr": "Vous n'avez pas de passeport valide pour ce blocklet",
+      "ar": "ليس لديك جواز سفر ساري لهذا blocklet",
+      "ru": "У вас нет действующего паспорта для этого blocklet",
+      "pt": "Você não tem um passaporte válido para este blocklet.",
+      "id": "Anda tidak memiliki paspor yang valid untuk blocklet ini.",
+      "vi": "Bạn không có hộ chiếu hợp lệ cho blocklet này.",
+      "th": "คุณไม่มีหนังสือเดินทางที่ถูกต้องสำหรับ blocklet นี้."
+    }
+  },
+  "invalidParams": {
+    "en": "Please check your information and try again",
+    "value": {
+      "en": "Please check your information and try again",
+      "es": "Por favor, verifica tu información y vuelve a intentarlo.",
+      "zh": "请检查您的信息并再试一次。",
+      "zh-TW": "請檢查您的資訊，並再試一次。",
+      "ja": "情報を確認して、もう一度お試しください。",
+      "ko": "정보를 확인하고 다시 시도해 주세요.",
+      "de": "Bitte überprüfen Sie Ihre Informationen und versuchen Sie es erneut.",
+      "hi": "कृपया अपनी जानकारी जाँचें और फिर से प्रयास करें।",
+      "fr": "Veuillez vérifier vos informations et réessayer.",
+      "ar": "يرجى التحقق من معلوماتك والمحاولة مرة أخرى.",
+      "ru": "Пожалуйста, проверьте вашу информацию и попробуйте ещё раз.",
+      "pt": "Por favor, verifique suas informações e tente novamente",
+      "id": "Silakan periksa informasi Anda dan coba lagi",
+      "vi": "Vui lòng kiểm tra thông tin của bạn và thử lại",
+      "th": "กรุณาตรวจสอบข้อมูลของคุณและลองใหม่"
+    }
+  },
+  "missingKeyPair": {
+    "en": "App key pair required",
+    "value": {
+      "en": "App key pair required",
+      "es": "Se requiere un par de claves de la aplicación",
+      "zh": "需要应用密钥对",
+      "zh-TW": "需要應用程式密鑰對",
+      "ja": "アプリのキーペアが必要です",
+      "ko": "앱 키 쌍이 필요합니다",
+      "de": "App-Schlüsselpaar erforderlich",
+      "hi": "ऐप कुंजी युग्म आवश्यक",
+      "fr": "Paire de clés d'application requise",
+      "ar": "زوج مفاتيح التطبيق مطلوب",
+      "ru": "Пара ключей приложения требуется",
+      "pt": "Par de chaves do aplicativo necessário",
+      "id": "Pasangan kunci aplikasi diperlukan",
+      "vi": "Cặp khóa ứng dụng cần thiết",
+      "th": "คู่กุญแจแอปพลิเคชันที่จำเป็น"
+    }
+  },
+  "missingBlockletUrl": {
+    "en": "Blocklet URL required",
+    "value": {
+      "en": "Blocklet URL required",
+      "es": "Blocklet URL requerido",
+      "zh": "Blocklet URL 需要",
+      "zh-TW": "Blocklet URL 需要",
+      "ja": "Blocklet URL が必要です",
+      "ko": "Blocklet URL 필요합니다",
+      "de": "Blocklet URL erforderlich",
+      "hi": "Blocklet URL आवश्यक",
+      "fr": "Blocklet URL requis",
+      "ar": "Blocklet URL مطلوب",
+      "ru": "Blocklet URL требуется",
+      "pt": "URL do Blocklet é obrigatória",
+      "id": "URL Blocklet diperlukan",
+      "vi": "URL Blocklet được yêu cầu",
+      "th": "Blocklet URL จำเป็น"
+    }
+  },
+  "missingBlockletDid": {
+    "en": "Blocklet DID required",
+    "value": {
+      "en": "Blocklet DID required",
+      "es": "Blocklet DID requerido",
+      "zh": "Blocklet DID 需要",
+      "zh-TW": "Blocklet DID 需要",
+      "ja": "Blocklet DID 必要",
+      "ko": "Blocklet DID 필요",
+      "de": "Blocklet DID erforderlich",
+      "hi": "Blocklet DID आवश्यक",
+      "fr": "Blocklet DID requis",
+      "ar": "Blocklet DID مطلوب",
+      "ru": "Blocklet DID требуется",
+      "pt": "Blocklet DID necessário",
+      "id": "Blocklet DID diperlukan",
+      "vi": "Blocklet DID được yêu cầu",
+      "th": "Blocklet DID จำเป็น"
+    }
+  },
+  "missingChainHost": {
+    "en": "Chain host required",
+    "value": {
+      "en": "Chain host required",
+      "es": "Se requiere un host de cadena de bloques",
+      "zh": "需要区块链主机",
+      "zh-TW": "需要區塊鏈主機",
+      "ja": "チェーンホストが必要です",
+      "ko": "체인 호스트가 필요합니다",
+      "de": "Ketten-Host erforderlich",
+      "hi": "श्रृंखला होस्ट आवश्यक",
+      "fr": "Hôte de chaîne requis",
+      "ar": "مضيف السلسلة مطلوب",
+      "ru": "Хост цепи требуется",
+      "pt": "Host da cadeia é obrigatório",
+      "id": "Host rantai diperlukan",
+      "vi": "Máy chủ chuỗi bắt buộc",
+      "th": "โฮสต์เชนจำเป็น"
+    }
+  },
+  "missingLauncherSession": {
+    "en": "Launcher URL and session ID required",
+    "value": {
+      "en": "Launcher URL and session ID required",
+      "es": "Se requiere la URL del Launcher y la ID de sesión.",
+      "zh": "需要 Launcher 的 URL 和会话 ID。",
+      "zh-TW": "需要 Launcher 的 URL 和會話 ID。",
+      "ja": "Launcher の URL と セッション ID が必要です。",
+      "ko": "Launcher URL과 세션 ID가 필요합니다。",
+      "de": "Launcher URL und Sitzungs-ID erforderlich",
+      "hi": "Launcher URL और सत्र ID आवश्यक है",
+      "fr": "Launcher URL et identifiant de session requis",
+      "ar": "عنوان Launcher URL ومعرّف الجلسة مطلوب",
+      "ru": "Требуются Launcher URL и идентификатор сессии",
+      "pt": "URL do Launcher e ID de sessão obrigatórios.",
+      "id": "URL Launcher dan ID sesi wajib.",
+      "vi": "URL Launcher và ID phiên làm việc là bắt buộc.",
+      "th": "Launcher URL และ ID เซสชันที่จำเป็น."
+    }
+  },
+  "blockletExists": {
+    "en": "This blocklet already exists",
+    "value": {
+      "en": "This blocklet already exists",
+      "es": "Este blocklet ya existe",
+      "zh": "这个 blocklet 已经存在",
+      "zh-TW": "這個 blocklet 已經存在",
+      "ja": "この blocklet はすでに存在します",
+      "ko": "이 blocklet 은 이미 존재합니다",
+      "de": "Dieses Blocklet existiert bereits",
+      "hi": "यह Blocklet पहले से मौजूद है",
+      "fr": "Ce Blocklet existe déjà",
+      "ar": "هذا Blocklet موجود بالفعل",
+      "ru": "Этот Blocklet уже существует",
+      "pt": "Este Blocklet já existe.",
+      "id": "Blocklet ini sudah ada.",
+      "vi": "Blocklet này đã tồn tại.",
+      "th": "Blocklet นี้มีอยู่แล้ว."
+    }
+  },
+  "invalidBlockletVc": {
+    "en": "Invalid blocklet credential",
+    "value": {
+      "en": "Invalid blocklet credential",
+      "es": "Credencial blocklet inválida",
+      "zh": "无效的 blocklet 凭证",
+      "zh-TW": "無效的 blocklet 憑證",
+      "ja": "無効な blocklet 認証情報",
+      "ko": "유효하지 않은 blocklet 자격 증명",
+      "de": "Ungültige Blocklet-Anmeldeinformationen",
+      "hi": "अमान्य Blocklet क्रेडेंशियल",
+      "fr": "Identifiant Blocklet invalide",
+      "ar": "اعتماد Blocklet غير صالح",
+      "ru": "Недействительные учетные данные Blocklet",
+      "pt": "Credencial blocklet inválida",
+      "id": "Kredensial blocklet tidak valid",
+      "vi": "Xác thực blocklet không hợp lệ",
+      "th": "ข้อมูลรับรอง blocklet ไม่ถูกต้อง"
+    }
+  },
+  "invalidBlocklet": {
+    "en": "Invalid blocklet",
+    "value": {
+      "en": "Invalid blocklet",
+      "es": "Inválido blocklet",
+      "zh": "无效 blocklet",
+      "zh-TW": "無效 blocklet",
+      "ja": "無効な blocklet",
+      "ko": "유효하지 않은 blocklet",
+      "de": "Ungültiges Blocklet",
+      "hi": "अमान्य Blocklet",
+      "fr": "Blocklet invalide",
+      "ar": "Blocklet غير صحيح",
+      "ru": "Некорректный Blocklet",
+      "pt": "Inválido Blocklet",
+      "id": "Blocklet tidak valid",
+      "vi": "Blocklet không hợp lệ",
+      "th": "Blocklet ไม่ถูกต้อง"
+    }
+  },
+  "missingProfileClaim": {
+    "en": "Owner profile required",
+    "value": {
+      "en": "Owner profile required",
+      "es": "Se requiere el perfil del propietario",
+      "zh": "需要所有者资料",
+      "zh-TW": "需要所有者資料",
+      "ja": "オーナープロフィールが必要です",
+      "ko": "소유자 프로필이 필요합니다",
+      "de": "Eigentümerprofil erforderlich",
+      "hi": "स्वामी प्रोफ़ाइल आवश्यक है",
+      "fr": "Profil du propriétaire requis",
+      "ar": "الملف الشخصي للمالك مطلوب",
+      "ru": "Профиль владельца обязателен",
+      "pt": "Perfil do proprietário obrigatório",
+      "id": "Profil pemilik diperlukan",
+      "vi": "Hồ sơ chủ sở hữu bắt buộc",
+      "th": "โปรไฟล์ของเจ้าของจำเป็น"
+    }
+  },
+  "invalidAppVersion": {
+    "en": "Key-pair rotation only works on the latest version",
+    "value": {
+      "en": "Key-pair rotation only works on the latest version",
+      "es": "La rotación de pares de claves solo funciona en la versión más reciente.",
+      "zh": "密钥对轮换仅在最新版本上起作用。",
+      "zh-TW": "密鑰對輪換僅適用於最新版本。",
+      "ja": "キー ペアの回転は最新バージョンでのみ動作します。",
+      "ko": "키 페어 회전은 최신 버전에서만 작동합니다.",
+      "de": "Die Schlüsselpaar-Rotation funktioniert nur in der neuesten Version.",
+      "hi": "कुंजी-युग्म घूर्णन सिर्फ नवीनतम संस्करण पर काम करता है.",
+      "fr": "La rotation de la paire de clés ne fonctionne que sur la dernière version.",
+      "ar": "تدوير زوج المفاتيح يعمل فقط على الإصدار الأخير.",
+      "ru": "Ротация пары ключей работает только в последней версии.",
+      "pt": "Rotação de pares de chaves funciona apenas na versão mais recente.",
+      "id": "Rotasi pasangan kunci hanya berfungsi pada versi terbaru.",
+      "vi": "Quay cặp khóa chỉ hoạt động trên phiên bản mới nhất.",
+      "th": "การหมุนคู่กุญแจทำงานได้เฉพาะบนเวอร์ชันล่าสุด"
+    }
+  },
+  "invalidNftClaim": {
+    "en": "Invalid asset claim: owner public key, DID, and proof are required",
+    "value": {
+      "en": "Invalid asset claim: owner public key, DID, and proof are required",
+      "es": "Reclamación de activo no válida: la clave pública del propietario, DID y la prueba son necesarias",
+      "zh": "无效资产主张：所有者公钥、DID 和证明是必需的",
+      "zh-TW": "無效的資產主張：所有者公鑰、DID 和證明是必需的",
+      "ja": "無効な資産の主張: オーナーの公開鍵、DID、そして証明が必要です",
+      "ko": "유효하지 않은 자산 청구: 소유자의 공개 키, DID 및 증명이 필요합니다",
+      "de": "Ungültiger Anspruch auf Vermögenswert: Eigentümer des öffentlichen Schlüssels, DID und Nachweis sind erforderlich.",
+      "hi": "अमान्य एसेट दावा: मालिक की सार्वजनिक कुंजी, DID और प्रमाण आवश्यक हैं.",
+      "fr": "Réclamation d’actif invalide : la clé publique du propriétaire, DID et la preuve sont requises.",
+      "ar": "ادعاء أصل غير صالح: المفتاح العام للمالك، DID، والدليل مطلوب.",
+      "ru": "Неверное требование к активу: открытый ключ владельца, DID и доказательство необходимы.",
+      "pt": "Reivindicação de ativo inválida: chave pública do proprietário, DID e prova são obrigatórios.",
+      "id": "Klaim aset tidak valid: kunci publik pemilik, DID, dan bukti diperlukan.",
+      "vi": "Yêu cầu tài sản không hợp lệ: khóa công khai của chủ sở hữu, DID và bằng chứng là bắt buộc.",
+      "th": "การเรียกร้องทรัพย์สินที่ไม่ถูกต้อง: กุญแจสาธารณะของเจ้าของ, DID และหลักฐานเป็นสิ่งจำเป็น."
+    }
+  },
+  "invalidNftProof": {
+    "en": "NFT signature is invalid",
+    "value": {
+      "en": "NFT signature is invalid",
+      "es": "La firma NFT no es válida.",
+      "zh": "NFT 签名无效。",
+      "zh-TW": "NFT 簽名無效。",
+      "ja": "NFT 署名は無効です。",
+      "ko": "NFT 서명이 유효하지 않습니다.",
+      "de": "NFT-Signatur ist ungültig",
+      "hi": "NFT हस्ताक्षर अमान्य है",
+      "fr": "La signature NFT est invalide",
+      "ar": "توقيع NFT غير صالح",
+      "ru": "NFT-подпись недействительна",
+      "pt": "A assinatura NFT é inválida.",
+      "id": "Tanda tangan NFT tidak valid.",
+      "vi": "Chữ ký NFT không hợp lệ.",
+      "th": "ลายเซ็น NFT ไม่ถูกต้อง."
+    }
+  },
+  "invalidNftHolder": {
+    "en": "NFT holder is invalid",
+    "value": {
+      "en": "NFT holder is invalid",
+      "es": "El titular de NFT es inválido",
+      "zh": "NFT 持有者无效",
+      "zh-TW": "NFT 持有者無效",
+      "ja": "NFT の保有者は無効です",
+      "ko": "NFT 보유자는 유효하지 않습니다",
+      "de": "NFT-Inhaber ist ungültig.",
+      "hi": "NFT धारक अमान्य है.",
+      "fr": "Le détenteur de NFT est invalide.",
+      "ar": "حامل NFT غير صالح.",
+      "ru": "Владелец NFT недействителен.",
+      "pt": "O titular de NFT é inválido",
+      "id": "Pemilik NFT tidak valid",
+      "vi": "Chủ sở hữu NFT không hợp lệ",
+      "th": "ผู้ถือ NFT ไม่ถูกต้อง"
+    }
+  },
+  "invalidNft": {
+    "en": "Invalid ownership NFT",
+    "value": {
+      "en": "Invalid ownership NFT",
+      "es": "NFT de titularidad inválida",
+      "zh": "无效的所有权 NFT",
+      "zh-TW": "無效的所有權 NFT",
+      "ja": "無効な所有権 NFT",
+      "ko": "유효하지 않은 소유권 NFT",
+      "de": "Ungültiges Eigentums-NFT",
+      "hi": "अमान्य स्वामित्व NFT",
+      "fr": "NFT de propriété invalide",
+      "ar": "ملكية NFT غير صالحة",
+      "ru": "Недействительное владение NFT",
+      "pt": "NFT de propriedade inválida",
+      "id": "NFT kepemilikan tidak valid",
+      "vi": "Quyền sở hữu NFT không hợp lệ",
+      "th": "NFT ความเป็นเจ้าของไม่ถูกต้อง"
+    }
+  },
+  "invalidNftParent": {
+    "en": "NFT collection doesn't match",
+    "value": {
+      "en": "NFT collection doesn't match",
+      "es": "La colección de NFT no coincide",
+      "zh": "NFT 收藏不匹配",
+      "zh-TW": "NFT 收藏不匹配",
+      "ja": "NFTコレクションは一致しません",
+      "ko": "NFT 컬렉션이 일치하지 않습니다",
+      "de": "NFT-Sammlung passt nicht",
+      "hi": "NFT संग्रह मेल नहीं खाता",
+      "fr": "La collection NFT ne correspond pas",
+      "ar": "مجموعة NFT لا تتطابق",
+      "ru": "Коллекция NFT не совпадает",
+      "pt": "A coleção NFT não corresponde",
+      "id": "Koleksi NFT tidak cocok",
+      "vi": "Bộ sưu tập NFT không khớp",
+      "th": "คอลเลกชัน NFT ไม่ตรงกัน"
+    }
+  },
+  "invalidNftIssuer": {
+    "en": "NFT issuer is invalid",
+    "value": {
+      "en": "NFT issuer is invalid",
+      "es": "El emisor de NFT es inválido",
+      "zh": "NFT 发行者无效",
+      "zh-TW": "NFT 發行者無效",
+      "ja": "NFT 発行者は無効です",
+      "ko": "NFT 발행자는 유효하지 않습니다",
+      "de": "NFT-Aussteller ist ungültig",
+      "hi": "NFT जारीकर्ता अमान्य है",
+      "fr": "L'émetteur NFT est invalide",
+      "ar": "مُصدر NFT غير صالح",
+      "ru": "Эмитент NFT недействителен",
+      "pt": "O emissor de NFT é inválido.",
+      "id": "Penerbit NFT tidak valid.",
+      "vi": "Nhà phát hành NFT không hợp lệ.",
+      "th": "ผู้ออก NFT ไม่ถูกต้อง."
+    }
+  },
+  "tagNotMatch": {
+    "en": "This NFT belongs to a different server",
+    "value": {
+      "en": "This NFT belongs to a different server",
+      "es": "Este NFT pertenece a un servidor diferente.",
+      "zh": "此 NFT 属于不同的服务器。",
+      "zh-TW": "此 NFT 屬於不同的伺服器。",
+      "ja": "この NFT は別のサーバーに属します。",
+      "ko": "이 NFT는 다른 서버에 속합니다.",
+      "de": "Dieses NFT gehört zu einem anderen Server.",
+      "hi": "यह NFT किसी अन्य सर्वर का है.",
+      "fr": "Cet NFT appartient à un autre serveur.",
+      "ar": "ينتمي هذا NFT إلى خادم آخر.",
+      "ru": "Этот NFT принадлежит другому серверу.",
+      "pt": "Este NFT pertence a um servidor diferente.",
+      "id": "NFT ini milik server yang berbeda.",
+      "vi": "NFT này thuộc về một máy chủ khác.",
+      "th": "NFT นี้เป็นของเซิร์ฟเวอร์อื่น."
+    }
+  },
+  "nftAlreadyConsumed": {
+    "en": "This NFT has already been used",
+    "value": {
+      "en": "This NFT has already been used",
+      "es": "Este NFT ya ha sido utilizado.",
+      "zh": "此 NFT 已经使用过。",
+      "zh-TW": "此 NFT 已經使用過。",
+      "ja": "このNFTはすでに使用済みです。",
+      "ko": "이 NFT는 이미 사용되었습니다.",
+      "de": "Dieses NFT wurde bereits verwendet.",
+      "hi": "यह NFT पहले से ही इस्तेमाल हो चुका है.",
+      "fr": "Ce NFT a déjà été utilisé.",
+      "ar": "هذا NFT قد تم استخدامه بالفعل.",
+      "ru": "Этот NFT уже был использован.",
+      "pt": "Este NFT já foi usado.",
+      "id": "NFT ini sudah digunakan.",
+      "vi": "NFT này đã được sử dụng.",
+      "th": "NFT นี้ถูกใช้งานแล้ว."
+    }
+  },
+  "requestBlockletSpaceNFT": {
+    "en": "Blocklet Space NFT required",
+    "value": {
+      "en": "Blocklet Space NFT required",
+      "es": "Blocklet Espacio NFT Requerido",
+      "zh": "Blocklet 空间 NFT 需要",
+      "zh-TW": "Blocklet 空間 NFT 需要",
+      "ja": "Blocklet スペース NFT 必要",
+      "ko": "Blocklet 공간 NFT 필요",
+      "de": "Blocklet Raum NFT erforderlich",
+      "hi": "Blocklet स्पेस NFT आवश्यक",
+      "fr": "Blocklet Espace NFT nécessaire",
+      "ar": "Blocklet Space NFT مطلوب",
+      "ru": "Blocklet Space NFT требуется",
+      "pt": "Blocklet Espaço NFT necessário",
+      "id": "Blocklet Ruang NFT diperlukan",
+      "vi": "Blocklet Không gian NFT cần thiết",
+      "th": "Blocklet พื้นที่ NFT จำเป็น"
+    }
+  },
+  "blockletSpaceNftIdRequired": {
+    "en": "Blocklet Space NFT ID is required",
+    "value": {
+      "en": "Blocklet Space NFT ID is required",
+      "es": "Blocklet espacio NFT ID es requerido",
+      "zh": "Blocklet 空间 NFT ID 是必需的",
+      "zh-TW": "Blocklet 空間 NFT ID 是必須的",
+      "ja": "Blocklet Space NFT ID は必須です",
+      "ko": "Blocklet Space NFT ID 가 필요합니다",
+      "de": "Blocklet Space NFT ID ist erforderlich.",
+      "hi": "Blocklet Space NFT ID आवश्यक है.",
+      "fr": "Blocklet Space NFT ID est requis.",
+      "ar": "Blocklet Space NFT ID مطلوب.",
+      "ru": "Blocklet Space NFT ID обязателен.",
+      "pt": "Blocklet espaço NFT ID é obrigatório.",
+      "id": "Blocklet ruang NFT ID diperlukan.",
+      "vi": "Blocklet không gian NFT ID là bắt buộc.",
+      "th": "Blocklet พื้นที่ NFT ID จำเป็นต้องมี."
+    }
+  },
+  "sessionAlreadyConsumed": {
+    "en": "This session has already been used",
+    "value": {
+      "en": "This session has already been used",
+      "es": "Esta sesión ya ha sido utilizada.",
+      "zh": "本次会话已被使用。",
+      "zh-TW": "本次會話已被使用。",
+      "ja": "このセッションはすでに使用済みです。",
+      "ko": "이 세션은 이미 사용되었습니다.",
+      "de": "Diese Sitzung wurde bereits verwendet.",
+      "hi": "यह सत्र पहले से ही इस्तेमाल हो चुका है.",
+      "fr": "Cette session a déjà été utilisée.",
+      "ar": "تم استخدام هذه الجلسة بالفعل.",
+      "ru": "Эта сессия уже была использована.",
+      "pt": "Esta sessão já foi usada",
+      "id": "Sesi ini telah digunakan",
+      "vi": "Phiên này đã được sử dụng",
+      "th": "เซสชันนี้ถูกใช้งานไปแล้ว"
+    }
+  },
+  "nftAlreadyExpired": {
+    "en": "This NFT has expired",
+    "value": {
+      "en": "This NFT has expired",
+      "es": "Este NFT ha expirado",
+      "zh": "此 NFT 已过期",
+      "zh-TW": "此 NFT 已過期",
+      "ja": "この NFT は期限切れです",
+      "ko": "이 NFT 는 만료되었습니다",
+      "de": "Dieses NFT ist abgelaufen.",
+      "hi": "यह NFT समाप्त हो गया है।",
+      "fr": "Ce NFT a expiré.",
+      "ar": "هذا NFT منتهي الصلاحية.",
+      "ru": "Этот NFT истёк.",
+      "pt": "Este NFT expirou.",
+      "id": "NFT ini telah kedaluwarsa.",
+      "vi": "NFT này đã hết hạn.",
+      "th": "NFT นี้หมดอายุแล้ว."
+    }
+  },
+  "nftAlreadyUsed": {
+    "en": "This NFT is already linked to another user",
+    "value": {
+      "en": "This NFT is already linked to another user",
+      "es": "Este NFT ya está vinculado a otro usuario",
+      "zh": "此 NFT 已经链接到另一名用户",
+      "zh-TW": "此 NFT 已經連結到另一名使用者",
+      "ja": "この NFT はすでに別のユーザーにリンクされています",
+      "ko": "이 NFT 는 이미 다른 사용자에게 연결되어 있습니다",
+      "de": "Diese NFT ist bereits mit einem anderen Benutzer verbunden.",
+      "hi": "यह NFT पहले से किसी और उपयोगकर्ता से जुड़ा हुआ है.",
+      "fr": "Ce NFT est déjà lié à un autre utilisateur.",
+      "ar": "هذه NFT مرتبطة بالفعل بمستخدم آخر.",
+      "ru": "Этот NFT уже привязан к другому пользователю.",
+      "pt": "Este NFT já está vinculado a outro usuário.",
+      "id": "NFT ini sudah terhubung dengan pengguna lain.",
+      "vi": "NFT này đã được liên kết với người dùng khác.",
+      "th": "NFT นี้ได้เชื่อมโยงกับผู้ใช้อื่นแล้ว."
+    }
+  },
+  "noNft": {
+    "en": "This server isn't configured to accept ownership NFTs",
+    "value": {
+      "en": "This server isn't configured to accept ownership NFTs",
+      "es": "Este servidor no está configurado para aceptar NFTs de titularidad.",
+      "zh": "本服务器未配置为接收所有权 NFTs。",
+      "zh-TW": "本伺服器未配置為接收所有權 NFTs。",
+      "ja": "このサーバーは所有権 NFT を受け入れるように設定されていません。",
+      "ko": "이 서버는 소유권 NFT를 수락하도록 설정되어 있지 않습니다.",
+      "de": "Dieser Server ist nicht konfiguriert, um Eigentums-NFTs zu akzeptieren.",
+      "hi": "यह सर्वर स्वामित्व NFT स्वीकार करने के लिए कॉन्फ़िगर नहीं है.",
+      "fr": "Ce serveur n'est pas configuré pour accepter les NFTs de propriété.",
+      "ar": "هذا الخادم غير مُهيّأ لقبول NFTs الملكية.",
+      "ru": "Этот сервер не настроен на прием NFT владения.",
+      "pt": "Este servidor não está configurado para aceitar NFTs de propriedade.",
+      "id": "Server ini tidak dikonfigurasi untuk menerima NFT kepemilikan.",
+      "vi": "Máy chủ này không được cấu hình để chấp nhận NFT quyền sở hữu.",
+      "th": "เซิร์ฟเวอร์นี้ไม่ได้ถูกกำหนดค่าให้รองรับ NFT ความเป็นเจ้าของ."
+    }
+  },
+  "missingNftClaim": {
+    "en": "Ownership NFT required",
+    "value": {
+      "en": "Ownership NFT required",
+      "es": "Se requiere NFT de propiedad",
+      "zh": "需要所有权 NFT",
+      "zh-TW": "需要所有權 NFT",
+      "ja": "所有権 NFT が必要です",
+      "ko": "소유권 NFT가 필요합니다",
+      "de": "Eigentums-NFT erforderlich",
+      "hi": "स्वामित्व NFT आवश्यक है",
+      "fr": "NFT de propriété nécessaire",
+      "ar": "NFT الملكية مطلوبة",
+      "ru": "Необходимо владение NFT",
+      "pt": "NFT de propriedade obrigatório",
+      "id": "NFT kepemilikan diperlukan",
+      "vi": "NFT quyền sở hữu cần thiết",
+      "th": "NFT ความเป็นเจ้าของจำเป็น"
+    }
+  },
+  "noLauncherDid": {
+    "en": "Launcher DID not found",
+    "value": {
+      "en": "Launcher DID not found",
+      "es": "Lanzador DID no encontrado",
+      "zh": "未找到 Launcher DID",
+      "zh-TW": "未找到 Launcher DID",
+      "ja": "Launcher DID が見つかりません",
+      "ko": "Launcher DID를 찾을 수 없습니다",
+      "de": "Launcher nicht gefunden",
+      "hi": "Launcher DID नहीं मिला",
+      "fr": "Launcher DID introuvable",
+      "ar": "Launcher DID لم يتم العثور عليه",
+      "ru": "Launcher DID не найден",
+      "pt": "Lançador DID não encontrado",
+      "id": "Peluncur DID tidak ditemukan",
+      "vi": "Trình khởi chạy DID không tìm thấy",
+      "th": "โปรแกรมเรียกใช้งาน DID ไม่พบ"
+    }
+  },
+  "alreadyTransferred": {
+    "en": "This server already belongs to {owner}",
+    "value": {
+      "en": "This server already belongs to {owner}",
+      "es": "Este servidor ya pertenece a {owner}",
+      "zh": "这台服务器已属于 {owner}",
+      "zh-TW": "這台伺服器已屬於 {owner}",
+      "ja": "このサーバーはすでに {owner} のものです",
+      "ko": "이미 {owner}의 소유입니다",
+      "de": "Dieser Server gehört bereits {owner}.",
+      "hi": "यह सर्वर पहले से {owner} का है.",
+      "fr": "Ce serveur appartient déjà à {owner}.",
+      "ar": "هذا الخادم ينتمي بالفعل إلى {owner}.",
+      "ru": "Этот сервер уже принадлежит {owner}.",
+      "pt": "Este servidor já pertence a {owner}",
+      "id": "Server ini sudah dimiliki oleh {owner}",
+      "vi": "Máy chủ này đã thuộc về {owner}",
+      "th": "เซิร์ฟเวอร์นี้เป็นของ {owner} แล้ว"
+    }
+  },
+  "noNftDid": {
+    "en": "NFT DID not found",
+    "value": {
+      "en": "NFT DID not found",
+      "es": "NFT DID no se encontró",
+      "zh": "未找到 NFT DID",
+      "zh-TW": "未找到 NFT DID",
+      "ja": "NFT DID が見つかりません",
+      "ko": "NFT DID 를 찾을 수 없습니다",
+      "de": "NFT DID nicht gefunden",
+      "hi": "NFT DID नहीं मिला",
+      "fr": "NFT DID introuvable",
+      "ar": "لم يتم العثور على NFT DID",
+      "ru": "NFT DID не найден",
+      "pt": "NFT DID não encontrado",
+      "id": "NFT DID tidak ditemukan",
+      "vi": "NFT DID không tìm thấy",
+      "th": "NFT DID ไม่พบ"
+    }
+  },
+  "noChainHost": {
+    "en": "Chain host not found",
+    "value": {
+      "en": "Chain host not found",
+      "es": "No se encontró el host de la cadena",
+      "zh": "未找到链主机",
+      "zh-TW": "未找到鏈主機",
+      "ja": "チェーンホストが見つかりません",
+      "ko": "체인 호스트를 찾을 수 없습니다",
+      "de": "Chain-Host nicht gefunden",
+      "hi": "Chain होस्ट नहीं मिला",
+      "fr": "Hôte de chaîne introuvable",
+      "ar": "مضيف السلسلة غير موجود",
+      "ru": "Хост цепи не найден",
+      "pt": "Host da cadeia não encontrado",
+      "id": "Host rantai tidak ditemukan",
+      "vi": "Máy chủ chuỗi không tìm thấy",
+      "th": "ไม่พบโฮสต์ของสายโซ่"
+    }
+  },
+  "notAllowedTransferToSelf": {
+    "en": "You can't transfer the server to yourself",
+    "value": {
+      "en": "You can't transfer the server to yourself",
+      "es": "No puedes transferir el servidor a ti mismo.",
+      "zh": "你不能把服务器转移给自己。",
+      "zh-TW": "你不能把伺服器轉移給自己。",
+      "ja": "サーバーを自分に転送することはできません。",
+      "ko": "서버를 자신에게 양도할 수 없습니다.",
+      "de": "Du kannst den Server nicht auf dich selbst übertragen.",
+      "hi": "आप अपने सर्वर को खुद पर ट्रांसफर नहीं कर सकते",
+      "fr": "Vous ne pouvez pas transférer le serveur à vous-même.",
+      "ar": "لا يمكنك نقل الخادم إلى نفسك.",
+      "ru": "Вы не можете перенести сервер на самого себя.",
+      "pt": "Você não pode transferir o servidor para você mesmo",
+      "id": "Anda tidak bisa mentransfer server ke diri sendiri",
+      "vi": "Bạn không thể chuyển máy chủ cho chính mình",
+      "th": "คุณไม่สามารถโอนเซิร์ฟเวอร์ไปให้ตัวเอง"
+    }
+  },
+  "tagRequired": {
+    "en": "Tag is required",
+    "value": {
+      "en": "Tag is required",
+      "es": "Se requiere etiqueta",
+      "zh": "标签是必需的",
+      "zh-TW": "標籤是必需的",
+      "ja": "タグは必須です",
+      "ko": "태그는 필수입니다",
+      "de": "Tag ist erforderlich",
+      "hi": "टैग आवश्यक है",
+      "fr": "Étiquette requise",
+      "ar": "الوسم مطلوب",
+      "ru": "Тег обязателен",
+      "pt": "Tag é obrigatória",
+      "id": "Tag wajib",
+      "vi": "Tag bắt buộc",
+      "th": "ต้องมีแท็ก"
+    }
+  },
+  "delegateTransferOwnerNFT": {
+    "en": "Sign to authorize the server to transfer your ownership NFT when the new owner claims it.",
+    "value": {
+      "en": "Sign to authorize the server to transfer your ownership NFT when the new owner claims it.",
+      "es": "Firma para autorizar al servidor a transferir tu NFT de propiedad cuando el nuevo dueño lo reclame.",
+      "zh": "签署以授权服务器在新所有者认领时转移您的所有权 NFT。",
+      "zh-TW": "簽署以授權伺服器在新所有者認領時轉移您的所有權 NFT。",
+      "ja": "新しい所有者が請求する時、サーバーにあなたの所有権 NFT を譲渡することを許可する署名をしてください。",
+      "ko": "새 소유자가 청구할 때 서버가 당신의 소유권 NFT를 양도하도록 승인하기 위해 서명하세요.",
+      "de": "Signieren Sie, um dem Server zu erlauben, Ihre Eigentums-NFT zu übertragen, sobald der neue Eigentümer es beansprucht.",
+      "hi": "अपने स्वामित्व NFT को ट्रांसफर करने के लिए सर्वर को अधिकृत करें, जब नया मालिक उसे दावा करे।",
+      "fr": "Signez pour autoriser le serveur à transférer votre NFT de propriété lorsque le nouveau propriétaire le réclamera.",
+      "ar": "وقّع لتفويض الخادم بنقل NFT الملكية الخاصة بك عندما يدّعيها المالك الجديد.",
+      "ru": "Подпишите, чтобы авторизовать сервер на передачу вашего NFT владения, когда новый владелец потребует его.",
+      "pt": "Assine para autorizar o servidor a transferir o NFT de sua propriedade quando o novo proprietário o reivindicar",
+      "id": "Tandatangani untuk mengizinkan server mentransfer NFT kepemilikan Anda ketika pemilik baru mengklaimnya",
+      "vi": "Ký để ủy quyền cho máy chủ chuyển NFT sở hữu của bạn khi chủ sở hữu mới yêu cầu nó",
+      "th": "ลงชื่อเพื่ออนุญาตให้เซิร์ฟเวอร์โอน NFT ของคุณเมื่อเจ้าของใหม่เรียกร้องมัน"
+    }
+  },
+  "appIsInProgress": {
+    "en": "This application is still processing. Please wait.",
+    "value": {
+      "en": "This application is still processing. Please wait.",
+      "es": "Esta aplicación aún está en procesamiento. Por favor, espere.",
+      "zh": "此应用仍在处理中。请稍等。",
+      "zh-TW": "此應用程式仍在處理中。請稍等。",
+      "ja": "このアプリケーションはまだ処理中です。お待ちください。",
+      "ko": "이 애플리케이션은 아직 처리 중입니다. 잠시만 기다려 주세요.",
+      "de": "Diese Anwendung ist noch in Bearbeitung. Bitte warten.",
+      "hi": "यह एप्लिकेशन अभी प्रक्रिया में है। कृपया प्रतीक्षा करें।",
+      "fr": "Cette application est encore en cours de traitement. Veuillez patienter.",
+      "ar": "هذا التطبيق لا يزال قيد المعالجة. الرجاء الانتظار.",
+      "ru": "Это приложение все еще обрабатывается. Пожалуйста, подождите.",
+      "pt": "Este aplicativo ainda está processando. Por favor, aguarde.",
+      "id": "Aplikasi ini masih diproses. Mohon tunggu.",
+      "vi": "Ứng dụng này vẫn đang xử lý. Vui lòng đợi.",
+      "th": "แอปพลิเคชันนี้ยังดำเนินการอยู่ กรุณารอสักครู่."
+    }
+  },
+  "destroyMyself": {
+    "en": "Confirm deletion of your personal data. This action cannot be undone.",
+    "value": {
+      "en": "Confirm deletion of your personal data. This action cannot be undone.",
+      "es": "Confirma la eliminación de tus datos personales. Esta acción no se puede deshacer.",
+      "zh": "请确认删除您的个人数据。这一操作无法撤销。",
+      "zh-TW": "請確認刪除您的個人資料。此操作無法撤銷。",
+      "ja": "個人データの削除を確認してください。この操作は元に戻せません。",
+      "ko": "개인 데이터 삭제를 확인하십시오. 이 작업은 되돌릴 수 없습니다.",
+      "de": "Bestätigen Sie die Löschung Ihrer persönlichen Daten. Diese Aktion kann nicht rückgängig gemacht werden.",
+      "hi": "अपने व्यक्तिगत डेटा को हटाने की पुष्टि करें। यह कार्रवाई पूर्ववत नहीं की जा सकती।",
+      "fr": "Confirmez la suppression de vos données personnelles. Cette action est irréversible.",
+      "ar": "أكد حذف بياناتك الشخصية. لا يمكن التراجع عن هذا الإجراء.",
+      "ru": "Подтвердите удаление ваших персональных данных. Это действие нельзя отменить.",
+      "pt": "Confirme a exclusão de seus dados pessoais. Esta ação não pode ser desfeita.",
+      "id": "Konfirmasi penghapusan data pribadi Anda. Tindakan ini tidak dapat dibatalkan.",
+      "vi": "Xác nhận việc xóa dữ liệu cá nhân của bạn. Hành động này không thể hoàn tác.",
+      "th": "ยืนยันการลบข้อมูลส่วนบุคคลของคุณ. การกระทำนี้ไม่สามารถย้อนกลับได้."
+    }
+  },
+  "cannotImportFromDidSpace": {
+    "en": "No importable data found in DID Spaces ({spaceName})",
+    "value": {
+      "en": "No importable data found in DID Spaces ({spaceName})",
+      "es": "No hay datos importables en DID Spaces ({spaceName})",
+      "zh": "在 DID Spaces 中找不到可导入的数据 ({spaceName})",
+      "zh-TW": "在 DID Spaces 中找不到可導入的資料 ({spaceName})",
+      "ja": "DID Spaces でインポート可能なデータが見つかりません ({spaceName})",
+      "ko": "DID Spaces 에서 가져올 수 있는 데이터가 발견되지 않았습니다 ({spaceName})",
+      "de": "Keine importierbaren Daten in DID Spaces ({spaceName}) gefunden",
+      "hi": "DID Spaces ({spaceName}) में आयात करने योग्य डेटा नहीं मिला",
+      "fr": "Aucune donnée importable trouvée dans DID Spaces ({spaceName})",
+      "ar": "لا توجد بيانات قابلة للاستيراد في DID Spaces ({spaceName})",
+      "ru": "Не найдено импортируемых данных в DID Spaces ({spaceName})",
+      "pt": "Não há dados importáveis encontrados em DID Spaces ({spaceName})",
+      "id": "Tidak ada data yang dapat diimpor ditemukan di DID Spaces ({spaceName})",
+      "vi": "Không có dữ liệu có thể nhập được trong DID Spaces ({spaceName})",
+      "th": "ไม่มีข้อมูลที่นำเข้าได้ใน DID Spaces ({spaceName})"
+    }
+  },
+  "notAllowedToDeleteOwner": {
+    "en": "You can't delete the application owner",
+    "value": {
+      "en": "You can't delete the application owner",
+      "es": "No puedes eliminar al propietario de la aplicación",
+      "zh": "你不能删除应用程序所有者",
+      "zh-TW": "你不能刪除應用程式所有者",
+      "ja": "アプリケーションの所有者を削除できません",
+      "ko": "애플리케이션 소유자를 삭제할 수 없습니다",
+      "de": "Du kannst den Eigentümer der Anwendung nicht löschen.",
+      "hi": "आप एप्लिकेशन मालिक को नहीं हटा सकते।",
+      "fr": "Vous ne pouvez pas supprimer le propriétaire de l'application.",
+      "ar": "لا يمكنك حذف مالك التطبيق.",
+      "ru": "Вы не можете удалить владельца приложения.",
+      "pt": "Você não pode excluir o proprietário da aplicação",
+      "id": "Anda tidak bisa menghapus pemilik aplikasi",
+      "vi": "Bạn không thể xóa chủ sở hữu ứng dụng",
+      "th": "คุณไม่สามารถลบเจ้าของแอปพลิเคชัน"
+    }
+  },
+  "userNotExist": {
+    "en": "User {did} doesn't exist",
+    "value": {
+      "en": "User {did} doesn't exist",
+      "es": "Usuario {did} no existe",
+      "zh": "用户 {did} 不存在",
+      "zh-TW": "用戶 {did} 不存在",
+      "ja": "ユーザー {did} は存在しません",
+      "ko": "사용자 {did}는 존재하지 않습니다",
+      "de": "Der Benutzer {did} existiert nicht",
+      "hi": "उपयोगकर्ता {did} मौजूद नहीं है",
+      "fr": "L'utilisateur {did} n'existe pas",
+      "ar": "المستخدم {did} غير موجود",
+      "ru": "Пользователь {did} не существует",
+      "pt": "O usuário {did} não existe.",
+      "id": "Pengguna {did} tidak ada.",
+      "vi": "Người dùng {did} không tồn tại.",
+      "th": "ผู้ใช้ {did} ไม่มีอยู่."
+    }
+  },
+  "notAllowedToDelete": {
+    "en": "You can't delete user {did}",
+    "value": {
+      "en": "You can't delete user {did}",
+      "es": "No puedes eliminar al usuario {did}",
+      "zh": "你不能删除用户 {did}",
+      "zh-TW": "你不能刪除使用者 {did}",
+      "ja": "ユーザー {did} を削除できません",
+      "ko": "사용자 {did} 를 삭제할 수 없습니다",
+      "de": "Du kannst den Benutzer {did} nicht löschen",
+      "hi": "आप {did} उपयोगकर्ता को नहीं हटा सकते",
+      "fr": "Vous ne pouvez pas supprimer l'utilisateur {did}",
+      "ar": "لا يمكنك حذف المستخدم {did}",
+      "ru": "Вы не можете удалить пользователя {did}",
+      "pt": "Você não pode excluir o usuário {did}",
+      "id": "Anda tidak bisa menghapus pengguna {did}",
+      "vi": "Bạn không thể xóa người dùng {did}",
+      "th": "คุณไม่สามารถลบผู้ใช้ {did}"
+    }
+  },
+  "notEnabled": {
+    "en": "The session hardening feature isn't enabled",
+    "value": {
+      "en": "The session hardening feature isn't enabled",
+      "es": "La función de protección de sesión no está habilitada",
+      "zh": "会话强化功能未启用",
+      "zh-TW": "會話強化功能未啟用",
+      "ja": "セッション保護機能が有効になっていません",
+      "ko": "세션 강화 기능이 활성화되지 않았습니다",
+      "de": "Die Sitzungshärtungsfunktion ist nicht aktiviert.",
+      "hi": "सत्र को सख्त करने की सुविधा सक्षम नहीं है।",
+      "fr": "La fonctionnalité de renforcement de session n'est pas activée.",
+      "ar": "ميزة تقوية الجلسة غير مفعلة.",
+      "ru": "Функция усиления безопасности сеанса не включена.",
+      "pt": "O recurso de reforço da sessão não está ativado.",
+      "id": "Fitur pengerasan sesi tidak diaktifkan.",
+      "vi": "Tính năng tăng cường bảo mật phiên chưa được bật.",
+      "th": "คุณสมบัติการเสริมความแข็งแกร่งของเซสชันไม่ได้เปิดใช้งาน"
+    }
+  },
+  "notAllowedToSwitchProfile": {
+    "en": "This site does not support switching profiles",
+    "value": {
+      "en": "This site does not support switching profiles",
+      "es": "Este sitio no admite cambiar de perfil",
+      "zh": "此站点不支持切换个人资料",
+      "zh-TW": "此站點不支援切換個人資料",
+      "ja": "このサイトはプロファイルの切り替えをサポートしていません",
+      "ko": "이 사이트는 프로필 전환을 지원하지 않습니다",
+      "de": "Diese Seite unterstützt keinen Profilwechsel",
+      "hi": "यह साइट प्रोफ़ाइल स्विच करने का समर्थन नहीं करती है",
+      "fr": "Ce site ne prend pas en charge le changement de profil",
+      "ar": "هذا الموقع لا يدعم تبديل الملفات الشخصية",
+      "ru": "Этот сайт не поддерживает переключение профилей",
+      "pt": "Este site não suporta a troca de perfis",
+      "id": "Situs ini tidak mendukung peralihan profil",
+      "vi": "Trang web này không hỗ trợ chuyển đổi hồ sơ",
+      "th": "เว็บไซต์นี้ไม่รองรับการสลับโปรไฟล์"
+    }
+  },
+  "passportNotBelongToYou": {
+    "en": "This passport does not belong to you",
+    "value": {
+      "en": "This passport does not belong to you",
+      "es": "Este pasaporte no te pertenece",
+      "zh": "此护照不属于你",
+      "zh-TW": "此護照不屬於你",
+      "ja": "このパスポートはあなたのものではありません",
+      "ko": "이 여권은 당신의 것이 아닙니다",
+      "de": "Dieser Pass gehört Ihnen nicht",
+      "hi": "यह पासपोर्ट आपका नहीं है",
+      "fr": "Ce passeport ne vous appartient pas",
+      "ar": "هذا الجواز ليس لك",
+      "ru": "Этот паспорт вам не принадлежит",
+      "pt": "Este passaporte não pertence a você",
+      "id": "Paspor ini bukan milik Anda",
+      "vi": "Hộ chiếu này không thuộc về bạn",
+      "th": "หนังสือเดินทางนี้ไม่ได้เป็นของคุณ"
+    }
+  },
+  "passportNotAllowedToUse": {
+    "en": "The selected passport does not have permission to perform this action. Please switch to ({passports}) passport",
+    "value": {
+      "en": "The selected passport does not have permission to perform this action. Please switch to ({passports}) passport",
+      "es": "El passport seleccionado no tiene permiso para realizar esta acción. Cambie al passport ({passports})",
+      "zh": "所选passport无权执行此操作。请切换到 ({passports}) passport",
+      "zh-TW": "所選passport無權執行此操作。請切換到 ({passports}) passport",
+      "ja": "選択されたpassportはこの操作を実行する権限がありません。({passports}) passportに切り替えてください",
+      "ko": "선택한 passport은 이 작업을 수행할 권한이 없습니다. ({passports}) passport으로 전환하십시오",
+      "de": "Der ausgewählte Passport hat keine Berechtigung, diese Aktion auszuführen. Bitte wechseln Sie zu ({passports}) Passport",
+      "hi": "चुने हुए पासपोर्ट के पास यह क्रिया करने की अनुमति नहीं है. कृपया ({passports}) पासपोर्ट पर स्विच करें",
+      "fr": "Le passeport sélectionné n'a pas l'autorisation d'effectuer cette action. Veuillez passer au passeport ({passports})",
+      "ar": "جواز السفر المحدد ليس لديه إذن لتنفيذ هذا الإجراء. يرجى التبديل إلى جواز السفر ({passports})",
+      "ru": "У выбранного Passport нет разрешения на выполнение этого действия. Пожалуйста, переключитесь на Passport ({passports})",
+      "pt": "O passport selecionado não tem permissão para realizar esta ação. Mude para o passport ({passports})",
+      "id": "Passport yang dipilih tidak memiliki izin untuk melakukan tindakan ini. Harap beralih ke passport ({passports})",
+      "vi": "Passport đã chọn không có quyền thực hiện hành động này. Vui lòng chuyển sang passport ({passports})",
+      "th": "Passport ที่เลือกไม่มีสิทธิ์ดำเนินการนี้ โปรดเปลี่ยนไปใช้ passport ({passports})"
+    }
+  },
+  "noTrustedFactories": {
+    "en": "No trusted NFT collections",
+    "value": {
+      "en": "No trusted NFT collections",
+      "es": "No hay colecciones NFT de confianza",
+      "zh": "没有受信任的 NFT 合集",
+      "zh-TW": "沒有受信任的 NFT 合集",
+      "ja": "信頼できるNFTコレクションはありません",
+      "ko": "신뢰할 수 있는 NFT 컬렉션 없음",
+      "de": "Keine vertrauenswürdigen NFT-Sammlungen",
+      "hi": "कोई भरोसेमंद NFT संग्रह नहीं",
+      "fr": "Aucune collection NFT de confiance",
+      "ar": "لا توجد مجموعات NFT موثوقة",
+      "ru": "Нет доверенных коллекций NFT",
+      "pt": "Nenhuma coleção NFT confiável",
+      "id": "Tidak ada koleksi NFT tepercaya",
+      "vi": "Không có bộ sưu tập NFT đáng tin cậy",
+      "th": "ไม่มีคอลเล็กชัน NFT ที่เชื่อถือได้"
+    }
+  },
+  "failedToDestroyUser": {
+    "en": "Failed to delete user",
+    "value": {
+      "en": "Failed to delete user",
+      "es": "Error al eliminar usuario",
+      "zh": "删除用户失败",
+      "zh-TW": "刪除使用者失敗",
+      "ja": "ユーザーの削除に失敗しました",
+      "ko": "사용자 삭제 실패",
+      "de": "Benutzer konnte nicht gelöscht werden",
+      "hi": "उपयोगकर्ता को हटाने में विफल",
+      "fr": "Échec de la suppression de l'utilisateur",
+      "ar": "فشل حذف المستخدم",
+      "ru": "Не удалось удалить пользователя",
+      "pt": "Falha ao excluir usuário",
+      "id": "Gagal menghapus pengguna",
+      "vi": "Không thể xóa người dùng",
+      "th": "ลบผู้ใช้ล้มเหลว"
+    }
+  },
+  "passportHasBeenRevoked": {
+    "en": "Passport has been revoked by the app",
+    "value": {
+      "en": "Passport has been revoked by the app",
+      "es": "El Passport ha sido revocado por la aplicación",
+      "zh": "Passport 已被应用撤销",
+      "zh-TW": "Passport 已被應用程式撤銷",
+      "ja": "Passport がアプリによって取り消されました",
+      "ko": "Passport 가 앱에 의해 취소되었습니다",
+      "de": "Passport wurde von der App widerrufen",
+      "hi": "Passport ऐप द्वारा रद्द कर दिया गया है",
+      "fr": "Passport a été révoqué par l'application",
+      "ar": "تم إلغاء جواز السفر بواسطة التطبيق",
+      "ru": "Passport был отозван приложением",
+      "pt": "O Passport foi revogado pelo aplicativo",
+      "id": "Passport telah dicabut oleh aplikasi",
+      "vi": "Passport đã bị ứng dụng thu hồi",
+      "th": "Passport ถูกเพิกถอนโดยแอป"
+    }
+  },
+  "onlyOwnerCanPerformThisAction": {
+    "en": "Only the application owner can perform this action",
+    "value": {
+      "en": "Only the application owner can perform this action",
+      "es": "Solo el propietario de la aplicación puede realizar esta acción",
+      "zh": "只有应用所有者才能执行此操作",
+      "zh-TW": "只有應用程式擁有者才能執行此操作",
+      "ja": "アプリケーションのオーナーのみがこの操作を実行できます",
+      "ko": "애플리케이션 소유자만 이 작업을 수행할 수 있습니다",
+      "de": "Nur der Anwendungsbesitzer kann diese Aktion ausführen",
+      "hi": "केवल एप्लीकेशन का स्वामी ही यह क्रिया कर सकता है",
+      "fr": "Seul le propriétaire de l'application peut effectuer cette action",
+      "ar": "مالك التطبيق فقط يمكنه تنفيذ هذا الإجراء",
+      "ru": "Только владелец приложения может выполнить это действие",
+      "pt": "Apenas o proprietário da aplicação pode realizar esta ação",
+      "id": "Hanya pemilik aplikasi yang dapat melakukan tindakan ini",
+      "vi": "Chỉ chủ sở hữu ứng dụng mới có thể thực hiện hành động này",
+      "th": "เฉพาะเจ้าของแอปพลิเคชันเท่านั้นที่สามารถดำเนินการนี้ได้"
+    }
+  },
+  "notRequiredVerifcation": {
+    "en": "This operation does not require verification",
+    "value": {
+      "en": "This operation does not require verification",
+      "es": "Esta operación no requiere verificación",
+      "zh": "此操作不需要验证",
+      "zh-TW": "此操作不需要驗證",
+      "ja": "この操作は検証を必要としません",
+      "ko": "이 작업은 검증이 필요하지 않습니다",
+      "de": "Diese Operation erfordert keine Verifizierung",
+      "hi": "इस कार्रवाई के लिए सत्यापन की आवश्यकता नहीं है",
+      "fr": "Cette opération ne nécessite pas de vérification",
+      "ar": "هذه العملية لا تتطلب التحقق",
+      "ru": "Эта операция не требует проверки",
+      "pt": "Esta operação não requer verificação",
+      "id": "Operasi ini tidak memerlukan verifikasi",
+      "vi": "Thao tác này không yêu cầu xác minh",
+      "th": "การดำเนินการนี้ไม่จำเป็นต้องมีการยืนยัน"
+    }
+  }
+}

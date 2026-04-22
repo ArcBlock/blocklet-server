@@ -1,0 +1,75 @@
+{
+  "name": "deep-nest-app",
+  "title": "Deep Nest App",
+  "version": "1.0.0",
+  "description": "Demo blocklet that shows how to serve a static html5 game with ABT Node",
+  "files": [
+    "app/",
+    "blocklet.yml",
+    "blocklet.md",
+    "README.md"
+  ],
+  "keywords": [
+    "demo",
+    "game",
+    "blocklet"
+  ],
+  "author": {
+    "name": "wangshijun",
+    "email": "wangshijun2010@gmail.com",
+    "url": "http://github.com/wangshijun"
+  },
+  "license": "MIT",
+  "group": "static",
+  "main": "app",
+  "community": "",
+  "documentation": "",
+  "homepage": "",
+  "screenshots": [],
+  "environments": [],
+  "specVersion": "1.0.1",
+  "interfaces": [
+    {
+      "type": "web",
+      "name": "publicUrl",
+      "path": "/",
+      "prefix": "*",
+      "port": "BLOCKLET_PORT",
+      "protocol": "tcp"
+    }
+  ],
+  "did": "z8iZiuMNmZmDUqCYCaECzbCiwnJmCFENHcFBq",
+  "timeout": {
+    "start": 10
+  },
+  "gitHash": "3259439a7893b431833a22ec5d2d1f6607baa0c3",
+  "children": [
+    {
+      "name": "main-blocklet",
+      "mountPoint": "/main",
+      "source": {
+        "url": "http://localhost:9090/main-blocklet-1.0.1.json"
+      }
+    }
+  ],
+  "path": "/static/deep-nest-app",
+  "nftFactory": "",
+  "payment": {
+    "price": [],
+    "share": []
+  },
+  "requirements": {
+    "server": ">=1.7.0",
+    "os": "*",
+    "cpu": "*"
+  },
+  "capabilities": {
+    "clusterMode": false,
+    "component": true
+  },
+  "dist": {
+    "tarball": "deep-nest-app-1.0.0.tgz",
+    "integrity": "sha512-lzjcaM8iNBEqrqLmJNrbS1cmV3nQAVpSFh3biVbc1KKV1WAZ7MzJ5SH+MkZX1EIDbMnIhY1vORk7FDMvCaKL1A==",
+    "size": 890
+  }
+}

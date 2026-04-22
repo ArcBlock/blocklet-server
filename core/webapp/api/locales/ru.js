@@ -1,0 +1,27 @@
+/* eslint-disable prettier/prettier */
+module.exports = {
+  navigation: {
+    system: 'Система',
+    services: 'Сервисы',
+    notification: 'Центр уведомлений',
+    access: 'Доступ',
+    members: 'Участники',
+    passport: 'Паспорт',
+    analytics: 'Аналитика',
+    dashboard: 'Панель инструментов',
+    studio: 'Blocklet Студия',
+    blockletService: 'Сервис Блоклет',
+    didSpaces: 'Хранение и резервное копирование',
+    notifications: 'Уведомления',
+    didConnect: 'Идентичность & Доступ',
+    website: 'Вебсайт Студия',
+    operations: 'Наблюдаемость',
+    integration: 'Интеграции',
+    developer: 'Разработчики',
+    aigne: 'ИИ соединения',
+    orgs: 'Организации',
+    nfts: 'NFTs',
+    settings: 'Настройки',
+    userFollowers: 'Подписаться',
+  },
+};

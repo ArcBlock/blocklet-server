@@ -1,0 +1,3 @@
+[test]
+preload = "./tools/bun-test-preload.js"
+isolation = true

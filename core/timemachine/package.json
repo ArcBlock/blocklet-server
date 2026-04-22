@@ -1,0 +1,41 @@
+{
+  "name": "@abtnode/timemachine",
+  "description": "A file system and git based timemachine implementation that allows user to create and manipulate snapshots",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.17.12",
+  "main": "lib/index.js",
+  "types": "index.d.ts",
+  "files": [
+    "lib",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "lint": "eslint tests lib",
+    "lint:fix": "eslint --fix tests lib"
+  },
+  "keywords": [],
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server.git",
+    "directory": "core/timemachine"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/core/timemachine#readme",
+  "dependencies": {
+    "@abtnode/logger": "1.17.12",
+    "fs-extra": "^11.2.0",
+    "js-git": "^0.7.8",
+    "readable-stream": "^3.6.0",
+    "readdirp": "^3.6.0"
+  }
+}

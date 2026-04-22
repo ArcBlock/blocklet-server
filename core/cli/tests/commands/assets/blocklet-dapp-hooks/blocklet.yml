@@ -1,0 +1,37 @@
+name: dapp-blocklet-hooks
+description: ABT Node blocklet project
+group: dapp
+main: index.js
+author:
+  name: linchen1987
+specVersion: 1.0.1
+logo: logo.png
+interfaces:
+  - type: web
+    name: publicUrl
+    path: "/"
+    prefix: "*"
+    port: BLOCKLET_PORT
+    protocol: http
+did: z8iZsdRCsV1thaYWQqe4WzxsRTrQPvcJErWZB
+version: 1.0.2
+community: ""
+documentation: ""
+homepage: ""
+license: ""
+timeout:
+  start: 60
+requirements:
+  abtnode: ">=1.1.0"
+  os: "*"
+  cpu: "*"
+environments:
+  - name: EXPLORER_CHAIN_ENDPOINT
+    description: Default chain endpoint of explorer
+    required: false
+    default: ""
+    secure: false
+screenshots: []
+scripts:
+  preStart: node pre-start.js
+  postStart: node post-start.js

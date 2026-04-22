@@ -1,0 +1,27 @@
+/* eslint-disable prettier/prettier */
+module.exports = {
+  navigation: {
+    system: 'Sistem',
+    services: 'Layanan',
+    notification: 'Pusat Notifikasi',
+    access: 'Akses',
+    members: 'Anggota',
+    passport: 'Paspor',
+    analytics: 'Analitik',
+    dashboard: 'Dasbor',
+    studio: 'Blocklet Studio',
+    blockletService: 'Layanan Blocklet',
+    didSpaces: 'Penyimpanan & Cadangan',
+    notifications: 'Notifikasi',
+    didConnect: 'Identitas & Akses',
+    website: 'Website Studio',
+    operations: 'Observabilitas',
+    integration: 'Integrasi',
+    developer: 'Pengembang',
+    aigne: 'Koneksi AI',
+    orgs: 'Organisasi',
+    nfts: 'NFTs',
+    settings: 'Pengaturan',
+    userFollowers: 'Ikuti',
+  },
+};

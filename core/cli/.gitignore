@@ -1,0 +1,3 @@
+tests/commands/assets/**/blocklet.js
+!bin/blocklet.js
+!lib/commands/blocklet/bundle/bundlers/blocklet.js

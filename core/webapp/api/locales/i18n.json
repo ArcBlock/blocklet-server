@@ -1,0 +1,442 @@
+{
+  "navigation.system": {
+    "en": "System",
+    "value": {
+      "en": "System",
+      "es": "Sistema",
+      "zh": "系统",
+      "zh-TW": "系統",
+      "ja": "システム",
+      "ko": "시스템",
+      "de": "System",
+      "hi": "सिस्टम",
+      "fr": "Système",
+      "ar": "النظام",
+      "ru": "Система",
+      "pt": "Sistema",
+      "id": "Sistem",
+      "vi": "Hệ thống",
+      "th": "ระบบ"
+    }
+  },
+  "navigation.services": {
+    "en": "Services",
+    "value": {
+      "en": "Services",
+      "es": "Servicios",
+      "zh": "服务",
+      "zh-TW": "服務",
+      "ja": "サービス",
+      "ko": "서비스",
+      "de": "Dienste",
+      "hi": "सेवाएं",
+      "fr": "Services",
+      "ar": "الخدمات",
+      "ru": "Сервисы",
+      "pt": "Serviços",
+      "id": "Layanan",
+      "vi": "Dịch vụ",
+      "th": "บริการ"
+    }
+  },
+  "navigation.access": {
+    "en": "Access",
+    "value": {
+      "en": "Access",
+      "es": "Acceso",
+      "zh": "访问",
+      "zh-TW": "存取",
+      "ja": "アクセス",
+      "ko": "접근",
+      "de": "Zugang",
+      "hi": "एक्सेस",
+      "fr": "Accès",
+      "ar": "الوصول",
+      "ru": "Доступ",
+      "pt": "Acesso",
+      "id": "Akses",
+      "vi": "Truy cập",
+      "th": "การเข้าถึง"
+    }
+  },
+  "navigation.members": {
+    "en": "Members",
+    "value": {
+      "en": "Members",
+      "es": "Miembros",
+      "zh": "成员",
+      "zh-TW": "成員",
+      "ja": "メンバー",
+      "ko": "회원",
+      "de": "Mitglieder",
+      "hi": "सदस्य",
+      "fr": "Membres",
+      "ar": "أعضاء",
+      "ru": "Члены",
+      "pt": "Membros",
+      "id": "Anggota",
+      "vi": "Thành viên",
+      "th": "สมาชิก"
+    }
+  },
+  "navigation.passport": {
+    "en": "Passport",
+    "value": {
+      "en": "Passport",
+      "es": "Pasaporte",
+      "zh": "护照",
+      "zh-TW": "護照",
+      "ja": "パスポート",
+      "ko": "여권",
+      "de": "Reisepass",
+      "hi": "पासपोर्ट",
+      "fr": "Passeport",
+      "ar": "جواز السفر",
+      "ru": "Паспорт",
+      "pt": "Passaporte",
+      "id": "Paspor",
+      "vi": "Hộ chiếu",
+      "th": "หนังสือเดินทาง"
+    }
+  },
+  "navigation.analytics": {
+    "en": "Analytics",
+    "value": {
+      "en": "Analytics",
+      "es": "Analítica",
+      "zh": "分析",
+      "zh-TW": "分析",
+      "ja": "アナリティクス",
+      "ko": "애널리틱스",
+      "de": "Analytik",
+      "hi": "एनालिटिक्स",
+      "fr": "Analytique",
+      "ar": "التحليلات",
+      "ru": "Аналитика",
+      "pt": "Análise",
+      "id": "Analitik",
+      "vi": "Phân tích",
+      "th": "การวิเคราะห์"
+    }
+  },
+  "navigation.dashboard": {
+    "en": "Dashboard",
+    "value": {
+      "en": "Dashboard",
+      "es": "Tablero",
+      "zh": "仪表盘",
+      "zh-TW": "儀表板",
+      "ja": "ダッシュボード",
+      "ko": "대시보드",
+      "de": "Übersicht",
+      "hi": "डैशबोर्ड",
+      "fr": "Tableau de bord",
+      "ar": "لوحة القيادة",
+      "ru": "Панель приборов",
+      "pt": "Painel",
+      "id": "Dasbor",
+      "vi": "Bảng điều khiển",
+      "th": "แดชบอร์ด"
+    }
+  },
+  "navigation.blockletService": {
+    "en": "Blocklet Service",
+    "value": {
+      "en": "Blocklet Service",
+      "es": "Blocklet Servicio",
+      "zh": "Blocklet 服务",
+      "zh-TW": "Blocklet 服務",
+      "ja": "Blocklet サービス",
+      "ko": "Blocklet 서비스",
+      "de": "Blocklet Dienst",
+      "hi": "Blocklet सेवा",
+      "fr": "Blocklet Service",
+      "ar": "Blocklet خدمة",
+      "ru": "Blocklet Сервис",
+      "pt": "Blocklet Serviço",
+      "id": "Blocklet Layanan",
+      "vi": "Blocklet Dịch vụ",
+      "th": "Blocklet บริการ"
+    }
+  },
+  "navigation.notifications": {
+    "en": "Notifications",
+    "value": {
+      "en": "Notifications",
+      "es": "Notificaciones",
+      "zh": "通知",
+      "zh-TW": "通知",
+      "ja": "通知",
+      "ko": "알림",
+      "de": "Benachrichtigungen",
+      "hi": "सूचनाएं",
+      "fr": "Notifications",
+      "ar": "الإشعارات",
+      "ru": "Уведомления",
+      "pt": "Notificações",
+      "id": "Notifikasi",
+      "vi": "Thông báo",
+      "th": "การแจ้งเตือน"
+    }
+  },
+  "navigation.integration": {
+    "en": "Integrations",
+    "value": {
+      "en": "Integrations",
+      "es": "Integraciones",
+      "zh": "集成",
+      "zh-TW": "整合",
+      "ja": "統合",
+      "ko": "통합",
+      "de": "Integrationen",
+      "hi": "इंटीग्रेशन",
+      "fr": "Intégrations",
+      "ar": "التكاملات",
+      "ru": "Интеграции",
+      "pt": "Integrações",
+      "id": "Integrasi",
+      "vi": "Tích hợp",
+      "th": "การบูรณาการ"
+    }
+  },
+  "navigation.developer": {
+    "en": "Developers",
+    "value": {
+      "en": "Developers",
+      "es": "Desarrolladores",
+      "zh": "开发者",
+      "zh-TW": "開發者",
+      "ja": "開発者",
+      "ko": "개발자",
+      "de": "Entwickler",
+      "hi": "डेवलपर्स",
+      "fr": "Développeurs",
+      "ar": "المطورون",
+      "ru": "Разработчики",
+      "pt": "Desenvolvedores",
+      "id": "Para Pengembang",
+      "vi": "Các nhà phát triển",
+      "th": "นักพัฒนา"
+    }
+  },
+  "navigation.orgs": {
+    "en": "Organizations",
+    "value": {
+      "en": "Organizations",
+      "es": "Organizaciones",
+      "zh": "组织",
+      "zh-TW": "組織",
+      "ja": "組織",
+      "ko": "조직들",
+      "de": "Organisationen",
+      "hi": "संस्थाएं",
+      "fr": "Organisations",
+      "ar": "المنظمات",
+      "ru": "Организации",
+      "pt": "Organizações",
+      "id": "Organisasi",
+      "vi": "Các tổ chức",
+      "th": "องค์กร"
+    }
+  },
+  "navigation.nfts": {
+    "en": "NFTs",
+    "value": {
+      "en": "NFTs",
+      "es": "NFTs",
+      "zh": "NFTs",
+      "zh-TW": "NFTs",
+      "ja": "NFTs",
+      "ko": "NFTs",
+      "de": "NFTs",
+      "hi": "NFTs",
+      "fr": "NFTs",
+      "ar": "NFTs",
+      "ru": "NFTs",
+      "pt": "NFTs",
+      "id": "NFTs",
+      "vi": "NFTs",
+      "th": "NFTs"
+    }
+  },
+  "navigation.settings": {
+    "en": "Settings",
+    "value": {
+      "en": "Settings",
+      "es": "Ajustes",
+      "zh": "设置",
+      "zh-TW": "設定",
+      "ja": "設定",
+      "ko": "설정",
+      "de": "Einstellungen",
+      "hi": "सेटिंग्स",
+      "fr": "Paramètres",
+      "ar": "إعدادات",
+      "ru": "Настройки",
+      "pt": "Configurações",
+      "id": "Pengaturan",
+      "vi": "Cài đặt",
+      "th": "การตั้งค่า"
+    }
+  },
+  "navigation.userFollowers": {
+    "en": "Follow",
+    "value": {
+      "en": "Follow",
+      "es": "Seguir",
+      "zh": "关注",
+      "zh-TW": "關注",
+      "ja": "フォロー",
+      "ko": "팔로우",
+      "de": "Folgen",
+      "hi": "अनुसरण करें",
+      "fr": "Suivre",
+      "ar": "متابعة",
+      "ru": "Подписаться",
+      "pt": "Seguir",
+      "id": "Ikuti",
+      "vi": "Theo dõi",
+      "th": "ติดตาม"
+    }
+  },
+  "navigation.notification": {
+    "en": "Notification Center",
+    "value": {
+      "en": "Notification Center",
+      "es": "Centro de notificaciones",
+      "zh": "通知中心",
+      "zh-TW": "通知中心",
+      "ja": "通知センター",
+      "ko": "알림 센터",
+      "de": "Benachrichtigungszentrum",
+      "hi": "सूचना केंद्र",
+      "fr": "Centre de notifications",
+      "ar": "مركز الإشعارات",
+      "ru": "Центр уведомлений",
+      "pt": "Central de Notificações",
+      "id": "Pusat Notifikasi",
+      "vi": "Trung tâm Thông báo",
+      "th": "ศูนย์การแจ้งเตือน"
+    }
+  },
+  "navigation.studio": {
+    "en": "Blocklet Studio",
+    "value": {
+      "en": "Blocklet Studio",
+      "es": "Blocklet Studio",
+      "zh": "Blocklet Studio",
+      "zh-TW": "Blocklet Studio",
+      "ja": "Blocklet Studio",
+      "ko": "Blocklet Studio",
+      "de": "Blocklet Studio",
+      "hi": "Blocklet स्टूडियो",
+      "fr": "Blocklet Studio",
+      "ar": "استوديو Blocklet",
+      "ru": "Blocklet Студия",
+      "pt": "Blocklet Estúdio",
+      "id": "Blocklet Studio",
+      "vi": "Blocklet Studio",
+      "th": "Blocklet สตูดิโอ"
+    }
+  },
+  "navigation.didSpaces": {
+    "en": "Storage & Backup",
+    "value": {
+      "en": "Storage & Backup",
+      "es": "Almacenamiento y Copia de Seguridad",
+      "zh": "存储与备份",
+      "zh-TW": "儲存與備份",
+      "ja": "ストレージとバックアップ",
+      "ko": "저장소 및 백업",
+      "de": "Speicher & Backup",
+      "hi": "स्टोरेज और बैकअप",
+      "fr": "Stockage & Sauvegarde",
+      "ar": "التخزين والنسخ الاحتياطي",
+      "ru": "Хранение и резервное копирование",
+      "pt": "Armazenamento e Backup",
+      "id": "Penyimpanan & Cadangan",
+      "vi": "Lưu trữ & Sao lưu",
+      "th": "พื้นที่จัดเก็บ & การสำรองข้อมูล"
+    }
+  },
+  "navigation.didConnect": {
+    "en": "Identity & Access",
+    "value": {
+      "en": "Identity & Access",
+      "es": "Identidad y Acceso",
+      "zh": "身份和访问",
+      "zh-TW": "身份和訪問",
+      "ja": "アイデンティティとアクセス",
+      "ko": "신원 및 접근",
+      "de": "Identität & Zugriff",
+      "hi": "पहचान और पहुँच",
+      "fr": "Identité & Accès",
+      "ar": "الهوية والوصول",
+      "ru": "Идентичность & Доступ",
+      "pt": "Identidade e Acesso",
+      "id": "Identitas & Akses",
+      "vi": "Danh tính & Truy cập",
+      "th": "เอกลักษณ์ & การเข้าถึง"
+    }
+  },
+  "navigation.website": {
+    "en": "Website Studio",
+    "value": {
+      "en": "Website Studio",
+      "es": "Estudio de sitio web",
+      "zh": "网站工作室",
+      "zh-TW": "網站工作室",
+      "ja": "ウェブサイトスタジオ",
+      "ko": "웹사이트 스튜디오",
+      "de": "Website Studio",
+      "hi": "वेबसाइट स्टूडियो",
+      "fr": "Site Web Studio",
+      "ar": "استوديو الموقع",
+      "ru": "Вебсайт Студия",
+      "pt": "Website Studio",
+      "id": "Website Studio",
+      "vi": "Website Studio",
+      "th": "Website Studio"
+    }
+  },
+  "navigation.operations": {
+    "en": "Observability",
+    "value": {
+      "en": "Observability",
+      "es": "Observabilidad",
+      "zh": "可观察性",
+      "zh-TW": "可觀察性",
+      "ja": "可観測性",
+      "ko": "관측 가능성",
+      "de": "Beobachtbarkeit",
+      "hi": "पर्यवेक्षिता",
+      "fr": "Observabilité",
+      "ar": "الرؤية",
+      "ru": "Наблюдаемость",
+      "pt": "Observabilidade",
+      "id": "Observabilitas",
+      "vi": "Quan sát",
+      "th": "การสังเกตการณ์"
+    }
+  },
+  "navigation.aigne": {
+    "en": "AI Connections",
+    "value": {
+      "en": "AI Connections",
+      "es": "Conexiones de IA",
+      "zh": "AI 连接",
+      "zh-TW": "AI 連接",
+      "ja": "AI 接続",
+      "ko": "AI 연결",
+      "de": "KI-Verbindungen",
+      "hi": "एआई कनेक्शन",
+      "fr": "Connexions IA",
+      "ar": "اتصالات الذكاء الاصطناعي",
+      "ru": "ИИ соединения",
+      "pt": "Conexões de IA",
+      "id": "Koneksi AI",
+      "vi": "Kết nối AI",
+      "th": "การเชื่อมต่อ AI"
+    }
+  }
+}

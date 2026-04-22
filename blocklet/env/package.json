@@ -1,0 +1,49 @@
+{
+  "name": "@blocklet/env",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.17.12",
+  "description": "Blocklet environment parser and provider",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "verify": "npm run lint:fix && npm run test && npm run build",
+    "lint": "eslint src tests",
+    "lint:fix": "npm run lint -- --fix",
+    "clean": "rm -fr lib",
+    "build:blocklet-env": "npm run build",
+    "build": "tsc",
+    "build:watch": "npm run build -- -w"
+  },
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server.git",
+    "directory": "blocklet/env"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/blocklet/env#readme",
+  "dependencies": {
+    "@blocklet/constant": "1.17.12"
+  },
+  "devDependencies": {
+    "@arcblock/eslint-config-ts": "^0.3.3",
+    "@types/node": "^22.7.5",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "@typescript/native-preview": "^7.0.0-dev.20251230.1",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.2"
+  }
+}

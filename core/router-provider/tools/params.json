@@ -1,0 +1,3597 @@
+{
+  "routingTable": [
+    {
+      "domain": "znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/admin/"
+          },
+          "to": {
+            "port": 8089,
+            "did": "zNKbwKkJyDZjHsmSW4pPUG28qvDhaQtGPZtb",
+            "type": "daemon"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "bef03e70-05b6-4862-8b76-c6168ff85cc9"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.abtnode/service"
+          },
+          "to": {
+            "port": "40406",
+            "type": "service",
+            "did": "zNKbwKkJyDZjHsmSW4pPUG28qvDhaQtGPZtb"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:42:16.021Z",
+      "id": "5vCRrbfIq9rb28qg",
+      "corsAllowedOrigins": [
+        "launcher.arcblock.io",
+        "web.abtwallet.io",
+        "~^\\d+.\\d+.\\d+.\\d+$",
+        "*.ip.abtnet.io",
+        "znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"
+      ]
+    },
+    {
+      "domain": "~^\\d+.\\d+.\\d+.\\d+$",
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/admin/"
+          },
+          "to": {
+            "port": 8089,
+            "did": "zNKbwKkJyDZjHsmSW4pPUG28qvDhaQtGPZtb",
+            "type": "daemon"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "bef03e70-05b6-4862-8b76-c6168ff85cc9"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.abtnode/service"
+          },
+          "to": {
+            "port": "40406",
+            "type": "service",
+            "did": "zNKbwKkJyDZjHsmSW4pPUG28qvDhaQtGPZtb"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:42:16.021Z",
+      "id": "5vCRrbfIq9rb28qg",
+      "corsAllowedOrigins": [
+        "launcher.arcblock.io",
+        "web.abtwallet.io",
+        "~^\\d+.\\d+.\\d+.\\d+$",
+        "*.ip.abtnet.io",
+        "znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"
+      ]
+    },
+    {
+      "domain": "*",
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/admin/"
+          },
+          "to": {
+            "port": 8089,
+            "did": "zNKbwKkJyDZjHsmSW4pPUG28qvDhaQtGPZtb",
+            "type": "daemon"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "bef03e70-05b6-4862-8b76-c6168ff85cc9"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.abtnode/service"
+          },
+          "to": {
+            "port": "40406",
+            "type": "service",
+            "did": "zNKbwKkJyDZjHsmSW4pPUG28qvDhaQtGPZtb"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:42:16.362Z",
+      "id": "6zT6suCBaHzXWEo5",
+      "corsAllowedOrigins": ["*"]
+    },
+    {
+      "domain": "127.0.0.1",
+      "port": 8088,
+      "name": "wellknown",
+      "rules": [
+        {
+          "isProtected": true,
+          "from": {
+            "pathPrefix": "/.well-known/did.json/"
+          },
+          "to": {
+            "port": 8089,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "id": "b1387517-3cd1-48f3-af94-cb7f0ab319f9"
+        },
+        {
+          "isProtected": true,
+          "from": {
+            "pathPrefix": "/.well-known/acme-challenge/"
+          },
+          "to": {
+            "port": 8089,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "id": "bf8bc6b7-9628-42a6-a5b3-4c50f3d82e65"
+        }
+      ],
+      "isProtected": true,
+      "createdAt": "2022-02-25T08:42:16.676Z",
+      "id": "LgUZMdKp2mA07eNw",
+      "corsAllowedOrigins": ["127.0.0.1"]
+    },
+    {
+      "domain": "static.abtnode.com",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8090,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "ac439266-8119-4a54-9681-ca9ebe01f107"
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer/",
+            "groupPathPrefix": "/explorer/"
+          },
+          "to": {
+            "port": 8091,
+            "type": "blocklet",
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "id": "15fba700-a154-4a17-b362-a095857c2e1d",
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8090,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "ac439266-8119-4a54-9681-ca9ebe01f107"
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer/.well-known/auth",
+            "groupPathPrefix": "/explorer/"
+          },
+          "to": {
+            "port": 8091,
+            "type": "blocklet",
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "id": "15fba700-a154-4a17-b362-a095857c2e1d",
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer",
+            "groupPathPrefix": "/explorer",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer/.well-known/auth",
+            "groupPathPrefix": "/explorer",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:44:40.346Z",
+      "id": "OqA6bC8Zdf1AQqmB",
+      "corsAllowedOrigins": ["web.abtwallet.io", "static.abtnode.com"]
+    },
+    {
+      "domain": "static-demo-blocklet-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8090,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "ac439266-8119-4a54-9681-ca9ebe01f107"
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer/",
+            "groupPathPrefix": "/explorer/"
+          },
+          "to": {
+            "port": 8091,
+            "type": "blocklet",
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "id": "15fba700-a154-4a17-b362-a095857c2e1d",
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8090,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "ac439266-8119-4a54-9681-ca9ebe01f107"
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer/.well-known/auth",
+            "groupPathPrefix": "/explorer/"
+          },
+          "to": {
+            "port": 8091,
+            "type": "blocklet",
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "id": "15fba700-a154-4a17-b362-a095857c2e1d",
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer",
+            "groupPathPrefix": "/explorer",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer/.well-known/auth",
+            "groupPathPrefix": "/explorer",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:44:40.346Z",
+      "id": "OqA6bC8Zdf1AQqmB",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "static.abtnode.com",
+        "static-demo-blocklet-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"
+      ]
+    },
+    {
+      "domain": "static-demo-blocklet-mav-888-888-888-888.ip.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8090,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "ac439266-8119-4a54-9681-ca9ebe01f107"
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer/",
+            "groupPathPrefix": "/explorer/"
+          },
+          "to": {
+            "port": 8091,
+            "type": "blocklet",
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "id": "15fba700-a154-4a17-b362-a095857c2e1d",
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8090,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "ac439266-8119-4a54-9681-ca9ebe01f107"
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer/.well-known/auth",
+            "groupPathPrefix": "/explorer/"
+          },
+          "to": {
+            "port": 8091,
+            "type": "blocklet",
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "id": "15fba700-a154-4a17-b362-a095857c2e1d",
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer",
+            "groupPathPrefix": "/explorer",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer/.well-known/auth",
+            "groupPathPrefix": "/explorer",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:44:40.346Z",
+      "id": "OqA6bC8Zdf1AQqmB",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "static.abtnode.com",
+        "static-demo-blocklet-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+        "static-demo-blocklet-mav-888-888-888-888.ip.abtnet.io"
+      ]
+    },
+    {
+      "domain": "arcblock-block-explorer-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8091,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "413bf682-0b83-4514-ab2b-0857dd680c17"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8091,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "413bf682-0b83-4514-ab2b-0857dd680c17"
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:44:42.472Z",
+      "id": "jva2YKteIzGuUkvW",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "arcblock-block-explorer-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"
+      ]
+    },
+    {
+      "domain": "arcblock-block-explorer-jz3-888-888-888-888.ip.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8091,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "413bf682-0b83-4514-ab2b-0857dd680c17"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8091,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "413bf682-0b83-4514-ab2b-0857dd680c17"
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:44:42.472Z",
+      "id": "jva2YKteIzGuUkvW",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "arcblock-block-explorer-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+        "arcblock-block-explorer-jz3-888-888-888-888.ip.abtnet.io"
+      ]
+    },
+    {
+      "domain": "ocap-fs-chain-manager-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "id": "bb2959cb-7eb1-430b-856a-a0b79e6895bf",
+          "from": {
+            "pathPrefix": "/api/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8093,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZzecBVDH2M8kW5hrQ4wRubVksjtjNxH63z",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "id": "4767726e-56b1-44b7-86d8-da45358b430b",
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8094,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "id": "4767726e-56b1-44b7-86d8-da45358b430b",
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8094,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "/api",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "realDid": "z8iZzecBVDH2M8kW5hrQ4wRubVksjtjNxH63z"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:44:53.954Z",
+      "id": "mz4p2jOX6IlXMH63",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "ocap-fs-chain-manager-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"
+      ]
+    },
+    {
+      "domain": "ocap-fs-chain-manager-u7t-888-888-888-888.ip.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "id": "bb2959cb-7eb1-430b-856a-a0b79e6895bf",
+          "from": {
+            "pathPrefix": "/api/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8093,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZzecBVDH2M8kW5hrQ4wRubVksjtjNxH63z",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "id": "4767726e-56b1-44b7-86d8-da45358b430b",
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8094,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "id": "4767726e-56b1-44b7-86d8-da45358b430b",
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8094,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "/api",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "realDid": "z8iZzecBVDH2M8kW5hrQ4wRubVksjtjNxH63z"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia2KGe3icfgRcVc9C1qCbWTBbpP2TrfPu7T",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:44:53.954Z",
+      "id": "mz4p2jOX6IlXMH63",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "ocap-fs-chain-manager-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+        "ocap-fs-chain-manager-u7t-888-888-888-888.ip.abtnet.io"
+      ]
+    },
+    {
+      "domain": "abt-wallet-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8096,
+            "did": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "d5bcaa04-4392-46c0-8f97-93dbc4919d3c"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8096,
+            "did": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "d5bcaa04-4392-46c0-8f97-93dbc4919d3c"
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "realDid": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "realDid": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:44:58.562Z",
+      "id": "RsTVNMqTVOR4ulrh",
+      "corsAllowedOrigins": ["web.abtwallet.io", "abt-wallet-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"]
+    },
+    {
+      "domain": "abt-wallet-ypp-888-888-888-888.ip.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8096,
+            "did": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "d5bcaa04-4392-46c0-8f97-93dbc4919d3c"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8096,
+            "did": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "d5bcaa04-4392-46c0-8f97-93dbc4919d3c"
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "realDid": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "realDid": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZpnScvjjeeyYZQoHSdXm4GQTqcfTTGkyPP",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:44:58.562Z",
+      "id": "RsTVNMqTVOR4ulrh",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "abt-wallet-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+        "abt-wallet-ypp-888-888-888-888.ip.abtnet.io"
+      ]
+    },
+    {
+      "domain": "custom-1-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "id": "8f707eda-2f4e-4b18-88d6-d39a4e8d57ec",
+          "from": {
+            "pathPrefix": "/2048/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8098,
+            "did": "z8ia1i2yq67x39vruqQTbkVcwCnqRGx8zSPsJ",
+            "interfaceName": "publicUrl",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "id": "4fccdc17-a790-4c24-9fea-a7352caf0ae6",
+          "from": {
+            "pathPrefix": "/explorer/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8100,
+            "did": "z8ia1i2yq67x39vruqQTbkVcwCnqRGx8zSPsJ",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/"
+          },
+          "to": {
+            "type": "none"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/2048",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia1i2yq67x39vruqQTbkVcwCnqRGx8zSPsJ",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia1i2yq67x39vruqQTbkVcwCnqRGx8zSPsJ",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia1i2yq67x39vruqQTbkVcwCnqRGx8zSPsJ",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia1i2yq67x39vruqQTbkVcwCnqRGx8zSPsJ",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:51:37.334Z",
+      "id": "1n2n2GeISBGfOyUD",
+      "corsAllowedOrigins": ["web.abtwallet.io", "custom-1-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"]
+    },
+    {
+      "domain": "custom-1-psj-888-888-888-888.ip.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "id": "8f707eda-2f4e-4b18-88d6-d39a4e8d57ec",
+          "from": {
+            "pathPrefix": "/2048/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8098,
+            "did": "z8ia1i2yq67x39vruqQTbkVcwCnqRGx8zSPsJ",
+            "interfaceName": "publicUrl",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "id": "4fccdc17-a790-4c24-9fea-a7352caf0ae6",
+          "from": {
+            "pathPrefix": "/explorer/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8100,
+            "did": "z8ia1i2yq67x39vruqQTbkVcwCnqRGx8zSPsJ",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/"
+          },
+          "to": {
+            "type": "none"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/2048",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia1i2yq67x39vruqQTbkVcwCnqRGx8zSPsJ",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia1i2yq67x39vruqQTbkVcwCnqRGx8zSPsJ",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia1i2yq67x39vruqQTbkVcwCnqRGx8zSPsJ",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia1i2yq67x39vruqQTbkVcwCnqRGx8zSPsJ",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:51:37.334Z",
+      "id": "1n2n2GeISBGfOyUD",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "custom-1-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+        "custom-1-psj-888-888-888-888.ip.abtnet.io"
+      ]
+    },
+    {
+      "domain": "dynamic-blocklet-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "id": "f92bb1ee-c85b-4aca-ac1b-94616ce058a0",
+          "from": {
+            "pathPrefix": "/2048/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8101,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "interfaceName": "publicUrl",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "id": "e8797ce0-f31b-4809-8a3b-efbd56f42493",
+          "from": {
+            "pathPrefix": "/explorer/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8103,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "id": "016d2658-d388-42a6-8f97-39d41711acb6",
+          "from": {
+            "pathPrefix": "/provider/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8104,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "interfaceName": "publicUrl",
+            "realDid": "z8ia2a9WXPTtbhedVaihXhKBJucCeyuuTx7v1",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/"
+          },
+          "to": {
+            "type": "none"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/2048",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/provider",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "realDid": "z8ia2a9WXPTtbhedVaihXhKBJucCeyuuTx7v1"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:54:26.697Z",
+      "id": "pFGS3FwGNv8FGKrs",
+      "corsAllowedOrigins": ["web.abtwallet.io", "dynamic-blocklet-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"]
+    },
+    {
+      "domain": "dynamic-blocklet-yjy-888-888-888-888.ip.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "id": "f92bb1ee-c85b-4aca-ac1b-94616ce058a0",
+          "from": {
+            "pathPrefix": "/2048/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8101,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "interfaceName": "publicUrl",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "id": "e8797ce0-f31b-4809-8a3b-efbd56f42493",
+          "from": {
+            "pathPrefix": "/explorer/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8103,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "id": "016d2658-d388-42a6-8f97-39d41711acb6",
+          "from": {
+            "pathPrefix": "/provider/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8104,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "interfaceName": "publicUrl",
+            "realDid": "z8ia2a9WXPTtbhedVaihXhKBJucCeyuuTx7v1",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": []
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/"
+          },
+          "to": {
+            "type": "none"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/2048",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "realDid": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/explorer",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "realDid": "z8iZyVVn6XsvcuiYhtdw3GoasMbtqR9BjvJz3"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/provider",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "realDid": "z8ia2a9WXPTtbhedVaihXhKBJucCeyuuTx7v1"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8ia37hbcbizZusYF9TmAszEmxBF6XjdRVYJY",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:54:26.697Z",
+      "id": "pFGS3FwGNv8FGKrs",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "dynamic-blocklet-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+        "dynamic-blocklet-yjy-888-888-888-888.ip.abtnet.io"
+      ]
+    },
+    {
+      "domain": "auth-demo-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8105,
+            "did": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "0c49fdf4-be5d-4c79-8957-818849232a30"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8105,
+            "did": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "0c49fdf4-be5d-4c79-8957-818849232a30"
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "realDid": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "realDid": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T09:02:11.249Z",
+      "corsAllowedOrigins": ["*", "web.abtwallet.io", "auth-demo-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"],
+      "id": "YuKBbPVOktrPw9yl"
+    },
+    {
+      "domain": "auth-demo-tat-888-888-888-888.ip.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8105,
+            "did": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "0c49fdf4-be5d-4c79-8957-818849232a30"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8105,
+            "did": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "0c49fdf4-be5d-4c79-8957-818849232a30"
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "realDid": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "realDid": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T09:02:11.249Z",
+      "corsAllowedOrigins": [
+        "*",
+        "web.abtwallet.io",
+        "auth-demo-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+        "auth-demo-tat-888-888-888-888.ip.abtnet.io"
+      ],
+      "id": "YuKBbPVOktrPw9yl"
+    },
+    {
+      "domain": "profile-demo-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8106,
+            "did": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "e6dfc997-918d-46de-834b-4d61cbe211bc"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8106,
+            "did": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "e6dfc997-918d-46de-834b-4d61cbe211bc"
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "realDid": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "realDid": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T09:02:18.713Z",
+      "id": "xaQ5s5e5ldFfxJrj",
+      "corsAllowedOrigins": ["web.abtwallet.io", "profile-demo-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"]
+    },
+    {
+      "domain": "profile-demo-ate-888-888-888-888.ip.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8106,
+            "did": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "e6dfc997-918d-46de-834b-4d61cbe211bc"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8106,
+            "did": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "e6dfc997-918d-46de-834b-4d61cbe211bc"
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "realDid": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "realDid": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T09:02:18.713Z",
+      "id": "xaQ5s5e5ldFfxJrj",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "profile-demo-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+        "profile-demo-ate-888-888-888-888.ip.abtnet.io"
+      ]
+    },
+    {
+      "domain": "component-demo-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "id": "ff657411-a16a-46e4-9fd5-59d864354263",
+          "from": {
+            "pathPrefix": "/discussion/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8108,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ]
+        },
+        {
+          "id": "e473bdfe-1030-458a-97da-1565550aeaa6",
+          "from": {
+            "pathPrefix": "/profile/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8109,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ]
+        },
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8107,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "bc96a6e6-b4cb-4b76-9a1d-c164e03084d5"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8107,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "bc96a6e6-b4cb-4b76-9a1d-c164e03084d5"
+        },
+        {
+          "from": {
+            "pathPrefix": "/discussion",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "realDid": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/profile",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "realDid": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "realDid": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "realDid": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T09:02:32.401Z",
+      "id": "6ezcRakGRXwJ3bSW",
+      "corsAllowedOrigins": ["web.abtwallet.io", "component-demo-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"]
+    },
+    {
+      "domain": "component-demo-fgd-888-888-888-888.ip.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "id": "ff657411-a16a-46e4-9fd5-59d864354263",
+          "from": {
+            "pathPrefix": "/discussion/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8108,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ]
+        },
+        {
+          "id": "e473bdfe-1030-458a-97da-1565550aeaa6",
+          "from": {
+            "pathPrefix": "/profile/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8109,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ]
+        },
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8107,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "bc96a6e6-b4cb-4b76-9a1d-c164e03084d5"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8107,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":false,\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"ignoreUrls\":[],\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "bc96a6e6-b4cb-4b76-9a1d-c164e03084d5"
+        },
+        {
+          "from": {
+            "pathPrefix": "/discussion",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "realDid": "z8iZw1PjUeQP8yuEoBVWfcD9hft7cbUfxaTaT"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/profile",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "realDid": "z8iZqG23gxzv6CbTmtWFAipHGLjPEha4BjAtE"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "realDid": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "realDid": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZoDztjkY82fsU26vwE8M94eHDK4tjwrFgd",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T09:02:32.401Z",
+      "id": "6ezcRakGRXwJ3bSW",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "component-demo-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+        "component-demo-fgd-888-888-888-888.ip.abtnet.io"
+      ]
+    },
+    {
+      "domain": "payment-demo-blocklet-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8095,
+            "did": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "0116875e-3786-46c1-aa09-55ba19ffdc32"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8095,
+            "did": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "0116875e-3786-46c1-aa09-55ba19ffdc32"
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "realDid": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "realDid": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T09:04:52.675Z",
+      "id": "yKbWqSutDYq9YBAB",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "payment-demo-blocklet-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"
+      ]
+    },
+    {
+      "domain": "payment-demo-blocklet-e3b-888-888-888-888.ip.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8095,
+            "did": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "0116875e-3786-46c1-aa09-55ba19ffdc32"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8095,
+            "did": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "0116875e-3786-46c1-aa09-55ba19ffdc32"
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "realDid": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "realDid": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZyFxvvqwW98MiqKv1tmws2o3iTZnTajE3B",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T09:04:52.675Z",
+      "id": "yKbWqSutDYq9YBAB",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "payment-demo-blocklet-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+        "payment-demo-blocklet-e3b-888-888-888-888.ip.abtnet.io"
+      ]
+    },
+    {
+      "domain": "ocap-playground-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "id": "484e02cf-a7f4-4a59-935d-974c85762bc7",
+          "from": {
+            "pathPrefix": "/promotion-tool/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8110,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZk7PZ3guu3biYGUJRYpAwRnMZkvQ1ENA1z",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":true,\"ignoreUrls\":[\"/api/**\"],\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"blockUnauthorized\":false}"
+            }
+          ]
+        },
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8102,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"ignoreUrls\":[\"/api/did/**\",\"/api/agent/**\",\"/api/nft/**\",\"/blocklet/**\",\"/instance/**\"],\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"blockUnauthenticated\":true,\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "f2976a9b-6d76-48d1-b9b4-db470464c9ae"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8102,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"ignoreUrls\":[\"/api/did/**\",\"/api/agent/**\",\"/api/nft/**\",\"/blocklet/**\",\"/instance/**\"],\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"blockUnauthenticated\":true,\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "f2976a9b-6d76-48d1-b9b4-db470464c9ae"
+        },
+        {
+          "from": {
+            "pathPrefix": "/promotion-tool",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "realDid": "z8iZk7PZ3guu3biYGUJRYpAwRnMZkvQ1ENA1z"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "realDid": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "realDid": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T09:05:42.795Z",
+      "id": "AjJmUv3rIDOzUzc5",
+      "corsAllowedOrigins": ["web.abtwallet.io", "ocap-playground-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io"]
+    },
+    {
+      "domain": "ocap-playground-rdm-888-888-888-888.ip.abtnet.io",
+      "isProtected": true,
+      "rules": [
+        {
+          "id": "484e02cf-a7f4-4a59-935d-974c85762bc7",
+          "from": {
+            "pathPrefix": "/promotion-tool/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "type": "blocklet",
+            "port": 8110,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZk7PZ3guu3biYGUJRYpAwRnMZkvQ1ENA1z",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"blockUnauthenticated\":true,\"ignoreUrls\":[\"/api/**\"],\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"blockUnauthorized\":false}"
+            }
+          ]
+        },
+        {
+          "from": {
+            "pathPrefix": "/",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8102,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "realInterfaceName": "publicUrl",
+            "target": "/"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"ignoreUrls\":[\"/api/did/**\",\"/api/agent/**\",\"/api/nft/**\",\"/blocklet/**\",\"/instance/**\"],\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"blockUnauthenticated\":true,\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "f2976a9b-6d76-48d1-b9b4-db470464c9ae"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "/"
+          },
+          "to": {
+            "port": 8102,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "type": "blocklet",
+            "interfaceName": "publicUrl",
+            "realDid": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "realInterfaceName": "publicUrl",
+            "target": "/.well-known/auth"
+          },
+          "isProtected": true,
+          "services": [
+            {
+              "name": "auth",
+              "version": "1.0.0",
+              "description": "Neat and easy to use user authentication and authorization service for blocklets",
+              "config": "{\"ignoreUrls\":[\"/api/did/**\",\"/api/agent/**\",\"/api/nft/**\",\"/blocklet/**\",\"/instance/**\"],\"whoCanAccess\":\"all\",\"webWalletUrl\":\"https://web.abtwallet.io\",\"blockUnauthenticated\":true,\"blockUnauthorized\":false}"
+            }
+          ],
+          "id": "f2976a9b-6d76-48d1-b9b4-db470464c9ae"
+        },
+        {
+          "from": {
+            "pathPrefix": "/promotion-tool",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "realDid": "z8iZk7PZ3guu3biYGUJRYpAwRnMZkvQ1ENA1z"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "realDid": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known/auth",
+            "groupPathPrefix": "",
+            "pathSuffix": "/__blocklet__.js"
+          },
+          "to": {
+            "type": "daemon",
+            "port": 8089,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "realDid": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM"
+          }
+        },
+        {
+          "from": {
+            "pathPrefix": "/.blocklet/proxy"
+          },
+          "to": {
+            "port": 8089,
+            "did": "z8iZjySpAu4jzbMochL9k1okuji1GcS7RRRDM",
+            "type": "daemon",
+            "target": "/.blocklet/proxy"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T09:05:42.795Z",
+      "id": "AjJmUv3rIDOzUzc5",
+      "corsAllowedOrigins": [
+        "web.abtwallet.io",
+        "ocap-playground-znkbwkkjydzjhsmsw4ppug28qvdhaqtgpztb.did.abtnet.io",
+        "ocap-playground-rdm-888-888-888-888.ip.abtnet.io"
+      ]
+    },
+    {
+      "domain": "*.ip.abtnet.io",
+      "rules": [
+        {
+          "from": {
+            "pathPrefix": "/admin/"
+          },
+          "to": {
+            "port": 8089,
+            "did": "zNKbwKkJyDZjHsmSW4pPUG28qvDhaQtGPZtb",
+            "type": "daemon"
+          },
+          "isProtected": true,
+          "services": [],
+          "id": "bef03e70-05b6-4862-8b76-c6168ff85cc9"
+        },
+        {
+          "from": {
+            "pathPrefix": "/.well-known"
+          },
+          "to": {
+            "port": 8088,
+            "type": "general_proxy",
+            "interfaceName": "wellknownUrl"
+          },
+          "isProtected": true
+        },
+        {
+          "from": {
+            "pathPrefix": "/.abtnode/service"
+          },
+          "to": {
+            "port": "40406",
+            "type": "service",
+            "did": "zNKbwKkJyDZjHsmSW4pPUG28qvDhaQtGPZtb"
+          }
+        }
+      ],
+      "createdAt": "2022-02-25T08:42:16.021Z",
+      "id": "5vCRrbfIq9rb28qg",
+      "corsAllowedOrigins": ["launcher.arcblock.io", "web.abtwallet.io", "~^\\d+.\\d+.\\d+.\\d+$", "*.ip.abtnet.io"]
+    }
+  ],
+  "certificates": [
+    {
+      "domain": "*.did.abtnet.io",
+      "privateKey": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDOiWefXnl6Uy8l\nW7C0o59bqXdYYBs4M+nn5AUl2dVLahfXAMDmfZ+QoIPH/wiXX70ga46mvsRdfQwz\nXQzoA97Q2JFRZQ1tftyYSZWFawgViAiX7ZqhbWzHXgvggHE4VFAwbdCfDcSWkhZH\nnGWJJDdjLsLsusUD8wx6UgCyZNlUGKE6SLvn1+LkXxan6aHJV3HLUb9NKWfEYmGt\nnRhmz5b0hDrpFl5EWUdCvDRzoXUF/+2sTdmrJVcndPbfwCMH2K5k51U7qOgZsRXG\n07CeqreKqeTeuIF4MjFMdOeT4LNx6VeYZdc1EXcX7BImKo6sGfJFKiXapzT948pX\nzAUJLX43AgMBAAECggEAHdW1dU0VaTk490GOfhmgvIH3bnm7lNvS7x9+KuCTsigq\nN3Gxa9o7wY2eW7aYjB1VWaiP28B05zhYGddYNO/SMQMHwuVBEk8gGJOQmMxER6/1\n5dR54NXIv+fy+UQ0lrl/N++1EjTP8Bw8Qa3y8OOdaKNpnv6/1Pk4FTdhSGPPDRmb\nScMOkzQMXOmygCdz5Avr0btdpWHrR9yH7MbQqwRycu+2hBwbXntaSWzsGObuf5nV\nTDW/5KYY/XY8b3X4gWqbq78Dof20eprEyV70OYiagogTyDG6qxj+Xwh4APQfuIvc\njrEKmgx+MEm6aOiuHR1z5GBF74S9a+1k4xifRI44iQKBgQDm9vER3Dl5/67EcWAj\n1SG9lHoadSn9kyAHpCcbeu49FutDbpKlVFxvM6/LMEbcEouUW+3qKtm9gI30vG94\nFATB+gcqqFgCHhLoxbliqIfEJrjsnVU96iKcU5ft569S3fzvg473wEvnKlCQS5iQ\n75Ga6A+CCjWSShzrMVEoh+kobQKBgQDk7JyVWgx6xMdEnYL5TYhDwkMmYN2RdlrU\ncdH/XBJPatRyAeun/mGUPsVOMxMCIJPT5BmgGNzSXpZ7bSdnVrb8qOPOf+sTPdzE\nDaFAZo1GpZvV0xKMoA1u19mfBM3EElpTn4uHIwX32pKXfyQmFm35zi+yV07A/1y9\nVd6bW47iswKBgDj+PsaVfWlpeornHz44XbcWaHsW5mG4aHL6Qtw5HYjdmvhs1KsP\ngi++pWaSZynvOZpGhRL/t/NXQbBev3L2HaZwOEyCdhUvrqLaB8EcrUPt+jwJJvu8\nRwYkap0+Srk8JipEYIcqYJCOlIrG3MMHGvsKwKjqNAYBW9l9tfU2dIaRAoGAEBCG\noHh0Pb1HWopPIZ2OPWsJeUz833NVxmjCWtAkPMx7YhC+b8iLInMRN36gC9srZIgy\nQCjefijDGKA9TqQoLSzQ57HUVkJWFq/6K+HGcjm26NdqCtJEfw3IqL8WjXbYPdwJ\nV49eoNkGxnjWmZGjYA9XC4XS8fo5kNPQzkgri78CgYBnpCuHsnqu1w7T5Jub4hcU\na5jcE2bpN2CdgR2pu4BDm0DR8o9Q3XDB3wStT0wsM/dC2cE1V2K/TIAQaDzkGzeu\nK5LLa6BcoTALRqUeloxjH27Gl6eRq36w4ANLvKFpBrLsDLuXtSbnyI+2AwE+4xLd\nMOblIhkvIHRn8WwfXCBECQ==\n-----END PRIVATE KEY-----\n",
+      "certificate": "-----BEGIN CERTIFICATE-----\nMIIFJTCCBA2gAwIBAgISBIe/I8JuXLv2XaEiVWXJ1NA1MA0GCSqGSIb3DQEBCwUA\nMDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD\nEwJSMzAeFw0yMjAyMTcwMjUxMjFaFw0yMjA1MTgwMjUxMjBaMBoxGDAWBgNVBAMM\nDyouZGlkLmFidG5ldC5pbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB\nAM6JZ59eeXpTLyVbsLSjn1upd1hgGzgz6efkBSXZ1UtqF9cAwOZ9n5Cgg8f/CJdf\nvSBrjqa+xF19DDNdDOgD3tDYkVFlDW1+3JhJlYVrCBWICJftmqFtbMdeC+CAcThU\nUDBt0J8NxJaSFkecZYkkN2Muwuy6xQPzDHpSALJk2VQYoTpIu+fX4uRfFqfpoclX\ncctRv00pZ8RiYa2dGGbPlvSEOukWXkRZR0K8NHOhdQX/7axN2aslVyd09t/AIwfY\nrmTnVTuo6BmxFcbTsJ6qt4qp5N64gXgyMUx055Pgs3HpV5hl1zURdxfsEiYqjqwZ\n8kUqJdqnNP3jylfMBQktfjcCAwEAAaOCAkswggJHMA4GA1UdDwEB/wQEAwIFoDAd\nBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDAYDVR0TAQH/BAIwADAdBgNV\nHQ4EFgQU0JTnGG9PYFOhwzn3X4TSU5IBsl4wHwYDVR0jBBgwFoAUFC6zF7dYVsuu\nUAlA5h+vnYsUwsYwVQYIKwYBBQUHAQEESTBHMCEGCCsGAQUFBzABhhVodHRwOi8v\ncjMuby5sZW5jci5vcmcwIgYIKwYBBQUHMAKGFmh0dHA6Ly9yMy5pLmxlbmNyLm9y\nZy8wGgYDVR0RBBMwEYIPKi5kaWQuYWJ0bmV0LmlvMEwGA1UdIARFMEMwCAYGZ4EM\nAQIBMDcGCysGAQQBgt8TAQEBMCgwJgYIKwYBBQUHAgEWGmh0dHA6Ly9jcHMubGV0\nc2VuY3J5cHQub3JnMIIBBQYKKwYBBAHWeQIEAgSB9gSB8wDxAHYAQcjKsd8iRkoQ\nxqE6CUKHXk4xixsD6+tLx2jwkGKWBvYAAAF/Bc5RUQAABAMARzBFAiBk/Wt8oz+r\ncj96xhT6lXR4ZTj6bAFa5i0muvx/gAs9mQIhAO0madSFZpcSfojOECLY6z/fbVM8\nRH7f7tAXp79YKV6oAHcAKXm+8J45OSHwVnOfY6V35b5XfZxgCvj5TV0mXCVdx4QA\nAAF/Bc5RfAAABAMASDBGAiEAviUc/o9WGxFgqG1yS0uBXZ6voUBIxGjhg759Xvp7\n/kkCIQCg9vVrraNbelVcByKJ4CRMfD/Fk/r6c0KrI9O9qI0nCzANBgkqhkiG9w0B\nAQsFAAOCAQEAVTrm84Pqjy95ajf2HB+kYtBWCT0GX7Q105nhuwNMQjay7/okmYAW\nm7iBEP2qybsqldt7oiGWXI0Zuh75W9CcY3DrJpMfqsUgwhbDtK86nI0TuHkrydgH\nMJqTO5/coDP3lpVXlhs8FHcX5YwUiCVTHiholdi0AxZIR1EdzHMGEhpWubpZTQL9\ngimAwEuVMVGmIP3/lSiVPrMpCkUxs6i0JjHI+RPOKvWXl3HKH4QnlaGEPYCXupL2\ncS5vz4uaeZYa0DimMvZzPfk1X34sEEiBKOeUIRUcgoe3itSbAR9ZaOu+iljPsMrf\nrKnS1rswENx/12dbKlb6F8RqDa80D5dX7w==\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIFFjCCAv6gAwIBAgIRAJErCErPDBinU/bWLiWnX1owDQYJKoZIhvcNAQELBQAw\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjAwOTA0MDAwMDAw\nWhcNMjUwOTE1MTYwMDAwWjAyMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3Mg\nRW5jcnlwdDELMAkGA1UEAxMCUjMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK\nAoIBAQC7AhUozPaglNMPEuyNVZLD+ILxmaZ6QoinXSaqtSu5xUyxr45r+XXIo9cP\nR5QUVTVXjJ6oojkZ9YI8QqlObvU7wy7bjcCwXPNZOOftz2nwWgsbvsCUJCWH+jdx\nsxPnHKzhm+/b5DtFUkWWqcFTzjTIUu61ru2P3mBw4qVUq7ZtDpelQDRrK9O8Zutm\nNHz6a4uPVymZ+DAXXbpyb/uBxa3Shlg9F8fnCbvxK/eG3MHacV3URuPMrSXBiLxg\nZ3Vms/EY96Jc5lP/Ooi2R6X/ExjqmAl3P51T+c8B5fWmcBcUr2Ok/5mzk53cU6cG\n/kiFHaFpriV1uxPMUgP17VGhi9sVAgMBAAGjggEIMIIBBDAOBgNVHQ8BAf8EBAMC\nAYYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMBIGA1UdEwEB/wQIMAYB\nAf8CAQAwHQYDVR0OBBYEFBQusxe3WFbLrlAJQOYfr52LFMLGMB8GA1UdIwQYMBaA\nFHm0WeZ7tuXkAXOACIjIGlj26ZtuMDIGCCsGAQUFBwEBBCYwJDAiBggrBgEFBQcw\nAoYWaHR0cDovL3gxLmkubGVuY3Iub3JnLzAnBgNVHR8EIDAeMBygGqAYhhZodHRw\nOi8veDEuYy5sZW5jci5vcmcvMCIGA1UdIAQbMBkwCAYGZ4EMAQIBMA0GCysGAQQB\ngt8TAQEBMA0GCSqGSIb3DQEBCwUAA4ICAQCFyk5HPqP3hUSFvNVneLKYY611TR6W\nPTNlclQtgaDqw+34IL9fzLdwALduO/ZelN7kIJ+m74uyA+eitRY8kc607TkC53wl\nikfmZW4/RvTZ8M6UK+5UzhK8jCdLuMGYL6KvzXGRSgi3yLgjewQtCPkIVz6D2QQz\nCkcheAmCJ8MqyJu5zlzyZMjAvnnAT45tRAxekrsu94sQ4egdRCnbWSDtY7kh+BIm\nlJNXoB1lBMEKIq4QDUOXoRgffuDghje1WrG9ML+Hbisq/yFOGwXD9RiX8F6sw6W4\navAuvDszue5L3sz85K+EC4Y/wFVDNvZo4TYXao6Z0f+lQKc0t8DQYzk1OXVu8rp2\nyJMC6alLbBfODALZvYH7n7do1AZls4I9d1P4jnkDrQoxB3UqQ9hVl3LEKQ73xF1O\nyK5GhDDX8oVfGKF5u+decIsH4YaTw7mP3GFxJSqv3+0lUFJoi5Lc5da149p90Ids\nhCExroL1+7mryIkXPeFM5TgO9r0rvZaBFOvV2z0gp35Z0+L4WPlbuEjN/lxPFin+\nHlUjr8gRsI3qfJOQFy/9rKIJR0Y/8Omwt/8oTWgy1mdeHmmjk7j1nYsvC9JSQ6Zv\nMldlTTKB3zhThV1+XWYp6rjd5JW1zbVWEkLNxE7GJThEUG3szgBVGP7pSWTUTsqX\nnLRbwHOoq7hHwg==\n-----END CERTIFICATE-----\n\n-----BEGIN CERTIFICATE-----\nMIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/\nMSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT\nDkRTVCBSb290IENBIFgzMB4XDTIxMDEyMDE5MTQwM1oXDTI0MDkzMDE4MTQwM1ow\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwggIiMA0GCSqGSIb3DQEB\nAQUAA4ICDwAwggIKAoICAQCt6CRz9BQ385ueK1coHIe+3LffOJCMbjzmV6B493XC\nov71am72AE8o295ohmxEk7axY/0UEmu/H9LqMZshftEzPLpI9d1537O4/xLxIZpL\nwYqGcWlKZmZsj348cL+tKSIG8+TA5oCu4kuPt5l+lAOf00eXfJlII1PoOK5PCm+D\nLtFJV4yAdLbaL9A4jXsDcCEbdfIwPPqPrt3aY6vrFk/CjhFLfs8L6P+1dy70sntK\n4EwSJQxwjQMpoOFTJOwT2e4ZvxCzSow/iaNhUd6shweU9GNx7C7ib1uYgeGJXDR5\nbHbvO5BieebbpJovJsXQEOEO3tkQjhb7t/eo98flAgeYjzYIlefiN5YNNnWe+w5y\nsR2bvAP5SQXYgd0FtCrWQemsAXaVCg/Y39W9Eh81LygXbNKYwagJZHduRze6zqxZ\nXmidf3LWicUGQSk+WT7dJvUkyRGnWqNMQB9GoZm1pzpRboY7nn1ypxIFeFntPlF4\nFQsDj43QLwWyPntKHEtzBRL8xurgUBN8Q5N0s8p0544fAQjQMNRbcTa0B7rBMDBc\nSLeCO5imfWCKoqMpgsy6vYMEG6KDA0Gh1gXxG8K28Kh8hjtGqEgqiNx2mna/H2ql\nPRmP6zjzZN7IKw0KKP/32+IVQtQi0Cdd4Xn+GOdwiK1O5tmLOsbdJ1Fu/7xk9TND\nTwIDAQABo4IBRjCCAUIwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYw\nSwYIKwYBBQUHAQEEPzA9MDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5pZGVudHJ1\nc3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3YzAfBgNVHSMEGDAWgBTEp7Gkeyxx\n+tvhS5B1/8QVYIWJEDBUBgNVHSAETTBLMAgGBmeBDAECATA/BgsrBgEEAYLfEwEB\nATAwMC4GCCsGAQUFBwIBFiJodHRwOi8vY3BzLnJvb3QteDEubGV0c2VuY3J5cHQu\nb3JnMDwGA1UdHwQ1MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0LmNvbS9E\nU1RST09UQ0FYM0NSTC5jcmwwHQYDVR0OBBYEFHm0WeZ7tuXkAXOACIjIGlj26Ztu\nMA0GCSqGSIb3DQEBCwUAA4IBAQAKcwBslm7/DlLQrt2M51oGrS+o44+/yQoDFVDC\n5WxCu2+b9LRPwkSICHXM6webFGJueN7sJ7o5XPWioW5WlHAQU7G75K/QosMrAdSW\n9MUgNTP52GE24HGNtLi1qoJFlcDyqSMo59ahy2cI2qBDLKobkx/J3vWraV0T9VuG\nWCLKTVXkcGdtwlfFRjlBz4pYg1htmf5X6DYO8A4jqv2Il9DjXA6USbW1FzXSLr9O\nhe8Y4IWS6wY7bCkjCWDcRQJMEhg76fsO3txE+FiYruq9RUWhiF1myv4Q6W+CyBFC\nDfvp7OOGAN6dEOM4+qR9sdjoSYKEBpsr6GtPAQw4dy753ec5\n-----END CERTIFICATE-----\n",
+      "isProtected": true,
+      "source": "upload",
+      "meta": {
+        "validFrom": 1645066281000,
+        "validTo": 1652842280000,
+        "issuer": {
+          "countryName": "US",
+          "organizationName": "Let's Encrypt",
+          "commonName": "R3"
+        },
+        "sans": ["*.did.abtnet.io"],
+        "validityPeriod": 7775999000,
+        "fingerprintAlg": "SHA256",
+        "fingerprint": "16:EA:28:77:D2:CF:26:C3:C0:26:F8:6E:18:E5:C5:3D:D9:DB:F4:10:6C:B4:11:4A:2E:5A:D5:16:92:BD:65:D4"
+      },
+      "createdAt": "2022-02-25T08:42:18.106Z",
+      "updatedAt": "2022-02-25T08:42:18.106Z",
+      "id": "w2qQqUB0YrUhsdol"
+    },
+    {
+      "domain": "*.ip.abtnet.io",
+      "privateKey": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAy61XwsMFwiP4ZPuIi2/vKBeNKq0QeGHaVts6gUoz/XjBzEcQ\nqbNjhTaO4tVIwOG9uckQAj60jQyj1vE73AYkCvrrBAJYy/65t6ok+O8niy6UnsIE\nEK2VMG/7noWCuRjgG/Wph3XBnxkH0SDB0+gNLIJ6tV6ZhwyI/6qXFFHEtoJiqpNr\nDdCqp9oF9AHGDtWHqRffiH13Wk81ORKCDdt9QdbynXl6B962MHySXDlx3pMGsOLd\nNbhe7SmUgwMlYGZxV0yVvNrOzabXiSnxHK6IXbh3DFp/7tnrhu/84C99tO9NN/yh\nk93gdndrL/f1WWLd/BgZZUlpW2hKMoHu0nvwGwIDAQABAoIBAAo4u9PJZ8uTdI7U\n1MhyqKTxcaM3pkD0YDnFrMz6RVuuKMOwuVRa7V6tG0SlAY60hYoCXixOq0782Ggc\nGS30nPB0IUFFQOGT+gwOnOZlUi24+7pv8DZKD9erdwxAlQvnBLBChuyGa14pqmvD\nYhbZaXfXYIMjqT7O0T1LeWOKqv2hvIBbIxI3z7zRPm4uMRkW2fZA62WHF2AoEyzO\nwekLCt2uJkJCBtnst68CVmypIZLDFL6X+26mOw+JQZej/BIi/OzkymslI/XWTjJS\n3Xh3hWwvhnVGVmpHsKbHSDP/iEzZJZy+fm0PWT36/53HA7ZxgJ7KXV2YrALN+Nq6\nWqRDvIkCgYEA+gXMv69iWSZA0ZfDZiVKbHCqUIw7z1AAxH9UDf5Phn2yeGG7gcAf\nTAeKrNEsCqJPCyFtyrfcowl8MsV/1RyLwCA2rM45+tIF2El9atoND+fEOKkwCqHK\nCnqdhXBp1ogFwNtHeS+Ccdt78vaj+4kaWMM20ctZb3S/iXETI0m7QwcCgYEA0Ivl\nnVS17iO7CycIpY2LzYhfuyk1Dfwu5CoQv0PbDTRNRJK9VrK6ExVoGDbKmjnNPpoQ\nbeYbHUeD4rikanxvlg9VehmMvQX11bat3Rk5GiW1xQ7O8rkqvNF74FYvVHwdHgAT\nUzxx+xKEuXef+5F0GmjT4UBEsQKadTNx9SC8QU0CgYEA3LFr5zOv01OB2cBlmW+H\nPytAGzN9w+QxmUFvd56ooeWoOLzEH6bvuVPa4+sLPiPBM+kBGfSrzDoeKE7PJNU6\nwo9s06KB6VWkFSPhkgUBjK2fNgiZwHjJd/B9xQDSW6zbrz2f3GfEdC4yPefaHbkK\nyZkfdZZSzqA2ReLK6tY1dtcCgYAGs5grWB+IiYlnMFfsygGmFy3MW+SikGoJVvi2\nzL1rTTT2cSi4coHcPyHbNVeJYTYhPt4sSeqxJC0uyfQun9UOI2wBwnRtVpWxym8H\n3dmh53hR3snzrtOawbiTWvGma16cKjB0ykp3YP723ss7UE9E0f2NDX2nmofQIFkX\nIXgrOQKBgBEVFISa0Kb94SiZPa1trWFbfwiBfaCMfziNH9vR/Sm+sZj8rlbca2k7\nj/YPyIOzu/jTaKELt6dj7LYi2DcPXKcKNJruTQ8d3f6VHgKY496Zqq7LLO6uy1J3\nRRlFsGsKqvunKWVCU2jFWr7UOdFi+DHvDMPL+7GBL8PyCqs74gkN\n-----END RSA PRIVATE KEY-----",
+      "certificate": "-----BEGIN CERTIFICATE-----\nMIIFIzCCBAugAwIBAgISBGvYu5yB2VGh+p6AGPRRQ95mMA0GCSqGSIb3DQEBCwUA\nMDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD\nEwJSMzAeFw0yMTEyMzEyMDA1MTJaFw0yMjAzMzEyMDA1MTFaMBkxFzAVBgNVBAMM\nDiouaXAuYWJ0bmV0LmlvMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA\ny61XwsMFwiP4ZPuIi2/vKBeNKq0QeGHaVts6gUoz/XjBzEcQqbNjhTaO4tVIwOG9\nuckQAj60jQyj1vE73AYkCvrrBAJYy/65t6ok+O8niy6UnsIEEK2VMG/7noWCuRjg\nG/Wph3XBnxkH0SDB0+gNLIJ6tV6ZhwyI/6qXFFHEtoJiqpNrDdCqp9oF9AHGDtWH\nqRffiH13Wk81ORKCDdt9QdbynXl6B962MHySXDlx3pMGsOLdNbhe7SmUgwMlYGZx\nV0yVvNrOzabXiSnxHK6IXbh3DFp/7tnrhu/84C99tO9NN/yhk93gdndrL/f1WWLd\n/BgZZUlpW2hKMoHu0nvwGwIDAQABo4ICSjCCAkYwDgYDVR0PAQH/BAQDAgWgMB0G\nA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0GA1Ud\nDgQWBBQ82dc4TWBTsj/cQNUb+sOdJqDtJzAfBgNVHSMEGDAWgBQULrMXt1hWy65Q\nCUDmH6+dixTCxjBVBggrBgEFBQcBAQRJMEcwIQYIKwYBBQUHMAGGFWh0dHA6Ly9y\nMy5vLmxlbmNyLm9yZzAiBggrBgEFBQcwAoYWaHR0cDovL3IzLmkubGVuY3Iub3Jn\nLzAZBgNVHREEEjAQgg4qLmlwLmFidG5ldC5pbzBMBgNVHSAERTBDMAgGBmeBDAEC\nATA3BgsrBgEEAYLfEwEBATAoMCYGCCsGAQUFBwIBFhpodHRwOi8vY3BzLmxldHNl\nbmNyeXB0Lm9yZzCCAQUGCisGAQQB1nkCBAIEgfYEgfMA8QB2AEalVet1+pEgMLWi\niWn0830RLEF0vv1JuIWr8vxw/m1HAAABfhJPl9gAAAQDAEcwRQIgOSc5asZNQTUm\nfGU84CTkg4gpcqw9YR4PZJdAncu+W88CIQCrOLNuh641mDH5NyWcnFto4elDeI9r\ndY2e8qf2VqUPSQB3AN+lXqtogk8fbK3uuF9OPlrqzaISpGpejjsSwCBEXCpzAAAB\nfhJPmZsAAAQDAEgwRgIhANdw44YqnMjhndFJu/p6GTPI0BqBQw7V19QTAhs5+woS\nAiEA+kOXMb70b031aIzjCOLO5jayHkbeIW2aXv8WHACpAcMwDQYJKoZIhvcNAQEL\nBQADggEBAHBxpKwDDGZogqudGin5C0pFvmNOI7zRZd+z6fQj6LB5P93kuqVIhnx7\nexwVMnRUkJiGmfnqtIj/4xmFqLpfjh+X5TWP84Up+A1MH6tdtRXmLgdMxxO17PKN\nwiyfGDoJ4igBM072L4gGWRWYKLwpEqQaEs8RU8nFS8p5FPjnGTjjji1Ow8lrLFgO\nhxsCp8JF68aLbtnvFOy343nsq6wGCYbSpsaPh7MC122Qx1kDNpSobDJ5Pj8e8djW\nudGR+y5Pxqr9Vj2cjLO5yDPnT+gJk8I2v15n8yyVLJHtaMOwvHaSVxQDyt0SjlVS\nx+IofAFDPKCB/GIPAGHD0d79bbZ8Y/U=\n-----END CERTIFICATE-----\n\n-----BEGIN CERTIFICATE-----\nMIIFFjCCAv6gAwIBAgIRAJErCErPDBinU/bWLiWnX1owDQYJKoZIhvcNAQELBQAw\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMjAwOTA0MDAwMDAw\nWhcNMjUwOTE1MTYwMDAwWjAyMQswCQYDVQQGEwJVUzEWMBQGA1UEChMNTGV0J3Mg\nRW5jcnlwdDELMAkGA1UEAxMCUjMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK\nAoIBAQC7AhUozPaglNMPEuyNVZLD+ILxmaZ6QoinXSaqtSu5xUyxr45r+XXIo9cP\nR5QUVTVXjJ6oojkZ9YI8QqlObvU7wy7bjcCwXPNZOOftz2nwWgsbvsCUJCWH+jdx\nsxPnHKzhm+/b5DtFUkWWqcFTzjTIUu61ru2P3mBw4qVUq7ZtDpelQDRrK9O8Zutm\nNHz6a4uPVymZ+DAXXbpyb/uBxa3Shlg9F8fnCbvxK/eG3MHacV3URuPMrSXBiLxg\nZ3Vms/EY96Jc5lP/Ooi2R6X/ExjqmAl3P51T+c8B5fWmcBcUr2Ok/5mzk53cU6cG\n/kiFHaFpriV1uxPMUgP17VGhi9sVAgMBAAGjggEIMIIBBDAOBgNVHQ8BAf8EBAMC\nAYYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMBMBIGA1UdEwEB/wQIMAYB\nAf8CAQAwHQYDVR0OBBYEFBQusxe3WFbLrlAJQOYfr52LFMLGMB8GA1UdIwQYMBaA\nFHm0WeZ7tuXkAXOACIjIGlj26ZtuMDIGCCsGAQUFBwEBBCYwJDAiBggrBgEFBQcw\nAoYWaHR0cDovL3gxLmkubGVuY3Iub3JnLzAnBgNVHR8EIDAeMBygGqAYhhZodHRw\nOi8veDEuYy5sZW5jci5vcmcvMCIGA1UdIAQbMBkwCAYGZ4EMAQIBMA0GCysGAQQB\ngt8TAQEBMA0GCSqGSIb3DQEBCwUAA4ICAQCFyk5HPqP3hUSFvNVneLKYY611TR6W\nPTNlclQtgaDqw+34IL9fzLdwALduO/ZelN7kIJ+m74uyA+eitRY8kc607TkC53wl\nikfmZW4/RvTZ8M6UK+5UzhK8jCdLuMGYL6KvzXGRSgi3yLgjewQtCPkIVz6D2QQz\nCkcheAmCJ8MqyJu5zlzyZMjAvnnAT45tRAxekrsu94sQ4egdRCnbWSDtY7kh+BIm\nlJNXoB1lBMEKIq4QDUOXoRgffuDghje1WrG9ML+Hbisq/yFOGwXD9RiX8F6sw6W4\navAuvDszue5L3sz85K+EC4Y/wFVDNvZo4TYXao6Z0f+lQKc0t8DQYzk1OXVu8rp2\nyJMC6alLbBfODALZvYH7n7do1AZls4I9d1P4jnkDrQoxB3UqQ9hVl3LEKQ73xF1O\nyK5GhDDX8oVfGKF5u+decIsH4YaTw7mP3GFxJSqv3+0lUFJoi5Lc5da149p90Ids\nhCExroL1+7mryIkXPeFM5TgO9r0rvZaBFOvV2z0gp35Z0+L4WPlbuEjN/lxPFin+\nHlUjr8gRsI3qfJOQFy/9rKIJR0Y/8Omwt/8oTWgy1mdeHmmjk7j1nYsvC9JSQ6Zv\nMldlTTKB3zhThV1+XWYp6rjd5JW1zbVWEkLNxE7GJThEUG3szgBVGP7pSWTUTsqX\nnLRbwHOoq7hHwg==\n-----END CERTIFICATE-----\n\n-----BEGIN CERTIFICATE-----\nMIIFYDCCBEigAwIBAgIQQAF3ITfU6UK47naqPGQKtzANBgkqhkiG9w0BAQsFADA/\nMSQwIgYDVQQKExtEaWdpdGFsIFNpZ25hdHVyZSBUcnVzdCBDby4xFzAVBgNVBAMT\nDkRTVCBSb290IENBIFgzMB4XDTIxMDEyMDE5MTQwM1oXDTI0MDkzMDE4MTQwM1ow\nTzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\ncmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwggIiMA0GCSqGSIb3DQEB\nAQUAA4ICDwAwggIKAoICAQCt6CRz9BQ385ueK1coHIe+3LffOJCMbjzmV6B493XC\nov71am72AE8o295ohmxEk7axY/0UEmu/H9LqMZshftEzPLpI9d1537O4/xLxIZpL\nwYqGcWlKZmZsj348cL+tKSIG8+TA5oCu4kuPt5l+lAOf00eXfJlII1PoOK5PCm+D\nLtFJV4yAdLbaL9A4jXsDcCEbdfIwPPqPrt3aY6vrFk/CjhFLfs8L6P+1dy70sntK\n4EwSJQxwjQMpoOFTJOwT2e4ZvxCzSow/iaNhUd6shweU9GNx7C7ib1uYgeGJXDR5\nbHbvO5BieebbpJovJsXQEOEO3tkQjhb7t/eo98flAgeYjzYIlefiN5YNNnWe+w5y\nsR2bvAP5SQXYgd0FtCrWQemsAXaVCg/Y39W9Eh81LygXbNKYwagJZHduRze6zqxZ\nXmidf3LWicUGQSk+WT7dJvUkyRGnWqNMQB9GoZm1pzpRboY7nn1ypxIFeFntPlF4\nFQsDj43QLwWyPntKHEtzBRL8xurgUBN8Q5N0s8p0544fAQjQMNRbcTa0B7rBMDBc\nSLeCO5imfWCKoqMpgsy6vYMEG6KDA0Gh1gXxG8K28Kh8hjtGqEgqiNx2mna/H2ql\nPRmP6zjzZN7IKw0KKP/32+IVQtQi0Cdd4Xn+GOdwiK1O5tmLOsbdJ1Fu/7xk9TND\nTwIDAQABo4IBRjCCAUIwDwYDVR0TAQH/BAUwAwEB/zAOBgNVHQ8BAf8EBAMCAQYw\nSwYIKwYBBQUHAQEEPzA9MDsGCCsGAQUFBzAChi9odHRwOi8vYXBwcy5pZGVudHJ1\nc3QuY29tL3Jvb3RzL2RzdHJvb3RjYXgzLnA3YzAfBgNVHSMEGDAWgBTEp7Gkeyxx\n+tvhS5B1/8QVYIWJEDBUBgNVHSAETTBLMAgGBmeBDAECATA/BgsrBgEEAYLfEwEB\nATAwMC4GCCsGAQUFBwIBFiJodHRwOi8vY3BzLnJvb3QteDEubGV0c2VuY3J5cHQu\nb3JnMDwGA1UdHwQ1MDMwMaAvoC2GK2h0dHA6Ly9jcmwuaWRlbnRydXN0LmNvbS9E\nU1RST09UQ0FYM0NSTC5jcmwwHQYDVR0OBBYEFHm0WeZ7tuXkAXOACIjIGlj26Ztu\nMA0GCSqGSIb3DQEBCwUAA4IBAQAKcwBslm7/DlLQrt2M51oGrS+o44+/yQoDFVDC\n5WxCu2+b9LRPwkSICHXM6webFGJueN7sJ7o5XPWioW5WlHAQU7G75K/QosMrAdSW\n9MUgNTP52GE24HGNtLi1qoJFlcDyqSMo59ahy2cI2qBDLKobkx/J3vWraV0T9VuG\nWCLKTVXkcGdtwlfFRjlBz4pYg1htmf5X6DYO8A4jqv2Il9DjXA6USbW1FzXSLr9O\nhe8Y4IWS6wY7bCkjCWDcRQJMEhg76fsO3txE+FiYruq9RUWhiF1myv4Q6W+CyBFC\nDfvp7OOGAN6dEOM4+qR9sdjoSYKEBpsr6GtPAQw4dy753ec5\n-----END CERTIFICATE-----\n\n",
+      "isProtected": true,
+      "source": "upload",
+      "meta": {
+        "validFrom": 1640981112000,
+        "validTo": 1648757111000,
+        "issuer": {
+          "countryName": "US",
+          "organizationName": "Let's Encrypt",
+          "commonName": "R3"
+        },
+        "sans": ["*.ip.abtnet.io"],
+        "validityPeriod": 7775999000,
+        "fingerprintAlg": "SHA256",
+        "fingerprint": "96:90:45:4F:6E:03:6E:6A:38:55:77:24:BA:02:2B:7C:8D:D4:D0:AF:77:F2:47:D7:FC:1D:54:1B:AB:63:8D:70"
+      },
+      "createdAt": "2022-02-25T08:42:18.197Z",
+      "updatedAt": "2022-02-25T08:42:18.197Z",
+      "id": "R08d7foDvLRwPJhF"
+    }
+  ],
+  "commonHeaders": {
+    "X-Powered-By": "\"Blocklet Server/1.6.23\""
+  },
+  "services": [],
+  "nodeInfo": {
+    "name": "Bugbash",
+    "version": "1.6.23",
+    "port": 8089,
+    "mode": "production",
+    "enableWelcomePage": true,
+    "routing": {
+      "provider": "nginx",
+      "adminPath": "/admin/",
+      "headers": {
+        "X-Powered-By": "\"Blocklet Server/1.6.23\""
+      },
+      "maxUploadFileSize": 500,
+      "https": true,
+      "httpPort": 80,
+      "httpsPort": 443,
+      "wildcardCertHost": "https://releases.arcblock.io/",
+      "ipWildcardDomain": "*.ip.abtnet.io"
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "title": "demo-1",
+  "description": "A Blocklet Api blocklet",
+  "keywords": [
+    "blocklet",
+    "react"
+  ],
+  "group": "dapp",
+  "did": "z2qaEPwMmdyyqNELquoF5TyNxi3qqNqmnXW95",
+  "main": "blocklet.js",
+  "author": {
+    "name": "Zhu Liang",
+    "email": "ymblender@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blocklet/create-blocklet.git"
+  },
+  "specVersion": "1.2.8",
+  "version": "0.0.1",
+  "logo": "logo.png",
+  "files": [
+    "logo.png",
+    "screenshots"
+  ],
+  "interfaces": [
+    {
+      "type": "web",
+      "name": "publicUrl",
+      "path": "/",
+      "prefix": "*",
+      "port": "BLOCKLET_PORT",
+      "protocol": "http",
+      "proxyBehavior": "service"
+    }
+  ],
+  "community": "",
+  "documentation": "",
+  "homepage": "",
+  "license": "",
+  "payment": {
+    "price": [],
+    "share": []
+  },
+  "timeout": {
+    "start": 10
+  },
+  "requirements": {
+    "server": ">=1.16.28",
+    "os": "*",
+    "cpu": "*"
+  },
+  "scripts": {
+    "dev": "npm run start"
+  },
+  "environments": [
+    {
+      "name": "CHAIN_HOST",
+      "description": "What's endpoint of the chain?",
+      "required": true,
+      "default": "https://beta.abtnetwork.io/api/",
+      "secure": false
+    }
+  ],
+  "capabilities": {
+    "navigation": true
+  },
+  "screenshots": [],
+  "name": "z2qaEPwMmdyyqNELquoF5TyNxi3qqNqmnXW95",
+  "components": [],
+  "egress": true,
+  "nftFactory": "",
+  "dist": {
+    "tarball": "z2qaEPwMmdyyqNELquoF5TyNxi3qqNqmnXW95-0.0.1.tgz",
+    "integrity": "sha512-kh2ZfnYZCqeDEKvh9JMdHmgY9cuLqv6/ygxGNp04XZmbTNl3aCIPEii28hajTqI/yhZk9ciz8bDs060g/8Dd3A==",
+    "size": 271807
+  }
+}

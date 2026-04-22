@@ -1,0 +1,122 @@
+{
+  "backup.space.error.title": {
+    "en": "Backup to DID Spaces Failed",
+    "value": {
+      "en": "Backup to DID Spaces Failed",
+      "es": "Copia de seguridad a DID Spaces falló",
+      "zh": "备份到 DID Spaces 失败",
+      "zh-TW": "備份到 DID Spaces 失敗",
+      "ja": "DID Spaces へのバックアップに失敗しました",
+      "ko": "DID Spaces 백업에 실패했습니다",
+      "de": "Backup nach DID Spaces fehlgeschlagen",
+      "hi": "DID Spaces पर बैकअप असफल",
+      "fr": "La sauvegarde vers DID Spaces a échoué",
+      "ar": "فشل النسخ الاحتياطي إلى DID Spaces",
+      "ru": "Резервное копирование в DID Spaces не выполнено",
+      "pt": "Backup para DID Spaces falhou",
+      "id": "Backup ke DID Spaces gagal",
+      "vi": "Sao lưu đến DID Spaces thất bại",
+      "th": "สำรองข้อมูลไปยัง DID Spaces ล้มเหลว"
+    }
+  },
+  "backup.space.error.forbidden": {
+    "en": "You don't have permission to back up. Try restoring the license on DID Spaces or reconnect.",
+    "value": {
+      "en": "You don't have permission to back up. Try restoring the license on DID Spaces or reconnect.",
+      "es": "No tienes permiso para hacer una copia de seguridad. Intenta restaurar la licencia en DID Spaces o volver a conectarte.",
+      "zh": "你没有权限备份。请在 DID Spaces 上尝试恢复授权或重新连接。",
+      "zh-TW": "你沒有權限備份。請在 DID Spaces 上嘗試恢復授權或重新連接。",
+      "ja": "バックアップする権限がありません。DID Spaces で ライセンスを復元するか、再接続してください。",
+      "ko": "백업 권한이 없습니다. DID Spaces 에서 라이선스를 복원하거나 다시 연결해 보십시오.",
+      "de": "Sie haben keine Berechtigung, eine Sicherung durchzuführen. Versuchen Sie, die Lizenz auf DID Spaces wiederherzustellen oder sich erneut zu verbinden.",
+      "hi": "आपके पास बैकअप बनाने की अनुमति नहीं है। DID Spaces पर लाइसेंस को पुनर्स्थापित करने की कोशिश करें या फिर से कनेक्ट करें।",
+      "fr": "Vous n'avez pas l'autorisation d'effectuer une sauvegarde. Essayez de restaurer la licence sur DID Spaces ou de vous reconnecter.",
+      "ar": "ليس لديك إذن لإجراء النسخ الاحتياطي. حاول استعادة الترخيص على DID Spaces أو أعد الاتصال.",
+      "ru": "У вас нет разрешения на создание резервной копии. Попробуйте восстановить лицензию на DID Spaces или переподключиться.",
+      "pt": "Você não tem permissão para fazer backup. Tente restaurar a licença em DID Spaces ou reconectar.",
+      "id": "Anda tidak memiliki izin untuk mencadangkan. Coba pulihkan lisensi di DID Spaces atau sambungkan kembali.",
+      "vi": "Bạn không có quyền sao lưu. Hãy thử khôi phục giấy phép trên DID Spaces hoặc kết nối lại.",
+      "th": "คุณไม่มีสิทธิ์ในการสำรองข้อมูล ลองกู้ใบอนุญาตบน DID Spaces หรือเชื่อมต่อใหม่อีกครั้ง."
+    }
+  },
+  "registry.getListError": {
+    "en": "Failed to get blocklet list from registry \"{registryUrl}\"",
+    "value": {
+      "en": "Failed to get blocklet list from registry \"{registryUrl}\"",
+      "es": "No se pudo obtener la lista de blocklet desde el registro “{registryUrl}”",
+      "zh": "无法从注册表获取 blocklet 列表“{registryUrl}”",
+      "zh-TW": "無法從註冊表取得 blocklet 列表“{registryUrl}”",
+      "ja": "レジストリから blocklet リストの取得に失敗しました「{registryUrl}」",
+      "ko": "레지스트리에서 blocklet 목록을 가져오지 못했습니다“{registryUrl}”",
+      "de": "Fehler beim Abrufen der blocklet-Liste aus dem Registry \"{registryUrl}\"",
+      "hi": "रेजिस्ट्री से blocklet सूची प्राप्त करने में विफल \"{registryUrl}\"",
+      "fr": "Échec de l'obtention de la liste de blocklet à partir du registre \"{registryUrl}\"",
+      "ar": "فشل في الحصول على قائمة blocklet من السجل \"{registryUrl}\"",
+      "ru": "Не удалось получить список blocklet из реестра \"{registryUrl}\"",
+      "pt": "Falhou ao obter a lista de blocklet do registro \"{registryUrl}\"",
+      "id": "Gagal mendapatkan daftar blocklet dari registry \"{registryUrl}\"",
+      "vi": "Không thể lấy danh sách blocklet từ registry \"{registryUrl}\"",
+      "th": "ไม่สามารถดึงรายการ blocklet จาก registry \"{registryUrl}\""
+    }
+  },
+  "backup.space.lackOfSpace": {
+    "en": "Not enough storage space. Expand storage and try again.",
+    "value": {
+      "en": "Not enough storage space. Expand storage and try again.",
+      "es": "No hay suficiente espacio de almacenamiento. Amplíe el almacenamiento y vuelva a intentarlo.",
+      "zh": "存储空间不足。请扩展存储后再试一次。",
+      "zh-TW": "儲存空間不足。請擴充儲存後再試一次。",
+      "ja": "ストレージの容量が不足しています。容量を拡張して、もう一度お試しください。",
+      "ko": "저장 공간이 부족합니다. 저장 공간을 확장하고 다시 시도하세요.",
+      "de": "Nicht genug Speicherplatz. Speicherplatz erweitern und erneut versuchen.",
+      "hi": "पर्याप्त स्टोरेज स्थान नहीं है. स्टोरेज बढ़ाएं और फिर से प्रयास करें.",
+      "fr": "Espace de stockage insuffisant. Élargissez le stockage et réessayez.",
+      "ar": "مساحة التخزين غير كافية. وسّع التخزين وحاول مرة أخرى.",
+      "ru": "Недостаточно свободного места. Расширьте место хранения и попробуйте снова.",
+      "pt": "Não há espaço de armazenamento suficiente. Expanda o armazenamento e tente novamente.",
+      "id": "Tidak cukup ruang penyimpanan. Perluas penyimpanan dan coba lagi.",
+      "vi": "Không còn đủ dung lượng lưu trữ. Mở rộng dung lượng và thử lại.",
+      "th": "ไม่มีพื้นที่เก็บข้อมูลเพียงพอ. ขยายพื้นที่จัดเก็บแล้วลองอีกครั้ง"
+    }
+  },
+  "backup.space.unableEnableAutoBackup": {
+    "en": "Connect to DID Spaces before enabling auto backup.",
+    "value": {
+      "en": "Connect to DID Spaces before enabling auto backup.",
+      "es": "Conéctese a DID Spaces antes de habilitar la copia de seguridad automática.",
+      "zh": "在启用自动备份之前 连接到 DID Spaces。",
+      "zh-TW": "在啟用自動備份之前 連接到 DID Spaces。",
+      "ja": "オートバックアップを有効にする前に DID Spaces に接続してください。",
+      "ko": "자동 백업을 활성화하기 전에 DID Spaces 에 연결하십시오.",
+      "de": "Verbinden Sie sich mit DID Spaces, bevor Sie die automatische Sicherung aktivieren",
+      "hi": "DID Spaces से कनेक्ट करें, ऑटो बैकअप सक्षम करने से पहले",
+      "fr": "Connectez-vous à DID Spaces avant d'activer la sauvegarde automatique",
+      "ar": "اتصل بـ DID Spaces قبل تمكين النسخ الاحتياطي التلقائي",
+      "ru": "Подключитесь к DID Spaces перед включением автоматического резервного копирования",
+      "pt": "Conecte-se a DID Spaces antes de ativar o backup automático.",
+      "id": "Hubungkan ke DID Spaces sebelum mengaktifkan backup otomatis.",
+      "vi": "Kết nối với DID Spaces trước khi kích hoạt sao lưu tự động.",
+      "th": "เชื่อมต่อกับ DID Spaces ก่อนเปิดใช้งานการสำรองข้อมูลอัตโนมัติ."
+    }
+  },
+  "backup.space.isFull": {
+    "en": "Your DID Spaces storage is full. Expand storage and try again.",
+    "value": {
+      "en": "Your DID Spaces storage is full. Expand storage and try again.",
+      "es": "El almacenamiento de DID Spaces está lleno. Expanda el almacenamiento y vuelva a intentarlo.",
+      "zh": "DID Spaces 存储已满。请扩展存储并重试。",
+      "zh-TW": "DID Spaces 存儲已滿。請擴充存儲空間並再試一次。",
+      "ja": "DID Spaces のストレージは満杯です。ストレージを拡張して、もう一度お試しください。",
+      "ko": "DID Spaces 저장 공간이 가득 찼습니다. 저장 공간을 확장하고 다시 시도하십시오.",
+      "de": "Ihr DID Spaces Speicherplatz ist voll. Speicherplatz erweitern und erneut versuchen.",
+      "hi": "आपका DID Spaces स्टोरेज भरा है। स्टोरेज बढ़ाएं और फिर से प्रयास करें।",
+      "fr": "Votre DID Spaces stockage est plein. Augmentez le stockage et réessayez.",
+      "ar": "سعة التخزين لـ DID Spaces ممتلئة. وسّع التخزين وحاول مرة أخرى.",
+      "ru": "Ваше хранилище DID Spaces заполнено. Расширьте хранилище и попробуйте снова.",
+      "pt": "O armazenamento do DID Spaces está cheio. Expanda o armazenamento e tente novamente.",
+      "id": "Penyimpanan DID Spaces Anda penuh. Perluas penyimpanan dan coba lagi.",
+      "vi": "Dung lượng DID Spaces của bạn đã đầy. Mở rộng dung lượng và thử lại.",
+      "th": "พื้นที่จัดเก็บ DID Spaces ของคุณเต็มแล้ว โปรดขยายพื้นที่และลองอีกครั้ง."
+    }
+  }
+}

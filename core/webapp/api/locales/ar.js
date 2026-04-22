@@ -1,0 +1,27 @@
+/* eslint-disable prettier/prettier */
+module.exports = {
+  navigation: {
+    system: 'النظام',
+    services: 'الخدمات',
+    notification: 'مركز الإشعارات',
+    access: 'الوصول',
+    members: 'الأعضاء',
+    passport: 'جواز سفر',
+    analytics: 'تحليلات',
+    dashboard: 'لوحة المعلومات',
+    studio: 'استوديو Blocklet',
+    blockletService: 'خدمة بلوكليت',
+    didSpaces: 'التخزين والنسخ الاحتياطي',
+    notifications: 'إخطارات',
+    didConnect: 'الهوية والوصول',
+    website: 'استوديو الموقع',
+    operations: 'الرؤية',
+    integration: 'تكاملات',
+    developer: 'مطوّرون',
+    aigne: 'اتصالات الذكاء الاصطناعي',
+    orgs: 'المنظمات',
+    nfts: 'NFTs',
+    settings: 'إعدادات',
+    userFollowers: 'متابعة',
+  },
+};

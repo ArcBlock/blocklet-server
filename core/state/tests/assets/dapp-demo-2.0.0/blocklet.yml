@@ -1,0 +1,21 @@
+name: dapp-demo
+did: z8iZy93odZT125AQ6dCSmZJHuZEsUdbk5kVak
+description: ABT Node blocklet project
+group: dapp
+main: api/index.js
+author:
+  name: Arcblock
+specVersion: 1.0.0
+files:
+  - blocklet.md
+  - screenshots
+interfaces:
+  - type: web
+    name: publicUrl
+    path: /
+    prefix: '*'
+    port: BLOCKLET_PORT
+    protocol: tcp
+logo: logo.png
+scripts:
+  dev: node api/index.js

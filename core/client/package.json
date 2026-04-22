@@ -1,0 +1,81 @@
+{
+  "name": "@blocklet/server-js",
+  "version": "1.17.12",
+  "description": "graphql client to read/write data on abt node",
+  "keywords": [
+    "graphql",
+    "client",
+    "arcblock"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "contributors": [
+    "ArcBlock <blocklet@arcblock.io> (https://github.com/ArcBlock)"
+  ],
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/core/client#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArcBlock/blocklet-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "main": "./lib/node.js",
+  "browser": "./dist/browser.js",
+  "files": [
+    "docs",
+    "dist",
+    "lib"
+  ],
+  "dependencies": {
+    "@arcblock/sdk-util": "0.36.3",
+    "@ocap/util": "1.29.27",
+    "@ocap/wallet": "1.29.27",
+    "axios": "^1.7.9",
+    "blueimp-md5": "^2.19.0",
+    "core-js": "^3.25.5",
+    "dayjs": "^1.11.13",
+    "debug": "^4.4.1",
+    "eventemitter3": "^4.0.7",
+    "graphql": "16.8.1",
+    "lodash": "^4.17.21",
+    "react-app-polyfill": "^1.0.6"
+  },
+  "scripts": {
+    "lint": "eslint src tests",
+    "lint:fix": "eslint --fix src tests",
+    "clean": "rm -rf lib dist",
+    "build-browser": "cross-env BABEL_ENV=browser babel ./src --out-dir ./dist --source-maps --copy-files && webpack --mode production && rm -rf ./dist/node.* ./dist/proto",
+    "build-node": "babel ./src --out-dir ./lib --source-maps --copy-files && rm -rf ./lib/browser.* ./lib/proto/*.js.map",
+    "build:core-client": "npm run build",
+    "build": "npm run clean && npm run build-node && npm run build-browser",
+    "build:watch": "babel ./src --out-dir ./lib --source-maps --copy-files --watch",
+    "generate-types": "node tools/generate-types.js && sed -i -E \"s/UNSUPPORTED_TX/OK/\" src/types.js",
+    "generate-queries": "node tools/generate-queries.js",
+    "generate-dts": "node tools/generate-dts.js && prettier --write ./src/*.d.ts",
+    "update-schema": "rm -f src/schema/graphql.json && node tools/update-graphql-schema.js",
+    "upgrade": "npm run update-schema && npm run docs",
+    "docs": "npm run build && npm run generate-queries && npm run generate-types && npm run generate-dts && npm run build && rm -f src/types.js-E && npm run lint:fix"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.57.0",
+    "graphql-request": "^4.3.0",
+    "inspectpack": "^4.7.1",
+    "prettier": "^3.3.2",
+    "webpack": "^5.74.0",
+    "webpack-bundle-analyzer": "^4.6.1",
+    "webpack-cli": "^4.10.0"
+  },
+  "gitHead": "e5764f753181ed6a7c615cd4fc6682aacf0cb7cd"
+}

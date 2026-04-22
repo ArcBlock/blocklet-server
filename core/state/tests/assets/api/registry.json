@@ -1,0 +1,11 @@
+{
+  "id": "zNKXtdqz6Jbw5mKpojK2nP5gRNiEGJY3mNFF",
+  "pk": "z8VahoQa6oS63Ym3rfsmzZEt9Moonbg4JSUiit5J7DRAV",
+  "name": "Test Registry",
+  "description": "Test registry",
+  "logoUrl": "/logo.png",
+  "maintainer": "z1X9rbzKtqTo6QiBorvdYjgg8X34vvuG32o",
+  "chainHost": "https://staging.abt.abtnetwork.io/api/",
+  "cdnUrl": "",
+  "version": "0.3.25"
+}

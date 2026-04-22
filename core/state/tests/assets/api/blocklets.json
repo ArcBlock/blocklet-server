@@ -1,0 +1,53 @@
+[
+  {
+    "name": "static-demo-blocklet",
+    "version": "1.1.5",
+    "description": "Demo blocklet that shows how to serve a static html5 game with ABT Node",
+    "keywords": ["demo", "game", "blocklet"],
+    "author": {
+      "name": "wangshijun",
+      "email": "wangshijun2010@gmail.com",
+      "url": "http://github.com/wangshijun"
+    },
+    "title": "Static Demo",
+    "files": ["app/", "logo.png", "blocklet.yml", "blocklet.md", "README.md"],
+    "license": "MIT",
+    "group": "static",
+    "main": "app",
+    "logo": "logo.png",
+    "community": "",
+    "documentation": "",
+    "homepage": "",
+    "screenshots": [],
+    "environments": [],
+    "specVersion": "1.0.1",
+    "interfaces": [
+      {
+        "type": "web",
+        "name": "publicUrl",
+        "path": "/",
+        "prefix": "*",
+        "port": "BLOCKLET_PORT",
+        "protocol": "tcp"
+      }
+    ],
+    "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+    "timeout": {
+      "start": 10
+    },
+    "gitHash": "b02561897f455b2ae1ebc640b74747bec8f6335c",
+    "logoUrl": "/static/cbfd8604c3abf6dff3c308b6fdcd611e/logo.png",
+    "path": "/static/static-demo-blocklet",
+    "payment": {
+      "price": []
+    },
+    "stats": {
+      "downloads": 4193
+    },
+    "dist": {
+      "tarball": "http://localhost:9090/api/blocklets/z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV/static-demo-1.1.5.tgz",
+      "integrity": "sha512-zI8EjQM3RUavC1yzKEdGVthGh5FXJ75cfivZrSoZCsb6u7IdE+mbd7UiIou7yWHDi/CgYHuVYbzogF5rjZpwFQ==",
+      "shasum": "7640bdacd9c81f5687bfae75bcb4107e19b2cba7"
+    }
+  }
+]

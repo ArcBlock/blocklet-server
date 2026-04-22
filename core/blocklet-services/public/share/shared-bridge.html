@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shared Bridge</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+
+    body {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    const searchParams = new URLSearchParams(window.location.search);
+    const dataId = searchParams.get('id');
+
+    function getCookie(name) {
+      return document.cookie.split('; ').find(row => row.startsWith(`${name}=`))?.split('=')[1];
+    }
+    function setCookie(name, value, options) {
+      let cookieString = `${name}=${value}`;
+      if (options) {
+        cookieString += `; ${Object.entries(options).map(([key, value]) => `${key}=${value}`).join('; ')}`;
+      }
+      document.cookie = cookieString;
+    }
+
+    async function requestStorageAccess({ callback = getCallbackName('requestStorageAccess') } = {}) {
+      // FIXME: 后续不在需要 pre 事件，1.16.44 版本移除（为兼容性保留一段时间）
+      const preCallback = getCallbackName('preRequestStorageAccess');
+      window.parent.postMessage({ action: preCallback }, '*');
+      const message = { action: callback, value: false };
+      try {
+        await document.requestStorageAccess();
+        message.value = true;
+      } finally {
+        window.parent.postMessage(message, '*');
+      }
+    }
+
+    function getCallbackName(action) {
+      return ['callback', action, dataId].filter(Boolean).join('_');
+    }
+
+    if (window.self !== window.top) {
+      window.addEventListener('message', async ({ data }) => {
+        const defaultCallbackName = getCallbackName(data.action);
+
+        if (data.action === 'getVisitorId') {
+          let vid = getCookie('vid');
+          if (!vid) {
+            vid = window.crypto.randomUUID();
+            setCookie('vid', vid, {
+              sameSite: 'None',
+              secure: true,
+              expires: 365,
+            });
+          }
+          window.parent.postMessage({ action: data.callback || defaultCallbackName, value: getCookie('vid') }, '*');
+        } else if (data.action === 'hasStorageAccess') {
+          const hasAccess = await document.hasStorageAccess();
+          window.parent.postMessage({ action: data.callback || defaultCallbackName, value: hasAccess }, '*');
+        } else if (data.action === 'requestStorageAccess') {
+          await requestStorageAccess({ callback: data.callback });
+        }
+      });
+
+      document.body.addEventListener('click', requestStorageAccess);
+    }
+  </script>
+</body>
+
+</html>

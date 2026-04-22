@@ -1,0 +1,27 @@
+/* eslint-disable prettier/prettier */
+module.exports = {
+  navigation: {
+    system: 'ระบบ',
+    services: 'บริการ',
+    notification: 'ศูนย์การแจ้งเตือน',
+    access: 'เข้าถึง',
+    members: 'สมาชิก',
+    passport: 'หนังสือเดินทาง',
+    analytics: 'การวิเคราะห์ข้อมูล',
+    dashboard: 'แดชบอร์ด',
+    studio: 'Blocklet สตูดิโอ',
+    blockletService: 'บริการบล็อกเล็ต',
+    didSpaces: 'พื้นที่จัดเก็บ & การสำรองข้อมูล',
+    notifications: 'การแจ้งเตือน',
+    didConnect: 'เอกลักษณ์ & การเข้าถึง',
+    website: 'Website Studio',
+    operations: 'การสังเกตการณ์',
+    integration: 'การผสานรวม',
+    developer: 'นักพัฒนา',
+    aigne: 'การเชื่อมต่อ AI',
+    orgs: 'องค์กร',
+    nfts: 'NFTs',
+    settings: 'การตั้งค่า',
+    userFollowers: 'ติดตาม',
+  },
+};

@@ -1,0 +1,27 @@
+/* eslint-disable prettier/prettier */
+module.exports = {
+  navigation: {
+    system: '시스템',
+    services: '서비스',
+    notification: '알림 센터',
+    access: '접속',
+    members: '멤버',
+    passport: '여권',
+    analytics: '분석',
+    dashboard: '대시보드',
+    studio: 'Blocklet Studio',
+    blockletService: '블록렛 서비스',
+    didSpaces: '저장소 및 백업',
+    notifications: '알림',
+    didConnect: '신원 및 접근',
+    website: '웹사이트 스튜디오',
+    operations: '관측 가능성',
+    integration: '통합',
+    developer: '개발자',
+    aigne: 'AI 연결',
+    orgs: '조직',
+    nfts: 'NFTs',
+    settings: '설정',
+    userFollowers: '팔로우',
+  },
+};

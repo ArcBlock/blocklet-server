@@ -1,0 +1,1 @@
+export default (options: { port: number; root: string }) => any;

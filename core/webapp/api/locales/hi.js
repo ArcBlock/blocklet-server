@@ -1,0 +1,27 @@
+/* eslint-disable prettier/prettier */
+module.exports = {
+  navigation: {
+    system: 'सिस्टम',
+    services: 'सेवाएं',
+    notification: 'अधिसूचना केंद्र',
+    access: 'पहुंच',
+    members: 'सदस्य',
+    passport: 'पासपोर्ट',
+    analytics: 'विश्लेषण',
+    dashboard: 'डैशबोर्ड',
+    studio: 'Blocklet स्टूडियो',
+    blockletService: 'ब्लॉकलेट सेवा',
+    didSpaces: 'स्टोरेज और बैकअप',
+    notifications: 'अधिसूचनाएं',
+    didConnect: 'पहचान और पहुँच',
+    website: 'वेबसाइट स्टूडियो',
+    operations: 'पर्यवेक्षिता',
+    integration: 'एकीकरण',
+    developer: 'डेवलपर्स',
+    aigne: 'एआई कनेक्शन',
+    orgs: 'संगठन',
+    nfts: 'NFTs',
+    settings: 'सेटिंग्स',
+    userFollowers: 'अनुसरण करें',
+  },
+};

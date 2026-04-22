@@ -1,0 +1,130 @@
+syntax = "proto3";
+package abt_node;
+
+enum StatusCode {
+  ok = 0;
+
+  blocklet_not_found = 1;
+  blocklet_not_purchased = 2;
+
+  forbidden = 403;
+  internal = 500;
+  timeout = 504;
+}
+
+enum BlockletStatus {
+  added = 0;
+  downloading = 1;
+  downloaded = 2;
+  installing = 3;
+  installed = 4;
+  starting = 5;
+  running = 6;
+  stopping = 7;
+  stopped = 8;
+  error = 9;
+  upgrading = 10;
+  restarting = 11;
+  corrupted = 12;
+  waiting = 13;
+  deleted = 14;
+  unknown = 15;
+}
+
+enum BlockletSource {
+  registry = 0;
+  local = 1;
+  upload = 2;
+  url = 3;
+  custom = 4;
+}
+
+enum HeaderMatchType {
+  exact = 0;
+  partial = 1;
+  regexp = 2;
+}
+
+enum BackendServiceType {
+  daemon = 0;
+  blocklet = 1;
+  redirect = 2;
+  none = 3;
+  general_proxy = 4;
+  direct_response = 5;
+  rewrite = 6;
+  component = 7;
+}
+
+enum Upload {
+	scalar = 0;
+}
+
+enum SenderType {
+	slack = 0;
+	api = 1;
+}
+
+enum BackupTo {
+  spaces = 0;
+  disk = 1;
+}
+
+enum PublishType {
+  resource = 0;
+  pack = 1;
+}
+
+enum ReleaseStatus {
+  draft = 0;
+  published = 1;
+}
+
+enum NotificationAttachmentType {
+  asset = 0;
+  vc = 1;
+  token = 2;
+  text = 3;
+  image = 4;
+  divider = 5;
+  transaction = 6;
+  dapp = 7;
+  link = 8;
+  section = 9;
+}
+
+enum NotificationSendStatus {
+  pending = 0; // 等待发送
+  sent = 1; // 已发送
+  failed = 2; // 发送失败
+}
+
+enum NotificationSendFailedReason {
+  user_disabled = 0; // 用户未开启渠道
+  channel_unavailable = 1; // 未开启服务
+  channel_disabled = 2; // 开发者未选择此渠道
+  not_online = 3; // 用户未上线 - 只针对于wallet
+}
+  
+enum NotificationSendChannel {
+  app = 0;
+  email = 1;
+  push = 2;
+  webhook = 3;
+}
+
+enum UserRelationType {
+  following = 0; // 关注用户 正在关注
+  followers = 1; // 关注者 粉丝
+}
+
+enum OrgUserStatus {
+  active = 0; // 活跃中
+  inviting = 1; // 邀请中
+  inactive = 2; // 被禁止
+}
+
+enum OrgQueryType {
+  owned = 0; // 我创建的
+  joined = 1; // 我加入的
+}

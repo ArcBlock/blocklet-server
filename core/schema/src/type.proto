@@ -1,0 +1,1973 @@
+syntax = "proto3";
+package abt_node;
+
+import "enum.proto";
+import "google/protobuf/any.proto";
+
+// Node
+message NodeState {
+  string did = 1;
+  string pk = 2;
+  string version = 3;
+  string name = 4;
+  string description = 5;
+  string port = 6;
+
+  bool initialized = 8;
+  WalletInfo node_owner = 9;
+
+  uint32 created_at = 11;
+  uint32 started_at = 12;
+  uint32 initialized_at = 13;
+
+  string mode = 14;
+  NodeRouting routing = 15;
+  repeated ConfigEntry environments = 17; // not persistent but get returned at runtime
+
+  float uptime = 18;
+
+  // Added in v1.0.25 to support autoUpgrading
+  bool auto_upgrade = 19;
+  string next_version = 20;
+  string upgrade_session_id = 21;
+
+  // Added in v1.0.25 to support register on "Install on Blocklet Server"
+  string register_url = 22;
+
+  // Added in v1.0.33
+  bool enable_welcome_page = 23;
+
+  // Added in v1.1.1
+  string web_wallet_url = 24;
+
+  // Added in v1.2.1
+  repeated BlockletStore blocklet_registry_list = 25;
+
+  // Added in v1.2.6
+  OwnerNft owner_nft = 26;
+
+  uint32 disk_alert_threshold = 27;
+
+  // Added in v1.4.0
+  repeated TrustedPassport trusted_passports = 28;
+  LauncherInfo launcher = 29;
+
+  // Added in v1.4.10
+  bool enable_passport_issuance = 30;
+
+  // Added in v1.6.9
+  string did_registry = 31;
+  string did_domain = 32;
+
+  // Added in 1.8.44
+  uint32 status = 33;
+
+  // Added in 1.16.6
+  repeated TrustedFactory trusted_factories = 34;
+  bool enable_beta_release = 35;
+
+  NodeRuntimeConfig runtime_config = 36;
+
+  // Added in 1.16.17
+  string nft_domain_url = 37;
+
+  // Added in 1.16.28
+  bool enable_file_system_isolation = 38;
+
+  // Added in 1.16.31
+  bool enable_docker = 39;
+  bool is_docker_installed = 40;
+
+  // Added in 1.16.34
+  bool enable_docker_network = 41;
+  bool enable_session_hardening = 42;
+  string session_salt = 43;
+}
+
+message OwnerNft {
+  string did = 1;
+  string holder = 2;
+  string issuer = 3;
+  string launcher_session_id = 4;
+}
+
+message NodeRouting {
+  string provider = 1;
+  string snapshot_hash = 2;
+  string admin_path = 3;
+  RequestLimit request_limit = 4;
+  bool cache_enabled = 5;
+  BlockPolicy block_policy = 6;
+  ProxyPolicy proxy_policy = 7;
+  WAFPolicy waf_policy = 8;
+}
+
+message NodeInfo {
+  string name = 1;
+  string description = 2;
+  bool auto_upgrade = 4;
+
+  // Added in v1.0.33
+  bool enable_welcome_page = 5;
+
+  // Added in v1.1.1
+  string register_url = 6;
+  string web_wallet_url = 7;
+
+  // Added in v1.2.1
+  repeated BlockletStore blocklet_registry_list = 8;
+
+  uint32 disk_alert_threshold = 9;
+
+  bool enable_beta_release = 10;
+
+  string nft_domain_url = 11;
+
+  // added in v1.16.28
+  bool enable_file_system_isolation = 12;
+
+  // added in v1.16.31
+  bool enable_docker = 13;
+  bool is_docker_installed = 14;
+
+  // added in v1.16.34
+  bool enable_docker_network = 15;
+  bool enable_session_hardening = 16;
+}
+
+message ConnectedStore {
+  string store_id = 1;
+  string store_name = 2;
+  string store_url = 3;
+  string access_token = 4;
+  string developer_did = 5;
+  string developer_email = 6;
+  string developer_name = 7;
+  string scope = 8;
+}
+
+message BlockletStore {
+  string name = 1;
+  string description = 2;
+  string url = 3;
+  string logo_url = 4;
+  string maintainer = 5;
+  string cdn_url = 6;
+  bool protected = 8;
+  string id = 9;
+  string scope = 10;
+}
+
+message NodeEnvInfo {
+  IPInfo ip = 1;
+  string os = 2;
+  string location = 3;
+  bool docker = 4;
+  bool image = 5;
+  repeated BlockletEngine blocklet_engines = 6;
+  bool gitpod = 7;
+  DiskInfo disk = 8;
+  string db_provider = 9;
+  string router_provider = 10;
+}
+
+message NodeHistoryItem {
+  uint64 date = 1;
+  uint64 cpu = 2;
+  uint64 mem = 3;
+  uint64 daemon_mem = 4;
+  uint64 service_mem = 5;
+  uint64 hub_mem = 6;
+}
+
+// Blocklet
+
+message ChildConfig {
+  string name = 1;
+  string mount_point = 2;
+  bool required = 3;
+}
+
+message BlockletDockerMeta {
+  string image = 1;
+  string shell = 2;
+  bool run_base_script = 3;
+  bool install_node_modules = 4;
+}
+
+message BlockletMeta {
+  string did = 1;
+  string name = 2;
+  string version = 3;
+  string description = 4;
+  repeated BlockletMetaInterface interfaces = 5;
+  BlockletMetaPerson author = 6;
+  string main = 7;
+  BlockletStats stats = 8;
+  string homepage = 9;
+  string path = 11;
+  string community = 12;
+  string documentation = 13;
+  string support = 14;
+  repeated string screenshots = 15;
+  repeated string keywords = 16;
+  string group = 17;
+  string logo = 18;
+  string title = 19;
+  BlockletDist dist = 20;
+  repeated BlockletMetaPerson maintainers = 21;
+  repeated BlockletMetaPerson contributors = 22;
+  BlockletRepository repository = 23;
+  BlockletPayment payment = 24;
+  string nft_factory = 25;
+  uint32 last_published_at = 26;
+  BlockletCapabilities capabilities = 27;
+
+  repeated ChildConfig components = 28;
+  repeated Environment environments = 29;
+  Requirement requirements = 30;
+
+  string bundle_did = 31;
+  string bundle_name = 32;
+
+  repeated google.protobuf.Any navigation = 33;
+  repeated string resources = 34; // deprecated
+  BlockletResource resource = 35;
+
+  // added since v1.16.28
+  google.protobuf.Any engine = 36;
+
+  BlockletMetaOwner owner = 37;
+  BlockletDockerMeta docker = 38;
+
+  // Added in v1.16.39
+  repeated BlockletEvent events = 39;
+}
+
+message BlockletEvent {
+  string type = 1;
+  string description = 2;
+}
+
+message SimpleBlockletMeta {
+  string did = 1;
+  string name = 2;
+  string version = 3;
+  string description = 4;
+  string title = 5;
+  string bundle_did = 6;
+  string bundle_name = 7;
+}
+
+message OptionalDependencies {
+  string parent_did = 1;
+  string parent_name = 2;
+  string parent_title = 3;
+  string mount_point = 4;
+  bool required = 5;
+}
+
+message OptionalComponentState {
+  string logo_url = 1;
+  repeated OptionalDependencies dependencies = 2;
+  BlockletMeta meta = 3;
+  google.protobuf.Any bundle_source = 4;
+}
+
+message BlockletRepository {
+  string type = 1;
+  string url = 2;
+}
+
+message BlockletCapabilities {
+  bool cluster_mode = 1;
+  bool component = 2; // deprecated
+  bool navigation = 3;
+  string did_space = 4;
+  string resource_export_api = 5; // deprecated
+}
+
+message BlockletPayment {
+  repeated BlockletPaymentPrice price = 1;
+  repeated BlockletPaymentShare share = 2;
+}
+
+message BlockletPaymentPrice {
+  string address = 1;
+  string value = 2;
+  string symbol = 3;
+}
+
+message BlockletPaymentShare {
+  string address = 1;
+  string name = 2;
+  string value = 3;
+}
+
+message BlockletMetaInterface {
+  string type = 1;
+  string name = 2;
+  string path = 3;
+  string prefix = 4;
+  string protocol = 5;
+  google.protobuf.Any port = 6;
+  repeated BlockletMetaService services = 7;
+  repeated string cacheable = 8;
+  repeated string page_groups = 9;
+}
+
+message BlockletMetaPerson {
+  string name = 1;
+  string email = 2;
+  string url = 3;
+}
+message BlockletMetaOwner {
+  string avatar = 1;
+  string did = 2;
+  string email = 3;
+  string fullName = 4;
+}
+
+message BlockletDist {
+  string tarball = 1;
+  string integrity = 2;
+}
+
+message UpdateList {
+  string id = 1;
+  BlockletMeta meta = 2;
+}
+
+message BlockletPreUpdateInfo {
+  string update_id = 1;
+  repeated UpdateList update_list = 2;
+}
+
+message BlockletStats {
+  float downloads = 1;
+  float star = 2;
+  float purchases = 3;
+}
+
+message BlockletEngine {
+  string name = 1;
+  string display_name = 2;
+  string description = 3;
+  string version = 4;
+  bool available = 5;
+  bool visible = 6;
+  string logo = 7;
+}
+
+message BlockletExposeService {
+  string protocol = 1;
+  uint32 port = 2;
+  uint32 upstream_port = 3;
+}
+
+message BlockletControllerStatus {
+  uint32 value = 1;
+  string reason = 2;
+}
+
+message BlockletController {
+  string id = 1;
+  string nft_id = 2;
+  string nft_owner = 3;
+  string chain_host = 4;
+  uint32 expire_date = 5;
+  string consumed_at = 6;
+  string launcher_url = 7;
+  string launcher_session_id = 8;
+  string owner_did = 9;
+  BlockletControllerStatus status = 10;
+}
+
+message BlockletMigrateRecord {
+  string app_sk = 1;
+  string app_did = 2;
+  string at = 3;
+}
+
+message BlockletVaultRecord {
+  string pk = 1;
+  string did = 2;
+  uint32 at = 3;
+  string sig = 4;
+
+  // This signature is generated by app owner if the vault is the first one
+  // And generated by the previous vault if the vault is not the first one
+  string approver_sig = 5;
+
+  // These fields are only used for the first vault
+  string approver_did = 6;
+  string approver_pk = 7;
+}
+
+message BlockletState {
+  BlockletMeta meta = 1;
+  BlockletStatus status = 2;
+
+  uint32 created_at = 3;
+  uint32 installed_at = 4;
+  uint32 started_at = 5;
+  uint32 paused_at = 6;
+  uint32 stopped_at = 31; // Added in v1.6.1
+  uint32 updated_at = 41; // Added in v1.16.14
+
+  repeated ConfigEntry environments = 7; // daemon generated runtime config, usually sensitve
+  repeated ConfigEntry configs = 8; // stored in blocklet extras
+
+  DiskInfo disk_info = 9;
+  RuntimeInfo runtime_info = 10;
+  RuntimeInfo app_runtime_info = 39; // Added in v1.8.46
+
+  BlockletSource source = 11;
+  string deployed_from = 12;
+  google.protobuf.Any bundle_source = 34;
+
+  float port = 13; // TODO: this only exist for backward compatibility
+
+  BlockletEngine engine = 15;
+  string mode = 16;
+
+  // Added in v1.0.33 to support multiple ports, old `port` is still there for backward compatibility
+  // Should be a mapping of ports assigned to the blocklet
+  // Should be { BLOCKLET_PORT: port } in most cases
+  google.protobuf.Any ports = 17;
+
+  repeated ComponentState children = 19;
+
+  // Added in v1.16.23
+  repeated OptionalComponentState optional_components = 54;
+
+  // Added in 1.4.0
+  repeated TrustedPassport trusted_passports = 20;
+  repeated TrustedFactory trusted_factories = 21; // since v1.16.6
+
+  // Added in v1.4.10
+  bool enable_passport_issuance = 30;
+
+  // Added in v1.6.17
+  bool dynamic = 32; // deprecated
+  string mount_point = 33;
+
+  // Added in v1.7.1
+  BlockletSettings settings = 35;
+  string app_did = 36;
+  RoutingSite site = 37;
+
+  // Added in v1.8.28
+  BlockletController controller = 38;
+
+  // Added in v1.8.66
+  repeated BlockletMigrateRecord migrated_from = 50; // the complete migrate history
+  string app_pid = 51; // permanent app did, set on install/launch, just for indexing
+  bool external_sk = 52; // whether the appSk is managed by DID Wallet
+  string external_sk_source = 53; // which wallet and version is used
+
+  // Added in v1.16.0
+  string struct_version = 40;
+
+  // Added in v1.16.34
+  bool enable_docker = 55;
+  bool enable_docker_network = 56;
+
+  // Added in v1.16.39
+  repeated BlockletVaultRecord vaults = 57; // the complete vault history
+}
+
+message BlockletExtra {
+  string did = 1;
+  string app_did = 2;
+  SimpleBlockletMeta meta = 3;
+  repeated ConfigEntry configs = 4;
+  repeated ChildExtraConfigs children = 5;
+  BlockletSettings settings = 6;
+}
+
+message ChildExtraConfigs {
+  string did = 1;
+  repeated ConfigEntry configs = 2;
+}
+
+message ComponentState {
+  BlockletMeta meta = 1;
+  BlockletStatus status = 2;
+
+  uint32 created_at = 3;
+  uint32 installed_at = 4;
+  uint32 started_at = 5;
+  uint32 paused_at = 6;
+  uint32 stopped_at = 31; // Added in v1.6.1
+
+  repeated ConfigEntry environments = 7; // daemon generated runtime config, usually sensitve
+  repeated ConfigEntry configs = 8; // stored in blocklet extras
+
+  DiskInfo disk_info = 9;
+  RuntimeInfo runtime_info = 10;
+
+  BlockletSource source = 11;
+  string deployed_from = 12;
+  google.protobuf.Any bundle_source = 34;
+
+  float port = 13; // TODO: this only exist for backward compatibility
+
+  BlockletEngine engine = 15;
+  string mode = 16;
+
+  // Added in v1.0.33 to support multiple ports, old `port` is still there for backward compatibility
+  // Should be a mapping of ports assigned to the blocklet
+  // Should be { BLOCKLET_PORT: port } in most cases
+  google.protobuf.Any ports = 17;
+
+  repeated ComponentState children = 19;
+
+  // Added in v1.6.17
+  bool dynamic = 32; // deprecated
+  string mount_point = 33;
+
+  // Added in v1.9.0
+  repeated Dependent dependents = 35;
+
+  // component is optional or required
+  bool required = 36;
+
+  RuntimeInfo app_runtime_info = 37;
+
+  BlockletStatus green_status = 38;
+}
+
+message SimpleBlockletState {
+  SimpleBlockletMeta meta = 1;
+  BlockletStatus status = 2;
+  string deployed_from = 3;
+  string mount_point = 4;
+  uint32 deleted_at = 5;
+}
+
+message ConnectEndpoint {
+  string id = 1;
+  string scope = 2;
+  string url = 3;
+  string endpoint = 4;
+  bool protected = 5;
+  string app_name = 6;
+  string app_description = 7;
+}
+
+message BlockletSettings {
+  bool initialized = 1;
+  bool enable_passport_issuance = 2;
+  repeated TrustedPassport trusted_passports = 3;
+  string who_can_access = 4;
+  WalletInfo owner = 5;
+  repeated SimpleBlockletState children = 6;
+  bool public_to_store = 7;
+  repeated BlockletStore store_list = 8;
+  repeated ConfigNavigation navigations = 9;
+  // added since v1.17.7, use authentication replace oauth
+  google.protobuf.Any authentication = 10;
+  repeated TrustedFactory trusted_factories = 11; // since v1.16.6
+  google.protobuf.Any notification = 12;
+  SessionConfig session = 13;
+  FederatedConfig federated = 14;
+
+  AutoCheckUpdate auto_check_update = 15;
+  AutoBackup auto_backup = 16;
+
+  // v1.16.31
+  InviteSettings invite = 17;
+  google.protobuf.Any theme = 18;
+
+  repeated ConnectEndpoint endpoint_list = 19;
+
+  Gateway gateway = 20;
+  bool enable_session_hardening = 21;
+  AigneConfig aigne = 22;
+  OrgSettings org = 23;
+  // added since v1.17.7
+  google.protobuf.Any did_connect = 24;
+
+  // deprecated since v1.17.7, but kept for backward compatibility
+  google.protobuf.Any oauth = 25;
+
+  // added since v1.17.8
+  google.protobuf.Any action_config = 26;
+
+  // added since v1.17.9
+  SubServiceConfig sub_service = 27;
+}
+
+message BlockletMetaService {
+  string name = 1;
+  google.protobuf.Any config = 2;
+}
+
+message BlockletVersion {
+  string version = 1;
+  uint32 published_at = 2;
+}
+
+message BlockletBackupState {
+  string app_did = 1;
+  string app_pid = 2;
+  string name = 3;
+  uint32 created_at = 4;
+}
+
+message BlockletDiff {
+  bool has_blocklet = 1;
+  string version = 2;
+  repeated string add_set = 3;
+  repeated string change_set = 4;
+  repeated string delete_set = 5;
+}
+
+message ConfigEntry {
+  string key = 1;
+  string value = 2;
+  bool required = 3;
+  string description = 4;
+  string validation = 5;
+  bool secure = 6;
+  bool custom = 7;
+  bool shared = 8;
+}
+
+message ConfigNavigation {
+  string id = 1;
+  string title = 2;
+  string link = 3;
+  string icon = 4;
+  string section = 5;
+  string component = 6;
+  string parent = 7;
+  string role = 8;
+  bool visible = 9;
+  string from = 10;
+  string active_icon = 11;
+  string color = 12;
+  string active_color = 13;
+  string description = 14;
+  bool private = 15;
+}
+
+message Environment {
+  string name = 1;
+  string description = 2;
+  string default = 3;
+  bool required = 4;
+  bool secure = 5;
+  string validation = 6;
+  bool shared = 7;
+}
+
+message Requirement {
+  string server = 1;
+  google.protobuf.Any os = 2;
+  google.protobuf.Any cpu = 3;
+  repeated Fuel fuels = 4;
+  bool aigne = 5;
+}
+
+message Fuel {
+  string endpoint = 1;
+  string address = 2;
+  string value = 3;
+  string reason = 4;
+}
+
+message WalletInfo {
+  string did = 1;
+  string pk = 2;
+}
+
+message DiskInfo {
+  float app = 1;
+  float data = 2;
+  float log= 3;
+  float cache= 4;
+  float blocklets= 5;
+}
+
+message RuntimeInfo {
+  string pid = 1;
+  string port = 2;
+  string uptime = 3;
+  float memory_usage = 4;
+  float cpu_usage = 5;
+  bool running_docker = 6;
+  google.protobuf.Any cpus = 7;
+}
+
+message HashFile {
+  string file = 1;
+  string hash = 2;
+}
+
+message BlockletHistoryItem {
+  uint64 date = 1;
+  uint64 cpu = 2;
+  uint64 mem = 3;
+}
+
+
+message TUTM {
+  string source = 1;
+  string medium = 2;
+  string campaign = 3;
+  string content = 4;
+}
+
+message NotificationAttachment {
+  google.protobuf.Any data = 1;
+  google.protobuf.Any fields = 2;
+  NotificationAttachmentType type = 3;
+}
+
+message NotificationAction {
+  string bgColor = 1;
+  string color = 2;
+  string link = 3;
+  string name = 4;
+  string title = 5;
+  TUTM utm = 6;
+}
+
+message Statistics {
+  uint32 total = 1;
+  uint32 pending = 2;
+  uint32 success = 3;
+  uint32 failed = 4;
+}
+
+message WebhookStatistics {
+  uint32 total = 1;
+  repeated string pending = 2;
+  repeated string success = 3;
+  repeated string failed = 4;
+}
+
+message NotificationStatistics {
+  uint32 total = 1;
+  Statistics wallet = 2;
+  Statistics push = 3;
+  Statistics email = 4;
+  WebhookStatistics webhook = 5;
+}
+
+message NotificationActivity {
+  enum ActivityTypeEnum {
+    comment = 0;
+    like = 1;
+    follow = 2;
+    tips = 3;
+    mention = 4;
+    assign = 5;
+    un_assign = 6;
+  }
+
+  ActivityTypeEnum type = 1;
+  string actor = 2;
+  google.protobuf.Any target = 3;
+  google.protobuf.Any meta = 4;
+}
+
+// Notification
+message Notification {
+
+  enum NotificationSource {
+    system = 0;
+    component = 1;
+  }
+
+  enum NotificationType {
+    notification = 0;
+    connect = 1;
+    feed = 2;
+    hi = 3;
+    passthrough = 4;
+  }
+
+  enum NotificationSeverity {
+    info = 0;
+    success = 1;
+    error = 2;
+    warning = 3;
+  }
+
+  string sender = 1; // who is sending this notification: did
+  string receiver = 2; // who will receive this notification: did
+  string title = 3;
+  string description = 4;
+  string action = 5; // a link when user open the notification
+  string entity_type = 6; // blocklet | node
+  string entity_id = 7; // did
+  bool read = 8;
+  uint32 created_at = 9;
+  string id = 11;
+  NotificationSeverity severity = 12; // severity: error, info, warning, success
+  NotificationSource source = 13;
+  repeated NotificationAttachment attachments = 14;
+  repeated NotificationAttachment blocks = 15;
+  repeated NotificationAction actions = 16;
+  string component_did = 17;
+  NotificationType type = 18;
+  repeated NotificationReceiver receivers = 19;
+  google.protobuf.Any data = 20;
+  string feed_type = 21;
+  NotificationStatistics statistics = 22;
+  NotificationActivity activity = 23;
+  UserInfo actor_info = 24;
+  google.protobuf.Any options = 25;
+  TUTM utm = 26;
+}
+
+message NotificationSendRecord {
+  uint32 send_status = 1;
+  uint32 send_at = 2;
+  string failed_reason = 3;
+}
+
+message NotificationReceiver {
+  string id = 1;
+  string notification_id = 2;
+  string receiver = 3;
+  bool read = 4;
+  uint32 read_at = 5;
+  uint32 wallet_send_status = 6;
+  uint32 wallet_send_at = 7;
+  uint32 push_kit_send_status = 8;
+  uint32 push_kit_send_at = 9;
+  uint32 email_send_status = 10;
+  uint32 email_send_at = 11;
+  uint32 created_at = 12;
+  UserInfo receiver_user = 14;
+
+  string wallet_send_failed_reason = 15;
+  repeated NotificationSendRecord wallet_send_record = 16;
+  string push_kit_send_failed_reason = 17;
+  repeated NotificationSendRecord push_kit_send_record = 18;
+  string email_send_failed_reason = 19;
+  repeated NotificationSendRecord email_send_record = 20;
+  google.protobuf.Any webhook = 21;
+
+  string email = 22;
+  string webhook_urls = 23;
+  string device_id = 24;
+}
+
+// Routing
+message RoutingRuleResponse {
+  uint32 status = 1;
+  string content_type = 2;
+  string body = 3;
+}
+
+message RoutingRuleTo {
+  uint32 port = 1;
+  BackendServiceType type = 2;
+  string did = 3;
+  string url = 4;
+  int32 redirect_code = 5;
+  string interface_name = 6;
+  string component_id = 7;
+  string page_group = 8;
+  RoutingRuleResponse response = 9;
+}
+
+message RoutingRuleFrom {
+  string path_prefix = 1;
+  repeated RoutingRuleHeader header = 2;
+}
+
+message RoutingRule {
+  string id = 1;
+  RoutingRuleFrom from = 2;
+  RoutingRuleTo to = 3;
+  bool is_protected = 4;
+}
+
+message RoutingSite {
+  string id = 1;
+  string domain = 2;
+  repeated google.protobuf.Any domain_aliases = 3;
+  repeated RoutingRule rules = 4;
+  bool is_protected = 5;
+  repeated string cors_allowed_origins = 6;
+}
+
+message RoutingRuleHeader {
+  string key = 1;
+  string value = 2;
+  HeaderMatchType type = 3;
+}
+
+message RoutingProvider {
+  string name = 1;
+  string description = 2;
+  bool running = 3;
+  bool available = 4;
+  string error = 5;
+}
+
+message Certificate {
+  string name = 1;
+  string domain = 2;
+  string id = 3;
+  CertificateMeta meta = 4;
+  repeated MatchedSites matched_sites = 5;
+  uint32 created_at = 6;
+  uint32 updated_at = 7;
+  bool is_protected = 9;
+  string source = 10;
+  string status = 11;
+}
+
+message CertificateMeta {
+  CertificateIssuer issuer = 1;
+  repeated string sans = 2;
+  int64 valid_from = 3;
+  int64 valid_to = 4;
+  string fingerprint_alg = 5;
+  string fingerprint = 6;
+  int64 validity_period = 7;
+}
+
+message MatchedSites {
+  string id = 1;
+  string domain = 2;
+}
+
+message CertificateIssuer {
+  string country_name = 1;
+  string organization_name = 2;
+  string common_name = 3;
+}
+
+// AccessKey
+
+message AccessKey {
+  string access_key_id = 1;
+  string access_key_public = 2;
+  string remark = 3;
+  string passport = 4;
+  uint32 created_at = 5;
+  uint32 updated_at = 6;
+  uint32 last_used_at = 7;
+  string created_by = 8;
+  string updated_by = 9;
+
+  // added v1.16.42
+  string auth_type = 10; // simple | signature
+  string component_did = 11; // which component created this access key
+  string resource_type = 12; // which type of resource this access key is for
+  string resource_id = 13; // which resource this access key is for
+  string created_via = 14; // sdk | web | connect
+  uint32 expire_at = 15; // when the access key will expire
+}
+message CreateAccessKey {
+  string access_key_id = 1;
+  string access_key_public = 2;
+  string access_key_secret = 3;
+  string remark = 4;
+  string passport = 5;
+  uint32 created_at = 6;
+  uint32 last_used_at = 7;
+
+  // added v1.16.42
+  string auth_type = 8; // simple | signature
+  string component_did = 9; // which component created this access key
+  string resource_type = 10; // which type of resource this access key is for
+  string resource_id = 11; // which resource this access key is for
+  string created_via = 12; // sdk | web | connect
+  uint32 expire_at = 13; // when the access key will expire
+}
+
+// WebHook
+
+// 描述了 Sender 是什么，需要设什么才能工作
+message WebHookSender {
+  SenderType type = 1; // slack/api
+  string title = 2; // Slack Notification
+  string description = 3;
+  repeated WebHookParam params = 4;
+}
+
+// 这是用户配置的 Sender 列表
+message WebHook {
+  SenderType type = 1; // slack/api
+  string id = 2;
+  repeated WebHookParam params = 3;
+  uint32 created_at = 4;
+  uint32 updated_at = 5;
+}
+
+message WebHookParam {
+  string name = 1;
+  string description = 2;
+  bool required = 3;
+  string default_value = 4;
+  string value = 5;
+  string type = 6;
+  bool enabled = 7;
+  uint32 consecutive_failures = 8;
+}
+
+// Team
+message Tag {
+  uint32 id = 1;
+  string title = 2;
+  string description = 3;
+  string color = 4;
+  uint32 created_at = 5;
+  uint32 updated_at = 6;
+  string slug = 7;
+  string type = 8;
+  string component_did = 9;
+  uint32 parent_id = 10;
+  string created_by = 11;
+  string updated_by = 12;
+}
+
+message Tagging {
+  uint32 tag_id = 1;
+  string taggable_type = 2;
+  repeated string taggable_ids = 3;
+}
+
+message Team {
+  string team_did = 1;
+  Paging paging = 2;
+}
+
+message InviteInfo {
+  string invite_id = 1;
+  string role = 2;
+  string remark = 3;
+  string expire_date = 4;
+  UserInfo inviter = 5;
+  string team_did = 6;
+  string interface_name = 7;
+  PassportDisplay display = 8;
+  string org_id = 9;
+  repeated string invite_user_dids = 10;
+}
+
+message ConnectedAccountInfo {
+  string name = 1;
+  string picture = 2;
+  string email = 3;
+  bool email_verified = 4;
+  string sub = 5;
+  google.protobuf.Any extra_data = 6;
+}
+
+message ConnectedAccount {
+  string provider = 1;
+  string did = 2;
+  string pk = 3;
+  string id = 4;
+  uint32 last_login_at = 5;
+  ConnectedAccountInfo user_info = 7;
+  google.protobuf.Any extra = 8;
+}
+
+message UserMetadataLink {
+  string url = 1;
+  string favicon = 2;
+}
+
+message UserMetadataStatus {
+  string label = 1;
+  string icon = 2;
+  string duration = 3;
+  repeated uint32 date_range = 4;
+}
+
+message UserPhoneInfo {
+  string country = 1;
+  string phone_number = 2;
+}
+
+message UserMetadata {
+  string bio = 1;
+  string location = 2;
+  string timezone = 3;
+  string cover = 4;
+  repeated UserMetadataLink links = 5;
+  UserMetadataStatus status = 6;
+  UserPhoneInfo phone = 7;
+}
+
+message UserAddress {
+  string country = 1;
+  string province = 2;
+  string city = 3;
+  string postal_code = 4;
+  string line1 = 5;
+  string line2 = 6;
+}
+
+message SimpleUserInfo {
+  string did = 1;
+  string avatar = 2;
+  string full_name = 3;
+}
+
+message UserInfo {
+  string did = 1;
+  string pk = 2;
+  string role = 3;
+  string avatar = 4;
+  string full_name = 5;
+  string email = 6;
+  bool approved = 7;
+  uint32 created_at = 8;
+  uint32 updated_at = 9;
+  string locale = 10;
+  repeated Passport passports = 11;
+  uint32 first_login_at = 12;
+  uint32 last_login_at = 13;
+  string remark = 14;
+  string last_login_ip = 15;
+  string source_provider = 16;
+  string source_app_pid = 17;
+  repeated ConnectedAccount connected_accounts = 18;
+  google.protobuf.Any extra = 19;
+
+  repeated Tag tags = 20;
+
+  // since v1.16.21
+  google.protobuf.Any did_space = 21;
+  repeated UserSession user_sessions = 22;
+
+  // 新增
+  string url = 23;
+  string phone = 24;
+
+  // added v1.16.31
+  string inviter = 25;
+  uint32 generation = 26;
+
+  // added v1.16.32
+  bool email_verified = 27;
+  bool phone_verified = 28;
+
+  // add metadata for user
+  // added v1.16.40
+  UserMetadata metadata = 29;
+
+  // added v1.16.41 (您当前的版本号)
+  UserAddress address = 30;
+
+  uint32 user_sessions_count = 31;
+  bool is_following = 32;
+  string name = 33;
+  string created_by_app_pid = 34;
+}
+
+message UserProfile {
+  string did = 1;
+  string avatar = 2;
+  string full_name = 3;
+  string email = 4;
+}
+
+message RelationshipType {
+  UserRelationType type = 1;
+  string user_did = 2;
+}
+
+message UserQuery {
+  string role = 1;
+  bool approved = 2;
+  string search = 3;
+  string connected_did = 4;
+  repeated uint32 tags = 5;
+  string inviter = 6;
+  string invitee = 7;
+  uint32 generation = 8;
+  bool include_tags = 9;
+  bool include_user_sessions = 10;
+  bool include_passports = 11;
+  bool include_connected_accounts = 12;
+  bool include_follow_status = 13;
+  string created_by_app_pid = 14;
+}
+
+message UserSort {
+  uint32 updated_at = 1;
+  uint32 created_at = 2;
+  uint32 last_login_at = 3;
+}
+
+
+message UserSessionSort {
+  uint32 updated_at = 1;
+  uint32 created_at = 2;
+}
+message UserSessionQuery {
+  string user_did = 1;
+  string visitor_id = 2;
+  string app_pid = 3;
+  string status = 4;
+  bool include_user = 5;
+  string created_by_app_pid = 6;
+}
+message UserSession {
+  string id = 1;
+  string visitor_id = 2;
+  string app_pid = 3;
+  string user_did = 4;
+  string ua = 5;
+  string passport_id = 6;
+  string status = 7;
+  string last_login_ip = 8;
+  google.protobuf.Any extra = 9;
+  uint32 created_at = 10;
+  uint32 updated_at = 11;
+  string created_by_app_pid = 12;
+};
+
+message BlockletQuery {
+}
+
+// RBAC
+message Role {
+  string name = 1;
+  string description = 2;
+  repeated string grants = 3;
+  string title = 4;
+  bool is_protected = 5;
+  google.protobuf.Any extra = 6;
+  string org_id = 7;
+}
+
+message RoleAcquire {
+  string pay = 1; // 可以通过购买获得，指向当前应用集成的 payment-kit 的可购买链接
+  string exchange = 2; // 可以通过 NFT 兑换获取，指向 nft-factory-address
+  bool invite = 3; // 可以通过邀请获得，默认为 true
+  bool transfer = 4; // 可以转让，默认为 false
+  bool request = 5; // 可以申请获得，默认为 false
+}
+
+message RoleUpdate {
+  string name = 1;
+  string title = 2;
+  string description = 3;
+  string extra = 4;
+}
+
+message Permission {
+  string name = 1;
+  string description = 2;
+  bool is_protected = 3;
+}
+
+// Passport
+message PassportDisplay {
+  // Can be svg|url|svg_gzipped|uri
+  string type = 1;
+
+  // Varies according to the type
+  // For svg type, content should be the svg itself
+  // For url type, content should be the url to fetch the display content
+  string content = 2;
+}
+
+
+message Issuer {
+  string id = 1;
+  string name = 2;
+  string pk = 3;
+}
+
+message PassportIssuanceInfo {
+  string id = 1;
+  string name = 2; // passport name (as same as role name)
+  string title = 3; // passport title (as same as role name)
+  string expire_date = 4;
+  string team_did = 5;
+  string owner_did = 6;
+  PassportDisplay display = 7;
+}
+
+message TrustedPassport {
+  string issuer_did = 1;
+  string remark = 2;
+  repeated TrustedPassportMapping mappings = 3;
+}
+
+message TrustedFactory {
+  string holder_did = 1;
+  string issuer_did = 2;
+  string factory_address = 3;
+  string remark = 4;
+  TrustedPassportMappingTo passport = 5;
+}
+
+message TrustedPassportMapping {
+  TrustedPassportMappingFrom from = 1;
+  TrustedPassportMappingTo to = 2;
+}
+
+message TrustedPassportMappingFrom {
+  string passport = 1;
+}
+message TrustedPassportMappingTo {
+  string role = 1;
+  string ttl = 2; // how long the passport is valid since it is issued
+  string ttl_policy = 3;
+}
+
+// general
+message IPInfo {
+  string internal_v4 = 1;
+  string external_v4 = 2;
+  string internal_v6 = 3;
+  string external_v6 = 4;
+}
+
+message LauncherInfo {
+  string did = 1;
+  string type = 2;
+  string provider = 3;
+  string url = 4;
+  string tag = 5;
+  string chain_host = 6;
+}
+
+message Paging {
+  uint32 total = 1; // number of rows
+  uint32 page_size = 2; // number of rows per page
+  uint32 page_count = 3; // number of page
+  uint32 page = 4; // current page number
+}
+
+message Sort {
+  string field = 1; // field name to sort by
+  string direction = 2; // 'asc' | 'desc'
+}
+
+message AuditLogActor {
+  string did = 1;
+  string role = 2;
+  string full_name = 3;
+  string avatar = 4;
+  string source = 5;
+}
+message AuditLogEnvItem {
+  string name = 1;
+  string version = 2;
+}
+message AuditLogEnv {
+  AuditLogEnvItem browser = 1;
+  AuditLogEnvItem os = 2;
+}
+
+message AuditLog {
+  string id = 1;
+  string scope = 2;
+  string category = 3;
+  string action = 4;
+  string content = 5;
+  AuditLogActor actor = 6;
+  AuditLogEnv env = 7;
+  uint32 created_at = 8;
+  string ip = 9;
+  string ua = 10;
+  string component_did = 11;
+}
+
+message RequestLimit {
+  bool enabled = 1;
+  uint32 global = 2;
+  uint32 burst_factor = 3;
+  uint32 burst_delay = 4;
+  uint32 rate = 5;
+  repeated string methods = 6;
+}
+
+message AutoBlockPolicy {
+  bool enabled = 1;
+  uint32 window_size = 2;
+  uint32 window_quota = 3;
+  uint32 block_duration = 4;
+  repeated uint32 status_codes = 5;
+}
+
+message BlockPolicy {
+  bool enabled = 1;
+  repeated string blacklist = 2;
+  AutoBlockPolicy auto_blocking = 3;
+}
+
+message ProxyPolicy {
+  bool enabled = 1;
+  bool trust_recursive = 2;
+  repeated string trusted_proxies = 3;
+  string real_ip_header = 4;
+}
+
+message WAFPolicy {
+  bool enabled = 1;
+  string mode = 2;
+  uint32 inbound_anomaly_score_threshold = 3;
+  uint32 outbound_anomaly_score_threshold = 4;
+  uint32 log_level = 5;
+}
+
+message Gateway {
+  RequestLimit request_limit = 1;
+  BlockPolicy block_policy = 2;
+  ProxyPolicy proxy_policy = 3;
+  bool cache_enabled = 4;
+  WAFPolicy waf_policy = 5;
+}
+
+message BlockletGateway {
+  RequestLimit request_limit = 1;
+  BlockPolicy block_policy = 2;
+  ProxyPolicy proxy_policy = 3;
+  bool cache_enabled = 4;
+  WAFPolicy waf_policy = 5;
+  string team_did = 6;
+}
+
+message AigneConfig {
+  string provider = 1;
+  string model = 2;
+  string key = 3;
+  string url = 4;
+  string access_key_id = 5;
+  string secret_access_key = 6;
+  string validation_result = 7;
+}
+
+message DelegationState {
+  bool delegated = 1;
+}
+
+message KeyValue {
+  string key = 1;
+  google.protobuf.Any value = 2;
+}
+
+message DownloadToken {
+  string did = 1;
+  string token = 2;
+}
+
+message Dependent {
+  string id = 1; // component id. format: xxx/xxx/xxx
+  bool required = 2;
+}
+
+message Migration {
+  string script = 1;
+  string version = 2;
+  uint32 executed_at = 3;
+  uint32 created_at = 4;
+  uint32 updated_at = 5;
+}
+
+message SpaceGateway {
+  string name = 1;
+  string url = 2;
+  string protected = 3;
+  string endpoint = 4;
+  string did = 5;
+}
+
+message Backup {
+  string app_pid = 1;
+  string user_did = 2;
+  uint32 strategy = 3;
+
+  string source_url = 4;
+  string target = 5;
+  string target_name = 6;
+  string target_url = 7;
+
+  uint32 created_at = 8;
+  uint32 updated_at = 9;
+
+  uint32 status = 10;
+  string message = 11;
+
+  uint32 progress = 12;
+  google.protobuf.Any metadata = 13;
+}
+
+message AutoBackup {
+  bool enabled = 1;
+}
+
+message AutoCheckUpdate {
+  bool enabled = 1;
+}
+
+message InviteSettings {
+  bool enabled = 1;
+}
+
+message OrgSettings {
+  bool enabled = 1;
+  uint32 max_member_per_org = 2;
+  uint32 max_org_per_user = 3;
+}
+
+message SubServiceConfig {
+  bool enabled = 1;
+  string domain = 2;
+  string static_root = 3;
+}
+
+message LoginEmailSettings {
+  bool enabled = 1;
+  bool require_verified = 2;
+  bool require_unique = 3;
+  bool trust_oauth_providers = 4;
+  bool enable_domain_black_list = 5;
+  repeated string domain_black_list = 6;
+  bool enable_domain_white_list = 7;
+  repeated string domain_white_list = 8;
+  repeated Issuer trusted_issuers = 9;
+}
+
+message LoginPhoneSettings {
+  bool enabled = 1;
+  bool require_verified = 2;
+  bool require_unique = 3;
+  repeated Issuer trusted_issuers = 5;
+  bool enable_region_black_list = 6;
+  repeated string region_black_list = 7;
+  bool enable_region_white_list = 8;
+  repeated string region_white_list = 9;
+}
+
+message SessionConfig {
+  uint32 cache_ttl = 1;
+  uint32 ttl = 2;
+  LoginEmailSettings email = 3;
+  LoginPhoneSettings phone = 4;
+  string salt = 5;
+  bool enable_blacklist = 6;
+}
+
+message FederatedConfigDetail {
+  string app_id = 1;
+  string app_pid = 2;
+  string delegation = 3;
+  bool is_master = 4;
+  bool auto_login = 5;
+}
+
+message FederatedConfigSite {
+  string app_id = 1;
+  string app_pid = 2;
+  repeated string alias_did = 3;
+  string app_name = 4;
+  string app_description = 5;
+  string app_url = 6;
+  repeated string alias_domain = 7;
+  string app_logo = 8;
+  string app_logo_rect = 9;
+  string did = 10;
+  string pk = 11;
+  string version = 12;
+  string server_id = 13;
+  string server_version = 14;
+  uint32 applied_at = 15;
+  string status = 16;
+  bool is_master = 17;
+}
+
+message FederatedConfig {
+  FederatedConfigDetail config = 1;
+  repeated FederatedConfigSite sites = 2;
+}
+
+
+message TrafficInsight {
+  string did = 1;
+  string date = 2;
+  uint32 total_requests = 3;
+  uint32 valid_requests = 4;
+  uint32 failed_requests = 5;
+  uint32 generation_time = 6;
+  uint32 unique_visitors = 7;
+  uint32 unique_files = 8;
+  uint32 excluded_hits = 9;
+  uint32 unique_referrers = 10;
+  uint32 unique_not_found = 11;
+  uint32 unique_static_files = 12;
+  uint32 log_size = 13;
+  uint32 bandwidth = 14;
+}
+
+message NodeRuntimeConfig {
+  uint32 blocklet_max_memory_limit = 1;
+  uint32 daemon_max_memory_limit = 2;
+}
+
+message ConnectedEndpoint {
+  string endpoint_id = 1;
+  string access_key_id = 2;
+  string access_key_secret = 3;
+  string expire_id = 5;
+  string developer_did = 4;
+  string developer_name = 6;
+  string developer_email = 7;
+  string created_by = 8;
+}
+
+message Project {
+  string id = 1;
+  PublishType type = 2;
+  string blocklet_did = 3;
+  string blocklet_version = 4;
+  string blocklet_title = 5;
+  string blocklet_description = 6;
+  string blocklet_logo = 7;
+  string blocklet_introduction = 8;
+  repeated string blocklet_screenshots = 9;
+  string created_at = 10;
+  string updated_at = 11;
+  string componentDid = 12;
+  string last_release_id = 13;
+  repeated string last_release_files = 14;
+  repeated ConnectedStore connected_stores = 15;
+
+  // since v1.16.27
+  string tenant_scope = 16;
+  string created_by = 17;
+  bool auto_upload = 18;
+  bool possible_same_store = 19;
+
+  repeated ConnectedEndpoint connected_endpoints = 20;
+}
+
+message Release {
+  string id = 1;
+  string project_id = 2;
+  string blocklet_did = 3;
+  string blocklet_version = 4;
+  string blocklet_title = 5;
+  string blocklet_description = 6;
+  string blocklet_logo = 7;
+  string blocklet_introduction = 8;
+  repeated string blocklet_screenshots = 9;
+  string note = 10;
+  repeated string files = 11;
+  ReleaseStatus status = 12;
+  string created_at = 13;
+  string updated_at = 14;
+  repeated ReleaseComponent blocklet_components = 15;
+  repeated string published_store_ids = 16;
+
+  // since v1.16.28
+  // If set, this blocklet will be use static-server as engine
+  string uploaded_resource = 18;
+  string blocklet_resource_type = 19;
+  string blocklet_support = 20;
+  string blocklet_community = 21;
+  string blocklet_homepage = 22;
+  repeated string blocklet_videos = 23;
+  string blocklet_repository = 24;
+  string content_type = 25;
+  BlockletDocker blocklet_docker = 26;
+  bool blocklet_singleton = 27;
+}
+
+message BlockletResource {
+  string export_api = 1;
+  repeated BlockletResourceType types = 2;
+  repeated BlockletResourceBundle bundles = 3;
+}
+
+message BlockletResourceType {
+  string type = 1;
+  string description = 2;
+}
+
+message BlockletResourceBundle {
+  string did = 1;
+  string type = 2;
+  bool public = 3;
+}
+
+message ReleaseComponent {
+  string did = 1;
+  bool required = 3;
+}
+
+// blocklet security rule
+message BlockletSecurityRuleQuery {
+  string search = 1;
+}
+
+message BlockletResponseHeaderPolicyQuery {
+  string search = 1;
+}
+
+message BlockletAccessPolicyQuery {
+  string search = 1;
+}
+
+message BlockletResponseHeaderPolicy {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string security_header = 4;
+  string cors = 5;
+  string custom_header = 6;
+  string remove_header = 7;
+  bool is_protected = 8;
+}
+
+
+message BlockletAccessPolicy {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  google.protobuf.Any roles = 4;
+  bool reverse = 5;
+  bool is_protected = 6;
+}
+
+message BlockletSecurityRule {
+  string id = 1;
+  string path_pattern = 2;
+  string component_did = 3;
+  uint32 priority = 4;
+  string response_header_policy_id = 5;
+  string access_policy_id = 6;
+  bool enabled = 7;
+  string remark = 8;
+  BlockletAccessPolicy access_policy = 9;
+  BlockletResponseHeaderPolicy response_header_policy = 10;
+}
+
+message DockerRunKeyValuePair {
+    string key = 1;
+    string value = 2;
+    string path = 3;
+    string type = 4;
+    string name = 5;
+    string prefix = 6;
+    string protocol = 7;
+    string proxy_behavior = 8;
+}
+
+
+message DockerEnvKeyValuePair {
+    string key = 1;
+    string value = 2;
+    string description = 3;
+    bool secure = 4;
+    bool shared = 5;
+    bool required = 6;
+    string custom = 7;
+}
+
+message BlockletDocker {
+  string docker_image = 1;
+  repeated DockerRunKeyValuePair docker_args = 2;
+  repeated DockerEnvKeyValuePair docker_envs = 3;
+  string docker_command = 4;
+}
+
+message EnableEvent {
+  string type = 1;
+  string source = 2;
+}
+
+message WebhookEndpointState {
+  string id = 1;
+  string api_version = 2;
+  string url = 3;
+  string description = 4;
+  repeated EnableEvent enabled_events = 5;
+  google.protobuf.Any metadata = 6;
+  string status = 7;
+  uint32 created_at = 8;
+  uint32 updated_at = 9;
+  string secret = 10;
+}
+
+message WebhookEndpointWithUserInfo {
+  string id = 1;
+  string api_version = 2;
+  string url = 3;
+  string description = 4;
+  repeated EnableEvent enabled_events = 5;
+  google.protobuf.Any metadata = 6;
+  string status = 7;
+  uint32 created_at = 8;
+  uint32 updated_at = 9;
+  UserInfo create_user = 10;
+  UserInfo update_user = 11;
+  string secret = 12;
+}
+
+message WebhookAttemptState {
+  string id = 1;
+  string event_id = 2;
+  string webhook_id = 3;
+  string status = 4;
+  uint32 response_status = 5;
+  google.protobuf.Any response_body = 6;
+  uint32 retry_count = 7;
+  uint32 created_at = 8;
+  uint32 updated_at = 9;
+  string triggered_by = 10;
+  string triggered_from = 11;
+}
+
+message WebhookEventState {
+  string id = 1;
+  string type = 2;
+  string api_version = 3;
+  google.protobuf.Any data = 4;
+  string object_type = 5;
+  string object_id = 6;
+  google.protobuf.Any request = 7;
+  uint32 pending_webhooks = 8;
+  google.protobuf.Any metadata = 9;
+  uint32 created_at = 10;
+  uint32 updated_at = 11;
+  string source = 12;
+}
+
+message WebhookAttemptWithEndpointEventState {
+  string id = 1;
+  string event_id = 2;
+  string webhook_id = 3;
+  string status = 4;
+  uint32 response_status = 5;
+  google.protobuf.Any response_body = 6;
+  uint32 retry_count = 7;
+  uint32 created_at = 8;
+  uint32 updated_at = 9;
+  WebhookEndpointState endpoint = 10;
+  WebhookEventState event = 11;
+  string triggered_by = 12;
+  string triggered_from = 13;
+}
+
+message PassportQuery {
+  string role = 1;
+  string search = 2;
+  string status = 3;
+}
+
+message PassportLogQuery {
+  string passport_id = 1;
+}
+
+message PassportLogState {
+  uint32 id = 1;
+  string passport_id = 2;
+  string action = 3;
+  string operator_ip = 4;
+  string operator_ua = 5;
+  string operator_did = 6;
+  google.protobuf.Any metadata = 7;
+  uint32 created_at = 8;
+}
+
+message BaseUserInfo {
+  string did = 1;
+  string pk = 2;
+  string role = 3;
+  string avatar = 4;
+  string full_name = 5;
+  string email = 6;
+  bool approved = 7;
+  uint32 created_at = 8;
+  uint32 updated_at = 9;
+  string locale = 10;
+}
+
+message Passport {
+  string id = 1;
+  string name = 2;
+  string title = 3;
+  Issuer issuer = 4;
+  repeated string type = 5;
+  uint32 issuance_date = 6;
+  uint32 expiration_date = 7;
+  string status = 8;
+  string role = 9;
+  uint32 last_login_at = 10;
+  string scope = 11;
+  PassportDisplay display = 12;
+  string source = 13;
+  string parent_did = 14;
+  string user_did = 15;
+  BaseUserInfo user = 16;
+}
+
+message OauthClient {
+  repeated string redirect_uris = 1;
+  string token_endpoint_auth_method = 2;
+  repeated string grant_types = 3;
+  repeated string response_types = 4;
+  string client_name = 5;
+  string client_uri = 6;
+  string logo_uri = 7;
+  string scope = 8;
+  repeated string contacts = 9;
+  string tos_uri = 10;
+  string policy_uri = 11;
+  string jwks_uri = 12;
+  string jwks = 13;
+  string software_id = 14;
+  string software_version = 15;
+  string client_id = 16;
+  int64 client_id_issued_at = 17;
+  string client_secret = 18;
+  int64 client_secret_expires_at = 19;
+  int64 updated_at = 20;
+  string created_by = 21;
+  UserInfo create_user = 22;
+}
+
+message Org {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string owner_did = 4;
+  uint32 created_at = 5;
+  uint32 updated_at = 6;
+  repeated UserOrg members = 7;
+  UserInfo owner = 8;
+  uint32 members_count = 9;
+  repeated Passport passports = 10; // 用户在当前 Org 下的 passports
+  google.protobuf.Any metadata = 11;
+  string avatar = 12;
+}
+
+message UserOrg {
+  string id = 1;
+  string org_id = 2;
+  string user_did = 3;
+  OrgUserStatus status = 4;
+  uint32 created_at = 5;
+  uint32 updated_at = 6;
+  UserInfo user = 7;
+  google.protobuf.Any metadata = 8;
+}
+
+message OrgResources {
+  string id = 1;
+  string org_id = 2;
+  string resource_id = 3;
+  string type = 4;
+  google.protobuf.Any metadata = 5;
+  uint32 created_at = 6;
+  uint32 updated_at = 7;
+}

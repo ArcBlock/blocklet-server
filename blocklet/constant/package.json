@@ -1,0 +1,47 @@
+{
+  "name": "@blocklet/constant",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.17.12",
+  "description": "Blocklet constants",
+  "main": "index.js",
+  "type": "commonjs",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "lint": "eslint tests lib",
+    "lint:fix": "npm run lint -- --fix",
+    "clean": "rm -f index.d.ts index.js",
+    "build:blocklet-constant": "npm run build",
+    "build": "npm run clean && npx dts-bundle-generator -o index.d.ts lib/index.ts && npx esbuild lib/index.ts --bundle --outfile=index.js --platform=node --format=cjs"
+  },
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server.git",
+    "directory": "blocklet/constant"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/blocklet/constant#readme",
+  "devDependencies": {
+    "@arcblock/eslint-config-ts": "^0.3.3",
+    "@types/node": "^22.7.5",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "@typescript/native-preview": "^7.0.0-dev.20251230.1",
+    "dts-bundle-generator": "^9.2.3",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.2"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "@abtnode/queue",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.17.12",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "lint": "eslint tests lib",
+    "lint:fix": "eslint --fix tests lib"
+  },
+  "keywords": [],
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server.git",
+    "directory": "core/queue"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/core/queue#readme",
+  "gitHead": "e5764f753181ed6a7c615cd4fc6682aacf0cb7cd",
+  "dependencies": {
+    "@abtnode/db": "1.17.12",
+    "@abtnode/util": "1.17.12",
+    "@blocklet/error": "^0.3.5",
+    "debug": "^4.4.1",
+    "fastq": "^1.17.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@abtnode/models": "1.17.12"
+  }
+}

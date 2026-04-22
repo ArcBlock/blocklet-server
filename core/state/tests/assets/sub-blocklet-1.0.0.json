@@ -1,0 +1,74 @@
+{
+  "name": "sub-blocklet",
+  "version": "1.0.0",
+  "description": "sub blocklet project",
+  "group": "static",
+  "main": ".",
+  "author": {
+    "name": "linchen1987"
+  },
+  "specVersion": "1.0.0",
+  "files": ["index.html"],
+  "interfaces": [
+    {
+      "type": "web",
+      "name": "publicUrl",
+      "path": "/",
+      "prefix": "*",
+      "port": "BLOCKLET_PORT",
+      "protocol": "http"
+    }
+  ],
+  "did": "z8iZvFHnQXK6JrL7jfxmFbFNUMHWFj9ufSB41",
+  "community": "",
+  "documentation": "",
+  "homepage": "",
+  "license": "",
+  "timeout": {
+    "start": 60
+  },
+  "requirements": {
+    "abtnode": ">=1.1.0",
+    "os": "*",
+    "cpu": "*"
+  },
+  "environments": [
+    {
+      "name": "NAME",
+      "description": "sub-name",
+      "required": false,
+      "default": "sub-name",
+      "secure": false
+    },
+    {
+      "name": "SUB_PROP",
+      "description": "sub prop",
+      "required": false,
+      "default": "sub-prop",
+      "secure": false
+    }
+  ],
+  "screenshots": [],
+  "gitHash": "8fdb9e71277b0609efe3e5ae5b4e76f3cd4a7daf",
+  "path": "/static/sub-blocklet",
+  "payment": {
+    "price": [],
+    "share": []
+  },
+  "children": [],
+  "dist": {
+    "tarball": "sub-blocklet-1.0.0.tgz",
+    "integrity": "sha512-NIEs8x2j/qznzqORjg/piEFidlUxCnHU0+lzf3Sjbt3Y9slHnRrFgsvE8yy7wcAkIiCXZd2TUuaC+Hn6viLp1Q=="
+  },
+  "signatures": [
+    {
+      "type": "ED25519",
+      "name": "sub-blocklet",
+      "signer": "z1aEhK8DBzUcQoaYzpNs8bHv4AgFn22fcXu",
+      "pk": "zBCfqy5Z4vbQhVYmCBEK9aSL8MNjcQL8o7vFL8mgfegjZ",
+      "created": "2021-12-03T16:08:18.637Z",
+      "sig": "z611rjRPvVmhvSgNKfEoDUb6dfMam15xpnEGmd7jpupLHjsWxVdswxuWmVnbQoRKZ2GbaRMbWfWcUfBzgc518nBRx"
+    }
+  ],
+  "lastPublishedAt": "2021-12-03T16:08:18.631Z"
+}

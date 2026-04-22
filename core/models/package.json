@@ -1,0 +1,61 @@
+{
+  "name": "@abtnode/models",
+  "version": "1.17.12",
+  "description": "Sequelize models for blocklet server and blocklet service",
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/core/models#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "test": "MIGRATION_SCRIPT_EXTENSION=ts bun test",
+    "coverage": "bun test --bail --timeout 30000 --coverage",
+    "clean": "rm -fr lib",
+    "build:core-models": "npm run build",
+    "build": "npm run clean && tsc && rm -f lib/migrations/*/*.d.ts"
+  },
+  "files": [
+    "lib"
+  ],
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "dependencies": {
+    "@abtnode/constant": "1.17.12",
+    "@abtnode/db-cache": "1.17.12",
+    "@abtnode/logger": "1.17.12",
+    "@abtnode/types": "1.17.12",
+    "@abtnode/util": "1.17.12",
+    "@arcblock/did": "1.29.27",
+    "@arcblock/validator": "1.29.27",
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.isempty": "^4.4.0",
+    "pg": "^8.16.3",
+    "sequelize": "^6.35.0",
+    "sqlite3": "^5.1.7",
+    "type-fest": "^4.21.0",
+    "umzug": "3.4.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@arcblock/eslint-config-ts": "^0.3.3",
+    "@types/node": "^22.7.5",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "@typescript/native-preview": "^7.0.0-dev.20251230.1"
+  },
+  "resolutions": {},
+  "gitHead": "e5764f753181ed6a7c615cd4fc6682aacf0cb7cd"
+}

@@ -1,0 +1,27 @@
+/* eslint-disable prettier/prettier */
+module.exports = {
+  navigation: {
+    system: '系統',
+    services: '服務',
+    notification: '通知中心',
+    access: '存取',
+    members: '成員',
+    passport: '通行證',
+    analytics: '分析',
+    dashboard: '儀表板',
+    studio: 'Blocklet Studio',
+    blockletService: 'Blocklet 服務',
+    didSpaces: '儲存和備份',
+    notifications: '通知',
+    didConnect: '身份和存取',
+    website: '網站工作室',
+    operations: '可觀測性',
+    integration: '整合',
+    developer: '開發者',
+    aigne: 'AI 連線',
+    orgs: '組織',
+    nfts: 'NFTs',
+    settings: '設定',
+    userFollowers: '關注',
+  },
+};

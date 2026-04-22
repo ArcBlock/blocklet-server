@@ -1,0 +1,6 @@
+# 所有文本文件使用 LF 换行符，且自动识别文本类型
+* text=auto eol=lf
+
+# Ensure all *.db files are treated as binary
+*.db binary
+**/*.db binary

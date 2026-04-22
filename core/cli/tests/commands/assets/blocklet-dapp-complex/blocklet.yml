@@ -1,0 +1,41 @@
+name: dapp-blocklet-complex
+description: ABT Node blocklet project
+group: dapp
+main: server/index.js
+author:
+  name: linchen1987
+specVersion: 1.0.1
+logo: logo.png
+interfaces:
+  - type: web
+    name: publicUrl
+    path: "/"
+    prefix: "*"
+    port: BLOCKLET_PORT
+    protocol: http
+did: z8iZsY35McxuL8VBNdPuaDo2Dh5QqPPRyLdgz
+files:
+  - server
+  - migration
+  - "!server/ignored.js"
+version: 1.0.2
+community: ""
+documentation: ""
+homepage: ""
+license: ""
+timeout:
+  start: 60
+requirements:
+  abtnode: ">=1.1.0"
+  os: "*"
+  cpu: "*"
+environments:
+  - name: EXPLORER_CHAIN_ENDPOINT
+    description: Default chain endpoint of explorer
+    required: false
+    default: ""
+    secure: false
+screenshots: []
+scripts:
+  preStart: node server/pre-start.js
+  postStart: node server/post-start.js

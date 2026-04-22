@@ -1,0 +1,7 @@
+dist
+test.db
+test.db-*
+.env
+**/test.db*
+**/test-cache.db*
+**/test-cache.db

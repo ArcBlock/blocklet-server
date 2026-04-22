@@ -1,0 +1,56 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "command": "npm run start",
+      "name": "start",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}",
+      // 在调试结束后，自动停止服务
+      "postDebugTask": "npm: stop"
+    },
+    {
+      "command": "npm run e2e:open",
+      "name": "e2e:open",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "command": "npm run start:hub",
+      "name": "1-start:hub",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/core/webapp"
+    },
+    {
+      "command": "npm run start:daemon",
+      "name": "2-start:daemon",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/core/webapp"
+    },
+    {
+      "command": "npm run start:service",
+      "name": "3-start:service",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/core/webapp"
+    },
+    {
+      "command": "npm run start:client",
+      "name": "4-start:client",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/core/webapp"
+    },
+    {
+      "command": "npm run start:client",
+      "name": "5-blocklet-services",
+      "request": "launch",
+      "type": "node-terminal",
+      "cwd": "${workspaceFolder}/core/blocklet-services"
+    }
+  ]
+}

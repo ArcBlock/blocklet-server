@@ -1,0 +1,29 @@
+proxy_connect_timeout 60;
+proxy_read_timeout 3600;
+proxy_send_timeout 3600;
+
+proxy_pass_header server;
+
+proxy_headers_hash_bucket_size 512;
+proxy_buffering on;
+proxy_request_buffering off;            # Buffer client requests
+proxy_buffers 16 16k;             # Smaller buffers for memory efficiency
+proxy_buffer_size 16k;            # Smaller buffer size
+proxy_busy_buffers_size 48k;      # Adjusted accordingly
+proxy_next_upstream error timeout invalid_header;
+proxy_redirect off;
+proxy_http_version 1.1;
+proxy_socket_keepalive on;              # Enable keepalive
+proxy_ignore_client_abort off;
+
+proxy_set_header Host $host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Real-Uri $uri;
+proxy_set_header X-Request-ID $request_id;
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection $connection_upgrade;
+proxy_set_header X-Forwarded-Proto $scheme;
+proxy_set_header X-Forwarded-Host  $host;
+proxy_set_header X-Forwarded-Port  $server_port;
+
+proxy_hide_header X-Powered-By;

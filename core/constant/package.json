@@ -1,0 +1,46 @@
+{
+  "name": "@abtnode/constant",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.17.12",
+  "description": "ABT Node constants",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "lint": "eslint src tests",
+    "lint:fix": "eslint --fix src tests",
+    "test": "NODE_ENV=test bun test",
+    "coverage": "NODE_ENV=test bun test --coverage",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "tsdown": "^0.20.0-beta.3"
+  },
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server.git",
+    "directory": "core/constant"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/core/constant#readme"
+}

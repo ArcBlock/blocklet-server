@@ -1,0 +1,27 @@
+/* eslint-disable prettier/prettier */
+module.exports = {
+  navigation: {
+    system: 'Hệ thống',
+    services: 'Dịch vụ',
+    notification: 'Trung tâm thông báo',
+    access: 'Truy cập',
+    members: 'Thành viên',
+    passport: 'Hộ chiếu',
+    analytics: 'Phân tích dữ liệu',
+    dashboard: 'Bảng điều khiển',
+    studio: 'Blocklet Studio',
+    blockletService: 'Dịch vụ Blocklet',
+    didSpaces: 'Lưu trữ & Sao lưu',
+    notifications: 'Thông báo',
+    didConnect: 'Danh tính & Truy cập',
+    website: 'Website Studio',
+    operations: 'Quan sát',
+    integration: 'Tích hợp',
+    developer: 'Nhà phát triển',
+    aigne: 'Kết nối AI',
+    orgs: 'Tổ chức',
+    nfts: 'NFTs',
+    settings: 'Cài đặt',
+    userFollowers: 'Theo dõi',
+  },
+};

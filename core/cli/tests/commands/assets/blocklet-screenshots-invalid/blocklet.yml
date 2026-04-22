@@ -1,0 +1,35 @@
+name: static-blocklet
+description: ABT Node blocklet project
+group: static
+main: .
+author:
+  name: blocklet
+specVersion: 1.0.1
+files:
+logo: logo.png
+interfaces:
+  - type: web
+    name: publicUrl
+    path: '/'
+    prefix: '*'
+    port: BLOCKLET_PORT
+    protocol: http
+did: z8ia4rWPAJKRX8hSNCY4DXtgS3tRCNqD6YahD
+version: 1.0.2
+community: ''
+documentation: ''
+homepage: ''
+license: ''
+timeout:
+  start: 60
+requirements:
+  abtnode: '>=1.1.0'
+  os: '*'
+  cpu: '*'
+environments: []
+screenshots:
+  - first.png
+  - second.png
+  - 400x400.png
+  - first.png
+  - second.png

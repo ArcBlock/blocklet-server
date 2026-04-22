@@ -1,0 +1,41 @@
+{
+  "name": "@abtnode/db",
+  "version": "1.17.12",
+  "description": "@nedb/core wrapper",
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/core/db#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArcBlock/blocklet-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "main": "lib/db.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "eslint tests lib",
+    "lint:fix": "eslint --fix tests lib"
+  },
+  "dependencies": {
+    "@abtnode/logger": "1.17.12",
+    "@abtnode/util": "1.17.12",
+    "@nedb/core": "^2.1.5"
+  },
+  "resolutions": {
+    "@nedb/core": "^2.1.2"
+  }
+}

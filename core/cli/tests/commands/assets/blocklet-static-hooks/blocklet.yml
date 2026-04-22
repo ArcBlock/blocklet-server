@@ -1,0 +1,34 @@
+name: static-blocklet-hooks
+description: ABT Node blocklet project
+group: static
+main: app
+author:
+  name: linchen1987
+specVersion: 1.0.1
+files:
+  - post-start.js
+logo: logo.png
+interfaces:
+  - type: web
+    name: publicUrl
+    path: "/"
+    prefix: "*"
+    port: BLOCKLET_PORT
+    protocol: http
+did: z8iZpwW76GbygeGZQQx9ySF959runmWLgGpXN
+version: 1.0.2
+community: ""
+documentation: ""
+homepage: ""
+license: ""
+timeout:
+  start: 60
+requirements:
+  abtnode: ">=1.1.0"
+  os: "*"
+  cpu: "*"
+environments: []
+screenshots: []
+scripts:
+  preStart: node pre-start.js
+  postStart: node post-start.js

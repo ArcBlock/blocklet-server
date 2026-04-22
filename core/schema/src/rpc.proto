@@ -1,0 +1,1917 @@
+syntax = "proto3";
+package abt_node;
+
+import "enum.proto";
+import "type.proto";
+import "google/protobuf/any.proto";
+
+message EmptyRequest {}
+
+message GeneralResponse {
+  StatusCode code = 1;
+}
+
+message BooleanResponse {
+  StatusCode code = 1;
+  bool result = 2;
+}
+
+message RequestBlocklet {
+  string did = 1;
+}
+
+message RequestComponents {
+  string did = 1;
+  repeated string component_dids = 2;
+}
+
+message RequestBlockletDetail {
+  string did = 1;
+  bool attach_disk_info = 2;
+  bool attach_runtime_info = 3;
+  bool get_optional_components = 4;
+  string domain = 5;
+  bool use_cache = 6;
+}
+
+message ResponseBlocklet {
+  StatusCode code = 1;
+  BlockletState blocklet = 2;
+}
+
+message RequestBlockletMetaFromUrl {
+  string url = 1;
+  bool check_price = 2;
+}
+
+message ResponseBlockletMetaFromUrl {
+  StatusCode code = 1;
+  BlockletMeta meta = 2;
+  bool is_free = 3;
+  bool in_store = 6;
+  string registry_url = 7;
+}
+
+message RequestBlockletDiff {
+  string did = 1;
+  repeated HashFile hash_files = 2;
+  string root_did = 3;
+}
+message ResponseBlockletDiff {
+  StatusCode code = 1;
+  BlockletDiff blocklet_diff = 2;
+}
+
+message RequestGetBlocklets {
+  bool use_cache = 1;
+  BlockletQuery query = 2;
+  bool include_runtime_info = 3;
+  Paging paging = 4;
+  string search = 5;
+  bool external = 6;
+  Sort sort = 7;
+}
+message ResponseGetBlocklets {
+  StatusCode code = 1;
+  repeated BlockletState blocklets = 2;
+  Paging paging = 3;
+}
+message ResponseBlockletsFromBackup {
+  StatusCode code = 1;
+  repeated BlockletBackupState backups = 2;
+}
+
+
+message RequestGetNodeInfo {}
+message ResponseGetNodeInfo {
+  StatusCode code = 1;
+  NodeState info = 2;
+}
+message ResponseGetNodeEnv {
+  StatusCode code = 1;
+  NodeEnvInfo info = 2;
+}
+message RequestResetNode {
+  bool owner = 1;
+  bool blocklets = 2;
+  bool webhooks = 3;
+  bool certificates = 4;
+  bool access_keys = 5;
+  bool blocklet_extras = 6;
+  bool routing_rules = 7;
+  bool users = 8;
+  bool invitations = 9;
+}
+message ResponseResetNode {
+  StatusCode code = 1;
+}
+
+message RequestDelegationState{}
+message ResponseDelegationState{
+  StatusCode code = 1;
+  DelegationState state = 2;
+}
+
+message RequestConfigBlocklet {
+  repeated string did = 1;
+  repeated ConfigEntry configs = 2;
+}
+
+// blocklet installation params
+message RequestInstallBlocklet {
+  string type = 12; // store, url, upload, create, restore
+
+  // install from Store
+  string did = 1;
+  string store_url = 11;
+
+  // install from Url or Backup
+  string url = 2;
+
+  // install from Upload
+  Upload file = 3;
+  string diff_version = 4;
+  repeated string delete_set = 5;
+
+  // install from custom creation
+  string title = 6;
+  string description = 7;
+
+  bool start_immediately = 8;
+
+  // optional for all types
+  string app_sk = 9;
+
+  // paid blocklet related
+  repeated DownloadToken download_token_list = 10;
+}
+
+message RequestInstallComponent {
+  string root_did = 1;
+  string mount_point = 2;
+  string url = 3;
+
+  // install from Upload
+  Upload file = 4;
+  string did = 5;
+  string diff_version = 6;
+  repeated string delete_set = 7;
+
+  // custom component id and info
+  string name = 8;
+  string title = 9;
+
+  // configs
+  repeated ConfigEntry configs = 10;
+
+  // paid blocklet related
+  repeated DownloadToken download_token_list = 12;
+
+  // deprecated
+  bool skip_navigation = 13;
+  bool only_required = 14;
+
+  // deploy support dist
+  BlockletDist dist = 15;
+}
+
+message ResponseCheckComponentsForUpdates {
+  StatusCode code = 1;
+  BlockletPreUpdateInfo pre_update_info = 2;
+}
+
+message RequestUpdateComponents {
+  string update_id = 1;
+  string root_did = 2;
+  repeated string selected_components = 3;
+}
+
+message RequestGetDynamicComponents {
+  string url = 1;
+}
+
+message ResponseGetDynamicComponents {
+  StatusCode code = 1;
+  repeated ComponentState components = 2;
+}
+
+message RequestConfigPublicToStore {
+  string did = 1;
+  bool public_to_store = 2;
+}
+message RequestConfigNavigations {
+  string did = 1;
+  repeated ConfigNavigation navigations = 2;
+}
+message RequestConfigAuthentication {
+  string did = 1;
+  string authentication = 2;
+  string oauth = 3; // deprecated, use authentication instead
+}
+message RequestConfigDidConnect {
+  string did = 1;
+  string did_connect = 2;
+}
+message RequestConfigDidConnectActions {
+  string did = 1;
+  string action_config = 2;
+}
+message RequestJoinFederatedLogin {
+  string did = 1;
+  string app_url = 2;
+}
+message RequestQuitFederatedLogin {
+  string did = 1;
+  string target_did = 2;
+}
+message RequestDisbandFederatedLogin {
+  string did = 1;
+}
+message RequestAuditFederatedLogin {
+  string did = 1;
+  string member_pid = 2;
+  string status = 3;
+}
+message RequestSyncMasterAuthorization {
+  string did = 1;
+}
+message RequestSyncFederated {
+  string did = 1;
+}
+message RequestConfigNotification {
+  string did = 1;
+  string notification = 2;
+}
+message RequestSendEmail {
+  string did = 1;
+  string receiver = 2;
+  string email = 3;
+}
+message RequestSendPush {
+  string did = 1;
+  string receiver = 2;
+  string notification = 3;
+}
+
+
+message RequestUpdateComponentTitle {
+  string did = 1;
+  string root_did = 2;
+  string title = 3;
+}
+
+message RequestUpdateComponentMountPoint {
+  string did = 1;
+  string root_did = 2;
+  string mount_point = 3;
+}
+
+message RequestBackupBlocklet {
+  string app_did = 1;
+  BackupTo to = 2;
+}
+
+message RequestAbortBlockletBackup {
+  string app_pid = 1;
+}
+
+message RequestRestoreBlocklet {
+  string endpoint = 1;
+  string app_did = 2;
+  string delegation = 3;
+  bytes password = 4;
+  google.protobuf.Any wallet = 5;
+  BackupTo from = 6;
+  string app_pid = 7;
+}
+
+message RequestDeleteBlocklet {
+  string did = 1;
+  bool keep_data = 2;
+  string session_id = 3;
+}
+
+message RequestDeleteComponent {
+  string did = 1;
+  string root_did = 2;
+  bool keep_data = 3;
+  string session_id = 4;
+}
+
+message RequestRegistry {}
+
+message RequestBlockletMeta {
+  string did = 1;
+  string store_url = 2;
+}
+message ResponseBlockletMeta {
+  StatusCode code = 1;
+  google.protobuf.Any meta = 2;
+}
+
+message RequestGetNotifications {
+  string receiver = 1;
+  string sender = 2;
+  bool read = 3;
+  Paging paging = 4;
+  string team_did = 5;
+  repeated string severity = 6;
+  repeated string component_did = 7;
+  repeated string entity_id = 8;
+  repeated string source = 9;
+}
+message ResponseGetNotifications {
+  StatusCode code = 1;
+  repeated Notification list = 2;
+  Paging paging = 3;
+  int32 unread_count = 4;
+}
+
+message RequestNotificationSendLog {
+  string team_did = 1;
+  repeated string date_range = 2;
+  Paging paging = 3;
+  string source = 4;
+  repeated string component_dids = 5;
+  repeated string severities = 6;
+}
+
+message ResponseNotificationSendLog {
+  StatusCode code = 1;
+  repeated Notification list = 2;
+  Paging paging = 3;
+}
+
+message RequestReceivers {
+  string team_did = 1;
+  string user_name = 2;
+  string user_did = 3;
+  repeated int32 wallet_send_status = 4;
+  repeated int32 push_kit_send_status = 5;
+  repeated int32 email_send_status = 6;
+  repeated string date_range = 7;
+  Paging paging = 8;
+  string notification_id = 9;
+}
+
+message ResponseReceivers {
+  StatusCode code = 1;
+  repeated NotificationReceiver list = 2;
+  Paging paging = 3;
+}
+
+message RequestNotificationComponents {
+  string team_did = 1;
+  string receiver = 2;
+}
+message ResponseNotificationComponents {
+  StatusCode code = 1;
+  repeated string component_dids = 2;
+}
+
+message RequestResendNotification {
+  string team_did = 1;
+  string notification_id = 2;
+  repeated string receivers = 3;
+  repeated string channels = 4;
+  repeated string webhook_urls = 5;
+  bool resend_failed_only = 6;
+}
+
+message ResponseResendNotification {
+  StatusCode code = 1;
+  google.protobuf.Any data = 2;
+}
+
+message RequestMakeAllNotificationsAsRead {
+  string receiver = 1;
+  string team_did = 2;
+  string severity = 3;
+  string component_did = 4;
+  string entity_id = 5;
+  string source = 6;
+}
+
+message readUpdateAffected {
+  int32 num_affected = 1;
+  repeated string notification_ids = 2;
+}
+
+message ResponseMakeAllNotificationsAsRead {
+  StatusCode code = 1;
+  readUpdateAffected data = 2;
+}
+
+message RequestReadNotifications {
+  repeated string notification_ids = 1;
+  string team_did = 2;
+  string receiver = 3;
+}
+message ResponseReadNotifications {
+  StatusCode code = 1;
+  int32 num_affected = 2;
+}
+
+message RequestAddRoutingSite {
+  string domain = 1;
+  string type = 2;
+  repeated RoutingRule rules = 3;
+}
+
+message RequestUpdateRoutingSite {
+  string id = 1;
+  repeated string cors_allowed_origins = 2;
+  string domain = 3;
+  string team_did = 4;
+}
+
+message RequestAddDomainAlias {
+  string id = 1;
+  string domain_alias = 2;
+  bool force = 3;
+  string team_did = 4;
+  string type = 5;
+  string nft_did = 6;
+  string chain_host = 7;
+  bool in_blocklet_setup = 8;
+  string metadata = 9;
+}
+
+message RequestDeleteDomainAlias {
+  string id = 1;
+  string domain_alias = 2;
+  string team_did = 4;
+}
+
+message RequestGetRoutingSites {
+  string snapshot_hash = 1;
+}
+
+message ResponseGetRoutingSites {
+  StatusCode code = 1;
+  repeated RoutingSite sites = 2;
+}
+
+message ResponseRoutingSite {
+  StatusCode code = 1;
+  RoutingSite site = 2;
+}
+
+message RequestDeleteRoutingSite {
+  string id = 1;
+}
+
+message RequestAddRoutingRule {
+  string id = 1;
+  RoutingRule rule = 2;
+  string team_did = 3;
+}
+
+message RequestUpdateRoutingRule {
+  string id = 1;
+  RoutingRule rule = 2;
+  string team_did = 3;
+}
+
+message RequestDeleteRoutingRule {
+  string id = 1;
+  string rule_id =  2; // rule item id
+  string team_did = 3;
+}
+
+message RequestCheckDomains {
+  repeated string domains = 1;
+  string did = 2;
+}
+
+message ResponseCheckDomains {
+  StatusCode code = 1;
+}
+
+message RequestFindCertificateByDomain {
+  string domain = 1;
+  string did = 2;
+}
+
+message ResponseFindCertificateByDomain {
+  StatusCode code = 1;
+  Certificate cert = 2;
+}
+
+message RequestGetRoutingProviders {}
+message ResponseGetRoutingProviders {
+  StatusCode code = 1;
+  repeated RoutingProvider providers = 2;
+}
+
+message RequestGetCertificates {}
+message ResponseGetCertificates {
+  StatusCode code = 1;
+  repeated Certificate certificates = 2;
+}
+
+message RequestAddNginxHttpsCert {
+  string name = 1;
+  string private_key = 2;
+  string certificate = 3;
+}
+message ResponseAddNginxHttpsCert {
+  StatusCode code = 1;
+}
+
+message RequestUpdateNginxHttpsCert {
+  string id = 1;
+  string name = 2;
+  string certificate = 3;
+  string private_key = 4;
+}
+
+message ResponseUpdateNginxHttpsCert {
+  StatusCode code = 1;
+}
+
+message RequestDeleteNginxHttpsCert {
+  string id = 1;
+}
+message ResponseDeleteNginxHttpsCert {
+  StatusCode code = 1;
+}
+
+message RequestAddLetsEncryptCert {
+  string domain = 1;
+  string did = 2;
+  string site_id = 3;
+  bool in_blocklet_setup = 4;
+}
+
+message ResponseAddLetsEncryptCert {
+  StatusCode code = 1;
+}
+
+message RequestIsDidDomain {
+  string domain = 1;
+}
+
+message ResponseIsDidDomain {
+  StatusCode code = 1;
+  bool value = 2;
+}
+
+// Access Keys
+message RequestAccessKeys {
+  string team_did = 1;
+  Paging paging = 2;
+  string remark = 3;
+  string component_did = 4;
+  string resource_type = 5;
+  string resource_id = 6;
+}
+message ResponseAccessKeys {
+  StatusCode code = 1;
+  repeated AccessKey list = 2;
+  Paging paging = 3;
+}
+message RequestAccessKey {
+  string team_did = 1;
+  string access_key_id = 2;
+}
+message ResponseAccessKey {
+  StatusCode code = 1;
+  AccessKey data = 2;
+}
+message RequestCreateAccessKey {
+  string team_did = 1;
+  string remark = 2;
+  string passport = 3;
+  string auth_type = 4;
+  string component_did = 5;
+  string resource_type = 6;
+  string resource_id = 7;
+  string created_via = 8;
+  uint32 expire_at = 9;
+}
+message ResponseCreateAccessKey {
+  StatusCode code = 1;
+  CreateAccessKey data = 2;
+}
+message RequestUpdateAccessKey {
+  string team_did = 1;
+  string access_key_id = 2;
+  string remark = 3;
+  string passport = 4;
+  uint32 expire_at = 5;
+}
+message ResponseUpdateAccessKey {
+  StatusCode code = 1;
+  AccessKey data = 2;
+}
+message RequestDeleteAccessKey {
+  string team_did = 1;
+  string access_key_id = 2;
+}
+message ResponseDeleteAccessKey {
+  StatusCode code = 1;
+}
+
+message RequestVerifyAccessKey {
+  string team_did = 1;
+  string access_key_id = 2;
+  string resource_type = 3;
+  string resource_id = 4;
+  string component_did = 5;
+}
+
+// webhook
+message RequestCreateWebHook {
+  SenderType type = 1; // slack/api
+  string title = 2; // Slack Notification
+  string description = 3;
+  repeated WebHookParam params = 4;
+}
+message RequestDeleteWebHook {
+  string id = 1;
+}
+message RequestWebHook {}
+message RequestSenderList {}
+message ResponseSenderList {
+  StatusCode code = 1;
+  repeated WebHookSender senders = 2;
+}
+message ResponseWebHooks {
+  StatusCode code = 1;
+  repeated WebHook webhooks = 2;
+}
+message ResponseDeleteWebHook {
+  StatusCode code = 1;
+}
+message ResponseCreateWebHook {
+  StatusCode code = 1;
+  WebHookSender webhook = 2;
+}
+message RequestSendMsg {
+	string webhook_id = 1;
+	string message = 2;
+}
+message ResponseSendMsg {
+  StatusCode code = 1;
+}
+
+// Node Upgrading
+message RequestUpgradeNodeVersion {
+  string session_id = 1; // for mfa protection
+}
+message ResponseUpgradeNodeVersion {
+  StatusCode code = 1;
+  string session_id = 2; // the actual upgrade session id
+}
+message RequestCheckNodeVersion {}
+message ResponseCheckNodeVersion {
+  StatusCode code = 1;
+  string version = 2;
+}
+message RequestRestartServer {}
+message ResponseRestartServer {
+  StatusCode code = 1;
+  string session_id = 2;
+}
+
+message RequestRestartAllContainers {}
+message ResponseRestartAllContainers {
+  StatusCode code = 1;
+  string session_id = 2;
+}
+
+
+message RequestGetSession {
+  string id = 1;
+}
+message ResponseGetSession {
+  StatusCode code = 1;
+  google.protobuf.Any session = 2;
+}
+
+message RequestCreateInvitation {
+  string team_did = 1;
+  string role = 2;
+  string remark = 3;
+  string source_app_pid = 4;
+  PassportDisplay display = 5;
+  string passport_expire_time = 6;
+}
+
+message ResponseCreateInvitation {
+  StatusCode code = 1;
+  InviteInfo invite_info = 2;
+}
+
+message RequestCreateTransferNodeInvitation {
+  string team_did = 1;
+  string remark = 2;
+}
+
+message ResponseCreateTransferNodeInvitation {
+  StatusCode code = 1;
+  InviteInfo invite_info = 2;
+}
+
+message RequestDeleteTeamSession {
+  string team_did = 1;
+  string session_id = 2;
+}
+
+message ResponseGetInvitations {
+  StatusCode code = 1;
+  repeated InviteInfo invitations = 2;
+}
+
+message RequestDeleteInvitation {
+  string team_did = 1;
+  string invite_id = 2;
+}
+
+message RequestHasPermission {
+  string team_did = 1;
+  string role = 2;
+  string permission = 3;
+}
+
+// Passport
+message RequestCreatePassportIssuance {
+  string team_did = 1; // issuer
+  string owner_did = 2;
+  string name = 3; // passport name, as same as role name
+  PassportDisplay display = 4;
+  string passport_expire_time = 6;
+}
+
+message ResponseCreatePassportIssuance {
+  StatusCode code = 1;
+  PassportIssuanceInfo info = 2;
+}
+message RequestGetPassportIssuances {
+  string team_did = 1;
+  string owner_did = 2;
+}
+message ResponseGetPassportIssuances {
+  StatusCode code = 1;
+  repeated PassportIssuanceInfo list = 2;
+}
+message RequestConfigTrustedPassports {
+  string team_did = 1; // issuer
+  repeated TrustedPassport trusted_passports = 2;
+}
+message RequestConfigTrustedFactories {
+  string team_did = 1; // issuer
+  repeated TrustedFactory trusted_factories = 2;
+}
+message RequestConfigPassportIssuance {
+  string team_did = 1; // issuer
+  bool enable = 2;
+}
+
+// Roles
+
+message ResponseRoles {
+  StatusCode code = 1;
+  repeated Role roles = 2;
+}
+
+message RequestCreateRole {
+  string team_did = 1;
+  string name = 2;
+  string title = 3;
+  string description = 4;
+  string child_name = 5;
+  repeated string permissions = 6;
+  string extra = 7;
+  string org_id = 8;
+}
+message ResponseRole {
+  StatusCode code = 1;
+  Role role = 2;
+}
+
+message ResponsePermissions {
+  StatusCode code = 1;
+  repeated Permission permissions = 2;
+}
+
+message RequestCreatePermission {
+  string team_did = 1;
+  string name = 2;
+  string description = 4;
+}
+message RequestTeamPermission {
+  string team_did = 1;
+  Permission permission = 2;
+}
+
+message ResponsePermission {
+  StatusCode code = 1;
+  Permission permission = 2;
+}
+
+message RequestGrantPermissionForRole {
+  string team_did = 1;
+  string role_name = 2;
+  string grant_name = 3;
+}
+
+message RequestRevokePermissionFromRole {
+  string team_did = 1;
+  string role_name = 2;
+  string grant_name = 3;
+}
+
+message RequestDeleteRole {
+  string team_did = 1;
+  string name = 2;
+}
+
+message RequestDeletePermission {
+  string team_did = 1;
+  string name = 2;
+}
+
+message RequestUpdatePermissionsForRole {
+  string team_did = 1;
+  string role_name = 2;
+  repeated string grant_names = 3;
+}
+
+message RequestTeamRole {
+  string team_did = 1;
+  RoleUpdate role = 2;
+  string org_id = 3;
+}
+
+message RequestTeamUser {
+  string team_did = 1;
+  UserInfo user = 2;
+  RequestTeamUserOptions options = 3;
+  string session_id = 4;
+}
+message RequestUpdateUserTags {
+  string team_did = 1;
+  string did = 2;
+  repeated uint32 tags = 3;
+}
+message RequestUpdateUserExtra {
+  string team_did = 1;
+  string did = 2;
+  string remark = 3;
+  string extra = 4;
+}
+
+message QueryUserFollowOptions {
+  bool include_user_info = 1; // 是否获取关注/粉丝用户的用户信息
+  bool include_follow_status = 2; // 是否返回当前用户与返回的用户列表的关注关系
+}
+
+message RequestUserRelationQuery {
+  string team_did = 1;
+  string user_did = 2;
+  Paging paging = 3;
+  UserSort sort = 4;
+  QueryUserFollowOptions options = 5;
+}
+
+message ResponseGetUserInvites {
+  StatusCode code = 1;
+  repeated UserInfo data = 2;
+  Paging paging = 3;
+}
+
+message QueryUserFollowStateOptions {
+  bool include_following = 1;
+  bool include_followers = 2;
+  bool include_invitees = 3;
+}
+
+message RequestUserRelationCount {
+  string team_did = 1;
+  repeated string user_dids = 2;
+  QueryUserFollowStateOptions options = 3;
+}
+
+message RequestCheckFollowing {
+  string team_did = 1;
+  repeated string user_dids = 2;
+  string follower_did = 3;
+}
+
+message UserFollowOptions {
+  bool skip_notification = 1;
+}
+
+message RequestFollowUserAction {
+  string team_did = 1;
+  string user_did = 2;
+  string follower_did = 3;
+  UserFollowOptions options = 4;
+}
+
+message ResponseCheckFollowing {
+  StatusCode code = 1;
+  google.protobuf.Any data = 2; // Map<string, boolean> 结构，key为用户DID，value为关注状态
+}
+
+message UserFollows {
+  string user_did = 1;
+  string follower_did = 2;
+  uint32 created_at = 3;
+  UserInfo user = 4;
+  bool is_following = 5;
+}
+
+message ResponseUserFollows {
+  StatusCode code = 1;
+  repeated UserFollows data = 2;
+  Paging paging = 3;
+}
+
+message ResponseUserRelationCount {
+  StatusCode code = 1;
+  google.protobuf.Any data = 2; // Map<string, {followers: number, following: number } | number> 结构，key为用户DID，value为关注/邀请统计信息
+}
+
+
+message RequestUpdateUserAddress {
+  string team_did = 1;
+  string did = 2;
+  UserAddress address = 3;
+}
+
+message RequestUpdateUserInfo {
+  string team_did = 1;
+  UserInfo user = 2;
+}
+
+message RequestTeamUserOptions {
+  bool enable_connected_account = 1;
+  bool include_tags = 2;
+  bool include_federated = 3;
+}
+message ResponseUser {
+  StatusCode code = 1;
+  UserInfo user = 2;
+}
+
+message RequestUsers {
+  string team_did = 1;
+  UserQuery query = 2;
+  UserSort sort = 3;
+  Paging paging = 4;
+  repeated string dids = 5;
+}
+
+message RequestUserSessions {
+  string team_did = 1;
+  UserSessionQuery query = 2;
+  UserSessionSort sort = 3;
+  Paging paging = 4;
+}
+message ResponseUserSessions {
+  StatusCode code = 1;
+  repeated UserSession list = 2;
+  Paging paging = 3;
+}
+message RequestUserSessionsCount {
+  string team_did = 1;
+  UserSessionQuery query = 2;
+}
+message ResponseUserSessionsCount {
+  StatusCode code = 1;
+  uint32 count = 2;
+}
+
+message RequestLogoutUser {
+  string team_did = 1;
+  string app_pid = 2;
+  string user_did = 3;
+  string visitor_id = 4;
+  bool remove = 5;
+}
+
+message ResponseGetUsersCount {
+  StatusCode code = 1;
+  uint32 count = 2;
+}
+message ResponseGetUsersCountPerRole {
+  StatusCode code = 1;
+  repeated KeyValue counts = 2;
+}
+
+message ResponseUsers {
+  StatusCode code = 1;
+  repeated UserInfo users = 2;
+  Paging paging = 3;
+}
+
+message RequestIssuePassportToUser {
+  string team_did = 1;
+  string user_did = 2;
+  string role = 3;
+  PassportDisplay display = 4;
+  bool notify = 5;
+  string notification = 6;
+}
+
+message RequestSwitchProfile {
+  string team_did = 1;
+  string user_did = 2;
+  UserProfile profile = 3;
+}
+
+message RequestRevokeUserPassport {
+  string team_did = 1;
+  string user_did = 2;
+  string passport_id = 3;
+}
+
+message RequestAddBlockletStore {
+  string team_did = 1;
+  string url = 2;
+  string scope = 3;
+}
+
+message RequestDeleteBlockletStore {
+  string team_did = 1;
+  string url = 2;
+  string project_id = 3;
+  string scope = 4;
+}
+
+
+message RequestGetAuditLogs {
+  Paging paging = 1;
+  string scope = 2;
+  string category = 3;
+  string actionOrContent = 4;
+}
+
+message ResponseGetAuditLogs {
+  StatusCode code = 1;
+  repeated AuditLog list = 2;
+  Paging paging = 3;
+}
+
+message ResponseGateway {
+  StatusCode code = 1;
+  Gateway gateway = 2;
+}
+
+message RequestBlockletRuntimeHistory {
+  string did = 1;
+  uint32 hours = 2;
+}
+
+message ResponseNodeRuntimeHistory {
+  StatusCode code = 1;
+  repeated NodeHistoryItem history = 2;
+}
+
+message RequestNodeRuntimeHistory {
+  uint32 hours = 2;
+}
+
+message BlockletHistoryItemList {
+  string key = 1;
+  repeated BlockletHistoryItem value = 2;
+}
+
+message ResponseBlockletRuntimeHistory {
+  StatusCode code = 1;
+  // gql 不支持 map 类型，所以用这个类型来包装
+  repeated BlockletHistoryItemList history_list = 2;
+}
+
+message RequestMigrateApplicationToStructV2 {
+  string did = 1;
+  string app_sk = 2;
+}
+
+message RequestAddBlockletSpaceGateway {
+  string did = 1;
+  SpaceGateway space_gateway = 2;
+}
+
+message RequestDeleteBlockletSpaceGateway {
+  string did = 1;
+  string spaceGatewayDid = 2;
+}
+
+message RequestUpdateBlockletSpaceGateway {
+  string did = 1;
+  SpaceGateway where = 2;
+  SpaceGateway space_gateway = 3;
+}
+
+message ResponseGetBlockletSpaceGateways {
+  StatusCode code = 1;
+  repeated SpaceGateway space_gateways = 2;
+}
+
+message RequestUpdateAutoBackup {
+  string did = 1;
+  AutoBackup auto_backup = 2;
+}
+
+// blocklet backup record, 暂时不改是因为最终的筛选条件一定不会是这个
+message RequestGetBlockletBackups {
+  string did = 1;
+  string start_time = 2;
+  string end_time = 3;
+}
+message ResponseGetBlockletBackups {
+  StatusCode code = 1;
+  repeated Backup backups = 2;
+}
+
+// auto update notification
+message RequestUpdateAutoCheckUpdate {
+  string did = 1;
+  AutoCheckUpdate auto_check_update = 2;
+}
+
+message RequestBlockletSettings {
+  string did = 1;
+  bool enable_session_hardening = 2;
+  InviteSettings invite = 3;
+  BlockletGateway gateway = 4;
+  AigneConfig aigne = 5;
+  OrgSettings org = 6;
+  SubServiceConfig sub_service = 7;
+}
+
+message RequestGetLauncherSession {
+  string launcher_session_id = 1;
+  string launcher_url = 2;
+}
+message ResponseGetLauncherSession {
+  StatusCode code = 1;
+  string error = 2;
+  google.protobuf.Any launcher_session = 5;
+}
+
+message RequestLaunchBlockletByLauncher {
+  string blocklet_meta_url = 1;
+  string title = 2;
+  string description = 3;
+  string chain_host = 4;
+  string launcher_session_id = 5;
+  string launcher_url = 6;
+  bool only_required = 7;
+  string type = 8;
+  string store_url = 9;
+  bool auto_start = 10;
+  string bind_domain_cap = 11;
+  string domain_nft_did = 12;
+}
+message ResponseLaunchBlockletByLauncher {
+  StatusCode code = 1;
+  google.protobuf.Any data = 2;
+}
+
+message RequestLaunchBlockletWithoutWallet {
+  string blocklet_meta_url = 1;
+  string title = 2;
+  string description = 3;
+  bool only_required = 4;
+  string type = 5;
+  string store_url = 6;
+}
+message ResponseLaunchBlockletWithoutWallet {
+  StatusCode code = 1;
+  google.protobuf.Any data = 2;
+}
+
+message RequestUpdateAppSessionConfig {
+  string did = 1;
+  SessionConfig config = 2;
+}
+
+message RequestGetTrafficInsights {
+  string did = 1;
+  string start_date = 2;
+  string end_date = 3;
+  Paging paging = 4;
+}
+message ResponseGetTrafficInsights {
+  StatusCode code = 1;
+  repeated TrafficInsight list = 2;
+  Paging paging = 3;
+}
+
+message RequestClearCache {
+  string team_did = 1;
+  string pattern = 2;
+}
+message ResponseClearCache {
+  StatusCode code = 1;
+  repeated string removed = 2;
+}
+
+message RequestTag {
+  string team_did = 1;
+  Tag tag = 2;
+  uint32 move_to = 3;
+}
+message ResponseTag {
+  StatusCode code = 1;
+  Tag tag = 2;
+}
+
+message RequestTagging {
+  string team_did = 1;
+  Tagging tagging = 2;
+}
+
+message ResponseTagging {
+  StatusCode code = 1;
+  repeated Tagging tagging = 2;
+}
+
+message RequestTags {
+  string team_did = 1;
+  Paging paging = 2;
+}
+message ResponseTags {
+  StatusCode code = 1;
+  repeated Tag tags = 2;
+  Paging paging = 3;
+}
+
+// project
+message RequestProject {
+  string did = 1;
+  string projectId = 2;
+  string messageId = 3;
+}
+message ResponseGetProject {
+  StatusCode code = 1;
+  Project project = 2;
+}
+message RequestGetProjects {
+  string did = 1;
+  Paging paging = 2;
+  string component_did = 3;
+  string tenant_scope = 4;
+}
+message ResponseGetProjects {
+  StatusCode code = 1;
+  repeated Project projects = 2;
+  Paging paging = 3;
+}
+
+message RequestCreateProject {
+  string did = 1;
+  PublishType type = 2;
+  string blocklet_did = 3;
+  string blocklet_title = 4;
+  string component_did = 5;
+  string tenant_scope = 6;
+}
+message ResponseProject {
+  StatusCode code = 1;
+  Project project = 2;
+}
+
+message RequestUpdateProject {
+  string did = 1;
+  string projectId = 2;
+  string blocklet_title = 3;
+  string blocklet_description = 4;
+  string blocklet_introduction = 5;
+  bool auto_upload = 6;
+  bool possible_same_store = 7;
+  string blocklet_support = 8;
+  string blocklet_community = 9;
+  string blocklet_homepage = 10;
+}
+
+message RequestRelease {
+  string did = 1;
+  string project_id = 2;
+  string release_id = 3;
+}
+message ResponseGetRelease {
+  StatusCode code = 1;
+  Release release = 2;
+}
+message RequestGetReleases {
+  string did = 1;
+  string projectId = 2;
+  Paging paging = 3;
+}
+message ResponseGetReleases {
+  StatusCode code = 1;
+  repeated Release releases = 2;
+  Paging paging = 3;
+}
+message RequestCreateRelease {
+  string did = 1;
+  string project_id = 2;
+  string release_id = 3;
+  string blocklet_did = 10;
+  string blocklet_version = 11;
+  string blocklet_title = 12;
+  string blocklet_description = 13;
+  string blocklet_logo = 14;
+  string blocklet_introduction = 15;
+  repeated string blocklet_screenshots = 16;
+  string note = 17;
+  string status = 18;
+  repeated string blocklet_components = 19;
+  string uploaded_resource = 20;
+  string blocklet_resource_type = 21;
+  string blocklet_support = 22;
+  string blocklet_community = 23;
+  string blocklet_homepage = 24;
+  repeated string blocklet_videos = 25;
+  string blocklet_repository = 26;
+  string content_type = 27;
+  BlockletDocker blocklet_docker = 28;
+  bool blocklet_singleton = 29;
+}
+
+message ResponseRelease {
+  StatusCode code = 1;
+  Release release = 2;
+}
+
+message RequestConnectToStore {
+  string did = 1;
+  string store_id = 2;
+  string store_url = 3;
+  string store_name = 4;
+  string project_id = 5;
+}
+
+message ResponseConnectToStore {
+  StatusCode code = 1;
+  string url = 2;
+}
+
+message RequestDisconnectFromStore {
+  string did = 1;
+  string store_id = 2;
+  string project_id = 3;
+  string store_scope = 4;
+}
+
+message ResponseDisconnectFromStore {
+  StatusCode code = 1;
+}
+
+message RequestConnectByStudio {
+  string did = 1;
+  string store_id = 2;
+  string store_url = 3;
+  string store_name = 4;
+  string blocklet_title = 5;
+  string type = 6;
+  string tenant_scope = 7;
+  string component_did = 8;
+  string message_id = 9;
+}
+
+message ResponseConnectByStudio {
+  StatusCode code = 1;
+  string url = 2;
+}
+
+message RequestPublishToStore {
+  string did = 1;
+  string project_id = 2;
+  string release_id = 3;
+  string type = 4;
+  string store_id = 5;
+}
+
+message ResponsePublishToStore {
+  StatusCode code = 1;
+  string url = 2;
+}
+
+message RequestGetSelectedResources {
+  string did = 1;
+  string project_id = 2;
+  string release_id = 3;
+  string component_did = 4;
+}
+message ResponseGetSelectedResources {
+  StatusCode code = 1;
+  repeated string resources = 2;
+}
+message RequestUpdateSelectedResources {
+  string did = 1;
+  string project_id = 2;
+  string release_id = 3;
+  string component_did = 4;
+  repeated string resources = 5;
+}
+
+// blocklet security rule
+message ResponseBlockletSecurityRule {
+  StatusCode code = 1;
+  BlockletSecurityRule security_rule = 2;
+}
+message ResponseBlockletSecurityRules {
+  StatusCode code = 1;
+  repeated BlockletSecurityRule security_rules = 2;
+  Paging paging = 3;
+}
+message RequestGetBlockletSecurityRule {
+  string did = 1;
+  string id = 2;
+}
+message RequestGetBlockletSecurityRules {
+  string did = 1;
+  Paging paging = 2;
+  BlockletSecurityRuleQuery query = 3;
+  bool include_disabled = 4;
+}
+message RequestAddBlockletSecurityRule {
+  string did = 1;
+  BlockletSecurityRule data = 2;
+}
+message RequestUpdateBlockletSecurityRule {
+  string did = 1;
+  BlockletSecurityRule data = 2;
+}
+message RequestDeleteBlockletSecurityRule {
+  string did = 1;
+  string id = 2;
+}
+
+// blocklet security response header policy
+message ResponseBlockletResponseHeaderPolicy {
+  StatusCode code = 1;
+  BlockletResponseHeaderPolicy response_header_policy = 2;
+}
+message ResponseBlockletResponseHeaderPolicies {
+  StatusCode code = 1;
+  repeated BlockletResponseHeaderPolicy response_header_policies = 2;
+  Paging paging = 3;
+}
+message RequestGetBlockletResponseHeaderPolicy {
+  string did = 1;
+  string id = 2;
+}
+message RequestGetBlockletResponseHeaderPolicies {
+  string did = 1;
+  Paging paging = 2;
+  BlockletResponseHeaderPolicyQuery query = 3;
+}
+message RequestAddBlockletResponseHeaderPolicy {
+  string did = 1;
+  BlockletResponseHeaderPolicy data = 2;
+}
+message RequestUpdateBlockletResponseHeaderPolicy {
+  string did = 1;
+  BlockletResponseHeaderPolicy data = 2;
+}
+message RequestDeleteBlockletResponseHeaderPolicy {
+  string did = 1;
+  string id = 2;
+}
+
+// blocklet security access policy
+message ResponseBlockletAccessPolicy {
+  StatusCode code = 1;
+  BlockletAccessPolicy access_policy = 2;
+}
+message ResponseBlockletAccessPolicies {
+  StatusCode code = 1;
+  repeated BlockletAccessPolicy access_policies = 2;
+  Paging paging = 3;
+}
+message RequestGetBlockletAccessPolicy {
+  string did = 1;
+  string id = 2;
+}
+message RequestGetBlockletAccessPolicies {
+  string did = 1;
+  Paging paging = 2;
+  BlockletAccessPolicyQuery query = 3;
+}
+message RequestAddBlockletAccessPolicy {
+  string did = 1;
+  BlockletAccessPolicy data = 2;
+}
+message RequestUpdateBlockletAccessPolicy {
+  string did = 1;
+  BlockletAccessPolicy data = 2;
+}
+message RequestDeleteBlockletAccessPolicy {
+  string did = 1;
+  string id = 2;
+}
+
+message RequestRotateSessionKey {
+  string team_did = 1;
+  string session_id = 2;
+}
+
+message RequestConfigVault {
+  string team_did = 1;
+  string vault_did = 2;
+  string session_id = 3;
+}
+message ResponseConfigVault {
+  StatusCode code = 1;
+  string session_id = 2;
+}
+
+message RequestGetWebhookEndpoints {
+  string team_did = 1;
+  Paging paging = 2;
+}
+
+message ResponseGetWebhookEndpoints {
+  repeated WebhookEndpointWithUserInfo list = 1;
+  Paging paging = 2;
+}
+
+message RequestCreateWebhookEndpoint {
+  string team_did = 1;
+  WebhookEndpointState input = 2;
+}
+
+message ResponseCreateWebhookEndpoint {
+  WebhookEndpointState data = 1;
+}
+
+message RequestGetWebhookEndpoint {
+  string team_did = 1;
+  string id = 2;
+}
+
+message ResponseGetWebhookEndpoint {
+  WebhookEndpointWithUserInfo data = 1;
+}
+
+message RequestUpdateWebhookEndpoint {
+  string team_did = 1;
+  string id = 2;
+  WebhookEndpointState data = 3;
+}
+
+message ResponseUpdateWebhookEndpoint {
+  WebhookEndpointState data =1;
+}
+
+message RequestDeleteWebhookEndpoint {
+  string team_did = 1;
+  string id = 2;
+}
+
+message ResponseDeleteWebhookEndpoint {
+  WebhookEndpointState data =1;
+}
+
+message RequestAttemptId {
+  string event_id = 1;
+  string webhook_id = 2;
+}
+
+message RequestGetWebhookAttempts {
+  string team_did = 1;
+  RequestAttemptId input = 2;
+  Paging paging = 3;
+}
+
+message RequestAttempt {
+  string event_id = 1;
+  string webhook_id = 2;
+  string attempt_id = 3;
+  string team_did = 4;
+}
+
+message RequestUpdateWebHookState {
+  string id = 1;
+  string url = 2;
+  bool enabled = 3;
+  uint32 consecutive_failures = 4;
+}
+
+message ResponseGetWebhookAttempts {
+  repeated WebhookAttemptWithEndpointEventState list = 1;
+  Paging paging = 2;
+}
+
+message ResponseGetWebhookAttempt {
+  WebhookAttemptState data = 1;
+}
+
+message RequestRegenerateWebhookEndpointSecret {
+  string team_did = 1;
+  string id = 2;
+}
+
+message ResponseRegenerateWebhookEndpointSecret {
+  string secret = 1;
+}
+
+// blocklet backup summary
+message RequestGetBlockletBackupSummary {
+  string did = 1;
+  string start_time = 2;
+  string end_time = 3;
+}
+
+message BackupSummaryItem {
+  string date = 1;
+  int32 success_count = 2;
+  int32 error_count = 3;
+}
+
+message ResponseGetBlockletBackupSummary {
+  StatusCode code = 1;
+  repeated BackupSummaryItem summary = 2;
+}
+
+message ResponseGetPassportCountPerRole {
+  StatusCode code = 1;
+  repeated KeyValue counts = 2;
+}
+
+message RequestPassport {
+  string team_did = 1;
+  PassportQuery query = 2;
+  Paging paging = 3;
+}
+
+message ResponsePassport {
+  StatusCode code = 1;
+  repeated Passport passports = 2;
+  Paging paging = 3;
+}
+
+message RequestPassportLog {
+  string team_did = 1;
+  PassportLogQuery query = 2;
+  Paging paging = 3;
+}
+
+message ResponsePassportLog {
+  repeated PassportLogState passportLogs = 1;
+  Paging paging = 2;
+}
+
+message RequestRelatedPassports {
+  string team_did = 1;
+  string passport_id = 2;
+  Paging paging = 3;
+}
+
+message BlockletUsers {
+  uint32 users = 1;
+  uint32 approved_users = 2;
+}
+
+message BlockletPassport {
+  uint32 passports = 1;
+  uint32 active_passports = 2;
+}
+
+message BlockletTraffic {
+  uint64 total_requests = 1;
+  uint64 failed_requests = 2;
+}
+
+message BlockletIntegrations {
+  uint32 webhooks = 1;
+  uint32 access_keys = 2;
+  uint32 oauth_apps = 3;
+}
+
+message BlockletStudio {
+  uint32 blocklets = 1;
+  uint32 releases = 2;
+}
+
+message ResponseBlockletInfo {
+  BlockletUsers user = 1;
+  BlockletPassport passport = 2;
+  Backup backup = 3;
+  RuntimeInfo appRuntimeInfo = 4;
+  BlockletTraffic traffic = 5;
+  BlockletIntegrations integrations = 6;
+  BlockletStudio studio = 7;
+}
+
+message RequestAddUploadEndpoint {
+  string team_did = 1;
+  string url = 2;
+  string scope = 3;
+}
+
+message RequestDeleteUploadEndpoint {
+  string team_did = 1;
+  string did = 2;
+  string scope = 3;
+  string project_id = 4;
+}
+
+message RequestConnectToEndpoint {
+  string did = 1;
+  string endpoint_id = 2;
+  string project_id = 3;
+}
+
+message RequestConnectToAigne {
+  string did = 1;
+  string base_url = 2;
+  string provider = 3;
+  string model = 4;
+}
+
+message RequestDisconnectToAigne {
+  string did = 1;
+  string url = 2;
+  string key = 3;
+}
+
+message RequestVerifyAigneConnection {
+  string did = 1;
+}
+
+message ResponseConnectToEndpoint {
+  StatusCode code = 1;
+  string url = 2;
+}
+
+message RequestDisconnectFromEndpoint {
+  string did = 1;
+  string endpoint_id = 2;
+  string project_id = 3;
+}
+
+message RequestPublishToEndpoint {
+  string did = 1;
+  string endpoint_id = 2;
+  string project_id = 3;
+  string release_id = 4;
+}
+
+message ResponsePublishToEndpoint {
+  StatusCode code = 1;
+  string url = 2;
+}
+
+message RequestDomainDNS {
+  string team_did = 1;
+  string domain = 2;
+}
+
+message ResponseDomainDNS {
+  bool is_dns_resolved = 1;
+  bool has_cname = 2;
+  bool is_cname_match = 3;
+  string error = 4;
+}
+
+message ResponseOAuthClients {
+  repeated OauthClient list = 1;
+}
+
+message RequestDeleteOAuthClient {
+  string team_did = 1;
+  string client_id = 2;
+}
+
+message RequestOAuthClient {
+  string team_did = 1;
+  OauthClient input = 2;
+}
+
+message ResponseOAuthClient {
+  OauthClient data = 1;
+}
+
+// Organization related types
+message RequestGetOrgsOptions {
+  bool include_members = 1;
+  bool include_passports = 2;
+}
+
+message RequestGetOrgs {
+  string team_did = 1;
+  Org org = 2;
+  Paging paging = 3;
+  OrgQueryType type = 4;
+  string user_did = 5;
+  RequestGetOrgsOptions options = 6;
+}
+
+message ResponseGetOrgs {
+  StatusCode code = 1;
+  repeated Org orgs = 2;
+  Paging paging = 3;
+}
+
+message RequestGetOrg {
+  string team_did = 1;
+  string id = 2;
+}
+
+message ResponseGetOrg {
+  StatusCode code = 1;
+  Org org = 2;
+}
+
+message RequestGetOrgData {
+  string team_did = 1;
+  string org_id = 2;
+  Paging paging = 3;
+}
+
+message RequestCreateOrg {
+  string team_did = 1;
+  string name = 2;
+  string description = 3;
+  string owner_did = 4;
+  bool defer_passport = 5;
+}
+
+message RequestUpdateOrg {
+  string team_did = 1;
+  Org org = 2;
+}
+
+message RequestInvitableUsers {
+  string team_did = 1;
+  string id = 2;
+  UserQuery query = 3;
+}
+
+message RequestGetOrgMember {
+  string team_did = 1;
+  string org_id = 2;
+  string user_did = 3;
+}
+
+message ResponseOrgUsers {
+  StatusCode code = 1;
+  repeated UserOrg users = 2;
+  Paging paging = 3;
+}
+
+message RequestInviteMembersToOrg {
+  string team_did = 1;
+  string org_id = 2;
+  repeated string user_dids = 3;
+  string role = 4;
+  string invite_type = 5;
+  string email = 6;
+}
+
+message InviteResult {
+  repeated string success_dids = 2;
+  repeated string failed_dids = 3;
+  string inviteLink = 4;
+}
+
+message ResponseInviteMembersToOrg {
+  StatusCode code = 1;
+  InviteResult data = 2;
+}
+
+// Org Resource related types
+message RequestGetOrgResource {
+  string team_did = 1;
+  string org_id = 2;
+  string resource_id = 3;
+}
+message ResponseGetOrgResource {
+  StatusCode code = 1;
+  repeated OrgResources data = 3;
+}
+
+message RequestAddOrgResource {
+  string team_did = 1;
+  string org_id = 2;
+  repeated string resource_ids = 3;
+  string type = 4;
+  google.protobuf.Any metadata = 5;
+}
+
+
+message RequestMigrateOrgResource {
+  string team_did = 1;
+  string from = 2;
+  string to = 3;
+  repeated string resource_ids = 4;
+}
+
+message OrgResourceResult {
+  repeated string success = 1;
+  repeated string failed = 2;
+}
+
+message ResponseOrgResourceOperation {
+  StatusCode code = 1;
+  OrgResourceResult data = 2;
+}

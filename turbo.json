@@ -1,0 +1,166 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "coverage": {
+      "outputs": [
+        "coverage/**",
+        "**/coverage/**"
+      ]
+    },
+    "coverage:api": {
+      "outputs": [
+        "coverage/**",
+        "coverage-api/**"
+      ]
+    },
+    "coverage:src": {
+      "cache": true,
+      "outputs": [
+        "coverage/**"
+      ]
+    },
+    "coverage:e2e": {
+      "cache": true,
+      "outputs": [
+        "coverage/**"
+      ]
+    },
+    "start-e2e:static": {
+      "cache": false
+    },
+    "cypress-ci": {
+      "cache": false
+    },
+    "cypress-ci-docker": {
+      "cache": false
+    },
+    "cypress-ci-step-node-setup": {},
+    "cypress-ci-step-blocklet-list": {},
+    "cypress-ci-step-blocklet-lifecycle": {},
+    "cypress-ci-step-node-routing": {},
+    "cypress-ci-step-node-team": {},
+    "cypress-ci-step-blocklet-routing": {},
+    "cypress-ci-step-blocklet-config": {},
+    "cypress-ci-step-router-add-certificate": {},
+    "cypress-ci-step-node-setting-basic": {},
+    "cypress-ci-step-node-setting-integrations": {},
+    "cypress-ci-step-node-setting-access-keys": {},
+    "cypress-ci-step-node-setting-audit-logs": {},
+    "cypress-ci-step-node-logs-monitor": {},
+    "cypress-ci-step-node-notifications": {},
+    "cypress-ci-step-launch-free-with-session": {},
+    "cypress-ci-step-launch-free-without-session": {},
+    "cypress-open": {},
+    "cypress-headed": {},
+    "prepare:e2e": {},
+    "test": {},
+    "lint": {},
+    "lint-fix": {},
+    "clean": {},
+    "build": {
+      "cache": false
+    },
+    "build:blocklet-constant": {
+      "cache": true,
+      "outputs": [
+        "index.js",
+        "index.d.ts"
+      ]
+    },
+    "build:core-client": {
+      "cache": true,
+      "outputs": [
+        "lib/**",
+        "dist/**"
+      ]
+    },
+    "build:blocklet-store": {
+      "cache": true,
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "build:blocklet-meta": {
+      "cache": true,
+      "outputs": [
+        "lib/**"
+      ]
+    },
+    "build:blocklet-images": {
+      "cache": true,
+      "outputs": [
+        "lib/**"
+      ]
+    },
+    "build:core-ux": {
+      "cache": true,
+      "outputs": [
+        "lib/**",
+        "es/**"
+      ]
+    },
+    "build:blocklet-env": {
+      "cache": true,
+      "outputs": [
+        "lib/**"
+      ]
+    },
+    "build:blocklet-node-sdk": {
+      "cache": true,
+      "outputs": [
+        "lib/**"
+      ]
+    },
+    "build:blocklet-js-sdk": {
+      "cache": true,
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "build:blocklet-rate-limit": {
+      "cache": true,
+      "outputs": [
+        "lib/**"
+      ]
+    },
+    "build:core-models": {
+      "cache": true,
+      "outputs": [
+        "lib/**"
+      ]
+    },
+    "build:core-blocklet-services": {
+      "cache": true,
+      "outputs": [
+        "api/emails/**",
+        "dist/**"
+      ]
+    },
+    "build:blocklet-resolver": {
+      "cache": true,
+      "outputs": [
+        "index.js",
+        "index.d.ts"
+      ]
+    },
+    "build:core-analytics": {
+      "cache": true,
+      "outputs": [
+        "index.js",
+        "index.d.ts"
+      ]
+    },
+    "build:docker-utils": {
+      "cache": true,
+      "outputs": [
+        "disk/**"
+      ]
+    },
+    "build:db-cache": {
+      "cache": true,
+      "outputs": [
+        "dist/**"
+      ]
+    }
+  }
+}

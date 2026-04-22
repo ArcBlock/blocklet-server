@@ -1,0 +1,53 @@
+{
+  "name": "@abtnode/logger",
+  "version": "1.17.12",
+  "description": "ABT Node logger lib",
+  "keywords": [
+    "logger",
+    "lib"
+  ],
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/core/logger#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArcBlock/blocklet-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "main": "lib/logger.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "lint": "eslint tests lib",
+    "lint:fix": "eslint --fix tests lib"
+  },
+  "dependencies": {
+    "@abtnode/constant": "1.17.12",
+    "@abtnode/util": "1.17.12",
+    "@abtnode/winston-daily-rotate-file": "^5.0.1",
+    "debug": "^4.4.1",
+    "fast-safe-stringify": "^2.1.1",
+    "fs-extra": "^11.2.0",
+    "lodash.isempty": "^4.4.0",
+    "morgan": "^1.10.0",
+    "rotating-file-stream": "^2.1.6",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "express": "^4.18.2"
+  }
+}

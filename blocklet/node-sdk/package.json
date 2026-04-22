@@ -1,0 +1,97 @@
+{
+  "name": "@blocklet/sdk",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.17.12",
+  "description": "graphql client to read/write data on abt node",
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/blocklet/node-sdk#readme",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "service"
+  ],
+  "scripts": {
+    "verify": "npm run lint:fix && npm run test && npm run build",
+    "lint": "eslint src tests service",
+    "lint:fix": "npm run lint -- --fix",
+    "clean": "rm -fr lib",
+    "prebuild": "npm run clean && npm run types",
+    "types": "rm -rf ./src/types && node tools/version.js && ts-node tools/types.js && rm -f ./src/types/index.ts && prettier --write ./src/types/notification.ts",
+    "build:blocklet-node-sdk": "npm run build",
+    "build": "tsc",
+    "build:watch": "npm run build -- -w"
+  },
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server.git",
+    "directory": "blocklet/node-sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "dependencies": {
+    "@abtnode/constant": "1.17.12",
+    "@abtnode/db-cache": "1.17.12",
+    "@abtnode/util": "1.17.12",
+    "@arcblock/did": "1.29.27",
+    "@arcblock/did-connect-js": "1.29.27",
+    "@arcblock/did-ext": "1.29.27",
+    "@arcblock/jwt": "1.29.27",
+    "@arcblock/ws": "1.29.27",
+    "@blocklet/constant": "1.17.12",
+    "@blocklet/env": "1.17.12",
+    "@blocklet/error": "^0.3.5",
+    "@blocklet/meta": "1.17.12",
+    "@blocklet/server-js": "1.17.12",
+    "@blocklet/theme": "^3.5.2",
+    "@did-connect/authenticator": "^2.2.8",
+    "@did-connect/handler": "^2.2.8",
+    "@nedb/core": "^2.1.5",
+    "@ocap/mcrypto": "1.29.27",
+    "@ocap/util": "1.29.27",
+    "@ocap/wallet": "1.29.27",
+    "axios": "^1.7.9",
+    "debug": "^4.4.1",
+    "fs-extra": "^11.2.0",
+    "joi": "17.12.2",
+    "json-stable-stringify": "^1.0.1",
+    "jsonwebtoken": "^9.0.0",
+    "jwt-decode": "^3.1.2",
+    "lodash": "^4.17.21",
+    "lru-cache": "^11.0.2",
+    "p-retry": "^4.6.2",
+    "qs": "^6.13.0",
+    "semver": "^7.6.3",
+    "sitemap": "^8.0.0",
+    "ufo": "^1.5.3",
+    "wait-port": "^1.1.0"
+  },
+  "resolutions": {
+    "@nedb/core": "^2.1.2"
+  },
+  "devDependencies": {
+    "@arcblock/eslint-config-ts": "^0.3.3",
+    "@types/express": "^5.0.0",
+    "@types/json-stable-stringify": "^1.0.36",
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^22.7.5",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "@typescript/native-preview": "^7.0.0-dev.20251230.1",
+    "axios-mock-adapter": "^2.1.0",
+    "detect-port": "^1.5.1",
+    "eslint": "^8.57.0",
+    "joi-to-typescript": "^4.14.0",
+    "json-stable-stringify": "^1.0.1",
+    "prettier": "^3.3.2",
+    "ts-node": "^10.9.1"
+  }
+}

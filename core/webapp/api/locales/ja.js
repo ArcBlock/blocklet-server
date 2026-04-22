@@ -1,0 +1,27 @@
+/* eslint-disable prettier/prettier */
+module.exports = {
+  navigation: {
+    system: 'システム',
+    services: 'サービス',
+    notification: '通知センター',
+    access: 'アクセス',
+    members: 'メンバー',
+    passport: 'パスポート',
+    analytics: 'アナリティクス',
+    dashboard: 'ダッシュボード',
+    studio: 'Blocklet Studio',
+    blockletService: 'Blockletサービス',
+    didSpaces: 'ストレージとバックアップ',
+    notifications: '通知',
+    didConnect: 'アイデンティティとアクセス',
+    website: 'ウェブサイトスタジオ',
+    operations: '可観測性',
+    integration: '統合',
+    developer: '開発者',
+    aigne: 'AI 接続',
+    orgs: '組織',
+    nfts: 'NFTs',
+    settings: '設定',
+    userFollowers: 'フォロー',
+  },
+};

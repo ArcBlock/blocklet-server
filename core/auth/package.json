@@ -1,0 +1,72 @@
+{
+  "name": "@abtnode/auth",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.17.12",
+  "description": "Simple lib to manage auth in ABT Node",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "locales"
+  ],
+  "scripts": {
+    "lint": "eslint tests lib",
+    "lint:fix": "eslint --fix tests lib"
+  },
+  "keywords": [],
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server.git",
+    "directory": "core/auth"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/core/auth#readme",
+  "dependencies": {
+    "@abtnode/constant": "1.17.12",
+    "@abtnode/logger": "1.17.12",
+    "@abtnode/util": "1.17.12",
+    "@arcblock/did": "1.29.27",
+    "@arcblock/did-connect-js": "1.29.27",
+    "@arcblock/did-ext": "1.29.27",
+    "@arcblock/did-util": "1.29.27",
+    "@arcblock/jwt": "1.29.27",
+    "@arcblock/nft-display": "^3.5.2",
+    "@arcblock/validator": "1.29.27",
+    "@arcblock/vc": "1.29.27",
+    "@blocklet/constant": "1.17.12",
+    "@blocklet/error": "^0.3.5",
+    "@blocklet/meta": "1.17.12",
+    "@blocklet/sdk": "1.17.12",
+    "@ocap/client": "1.29.27",
+    "@ocap/mcrypto": "1.29.27",
+    "@ocap/util": "1.29.27",
+    "@ocap/wallet": "1.29.27",
+    "@simplewebauthn/server": "^13.1.1",
+    "axios": "^1.7.9",
+    "flat": "^5.0.2",
+    "fs-extra": "^11.2.0",
+    "is-url": "^1.2.4",
+    "joi": "17.12.2",
+    "jsonwebtoken": "^9.0.0",
+    "jwks-rsa": "^3.1.0",
+    "lodash": "^4.17.21",
+    "p-limit": "^3.1.0",
+    "p-retry": "^4.6.2",
+    "semver": "^7.6.3",
+    "transliteration": "2.3.5",
+    "ufo": "^1.5.3"
+  },
+  "devDependencies": {
+    "axios-mock-adapter": "^2.1.0"
+  },
+  "gitHead": "e5764f753181ed6a7c615cd4fc6682aacf0cb7cd"
+}

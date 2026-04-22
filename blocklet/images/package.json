@@ -1,0 +1,56 @@
+{
+  "name": "@blocklet/images",
+  "version": "1.17.12",
+  "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArcBlock/blocklet-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "lib"
+  ],
+  "description": "support functions for blocklet image validation",
+  "keywords": [
+    "blocklet",
+    "image",
+    "validation"
+  ],
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "scripts": {
+    "verify": "npm run lint:fix && npm run coverage && npm run build",
+    "lint": "eslint src tests",
+    "lint:fix": "npm run lint -- --fix",
+    "clean": "rm -fr lib",
+    "build:blocklet-images": "tsc",
+    "build": "tsc",
+    "watch": "nodemon -w src -e ts -x 'npm run build'"
+  },
+  "dependencies": {
+    "@jimp/utils": "^1.6.0",
+    "blurhash": "^2.0.5",
+    "image-size": "^1.0.2",
+    "image-type": "^4.1.0",
+    "is-svg": "^4.3.2",
+    "jimp": "^1.6.0"
+  },
+  "devDependencies": {
+    "@arcblock/eslint-config-ts": "^0.3.3",
+    "@typescript/native-preview": "^7.0.0-dev.20251230.1",
+    "eslint": "^8.27.0",
+    "prettier": "^3.3.2",
+    "ts-node": "^10.9.1"
+  }
+}

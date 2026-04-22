@@ -1,0 +1,38 @@
+{
+  "name": "@abtnode/types",
+  "version": "1.17.12",
+  "description": "Typescript definitions generated from protobuf",
+  "keywords": [
+    "abtnode",
+    "typescript"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "resolutions": {},
+  "devDependencies": {
+    "@arcblock/eslint-config-ts": "0.3.3",
+    "@types/node": "^22.7.5",
+    "@typescript/native-preview": "^7.0.0-dev.20251230.1",
+    "eslint": "^8.57.0"
+  },
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "contributors": [
+    "ArcBlock <blocklet@arcblock.io> (https://github.com/ArcBlock)"
+  ],
+  "types": "./index.d.ts",
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/core/types#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArcBlock/abt-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/abt-node/issues"
+  },
+  "scripts": {}
+}

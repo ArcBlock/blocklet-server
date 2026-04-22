@@ -1,0 +1,53 @@
+{
+  "name": "dapp-demo",
+  "description": "ABT Node blocklet project",
+  "group": "dapp",
+  "main": "blocklet.js",
+  "author": {
+    "name": "Arcblock"
+  },
+  "specVersion": "1.0.0",
+  "files": ["blocklet.md", "screenshots"],
+  "interfaces": [
+    {
+      "type": "web",
+      "name": "publicUrl",
+      "path": "/",
+      "prefix": "*",
+      "port": "BLOCKLET_PORT",
+      "protocol": "tcp"
+    }
+  ],
+  "version": "1.0.0",
+  "path": "/dapp/dapp-demo",
+  "did": "z8iZy93odZT125AQ6dCSmZJHuZEsUdbk5kVak",
+  "community": "",
+  "documentation": "",
+  "homepage": "",
+  "license": "",
+  "payment": {
+    "price": [],
+    "share": []
+  },
+  "timeout": {
+    "start": 10
+  },
+  "environments": [],
+  "screenshots": [],
+  "dist": {
+    "tarball": "dapp-demo-1.0.0.tgz",
+    "integrity": "sha512-NyT2MPk2jgVQ/qvTIp+IElwFcan8WCfZgz79sukU+EfEeDrjUDyG/pKUpQ8swwmlDwoXspetKWBzMgQJcT3nOw==",
+    "shasum": "d08ff6badfdb27d98a3cc47f48686c651bda1d3e"
+  },
+  "signatures": [
+    {
+      "type": "ED25519",
+      "name": "dapp-demo",
+      "signer": "z1aEhK8DBzUcQoaYzpNs8bHv4AgFn22fcXu",
+      "pk": "zBCfqy5Z4vbQhVYmCBEK9aSL8MNjcQL8o7vFL8mgfegjZ",
+      "created": "2021-12-03T16:08:18.528Z",
+      "sig": "z62XmTb4KBURigWZd5YhqZVAVGs8kGnKK5aVYV4s24aKhjobM5pvfFX9ide8wkmLtfof2Zn43e2o6RZvpVaCLVrsc"
+    }
+  ],
+  "lastPublishedAt": "2021-12-03T16:08:18.521Z"
+}

@@ -1,0 +1,33 @@
+name: blocklet-version
+description: ABT Node blocklet project
+group: dapp
+main: .
+author:
+  name: linchen1987
+specVersion: 1.1.0
+logo: logo.png
+interfaces:
+  - type: web
+    name: publicUrl
+    path: /
+    prefix: '*'
+    port: BLOCKLET_PORT
+    protocol: http
+did: z8ia5ERpG5DZ8FSW3ac5tU1xsbzumE9NtqKCY
+version: 1.0.0
+community: ''
+documentation: ''
+homepage: ''
+license: ''
+payment:
+  price: []
+  share: []
+timeout:
+  start: 60
+requirements:
+  abtnode: '>=1.2.0'
+  os: '*'
+  cpu: '*'
+environments: []
+screenshots: []
+children: []

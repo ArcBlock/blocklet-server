@@ -1,0 +1,82 @@
+name: unit-tests
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  CACHE_VERSION: 20260130
+  NODE_OPTIONS: '--max_old_space_size=6144'
+  TEST_REDIS_URL: redis://127.0.0.1:40409
+  CYPRESS_INSTALL_BINARY: 0
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  unit-tests:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip ci]')"
+    steps:
+      - name: Start Redis via Docker
+        run: |
+          docker run -d \
+            --name test-redis \
+            -p 40409:6379 \
+            --health-cmd="redis-cli ping" \
+            --health-interval=3s \
+            --health-timeout=2s \
+            --health-retries=5 \
+            redis:latest
+
+      - name: Wait for Redis Ready
+        run: |
+          for i in {1..20}; do
+            health=$(docker inspect --format='{{json .State.Health.Status}}' test-redis)
+            echo "Redis health: $health"
+            if [ "$health" = "\"healthy\"" ]; then
+              echo "Redis is ready"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Redis failed to become healthy"
+          docker logs test-redis
+          exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Use Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+            **/node_modules
+          key: ${{ runner.os }}-node_modules-${{ env.CACHE_VERSION }}-${{ hashFiles('**/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules-${{ env.CACHE_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          make github-init
+          git checkout .
+
+      - name: Setup nginx
+        run: make ci-nginx
+
+      - name: Lint packages
+        run: make lint
+
+      - name: Run unit tests
+        env:
+          TEST_ALIYUN_MAIL_PASSWD: ${{ secrets.TEST_ALIYUN_MAIL_PASSWD || '' }}
+          TEST_WEBHOOK_FEISHU: ${{ secrets.TEST_WEBHOOK_FEISHU || '' }}
+          TEST_WEBHOOK_SLACK: ${{ secrets.TEST_WEBHOOK_SLACK || '' }}
+        run: npm run coverage --retry=3

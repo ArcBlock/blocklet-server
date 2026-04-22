@@ -1,0 +1,54 @@
+{
+  "name": "@blocklet/resolver",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.17.12",
+  "description": "Blocklet meta resolver",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "lint": "eslint tests index.ts",
+    "lint:fix": "npm run lint -- --fix",
+    "clean": "rm -f index.d.ts index.js",
+    "build:blocklet-resolver": "npm run build",
+    "build": "npm run clean && tsc"
+  },
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server.git",
+    "directory": "blocklet/resolver"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/blocklet/resolver#readme",
+  "dependencies": {
+    "@arcblock/did": "1.29.27",
+    "@blocklet/constant": "1.17.12",
+    "@blocklet/meta": "1.17.12",
+    "lodash": "^4.17.21",
+    "lru-cache": "^11.0.2",
+    "semver": "^7.6.3",
+    "ufo": "^1.5.3"
+  },
+  "devDependencies": {
+    "@abtnode/db-cache": "1.17.12",
+    "@abtnode/types": "1.17.12",
+    "@arcblock/eslint-config-ts": "^0.3.3",
+    "@types/node": "^22.7.5",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "@typescript/native-preview": "^7.0.0-dev.20251230.1",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.2"
+  }
+}

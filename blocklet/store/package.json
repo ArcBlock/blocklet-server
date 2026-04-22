@@ -1,0 +1,75 @@
+{
+  "name": "@blocklet/store",
+  "version": "1.17.12",
+  "description": "Connect Store and upload blocklet to Store",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "ts-check": "npx tsc --noemit --skipLibCheck --incremental --tsBuildInfoFile './node_modules/.tsbuildinfo'",
+    "lint": "npm run ts-check && eslint src",
+    "lint:fix": "npm run lint -- --fix",
+    "build": "unbuild",
+    "build:blocklet-store": "npm run build"
+  },
+  "keywords": [],
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server.git",
+    "directory": "blocklet/store"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/blocklet/store#readme",
+  "dependencies": {
+    "@abtnode/constant": "1.17.12",
+    "@abtnode/util": "1.17.12",
+    "@arcblock/did": "1.29.27",
+    "@blocklet/constant": "1.17.12",
+    "@blocklet/meta": "1.17.12",
+    "@ocap/client": "1.29.27",
+    "@ocap/util": "1.29.27",
+    "@ocap/wallet": "1.29.27",
+    "form-data": "^4.0.0",
+    "fs-extra": "^11.2.0",
+    "js-yaml": "^4.1.0",
+    "json-stable-stringify": "^1.0.1",
+    "lodash": "^4.17.21",
+    "p-all": "^3.0.0",
+    "p-wait-for": "^3.2.0",
+    "tweetnacl": "^1.0.3",
+    "tweetnacl-sealedbox-js": "^1.2.0",
+    "ufo": "^1.5.3",
+    "xbytes": "^1.8.0"
+  },
+  "devDependencies": {
+    "@arcblock/eslint-config-ts": "^0.3.3",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.7.5",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "@typescript/native-preview": "^7.0.0-dev.20251230.1",
+    "dts-bundle-generator": "^9.2.3",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.2",
+    "unbuild": "^2.0.0"
+  }
+}

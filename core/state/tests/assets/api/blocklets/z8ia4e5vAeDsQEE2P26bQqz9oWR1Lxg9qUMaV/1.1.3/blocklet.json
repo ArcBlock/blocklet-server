@@ -1,0 +1,72 @@
+{
+  "name": "static-demo-blocklet",
+  "version": "1.1.3",
+  "description": "Demo blocklet that shows how to serve a static html5 game with ABT Node",
+  "keywords": ["demo", "game", "blocklet"],
+  "author": {
+    "name": "wangshijun",
+    "email": "wangshijun2010@gmail.com",
+    "url": "http://github.com/wangshijun"
+  },
+  "title": "Static Demo",
+  "files": ["app/", "logo.png", "blocklet.yml", "blocklet.md", "README.md"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blocklet/html-2048-sample.git"
+  },
+  "group": "static",
+  "main": "app",
+  "logo": "logo.png",
+  "community": "",
+  "documentation": "",
+  "homepage": "",
+  "screenshots": [],
+  "environments": [],
+  "specVersion": "1.1.1",
+  "interfaces": [
+    {
+      "type": "web",
+      "name": "publicUrl",
+      "path": "/",
+      "prefix": "*",
+      "port": "BLOCKLET_PORT",
+      "protocol": "tcp"
+    }
+  ],
+  "did": "z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV",
+  "timeout": {
+    "start": 10
+  },
+  "requirements": {
+    "abtnode": ">=1.1.0",
+    "os": "*",
+    "cpu": "*"
+  },
+  "children": [],
+  "capabilities": {
+    "clusterMode": false
+  },
+  "gitHash": "e937afa0ae48641f92ce4c44145013035e6ca7c2",
+  "path": "/static/static-demo-blocklet",
+  "nftFactory": "",
+  "payment": {
+    "price": [],
+    "share": []
+  },
+  "dist": {
+    "tarball": "static-demo-blocklet-1.1.3.tgz",
+    "integrity": "sha512-g3PI5q2ogMK+HD1rU+ToQPzVbJZvt2Zv61zdo0fbWCp9dS5XWXb7vhXczYfLNzA5xzSb/JTduXsE7aiuv02riw=="
+  },
+  "signatures": [
+    {
+      "type": "ED25519",
+      "name": "static-demo-blocklet",
+      "signer": "z1bqUXY5XB6fbPUibQunzE8Zt2CfySns48x",
+      "pk": "zBiMpC8rBidXtjATAFTEWgDNDLcDkcrMghAKd8aEV9i7E",
+      "created": "2021-12-16T02:24:18.367Z",
+      "sig": "z36PYeFKxoddHLuhRMUkZVFZ18YHjceyrTqt8BcMLeP6DTzDz2NMyQABjwipfchKhgh1xVoq1yNypujL6WGNTmZai"
+    }
+  ],
+  "lastPublishedAt": "2021-12-16T02:24:18.325Z"
+}

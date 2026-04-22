@@ -1,0 +1,33 @@
+{
+  "name": "@blocklet/tracker",
+  "version": "1.17.12",
+  "description": "A library to track page views and events for blocklets",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "blocklet"
+  ],
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/blocklet/tracker#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "lint": "eslint index.js",
+    "lint:fix": "npm run lint -- --fix"
+  }
+}

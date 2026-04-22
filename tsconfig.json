@@ -1,0 +1,24 @@
+{
+  /* Visit https://aka.ms/tsconfig.json to read more about this file */
+  "compilerOptions": {
+    // 编译目标
+    "target": "es2020",
+    // 设置程序的模块系统
+    "module": "commonjs",
+    "esModuleInterop": true,
+    // 开启严格模式
+    "strict": true,
+    // 不对类库的类型文件进行检查
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "strictNullChecks": false,
+    // 为每个.js, .ts文件生成.d.ts文件
+    "declaration": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": [
+      "node",
+      "bun"
+    ],
+    "resolveJsonModule": true
+  }
+}

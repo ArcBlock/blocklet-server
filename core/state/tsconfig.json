@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "alwaysStrict": false,
+    "strict": false,
+    // https://stackoverflow.com/questions/58172911/typescript-compiler-options-trying-to-get-flat-output-to-outdir
+    // https://stackoverflow.com/questions/63552953/tsc-keeps-creating-subfolders-in-the-outdir
+    "rootDir": "src",
+    "outDir": "lib"
+  }
+}

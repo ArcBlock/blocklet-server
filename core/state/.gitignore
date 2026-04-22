@@ -1,0 +1,2 @@
+!tests/util/server-data/**/*.log
+tests/util/server-data/logs/_abtnode/pm2.log

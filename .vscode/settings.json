@@ -1,0 +1,37 @@
+{
+  "search.exclude": {
+    "**/*.js.map": true,
+    "core/webapp/blocklet.js": true,
+    "core/webapp/.blocklet": true,
+    "**/dist/": true,
+    "**/build/": true,
+    "**/*.chunk.js": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "prettier.enable": true,
+  "cSpell.words": [
+    "abtnode",
+    "blocklet",
+    "blocklets",
+    "envfile",
+    "iconify",
+    "noreferrer",
+    "Notext",
+    "orbstack",
+    "Perc",
+    "renewaling",
+    "HSTS",
+    "OCSP"
+  ],
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

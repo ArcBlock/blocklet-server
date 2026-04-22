@@ -1,0 +1,27 @@
+/* eslint-disable prettier/prettier */
+module.exports = {
+  navigation: {
+    system: 'System',
+    services: 'Dienste',
+    notification: 'Benachrichtigungszentrum',
+    access: 'Zugriff',
+    members: 'Mitglieder',
+    passport: 'Pass',
+    analytics: 'Analytik',
+    dashboard: 'Dashboard',
+    studio: 'Blocklet Studio',
+    blockletService: 'Blocklet-Dienst',
+    didSpaces: 'Speicher & Backup',
+    notifications: 'Benachrichtigungen',
+    didConnect: 'Identität & Zugriff',
+    website: 'Website Studio',
+    operations: 'Beobachtbarkeit',
+    integration: 'Integrationen',
+    developer: 'Entwickler',
+    aigne: 'KI-Verbindungen',
+    orgs: 'Organisationen',
+    nfts: 'NFTs',
+    settings: 'Einstellungen',
+    userFollowers: 'Folgen',
+  },
+};

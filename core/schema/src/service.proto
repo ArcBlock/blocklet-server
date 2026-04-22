@@ -1,0 +1,379 @@
+syntax = "proto3";
+package abt_node;
+
+import "google/protobuf/descriptor.proto";
+import "rpc.proto";
+import "type.proto";
+
+extend google.protobuf.MethodOptions {
+  Type rpc_type = 65030;
+}
+
+extend google.protobuf.ServiceOptions {
+  Type svc_type = 65030;
+}
+
+extend google.protobuf.FieldOptions {
+  Field field = 65030;
+}
+
+message Field {
+  bool required = 1;
+  string params = 2;
+  string dirs = 3;
+}
+
+enum Type {
+  DEFAULT = 0;
+  MUTATION = 1;
+  QUERY = 2;
+}
+
+service Query {
+  option (svc_type) = QUERY;
+  // From Blocklet State
+  rpc getBlocklet(RequestBlockletDetail) returns (ResponseBlocklet);
+  rpc getBlockletMetaFromUrl(RequestBlockletMetaFromUrl) returns (ResponseBlockletMetaFromUrl);
+  rpc getBlockletDiff(RequestBlockletDiff) returns (ResponseBlockletDiff);
+  rpc getBlocklets(RequestGetBlocklets) returns (ResponseGetBlocklets);
+  rpc getBlockletRuntimeHistory(RequestBlockletRuntimeHistory) returns (ResponseBlockletRuntimeHistory);
+  rpc getBlockletsFromBackup(EmptyRequest) returns (ResponseBlockletsFromBackup);
+  rpc getDynamicComponents(RequestGetDynamicComponents) returns (ResponseGetDynamicComponents);
+
+
+  // From NodeState
+  rpc getNodeInfo(RequestGetNodeInfo) returns (ResponseGetNodeInfo);
+  rpc resetNodeStatus(EmptyRequest) returns (ResponseGetNodeInfo);
+  rpc getNodeEnv(RequestGetNodeInfo) returns (ResponseGetNodeEnv);
+  rpc checkNodeVersion(RequestCheckNodeVersion) returns (ResponseCheckNodeVersion);
+  rpc getDelegationState(RequestDelegationState) returns (ResponseDelegationState);
+  rpc getNodeRuntimeHistory(RequestNodeRuntimeHistory) returns (ResponseNodeRuntimeHistory);
+
+  // From Registry
+  rpc getBlockletMeta(RequestBlockletMeta) returns (ResponseBlockletMeta);
+
+  // Notification
+  rpc getNotifications(RequestGetNotifications) returns (ResponseGetNotifications);
+  rpc makeAllNotificationsAsRead(RequestMakeAllNotificationsAsRead) returns (ResponseMakeAllNotificationsAsRead);
+  rpc getNotificationSendLog(RequestNotificationSendLog) returns (ResponseNotificationSendLog);
+  rpc getReceivers(RequestReceivers) returns (ResponseReceivers);
+  rpc getNotificationComponents(RequestNotificationComponents) returns (ResponseNotificationComponents);
+  rpc resendNotification(RequestResendNotification) returns (ResponseResendNotification);
+
+  // Routing Rules
+  rpc getRoutingSites(RequestGetRoutingSites) returns (ResponseGetRoutingSites);
+  rpc getRoutingProviders(RequestGetRoutingProviders) returns (ResponseGetRoutingProviders);
+  rpc isDidDomain(RequestIsDidDomain) returns (ResponseIsDidDomain);
+
+  // Certificates
+  rpc getCertificates(RequestGetCertificates) returns (ResponseGetCertificates);
+
+  // Utils
+  rpc checkDomains(RequestCheckDomains) returns (ResponseCheckDomains);
+  rpc findCertificateByDomain(RequestFindCertificateByDomain) returns (ResponseFindCertificateByDomain);
+
+  // Access Keys
+  rpc getAccessKeys(RequestAccessKeys) returns (ResponseAccessKeys);
+  rpc getAccessKey(RequestAccessKey) returns (ResponseAccessKey);
+
+  // WebHook
+  rpc getWebHooks(RequestWebHook) returns (ResponseWebHooks);
+  rpc getWebhookSenders(RequestSenderList) returns (ResponseSenderList);
+  rpc sendTestMessage(RequestSendMsg) returns (ResponseSendMsg);
+
+  // Session
+  rpc getSession(RequestGetSession) returns (ResponseGetSession);
+
+  // Team && AccessControl
+  rpc getRoles(RequestGetOrgData) returns (ResponseRoles);
+  rpc getRole(RequestTeamRole) returns (ResponseRole);
+  rpc getPermissions(Team) returns (ResponsePermissions);
+  rpc getInvitations(RequestGetOrgData) returns (ResponseGetInvitations);
+  rpc getUsers(RequestUsers) returns (ResponseUsers);
+  rpc getUser(RequestTeamUser) returns (ResponseUser);
+  rpc getUserSessions(RequestUserSessions) returns (ResponseUserSessions);
+  rpc getUserSessionsCount(RequestUserSessionsCount) returns (ResponseUserSessionsCount);
+  rpc getUsersCount(Team) returns (ResponseGetUsersCount);
+  rpc getUsersCountPerRole(Team) returns (ResponseGetUsersCountPerRole);
+  rpc getOwner(Team) returns (ResponseUser);
+  rpc getPermissionsByRole(RequestTeamRole) returns (ResponsePermissions);
+  rpc getPassportIssuances(RequestGetPassportIssuances) returns (ResponseGetPassportIssuances);
+  rpc logoutUser(RequestLogoutUser) returns (GeneralResponse);
+  rpc destroySelf(RequestTeamUser) returns (ResponseUser);
+
+  rpc getUserFollowers(RequestUserRelationQuery) returns (ResponseUserFollows);
+  rpc getUserFollowing(RequestUserRelationQuery) returns (ResponseUserFollows);
+  rpc getUserFollowStats(RequestUserRelationCount) returns (ResponseUserRelationCount);
+  rpc checkFollowing(RequestCheckFollowing) returns (ResponseCheckFollowing);
+  rpc followUser(RequestFollowUserAction) returns (GeneralResponse);
+  rpc unfollowUser(RequestFollowUserAction) returns (GeneralResponse);
+
+  // invite
+  rpc getUserInvites(RequestUserRelationQuery) returns (ResponseUsers);
+
+  // Tagging
+  rpc getTags(RequestTags) returns (ResponseTags);
+
+  // Audit Logs
+  rpc getAuditLogs(RequestGetAuditLogs) returns (ResponseGetAuditLogs);
+
+  // Launcher session
+  rpc getLauncherSession(RequestGetLauncherSession) returns (ResponseGetLauncherSession);
+
+  // blocklet backup record
+  rpc getBlockletBackups(RequestGetBlockletBackups) returns (ResponseGetBlockletBackups);
+  rpc getBlockletBackupSummary(RequestGetBlockletBackupSummary) returns (ResponseGetBlockletBackupSummary);
+  rpc getBlockletSpaceGateways(RequestBlocklet) returns (ResponseGetBlockletSpaceGateways);
+
+  // Insights
+  rpc getTrafficInsights(RequestGetTrafficInsights) returns (ResponseGetTrafficInsights);
+
+  // Project
+  rpc getProjects(RequestGetProjects) returns (ResponseGetProjects);
+  rpc getProject(RequestProject) returns (ResponseGetProject);
+  rpc getReleases(RequestGetReleases) returns (ResponseGetReleases);
+  rpc getRelease(RequestRelease) returns (ResponseGetRelease);
+  rpc getSelectedResources(RequestGetSelectedResources) returns (ResponseGetSelectedResources);
+
+  // blocklet security rule
+  rpc getBlockletSecurityRule(RequestGetBlockletSecurityRule) returns (ResponseBlockletSecurityRule);
+  rpc getBlockletSecurityRules(RequestGetBlockletSecurityRules) returns (ResponseBlockletSecurityRules);
+  rpc getBlockletResponseHeaderPolicy(RequestGetBlockletResponseHeaderPolicy) returns (ResponseBlockletAccessPolicy);
+  rpc getBlockletResponseHeaderPolicies(RequestGetBlockletResponseHeaderPolicies) returns (ResponseBlockletResponseHeaderPolicies);
+  rpc getBlockletAccessPolicy(RequestGetBlockletAccessPolicy) returns (ResponseBlockletAccessPolicy);
+  rpc getBlockletAccessPolicies(RequestGetBlockletAccessPolicies) returns (ResponseBlockletAccessPolicies);
+
+  // webhook
+  rpc getWebhookEndpoints(RequestGetWebhookEndpoints) returns (ResponseGetWebhookEndpoints);
+  rpc getWebhookEndpoint(RequestGetWebhookEndpoint) returns (ResponseGetWebhookEndpoint);
+  rpc getWebhookAttempts(RequestGetWebhookAttempts) returns (ResponseGetWebhookAttempts);
+
+  // passport
+  rpc getPassportRoleCounts(Team) returns (ResponseGetPassportCountPerRole);
+  rpc getPassportsByRole(RequestPassport) returns (ResponsePassport);
+  rpc getPassportLogs(RequestPassportLog) returns(ResponsePassportLog);
+  rpc getRelatedPassports(RequestRelatedPassports) returns(ResponsePassport);
+
+  rpc getBlockletBaseInfo(Team) returns(ResponseBlockletInfo);
+  rpc getDomainDNS(RequestDomainDNS) returns(ResponseDomainDNS);
+
+  // oauth
+  rpc getOAuthClients(Team) returns(ResponseOAuthClients);
+  rpc createOAuthClient(RequestOAuthClient) returns(ResponseOAuthClient);
+  rpc updateOAuthClient(RequestOAuthClient) returns(ResponseOAuthClient);
+  rpc deleteOAuthClient(RequestDeleteOAuthClient) returns(GeneralResponse);
+
+  // org
+  rpc getOrgs(RequestGetOrgs) returns(ResponseGetOrgs);
+  rpc getOrg(RequestGetOrg) returns(ResponseGetOrg);
+  rpc getOrgMembers(RequestGetOrgData) returns(ResponseOrgUsers);
+  rpc getOrgInvitableUsers(RequestInvitableUsers) returns(ResponseUsers);
+
+  rpc getOrgResource(RequestGetOrgResource) returns (ResponseGetOrgResource);
+
+}
+
+service Mutation {
+  option (svc_type) = MUTATION;
+  rpc installBlocklet(RequestInstallBlocklet) returns (ResponseBlocklet);
+  rpc installComponent(RequestInstallComponent) returns (ResponseBlocklet);
+  rpc startBlocklet(RequestComponents) returns (ResponseBlocklet);
+  rpc stopBlocklet(RequestComponents) returns (ResponseBlocklet);
+  rpc reloadBlocklet(RequestComponents) returns (ResponseBlocklet);
+  rpc restartBlocklet(RequestComponents) returns (ResponseBlocklet);
+  rpc deleteBlocklet(RequestDeleteBlocklet) returns (ResponseBlocklet);
+  rpc deleteComponent(RequestDeleteComponent) returns (ResponseBlocklet);
+  rpc cancelDownloadBlocklet(RequestBlocklet) returns (ResponseBlocklet);
+  rpc checkComponentsForUpdates(RequestBlocklet) returns (ResponseCheckComponentsForUpdates);
+  rpc upgradeComponents(RequestUpdateComponents) returns (ResponseBlocklet);
+  rpc configBlocklet(RequestConfigBlocklet) returns (ResponseBlocklet);
+  rpc configPublicToStore(RequestConfigPublicToStore) returns (ResponseBlocklet);
+  rpc configNavigations(RequestConfigNavigations) returns (ResponseBlocklet);
+  rpc configAuthentication(RequestConfigAuthentication) returns (ResponseBlocklet);
+  rpc configDidConnect(RequestConfigDidConnect) returns (ResponseBlocklet);
+  rpc configDidConnectActions(RequestConfigDidConnectActions) returns (ResponseBlocklet);
+  rpc configNotification(RequestConfigNotification) returns (ResponseBlocklet);
+  rpc configVault(RequestConfigVault) returns (ResponseConfigVault);
+  rpc sendEmail(RequestSendEmail) returns (GeneralResponse);
+  rpc sendPush(RequestSendPush) returns (GeneralResponse);
+  rpc joinFederatedLogin(RequestJoinFederatedLogin) returns (ResponseBlocklet);
+  rpc quitFederatedLogin(RequestQuitFederatedLogin) returns (ResponseBlocklet);
+  rpc disbandFederatedLogin(RequestDisbandFederatedLogin) returns (ResponseBlocklet);
+  rpc syncMasterAuthorization(RequestSyncMasterAuthorization) returns (ResponseBlocklet);
+  rpc syncFederatedConfig(RequestSyncFederated) returns (ResponseBlocklet);
+  rpc auditFederatedLogin(RequestAuditFederatedLogin) returns (ResponseBlocklet);
+  rpc updateAppSessionConfig(RequestUpdateAppSessionConfig) returns (ResponseBlocklet);
+  rpc updateComponentTitle(RequestUpdateComponentTitle) returns (ResponseBlocklet);
+  rpc updateComponentMountPoint(RequestUpdateComponentMountPoint) returns (ResponseBlocklet);
+  rpc backupBlocklet(RequestBackupBlocklet) returns (GeneralResponse);
+  rpc abortBlockletBackup(RequestAbortBlockletBackup) returns (GeneralResponse);
+  rpc restoreBlocklet(RequestRestoreBlocklet) returns (GeneralResponse);
+  rpc migrateApplicationToStructV2(RequestMigrateApplicationToStructV2) returns (GeneralResponse);
+  rpc launchBlockletByLauncher(RequestLaunchBlockletByLauncher) returns (ResponseLaunchBlockletByLauncher);
+  rpc launchBlockletWithoutWallet(RequestLaunchBlockletWithoutWallet) returns (ResponseLaunchBlockletWithoutWallet);
+
+  // blocklet spaces gateways
+  rpc addBlockletSpaceGateway(RequestAddBlockletSpaceGateway) returns (GeneralResponse);
+  rpc deleteBlockletSpaceGateway(RequestDeleteBlockletSpaceGateway) returns (GeneralResponse);
+  rpc updateBlockletSpaceGateway(RequestUpdateBlockletSpaceGateway) returns (GeneralResponse);
+
+  // auto backup
+  rpc updateAutoBackup(RequestUpdateAutoBackup) returns (GeneralResponse);
+
+  // auto check update
+  rpc updateAutoCheckUpdate(RequestUpdateAutoCheckUpdate) returns (GeneralResponse);
+
+  rpc updateBlockletSettings(RequestBlockletSettings) returns (GeneralResponse);
+
+  // Node state
+  rpc updateNodeInfo(NodeInfo) returns (ResponseGetNodeInfo);
+  rpc upgradeNodeVersion(RequestUpgradeNodeVersion) returns (ResponseUpgradeNodeVersion);
+  rpc restartServer(RequestRestartServer) returns (ResponseRestartServer);
+  rpc resetNode(RequestResetNode) returns (ResponseResetNode); // just for test purpose
+  rpc rotateSessionKey(RequestRotateSessionKey) returns (GeneralResponse);
+
+  // Gateway
+  rpc updateGateway(Gateway) returns (ResponseGateway);
+  rpc clearCache(RequestClearCache) returns (ResponseClearCache);
+
+  // Team Invitation
+  rpc createMemberInvitation(RequestCreateInvitation) returns (ResponseCreateInvitation);
+  rpc createTransferInvitation(RequestCreateTransferNodeInvitation) returns (ResponseCreateTransferNodeInvitation);
+  rpc deleteInvitation(RequestDeleteInvitation) returns (GeneralResponse);
+
+  // Passport
+  rpc createPassportIssuance(RequestCreatePassportIssuance) returns (ResponseCreatePassportIssuance);
+  rpc deletePassportIssuance(RequestDeleteTeamSession) returns (GeneralResponse);
+  rpc configTrustedPassports(RequestConfigTrustedPassports) returns (GeneralResponse);
+  rpc configTrustedFactories(RequestConfigTrustedFactories) returns (GeneralResponse);
+  rpc configPassportIssuance(RequestConfigPassportIssuance) returns (GeneralResponse);
+
+  // Team User
+  rpc removeUser(RequestTeamUser) returns (ResponseUser);
+  rpc updateUserTags(RequestUpdateUserTags) returns (ResponseUser);
+  rpc updateUserExtra(RequestUpdateUserExtra) returns (ResponseUser);
+  rpc updateUserApproval(RequestTeamUser) returns (ResponseUser);
+  rpc issuePassportToUser(RequestIssuePassportToUser) returns (ResponseUser);
+  rpc revokeUserPassport(RequestRevokeUserPassport) returns (ResponseUser);
+  rpc enableUserPassport(RequestRevokeUserPassport) returns (ResponseUser);
+  rpc removeUserPassport(RequestRevokeUserPassport) returns (GeneralResponse);
+  rpc switchProfile(RequestSwitchProfile) returns (ResponseUser);
+  rpc updateUserAddress(RequestUpdateUserAddress) returns (ResponseUser);
+  rpc updateUserInfo(RequestUpdateUserInfo) returns (ResponseUser);
+
+  // Team Access Control
+  rpc createRole(RequestCreateRole) returns (ResponseRole);
+  rpc updateRole(RequestTeamRole) returns (ResponseRole);
+  rpc deleteRole(RequestDeleteRole) returns (GeneralResponse);
+
+  rpc createPermission(RequestCreatePermission) returns (ResponsePermission);
+  rpc updatePermission(RequestTeamPermission) returns (ResponsePermission);
+  rpc deletePermission(RequestDeletePermission) returns (GeneralResponse);
+
+  rpc grantPermissionForRole(RequestGrantPermissionForRole) returns (GeneralResponse);
+  rpc revokePermissionFromRole(RequestRevokePermissionFromRole) returns (GeneralResponse);
+  rpc updatePermissionsForRole(RequestUpdatePermissionsForRole) returns (ResponseRole);
+
+  rpc hasPermission(RequestHasPermission) returns (BooleanResponse);
+
+  // Team Settings
+  rpc addBlockletStore(RequestAddBlockletStore) returns (GeneralResponse);
+  rpc deleteBlockletStore(RequestDeleteBlockletStore) returns (GeneralResponse);
+
+  // Tags
+  rpc getTag(RequestTag) returns (ResponseTag);
+  rpc createTag(RequestTag) returns (ResponseTag);
+  rpc updateTag(RequestTag) returns (ResponseTag);
+  rpc deleteTag(RequestTag) returns (ResponseTag);
+
+  // Tagging
+  rpc createTagging(RequestTagging) returns (ResponseTagging);
+  rpc deleteTagging(RequestTagging) returns (ResponseTagging);
+
+  // Notification
+  rpc readNotifications(RequestReadNotifications) returns (ResponseReadNotifications);
+  rpc unreadNotifications(RequestReadNotifications) returns (ResponseReadNotifications);
+
+  // Routing Rules
+  rpc addRoutingSite(RequestAddRoutingSite) returns (ResponseRoutingSite);
+  rpc addDomainAlias(RequestAddDomainAlias) returns (ResponseRoutingSite);
+  rpc deleteDomainAlias(RequestDeleteDomainAlias) returns (ResponseRoutingSite);
+  rpc deleteRoutingSite(RequestDeleteRoutingSite) returns (GeneralResponse);
+  rpc updateRoutingSite(RequestUpdateRoutingSite) returns (ResponseRoutingSite);
+  rpc addRoutingRule(RequestAddRoutingRule) returns (ResponseRoutingSite);
+  rpc updateRoutingRule(RequestUpdateRoutingRule) returns (ResponseRoutingSite);
+  rpc deleteRoutingRule(RequestDeleteRoutingRule) returns (ResponseRoutingSite);
+
+  rpc updateCertificate(RequestUpdateNginxHttpsCert) returns (ResponseUpdateNginxHttpsCert);
+  rpc addCertificate(RequestAddNginxHttpsCert) returns (ResponseAddNginxHttpsCert);
+  rpc deleteCertificate(RequestDeleteNginxHttpsCert) returns (ResponseDeleteNginxHttpsCert);
+  rpc issueLetsEncryptCert(RequestAddLetsEncryptCert) returns (ResponseAddLetsEncryptCert);
+
+  // Access Keys
+  rpc createAccessKey(RequestCreateAccessKey) returns (ResponseCreateAccessKey);
+  rpc updateAccessKey(RequestUpdateAccessKey) returns (ResponseUpdateAccessKey);
+  rpc deleteAccessKey(RequestDeleteAccessKey) returns (ResponseDeleteAccessKey);
+  rpc verifyAccessKey(RequestVerifyAccessKey) returns (ResponseAccessKey);
+
+  // WebHook
+  rpc createWebHook(RequestCreateWebHook) returns (ResponseCreateWebHook);
+  rpc deleteWebHook(RequestDeleteWebHook) returns (ResponseDeleteWebHook);
+  rpc updateWebHookState(RequestUpdateWebHookState) returns (ResponseCreateWebhookEndpoint);
+
+  // Project
+  rpc createProject(RequestCreateProject) returns (ResponseProject);
+  rpc updateProject(RequestUpdateProject) returns (ResponseProject);
+  rpc deleteProject(RequestProject) returns (GeneralResponse);
+  rpc createRelease(RequestCreateRelease) returns (ResponseRelease);
+  rpc deleteRelease(RequestRelease) returns (GeneralResponse);
+  rpc updateSelectedResources(RequestUpdateSelectedResources) returns (GeneralResponse);
+  rpc connectToStore(RequestConnectToStore) returns (ResponseConnectToStore);
+  rpc disconnectFromStore(RequestDisconnectFromStore) returns (ResponseDisconnectFromStore);
+  rpc publishToStore(RequestPublishToStore) returns (ResponsePublishToStore);
+  rpc connectByStudio(RequestConnectByStudio) returns (ResponseConnectByStudio);
+
+  // blocklet security rule
+  rpc addBlockletSecurityRule(RequestAddBlockletSecurityRule) returns (ResponseBlockletSecurityRule);
+  rpc updateBlockletSecurityRule(RequestUpdateBlockletSecurityRule) returns (ResponseBlockletSecurityRule);
+  rpc deleteBlockletSecurityRule(RequestDeleteBlockletSecurityRule) returns (GeneralResponse);
+  // blocklet security response header policy
+  rpc addBlockletResponseHeaderPolicy(RequestAddBlockletResponseHeaderPolicy) returns (ResponseBlockletResponseHeaderPolicy);
+  rpc updateBlockletResponseHeaderPolicy(RequestUpdateBlockletResponseHeaderPolicy) returns (ResponseBlockletResponseHeaderPolicy);
+  rpc deleteBlockletResponseHeaderPolicy(RequestDeleteBlockletResponseHeaderPolicy) returns (GeneralResponse);
+  // blocklet security access policy
+  rpc addBlockletAccessPolicy(RequestAddBlockletAccessPolicy) returns (ResponseBlockletAccessPolicy);
+  rpc updateBlockletAccessPolicy(RequestUpdateBlockletAccessPolicy) returns (ResponseBlockletAccessPolicy);
+  rpc deleteBlockletAccessPolicy(RequestDeleteBlockletAccessPolicy) returns (GeneralResponse);
+
+  // restart all containers
+  rpc restartAllContainers(RequestRestartAllContainers) returns (ResponseRestartAllContainers);
+
+  // webhook
+  rpc createWebhookEndpoint(RequestCreateWebhookEndpoint) returns (ResponseCreateWebhookEndpoint);
+  rpc updateWebhookEndpoint(RequestUpdateWebhookEndpoint) returns (ResponseUpdateWebhookEndpoint);
+  rpc deleteWebhookEndpoint(RequestDeleteWebhookEndpoint) returns (ResponseDeleteWebhookEndpoint);
+  rpc retryWebhookAttempt(RequestAttempt) returns(ResponseGetWebhookAttempt);
+  rpc regenerateWebhookEndpointSecret(RequestRegenerateWebhookEndpointSecret) returns(ResponseRegenerateWebhookEndpointSecret);
+
+  rpc addUploadEndpoint(RequestAddUploadEndpoint) returns (GeneralResponse);
+  rpc deleteUploadEndpoint(RequestDeleteUploadEndpoint) returns (GeneralResponse);
+  rpc connectToEndpoint(RequestConnectToEndpoint) returns (ResponseConnectToEndpoint);
+  rpc disconnectFromEndpoint(RequestDisconnectFromEndpoint) returns (GeneralResponse);
+  rpc publishToEndpoint(RequestPublishToEndpoint) returns (ResponsePublishToEndpoint);
+
+  rpc connectToAigne(RequestConnectToAigne) returns (ResponseConnectToEndpoint);
+  rpc disconnectToAigne(RequestDisconnectToAigne) returns (GeneralResponse);
+  rpc verifyAigneConnection(RequestVerifyAigneConnection) returns (GeneralResponse);
+
+  // orgs
+  rpc createOrg(RequestCreateOrg) returns(ResponseGetOrg);
+  rpc updateOrg(RequestUpdateOrg) returns(ResponseGetOrg);
+  rpc deleteOrg(RequestGetOrg) returns(GeneralResponse);
+
+  rpc addOrgMember(RequestGetOrgMember) returns(ResponseGetOrg);
+  rpc removeOrgMember(RequestGetOrgMember) returns(GeneralResponse);
+  rpc inviteMembersToOrg(RequestInviteMembersToOrg) returns(ResponseInviteMembersToOrg);
+
+  rpc addOrgResource(RequestAddOrgResource) returns (ResponseOrgResourceOperation);
+  rpc migrateOrgResource(RequestMigrateOrgResource) returns (ResponseOrgResourceOperation);
+}

@@ -1,0 +1,74 @@
+{
+  "name": "main-blocklet",
+  "description": "ABT Node blocklet project",
+  "group": "static",
+  "main": ".",
+  "logo": "logo.png",
+  "author": {
+    "name": "linchen1987"
+  },
+  "specVersion": "1.0.0",
+  "files": [
+    "index.html"
+  ],
+  "interfaces": [
+    {
+      "type": "web",
+      "name": "publicUrl",
+      "path": "/",
+      "prefix": "*",
+      "port": "BLOCKLET_PORT",
+      "protocol": "http"
+    }
+  ],
+  "did": "z8iZs8cRSb13jCVgSLFkqXvDTgqsAYPq3Y5gb",
+  "version": "1.0.0",
+  "community": "",
+  "documentation": "",
+  "homepage": "",
+  "license": "",
+  "timeout": {
+    "start": 60
+  },
+  "requirements": {
+    "abtnode": ">=1.1.0",
+    "os": "*",
+    "cpu": "*"
+  },
+  "environments": [
+    {
+      "name": "NAME",
+      "description": "main name",
+      "required": false,
+      "default": "main-name-a",
+      "secure": false,
+      "shared": true
+    }
+  ],
+  "screenshots": [],
+  "gitHash": "d048831b2ebe161a4f5fa05982774fc7e358f87f",
+  "components": [
+    {
+      "mountPoint": "/sub",
+      "source": {
+        "url": "http://localhost:9090/sub-blocklet-1.0.0.json"
+      }
+    }
+  ],
+  "payment": {
+    "price": [],
+    "share": []
+  },
+  "capabilities": {
+    "clusterMode": false,
+    "component": true,
+    "navigation": true
+  },
+  "path": "/static/main-blocklet",
+  "nftFactory": "",
+  "dist": {
+    "tarball": "main-blocklet-1.0.0.tgz",
+    "integrity": "sha512-bFPFDBykqM4DuiBpuwl8QdYcY/btR9bWvbGo4TaDjlUQiMZwWkX6H8HxZboXWbN9C/udql0xsMLB4qJepgBsPQ==",
+    "size": 4100
+  }
+}

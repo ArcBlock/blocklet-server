@@ -1,0 +1,3 @@
+# Security headers for HTTPS responses
+# Note: HSTS must only be sent on HTTPS
+add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;

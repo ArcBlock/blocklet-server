@@ -1,0 +1,842 @@
+{
+  "blocklet.restoreBlocklet.title": {
+    "en": "Restore Blocklet",
+    "value": {
+      "en": "Restore Blocklet",
+      "es": "Restaurar Blocklet",
+      "zh": "还原 Blocklet",
+      "zh-TW": "還原 Blocklet",
+      "ja": "復元 Blocklet",
+      "ko": "복원 Blocklet",
+      "de": "Blocklet wiederherstellen",
+      "hi": "Blocklet पुनर्स्थापित करें",
+      "fr": "Restaurer Blocklet",
+      "ar": "استرجاع Blocklet",
+      "ru": "Восстановить Blocklet",
+      "pt": "Restaurar Blocklet",
+      "id": "Pulihkan Blocklet",
+      "vi": "Khôi phục Blocklet",
+      "th": "กู้คืน Blocklet"
+    }
+  },
+  "blocklet.restoreBlocklet.description": {
+    "en": "Please select the blocklet you want to restore",
+    "value": {
+      "en": "Please select the blocklet you want to restore",
+      "es": "Por favor, seleccione el Blocklet que desea restaurar.",
+      "zh": "请选择要还原的 Blocklet",
+      "zh-TW": "請選擇要還原的 Blocklet",
+      "ja": "復元したい Blocklet を選択してください",
+      "ko": "복원하려는 Blocklet 을 선택하십시오",
+      "de": "Bitte wählen Sie den blocklet aus, den Sie wiederherstellen möchten.",
+      "hi": "कृपया उस blocklet को चुनें जिसे आप पुनर्स्थापित करना चाहते हैं.",
+      "fr": "Veuillez sélectionner le blocklet que vous souhaitez restaurer.",
+      "ar": "يرجى اختيار blocklet الذي تريد استعادته.",
+      "ru": "Пожалуйста, выберите blocklet, который вы хотите восстановить.",
+      "pt": "Por favor, selecione o blocklet que você deseja restaurar",
+      "id": "Silakan pilih blocklet yang ingin Anda pulihkan",
+      "vi": "Vui lòng chọn blocklet mà bạn muốn khôi phục",
+      "th": "กรุณาเลือก blocklet ที่คุณต้องการกู้คืน"
+    }
+  },
+  "blocklet.restoreBlocklet.verify.title": {
+    "en": "Verify Ownership",
+    "value": {
+      "en": "Verify Ownership",
+      "es": "Verificar la propiedad",
+      "zh": "验证所有权",
+      "zh-TW": "驗證所有權",
+      "ja": "所有権を確認",
+      "ko": "소유권 확인",
+      "de": "Eigentum verifizieren",
+      "hi": "स्वामित्व सत्यापित करें",
+      "fr": "Vérifier la propriété",
+      "ar": "تحقق من الملكية",
+      "ru": "Проверьте право собственности",
+      "pt": "Verificar propriedade",
+      "id": "Verifikasi kepemilikan",
+      "vi": "Xác minh quyền sở hữu",
+      "th": "ยืนยันความเป็นเจ้าของ"
+    }
+  },
+  "blocklet.restoreBlocklet.verify.subTitle": {
+    "en": "Verify ownership of the blocklet with your wallet",
+    "value": {
+      "en": "Verify ownership of the blocklet with your wallet",
+      "es": "Verifique la propiedad del blocklet con su billetera",
+      "zh": "使用您的钱包 验证 blocklet 的所有权",
+      "zh-TW": "使用您的錢包 驗證 blocklet 的所有權",
+      "ja": "あなたのウォレットで blocklet の所有権を検証してください",
+      "ko": "지갑으로 blocklet 의 소유권을 확인하세요",
+      "de": "Bestätige den Besitz des blocklet mit deiner Brieftasche.",
+      "hi": "अपने वॉलेट के साथ blocklet का स्वामित्व की पुष्टि करें.",
+      "fr": "Vérifiez la propriété du blocklet avec votre portefeuille.",
+      "ar": "تحقق من ملكية blocklet باستخدام محفظتك.",
+      "ru": "Проверьте владение blocklet с помощью вашего кошелька.",
+      "pt": "Verifique a propriedade do blocklet com sua carteira.",
+      "id": "Verifikasi kepemilikan blocklet dengan dompet Anda.",
+      "vi": "Xác minh quyền sở hữu blocklet của ví của bạn.",
+      "th": "ตรวจสอบความเป็นเจ้าของ blocklet ด้วยกระเป๋าสตางค์ของคุณ。"
+    }
+  },
+  "blocklet.restoreBlocklet.verify.verify": {
+    "en": "Verify",
+    "value": {
+      "en": "Verify",
+      "es": "Verificar",
+      "zh": "验证",
+      "zh-TW": "驗證",
+      "ja": "検証",
+      "ko": "확인",
+      "de": "Überprüfen",
+      "hi": "सत्यापित करें",
+      "fr": "Vérifier",
+      "ar": "تحقق",
+      "ru": "Проверить",
+      "pt": "Verificar",
+      "id": "Verifikasi",
+      "vi": "Xác minh",
+      "th": "ตรวจสอบ"
+    }
+  },
+  "blocklet.restoreBlocklet.verify.reconnect": {
+    "en": "Try another blocklet",
+    "value": {
+      "en": "Try another blocklet",
+      "es": "Prueba otro blocklet",
+      "zh": "尝试另一个 blocklet",
+      "zh-TW": "嘗試另一個 blocklet",
+      "ja": "別の blocklet を試してください",
+      "ko": "다른 blocklet 을 시도해 보세요",
+      "de": "Probieren Sie einen weiteren blocklet.",
+      "hi": "एक और blocklet आज़माएं।",
+      "fr": "Essayez un autre blocklet.",
+      "ar": "جرّب blocklet آخر.",
+      "ru": "Попробуйте еще один blocklet.",
+      "pt": "Tente outro blocklet",
+      "id": "Coba blocklet lain",
+      "vi": "Thử blocklet khác",
+      "th": "ลอง blocklet อันอื่น"
+    }
+  },
+  "blocklet.restoreBlocklet.verify.scan": {
+    "en": "Scan the QR code to prove ownership",
+    "value": {
+      "en": "Scan the QR code to prove ownership",
+      "es": "Escanee el código QR para demostrar la propiedad.",
+      "zh": "请扫描二维码以证明所有权。",
+      "zh-TW": "請掃描二維碼以證明所有權。",
+      "ja": "所有権を証明するためにQRコードをスキャンしてください。",
+      "ko": "소유권을 증명하려면 QR 코드를 스캔하세요.",
+      "de": "Scannen Sie den QR-Code, um Eigentum nachzuweisen.",
+      "hi": "स्वामित्व को प्रमाणित करने के लिए QR कोड स्कैन करें.",
+      "fr": "Scannez le code QR pour prouver la propriété.",
+      "ar": "قم بمسح رمز الاستجابة السريعة لإثبات الملكية.",
+      "ru": "Сканируйте QR-код, чтобы подтвердить право владения.",
+      "pt": "Escaneie o código QR para provar a propriedade",
+      "id": "Pindai kode QR untuk membuktikan kepemilikan",
+      "vi": "Quét mã QR để chứng minh quyền sở hữu",
+      "th": "สแกนรหัส QR เพื่อพิสูจน์ความเป็นเจ้าของ"
+    }
+  },
+  "blocklet.restoreBlocklet.verify.confirm": {
+    "en": "Sign to allow the server to download and decrypt the backup",
+    "value": {
+      "en": "Sign to allow the server to download and decrypt the backup",
+      "es": "Firma para permitir que el servidor descargue y descifre la copia de seguridad.",
+      "zh": "签名以允许服务器下载并解密备份。",
+      "zh-TW": "簽名以允許伺服器下載並解密備份。",
+      "ja": "バックアップをダウンロードして復号できるよう、署名してください。",
+      "ko": "백업을 다운로드하고 복호화할 수 있도록 서명하십시오.",
+      "de": "Signieren, damit der Server das Backup herunterladen und entschlüsseln kann.",
+      "hi": "हस्ताक्षर करें ताकि सर्वर बैकअप डाउनलोड कर सके और उसे डिक्रिप्ट कर सके",
+      "fr": "Signez pour permettre au serveur de télécharger et de déchiffrer la sauvegarde.",
+      "ar": "وقّع لتسمح للخادم بتنزيل النسخة الاحتياطية وفك تشفيرها",
+      "ru": "Подпишите, чтобы сервер мог загрузить и расшифровать резервную копию.",
+      "pt": "Assine para permitir que o servidor baixe e descriptografe o backup",
+      "id": "Tandatangani untuk memungkinkan server mengunduh dan mendekripsi cadangan",
+      "vi": "Ký để cho phép máy chủ tải xuống và giải mã bản sao lưu",
+      "th": "ลงชื่อเพื่ออนุญาตให้เซิร์ฟเวอร์ดาวน์โหลดและถอดรหัสข้อมูลสำรอง"
+    }
+  },
+  "blocklet.restoreBlocklet.verify.success": {
+    "en": "Ownership verified. Restoring now.",
+    "value": {
+      "en": "Ownership verified. Restoring now.",
+      "es": "Propiedad verificada. Restaurando ahora.",
+      "zh": "所有权已验证。正在恢复。",
+      "zh-TW": "所有權已驗證。正在恢復。",
+      "ja": "所有権を確認しました。復元しています。",
+      "ko": "소유권이 확인되었습니다. 지금 복구 중입니다.",
+      "de": "Eigentum verifiziert. Wiederherstellung läuft.",
+      "hi": "स्वामित्व सत्यापित। अब पुनर्स्थापना हो रही है।",
+      "fr": "Propriété vérifiée. Restauration en cours.",
+      "ar": "تم التحقق من الملكية. جارٍ الاستعادة.",
+      "ru": "Право собственности подтверждено. Восстановление сейчас.",
+      "pt": "Propriedade verificada. Restaurando agora.",
+      "id": "Kepemilikan terverifikasi. Sedang memulihkan.",
+      "vi": "Quyền sở hữu đã được xác nhận. Đang khôi phục.",
+      "th": "ความเป็นเจ้าของได้รับการยืนยัน. กำลังกู้คืน."
+    }
+  },
+  "blocklet.restoreBlocklet.verify.exists": {
+    "en": "This blocklet already exists on this server",
+    "value": {
+      "en": "This blocklet already exists on this server",
+      "es": "Este blocklet ya existe en este servidor",
+      "zh": "此 blocklet 已存在于此服务器上",
+      "zh-TW": "此 blocklet 已存在於此伺服器上",
+      "ja": "この blocklet はすでにこのサーバーに存在します",
+      "ko": "이 blocklet 은 이미 이 서버에 존재합니다",
+      "de": "Dieses Blocklet existiert bereits auf diesem Server.",
+      "hi": "यह Blocklet इस सर्वर पर पहले से मौजूद है.",
+      "fr": "Ce Blocklet existe déjà sur ce serveur.",
+      "ar": "Blocklet موجود بالفعل على هذا الخادم.",
+      "ru": "Этот Blocklet уже существует на этом сервере.",
+      "pt": "Este blocklet já existe neste servidor.",
+      "id": "Blocklet sudah ada di server ini.",
+      "vi": "Blocklet này đã tồn tại trên máy chủ này.",
+      "th": "Blocklet นี้มีอยู่แล้วบนเซิร์ฟเวอร์นี้."
+    }
+  },
+  "blocklet.restoreBlocklet.verify.open": {
+    "en": "Visit Blocklet",
+    "value": {
+      "en": "Visit Blocklet",
+      "es": "Visita Blocklet",
+      "zh": "访问 Blocklet",
+      "zh-TW": "前往 Blocklet",
+      "ja": "Blocklet を訪問",
+      "ko": "Blocklet 을 방문",
+      "de": "Besuchen Sie Blocklet",
+      "hi": "Blocklet पर जाएँ",
+      "fr": "Visitez Blocklet",
+      "ar": "زر Blocklet",
+      "ru": "Посетите Blocklet",
+      "pt": "Visite Blocklet",
+      "id": "Kunjungi Blocklet",
+      "vi": "Thăm Blocklet",
+      "th": "เยี่ยมชม Blocklet"
+    }
+  },
+  "blocklet.restoreBlocklet.verify.overwrite": {
+    "en": "Overwrite",
+    "value": {
+      "en": "Overwrite",
+      "es": "Sobrescribir",
+      "zh": "覆盖",
+      "zh-TW": "覆寫",
+      "ja": "上書き",
+      "ko": "덮어쓰기",
+      "de": "Überschreiben",
+      "hi": "ओवरराइट करें",
+      "fr": "Écraser",
+      "ar": "الكتابة فوق",
+      "ru": "Переписать",
+      "pt": "Sobrescrever",
+      "id": "Menimpa",
+      "vi": "Ghi đè",
+      "th": "เขียนทับ"
+    }
+  },
+  "blocklet.restoreBlocklet.overwrite.title": {
+    "en": "Overwrite existing blocklet?",
+    "value": {
+      "en": "Overwrite existing blocklet?",
+      "es": "¿Sobrescribir el blocklet existente?",
+      "zh": "覆盖现有的 blocklet？",
+      "zh-TW": "覆蓋現有的 blocklet？",
+      "ja": "既存の blocklet を上書きしますか？",
+      "ko": "기존 blocklet 을 덮어쓰시겠습니까?",
+      "de": "Bestehendes Blocklet überscrollen?",
+      "hi": "मौजूदा blocklet को ओवरराइट करें?",
+      "fr": "Écraser le Blocklet existant ?",
+      "ar": "استبدال Blocklet الموجود؟",
+      "ru": "Заменить существующий Blocklet?",
+      "pt": "Sobrescrever blocklet existente?",
+      "id": "Menimpa blocklet yang ada?",
+      "vi": "Ghi đè blocklet hiện có?",
+      "th": "แทนที่ blocklet ที่มีอยู่?"
+    }
+  },
+  "blocklet.restoreBlocklet.overwrite.description": {
+    "en": "The blocklet you are restoring already exists on this server. Do you want to overwrite it? The existing blocklet will be deleted first if you continue.",
+    "value": {
+      "en": "The blocklet you are restoring already exists on this server. Do you want to overwrite it? The existing blocklet will be deleted first if you continue.",
+      "es": "El Blocklet que estás restaurando ya existe en este servidor. ¿Quieres sobrescribirlo? El Blocklet existente se eliminará primero si continúas.",
+      "zh": "Blocklet 你正在还原的对象已存在于此服务器。你想覆盖它吗？如果你继续，现有的 Blocklet 将先被删除。",
+      "zh-TW": "Blocklet 你正在還原的對象已存在於此伺服器。你想覆蓋它嗎？如果你繼續，現有的 Blocklet 將先被刪除。",
+      "ja": "Blocklet 復元している Blocklet はすでにこのサーバーに存在します。上書きしますか？続行すると既存の Blocklet が先に削除されます。",
+      "ko": "Blocklet 복원 중인 Blocklet 은 이미 이 서버에 존재합니다. 덮어쓰시겠습니까? 계속하면 기존의 Blocklet 은 먼저 삭제됩니다.",
+      "de": "Der blocklet, den Sie wiederherstellen, existiert bereits auf diesem Server. Möchten Sie es überschreiben? Der vorhandene blocklet wird zuerst gelöscht, wenn Sie fortfahren.",
+      "hi": "जो blocklet आप पुनर्स्थापित कर रहे हैं वह इस सर्वर पर पहले से मौजूद है। क्या आप इसे ओवरराइट करना चाहते हैं? अगर आप जारी रखते हैं, तो मौजूदा blocklet पहले हटाया जाएगा।",
+      "fr": "Le blocklet que vous restaurez existe déjà sur ce serveur. Souhaitez-vous l'écraser ? Le blocklet existant sera supprimé en premier si vous continuez.",
+      "ar": "Blocklet الذي تستعيده موجود بالفعل على هذا الخادم. هل تريد استبداله؟ سيُحذف blocklet الحالي أولاً إذا واصلت.",
+      "ru": "Blocklet, который вы восстанавливаете, уже существует на этом сервере. Вы хотите перезаписать его? Существующий blocklet будет удалён первым, если вы продолжите.",
+      "pt": "O blocklet que você está restaurando já existe neste servidor. Você quer substituí-lo? O blocklet existente será excluído primeiro se você continuar.",
+      "id": "Blocklet yang Anda pulihkan sudah ada di server ini. Anda ingin menimpanya? Blocklet yang ada akan dihapus terlebih dahulu jika Anda melanjutkan.",
+      "vi": "Blocklet bạn đang khôi phục đã tồn tại trên máy chủ này. Bạn có muốn ghi đè nó không? Blocklet hiện có sẽ bị xóa trước nếu bạn tiếp tục.",
+      "th": "Blocklet ที่คุณกำลังกู้คืนมีอยู่แล้วบนเซิร์ฟเวอร์นี้ คุณต้องการเขียนทับมันหรือไม่? Blocklet ที่มีอยู่จะถูกลบก่อนถ้าคุณดำเนินการต่อ."
+    }
+  },
+  "blocklet.restoreBlocklet.restore.title": {
+    "en": "Restore Blocklet",
+    "value": {
+      "en": "Restore Blocklet",
+      "es": "Restaurar Blocklet",
+      "zh": "还原 Blocklet",
+      "zh-TW": "還原 Blocklet",
+      "ja": "Blocklet を 復元",
+      "ko": "Blocklet 을 복원",
+      "de": "Wiederherstellen Blocklet",
+      "hi": "Blocklet को पुनर्स्थापित करें",
+      "fr": "Restaurer Blocklet",
+      "ar": "استعادة Blocklet",
+      "ru": "Восстановить Blocklet",
+      "pt": "Restaurar Blocklet",
+      "id": "Pulihkan Blocklet",
+      "vi": "Khôi phục Blocklet",
+      "th": "กู้คืน Blocklet"
+    }
+  },
+  "blocklet.restoreFromServer.selectTitle": {
+    "en": "Select Application",
+    "value": {
+      "en": "Select Application",
+      "es": "Seleccionar aplicación",
+      "zh": "选择应用程序",
+      "zh-TW": "選擇應用程式",
+      "ja": "アプリケーションを選択",
+      "ko": "애플리케이션 선택",
+      "de": "Anwendung auswählen",
+      "hi": "एप्लикेशन चुनें",
+      "fr": "Sélectionner l'application",
+      "ar": "اختر التطبيق",
+      "ru": "Выберите приложение",
+      "pt": "Selecionar aplicação",
+      "id": "Pilih aplikasi",
+      "vi": "Chọn ứng dụng",
+      "th": "เลือกแอปพลิเคชัน"
+    }
+  },
+  "blocklet.restoreFromServer.description": {
+    "en": "Please select the application you want to restore",
+    "value": {
+      "en": "Please select the application you want to restore",
+      "es": "Por favor, seleccione la aplicación que desea restaurar",
+      "zh": "请选择要还原的应用程序",
+      "zh-TW": "請選擇要還原的應用程式",
+      "ja": "復元したいアプリを選択してください",
+      "ko": "복원하려는 애플리케이션을 선택하십시오",
+      "de": "Bitte wählen Sie die Anwendung aus, die Sie wiederherstellen möchten.",
+      "hi": "कृपया वह एप्लिकेशन चुनें जिसे आप पुनर्स्थापित करना चाहते हैं.",
+      "fr": "Veuillez sélectionner l’application que vous souhaitez restaurer.",
+      "ar": "يرجى اختيار التطبيق الذي تريد استعادته.",
+      "ru": "Пожалуйста, выберите приложение, которое вы хотите восстановить.",
+      "pt": "Por favor, selecione o aplicativo que você deseja restaurar",
+      "id": "Silakan pilih aplikasi yang ingin Anda pulihkan",
+      "vi": "Vui lòng chọn ứng dụng bạn muốn khôi phục",
+      "th": "โปรดเลือกแอปพลิเคชันที่คุณต้องการกู้คืน"
+    }
+  },
+  "blocklet.restoreFromServer.backupIn": {
+    "en": "Backup in",
+    "value": {
+      "en": "Backup in",
+      "es": "Copia de seguridad en",
+      "zh": "正在备份",
+      "zh-TW": "正在備份",
+      "ja": "バックアップ中",
+      "ko": "백업 중",
+      "de": "Sicherung in",
+      "hi": "बैकअप इन",
+      "fr": "Sauvegarde dans",
+      "ar": "نسخ احتياطي في",
+      "ru": "Резервное копирование в",
+      "pt": "Backup em",
+      "id": "Backup di",
+      "vi": "Backup trong",
+      "th": "Backup ใน"
+    }
+  },
+  "blocklet.restoreFromSpaces.title": {
+    "en": "Restore from DID Spaces",
+    "value": {
+      "en": "Restore from DID Spaces",
+      "es": "Restaurar desde DID Spaces",
+      "zh": "从 DID Spaces 恢复",
+      "zh-TW": "從 DID Spaces 恢復",
+      "ja": "DID Spaces から復元",
+      "ko": "DID Spaces 에서 복원",
+      "de": "Wiederherstellen aus DID Spaces",
+      "hi": "DID Spaces से पुनर्स्थापित करें",
+      "fr": "Restaurer depuis DID Spaces",
+      "ar": "استعادة من DID Spaces",
+      "ru": "Восстановить из DID Spaces",
+      "pt": "Restaurar a partir de DID Spaces",
+      "id": "Pulihkan dari DID Spaces",
+      "vi": "Khôi phục từ DID Spaces",
+      "th": "กู้คืนจาก DID Spaces"
+    }
+  },
+  "blocklet.restoreFromSpaces.navSubTitle": {
+    "en": "Restore",
+    "value": {
+      "en": "Restore",
+      "es": "Restaurar",
+      "zh": "恢复",
+      "zh-TW": "還原",
+      "ja": "復元",
+      "ko": "복원",
+      "de": "Wiederherstellen",
+      "hi": "पुनर्स्थापित करें",
+      "fr": "Restaurer",
+      "ar": "استعادة",
+      "ru": "Восстановить",
+      "pt": "Restaurar",
+      "id": "Pulihkan",
+      "vi": "Khôi phục",
+      "th": "กู้คืน"
+    }
+  },
+  "blocklet.restoreFromSpaces.connect.title": {
+    "en": "Connect to DID Spaces",
+    "value": {
+      "en": "Connect to DID Spaces",
+      "es": "Conecta a DID Spaces",
+      "zh": "连接到 DID Spaces",
+      "zh-TW": "連接到 DID Spaces",
+      "ja": "DID Spaces へ 接続",
+      "ko": "DID Spaces 에 연결",
+      "de": "Verbinden Sie sich mit DID Spaces",
+      "hi": "DID Spaces से कनेक्ट करें",
+      "fr": "Se connecter à DID Spaces",
+      "ar": "اتصل بـ DID Spaces",
+      "ru": "Подключитесь к DID Spaces",
+      "pt": "Conecte-se a DID Spaces",
+      "id": "Hubungkan ke DID Spaces",
+      "vi": "Kết nối với DID Spaces",
+      "th": "เชื่อมต่อกับ DID Spaces"
+    }
+  },
+  "blocklet.restoreFromSpaces.connect.subTitle": {
+    "en": "Jump to DID Spaces, and select the blocklet you want to restore.",
+    "value": {
+      "en": "Jump to DID Spaces, and select the blocklet you want to restore.",
+      "es": "Ve a DID Spaces y selecciona el blocklet que quieras restaurar.",
+      "zh": "跳转到 DID Spaces， 然后选择你想要还原的 blocklet。",
+      "zh-TW": "跳轉到 DID Spaces， 然後選擇你想要還原的 blocklet。",
+      "ja": "DID Spaces に移動して、復元したい blocklet を選択してください。",
+      "ko": "DID Spaces 로 이동한 후 blocklet 를 선택하세요.",
+      "de": "Springe zu DID Spaces und wähle den blocklet aus, den du wiederherstellen möchtest",
+      "hi": "DID Spaces पर जाएं, और वह blocklet चुनें जिसे आप पुनर्स्थापित करना चाहते हैं",
+      "fr": "Accédez à DID Spaces, et sélectionnez le blocklet que vous souhaitez restaurer",
+      "ar": "انتقل إلى DID Spaces، واختر blocklet الذي تريد استعادته",
+      "ru": "Перейдите в DID Spaces и выберите blocklet, который хотите восстановить",
+      "pt": "Vá até o DID Spaces e selecione o blocklet que você quer restaurar.",
+      "id": "Lompat ke DID Spaces dan pilih blocklet yang ingin Anda pulihkan.",
+      "vi": "Nhảy đến DID Spaces và chọn blocklet mà bạn muốn khôi phục.",
+      "th": "ไปยัง DID Spaces แล้วเลือก blocklet ที่คุณต้องการกู้คืน."
+    }
+  },
+  "blocklet.restoreFromSpaces.connect.select": {
+    "en": "Select DID Spaces Gateway",
+    "value": {
+      "en": "Select DID Spaces Gateway",
+      "es": "Seleccionar DID Spaces Gateway",
+      "zh": "选择 DID Spaces 网关",
+      "zh-TW": "選擇 DID Spaces 網關",
+      "ja": "DID Spaces Gateway を選択",
+      "ko": "DID Spaces Gateway 를 선택",
+      "de": "Auswählen DID Spaces Gateway",
+      "hi": "चुनें DID Spaces Gateway",
+      "fr": "Sélectionner la passerelle DID Spaces",
+      "ar": "اختر بوابة DID Spaces",
+      "ru": "Выбрать шлюз DID Spaces",
+      "pt": "Selecionar DID Spaces Gateway",
+      "id": "Pilih DID Spaces Gateway",
+      "vi": "Chọn DID Spaces Gateway",
+      "th": "เลือก DID Spaces Gateway"
+    }
+  },
+  "blocklet.restoreFromSpaces.connect.connect": {
+    "en": "Connect",
+    "value": {
+      "en": "Connect",
+      "es": "Conectar",
+      "zh": "连接",
+      "zh-TW": "連接",
+      "ja": "接続",
+      "ko": "연결",
+      "de": "Verbinden",
+      "hi": "कनेक्ट करें",
+      "fr": "Connecter",
+      "ar": "اتصل",
+      "ru": "Подключиться",
+      "pt": "Conectar",
+      "id": "Hubungkan",
+      "vi": "Kết nối",
+      "th": "เชื่อมต่อ"
+    }
+  },
+  "blocklet.restoreFromSpaces.selectBlocklet.title": {
+    "en": "Select App",
+    "value": {
+      "en": "Select App",
+      "es": "Seleccionar App",
+      "zh": "选择 App",
+      "zh-TW": "選擇 App",
+      "ja": "アプリを選択",
+      "ko": "앱을 선택",
+      "de": "App auswählen",
+      "hi": "ऐप चुनें",
+      "fr": "Sélectionner l'application",
+      "ar": "اختر التطبيق",
+      "ru": "Выбрать приложение",
+      "pt": "Selecionar App",
+      "id": "Pilih Aplikasi",
+      "vi": "Chọn Ứng dụng",
+      "th": "เลือกแอป"
+    }
+  },
+  "blocklet.restoreFromSpaces.restore.title": {
+    "en": "Restore App",
+    "value": {
+      "en": "Restore App",
+      "es": "Restaurar App",
+      "zh": "恢复应用",
+      "zh-TW": "還原應用程式",
+      "ja": "アプリを復元",
+      "ko": "앱 복원",
+      "de": "App wiederherstellen",
+      "hi": "ऐप पुनः स्थापित करें",
+      "fr": "Restaurer l'application",
+      "ar": "استعادة التطبيق",
+      "ru": "Восстановить приложение",
+      "pt": "Restaurar app",
+      "id": "Pulihkan aplikasi",
+      "vi": "Khôi phục ứng dụng",
+      "th": "กู้คืน แอป"
+    }
+  },
+  "blocklet.restoreFromSpaces.restore.subTitle": {
+    "en": "The app is being restored",
+    "value": {
+      "en": "The app is being restored",
+      "es": "La aplicación se está restaurando",
+      "zh": "应用正在恢复",
+      "zh-TW": "應用正在恢復",
+      "ja": "アプリが復元中です",
+      "ko": "앱이 복원 중입니다",
+      "de": "Die App wird wiederhergestellt.",
+      "hi": "एप्लिकेशन पुनः बहाल किया जा रहा है.",
+      "fr": "L’application est en cours de restauration.",
+      "ar": "يتم استعادة التطبيق.",
+      "ru": "Приложение восстанавливается.",
+      "pt": "O aplicativo está sendo restaurado.",
+      "id": "Aplikasi sedang dipulihkan.",
+      "vi": "Ứng dụng đang được khôi phục.",
+      "th": "แอปพลิเคชันกำลังถูกกู้คืน"
+    }
+  },
+  "blocklet.restoreFromSpaces.restore.completeTitle": {
+    "en": "Everything is Ready",
+    "value": {
+      "en": "Everything is Ready",
+      "es": "Todo está listo",
+      "zh": "一切都准备好了",
+      "zh-TW": "一切都準備好了",
+      "ja": "すべて準備が整いました",
+      "ko": "모두 준비되었습니다",
+      "de": "Alles ist bereit",
+      "hi": "सब कुछ तैयार है",
+      "fr": "Tout est prêt",
+      "ar": "كل شيء جاهز",
+      "ru": "Всё готово",
+      "pt": "Tudo está pronto",
+      "id": "Semua sudah siap",
+      "vi": "Mọi thứ đã sẵn sàng",
+      "th": "ทุกอย่างพร้อมแล้ว"
+    }
+  },
+  "blocklet.restoreFromSpaces.restore.installedTitle": {
+    "en": "Successfully restored!",
+    "value": {
+      "en": "Successfully restored!",
+      "es": "¡Restaurado con éxito!",
+      "zh": "已成功恢复！",
+      "zh-TW": "已成功恢復！",
+      "ja": "正常に復元しました！",
+      "ko": "성공적으로 복구되었습니다!",
+      "de": "Erfolgreich wiederhergestellt!",
+      "hi": "सफलतापूर्वक पुनर्स्थापित!",
+      "fr": "Restauré avec succès!",
+      "ar": "تمت الاستعادة بنجاح!",
+      "ru": "Успешно восстановлено!",
+      "pt": "Restaurado com sucesso!",
+      "id": "Berhasil dipulihkan!",
+      "vi": "Đã khôi phục thành công!",
+      "th": "กู้คืนสำเร็จ!"
+    }
+  },
+  "blocklet.restoreFromSpaces.restore.installedSubTitle": {
+    "en": "But still needs some configuration to start",
+    "value": {
+      "en": "But still needs some configuration to start",
+      "es": "Pero todavía necesita algo de configuración para iniciar",
+      "zh": "但仍需要进行一些配置才能启动",
+      "zh-TW": "但仍需要進行一些配置才能啟動",
+      "ja": "しかし、起動にはまだいくつかの設定が必要です",
+      "ko": "하지만 시작하려면 여전히 몇 가지 구성이 필요합니다",
+      "de": "Es braucht aber noch etwas Konfiguration, um zu starten.",
+      "hi": "लेकिन शुरू करने के लिए अभी भी कुछ कॉन्फ़िगरेशन की आवश्यकता है.",
+      "fr": "Mais il faut encore une configuration pour démarrer.",
+      "ar": "لكن لا يزال هناك حاجة إلى بعض الإعدادات لبدء التشغيل.",
+      "ru": "Но для запуска требуется ещё некоторая настройка.",
+      "pt": "Mas ainda precisa de alguma configuração para começar.",
+      "id": "Tapi masih membutuhkan beberapa konfigurasi untuk memulai.",
+      "vi": "Nhưng vẫn cần một số cấu hình để khởi động.",
+      "th": "แต่ยังต้องการการตั้งค่าเล็กน้อยเพื่อเริ่มต้น."
+    }
+  },
+  "blocklet.restoreFromSpaces.restore.support": {
+    "en": "If retrying does not work, please ask help in the <a href=\"{communityLink}\" target=\"_blank\">community</a> or contact us at <a href=\"mailto: {supportEmail}\">{supportEmail}</a>.",
+    "value": {
+      "en": "If retrying does not work, please ask help in the <a href=\"{communityLink}\" target=\"_blank\">community</a> or contact us at <a href=\"mailto: {supportEmail}\">{supportEmail}</a>.",
+      "es": "Si volver a intentarlo no funciona, por favor pide ayuda en la <a href='{communityLink}' target='_blank'>comunidad</a> o contáctanos en <a href='mailto: {supportEmail}'>{supportEmail}</a>.",
+      "zh": "如果重试无效，请在 <a href='{communityLink}' target='_blank'>社区</a> 寻求帮助，或通过 <a href='mailto: {supportEmail}'>{supportEmail}</a> 与我们联系。",
+      "zh-TW": "如果重試無效，請在 <a href='{communityLink}' target='_blank'>社群</a> 尋求協助，或透過 <a href='mailto: {supportEmail}'>{supportEmail}</a> 與我們聯繫。",
+      "ja": "再試行しても動作しない場合は、<a href='{communityLink}' target='_blank'>コミュニティ</a> でサポートを求めてください、または <a href='mailto: {supportEmail}'>{supportEmail}</a> までご連絡ください。",
+      "ko": "다시 시도해도 작동하지 않는 경우, <a href='{communityLink}' target='_blank'>커뮤니티</a>에서 도움을 요청하거나, <a href='mailto: {supportEmail}'>{supportEmail}</a>로 문의해 주세요.",
+      "de": "Wenn ein erneuter Versuch nicht funktioniert, bitten Sie um Hilfe in der <a href=\"{communityLink}\" target=\"_blank\">Community</a> oder kontaktieren Sie uns unter <a href=\"mailto: {supportEmail}\">{supportEmail}</a>.",
+      "hi": "अगर पुनः प्रयास करने से काम नहीं चलता, कृपया <a href=\"{communityLink}\" target=\"_blank\">समुदाय</a> में मदद माँगें या <a href=\"mailto: {supportEmail}\">{supportEmail}</a> पर हमसे संपर्क करें.",
+      "fr": "Si le nouvel essai ne fonctionne pas, veuillez demander de l'aide dans la <a href=\"{communityLink}\" target=\"_blank\">communauté</a> ou nous contacter à <a href=\"mailto: {supportEmail}\">{supportEmail}</a>.",
+      "ar": "إذا لم تنجح المحاولة مرة أخرى، يرجى طلب المساعدة في <a href=\"{communityLink}\" target=\"_blank\">المجتمع</a> أو اتصل بنا على <a href=\"mailto: {supportEmail}\">{supportEmail}</a>.",
+      "ru": "Если повторная попытка не помогла, пожалуйста, обратитесь за помощью в <a href=\"{communityLink}\" target=\"_blank\">сообщество</a> или свяжитесь с нами по адресу <a href=\"mailto: {supportEmail}\">{supportEmail}</a>.",
+      "pt": "Se tentar novamente não funcionar, peça ajuda na <a href=\\\"{communityLink}\\\" target=\\\"_blank\\\">comunidade</a> ou entre em contato conosco pelo <a href=\\\"mailto: {supportEmail}\\\">{supportEmail}</a>.",
+      "id": "Jika mencoba lagi tidak berhasil, silakan minta bantuan di <a href=\\\"{communityLink}\\\" target=\\\"_blank\\\">komunitas</a> atau hubungi kami di <a href=\\\"mailto: {supportEmail}\\\">{supportEmail}</a>.",
+      "vi": "Nếu thử lại không thành công, hãy hỏi ý kiến tại <a href=\\\"{communityLink}\\\" target=\\\"_blank\\\">cộng đồng</a> hoặc liên hệ với chúng tôi tại <a href=\\\"mailto: {supportEmail}\\\">{supportEmail}</a>.",
+      "th": "หากลองอีกครั้งแล้วไม่สำเร็จ กรุณาขอความช่วยเหลือที่ <a href=\\\"{communityLink}\\\" target=\\\"_blank\\\">ชุมชน</a> หรือ ติดต่อเราได้ที่ <a href=\\\"mailto: {supportEmail}\\\">{supportEmail}</a>."
+    }
+  },
+  "blocklet.restoreFromSpaces.nftAuthDialog.title": {
+    "en": "Present Your App Space NFT",
+    "value": {
+      "en": "Present Your App Space NFT",
+      "es": "Presenta tu NFT de App Space",
+      "zh": "展示你的 App Space NFT",
+      "zh-TW": "展示你的 App Space NFT",
+      "ja": "App Space NFT を表示",
+      "ko": "App Space NFT를 표시",
+      "de": "Stelle deine App Space NFT vor.",
+      "hi": "अपना App Space NFT प्रस्तुत करें.",
+      "fr": "Présentez votre App Space NFT.",
+      "ar": "قدّم NFT Space لتطبيقك.",
+      "ru": "Представьте NFT Space вашего приложения.",
+      "pt": "Apresente o NFT do espaço do seu App",
+      "id": "Tampilkan NFT ruang aplikasi Anda",
+      "vi": "Hiển thị NFT Không gian Ứng dụng của Bạn",
+      "th": "นำเสนอ NFT พื้นที่แอปของคุณ"
+    }
+  },
+  "blocklet.restoreFromSpaces.nftAuthDialog.scan": {
+    "en": "Scan the QR code with your wallet to present your NFT",
+    "value": {
+      "en": "Scan the QR code with your wallet to present your NFT",
+      "es": "Escanee el código QR con su billetera para presentar su NFT",
+      "zh": "请使用您的钱包扫描二维码以展示您的 NFT",
+      "zh-TW": "請使用您的錢包掃描二維碼以展示您的 NFT",
+      "ja": "ウォレットで QR コードをスキャンして NFT を提示します",
+      "ko": "지갑으로 QR 코드를 스캔하여 NFT 를 제시합니다",
+      "de": "Scannen Sie den QR-Code mit Ihrer Brieftasche, um Ihr NFT zu präsentieren.",
+      "hi": "अपने वॉलेट से QR कोड स्कैन करें ताकि आप अपना NFT प्रस्तुत कर सकें.",
+      "fr": "Scannez le code QR avec votre portefeuille pour présenter votre NFT.",
+      "ar": "امسح رمز QR باستخدام محفظتك لعرض NFT الخاص بك.",
+      "ru": "Сканируйте QR-код с помощью вашего кошелька, чтобы представить свой NFT.",
+      "pt": "Escaneie o código QR com sua carteira para apresentar seu NFT.",
+      "id": "Pindai kode QR dengan dompet Anda untuk menampilkan NFT Anda.",
+      "vi": "Quét mã QR bằng ví của bạn để trình bày NFT của bạn.",
+      "th": "สแกนรหัส QR ด้วยกระเป๋าเงินของคุณเพื่อแสดง NFT ของคุณ."
+    }
+  },
+  "blocklet.restoreFromSpaces.nftAuthDialog.confirm": {
+    "en": "Confirm in your wallet",
+    "value": {
+      "en": "Confirm in your wallet",
+      "es": "Confirme en su billetera",
+      "zh": "在您的钱包中确认",
+      "zh-TW": "在您的錢包中確認",
+      "ja": "ウォレットで確認してください",
+      "ko": "지갑에서 확인하세요",
+      "de": "Bestätigen Sie in Ihrer Brieftasche",
+      "hi": "अपने वॉलेट में पुष्टि करें",
+      "fr": "Confirmez dans votre portefeuille",
+      "ar": "أكد في محفظتك",
+      "ru": "Подтвердите в вашем кошельке",
+      "pt": "Confirme na sua carteira",
+      "id": "Konfirmasi di dompet Anda",
+      "vi": "Xác nhận trong ví của bạn",
+      "th": "ยืนยันในกระเป๋าเงินของคุณ"
+    }
+  },
+  "blocklet.restoreFromSpaces.nftAuthDialog.success": {
+    "en": "NFT verified",
+    "value": {
+      "en": "NFT verified",
+      "es": "NFT verificado",
+      "zh": "NFT 已验证",
+      "zh-TW": "NFT 已驗證",
+      "ja": "NFT 認証済み",
+      "ko": "NFT 인증 완료",
+      "de": "NFT verifiziert",
+      "hi": "NFT सत्यापित",
+      "fr": "NFT vérifié",
+      "ar": "تم التحقق من NFT",
+      "ru": "NFT подтверждён",
+      "pt": "NFT verificado",
+      "id": "NFT terverifikasi",
+      "vi": "NFT đã được xác thực",
+      "th": "NFT ได้รับการยืนยัน"
+    }
+  },
+  "blocklet.restoreFromSpaces.progress.waiting": {
+    "en": "Waiting for restore...",
+    "value": {
+      "en": "Waiting for restore...",
+      "es": "Esperando la restauración...",
+      "zh": "等待恢复中...",
+      "zh-TW": "等待恢復中...",
+      "ja": "復元を待っています...",
+      "ko": "복원을 기다리는 중...",
+      "de": "Warten auf die Wiederherstellung...",
+      "hi": "पुनर्स्थापना के लिए प्रतीक्षा...",
+      "fr": "En attente de restauration...",
+      "ar": "في انتظار الاستعادة...",
+      "ru": "Ожидание восстановления...",
+      "pt": "Aguardando restauração...",
+      "id": "Menunggu pemulihan...",
+      "vi": "Đang chờ khôi phục...",
+      "th": "รอการกู้คืน..."
+    }
+  },
+  "blocklet.restoreFromSpaces.progress.restoring": {
+    "en": "Restoring...",
+    "value": {
+      "en": "Restoring...",
+      "es": "Restaurando...",
+      "zh": "正在恢复...",
+      "zh-TW": "正在恢復...",
+      "ja": "復元中...",
+      "ko": "복원 중...",
+      "de": "Wird wiederhergestellt...",
+      "hi": "पुनःस्थापना...",
+      "fr": "Restauration en cours...",
+      "ar": "جارٍ الاستعادة...",
+      "ru": "Восстановление...",
+      "pt": "Restaurando...",
+      "id": "Memulihkan...",
+      "vi": "Đang khôi phục...",
+      "th": "กำลังกู้คืน..."
+    }
+  },
+  "blocklet.restoreFromSpaces.progress.importData": {
+    "en": "Importing data...",
+    "value": {
+      "en": "Importing data...",
+      "es": "Importando datos...",
+      "zh": "正在导入数据...",
+      "zh-TW": "正在匯入資料...",
+      "ja": "データをインポート中...",
+      "ko": "데이터를 가져오는 중...",
+      "de": "Daten werden importiert...",
+      "hi": "डेटा आयात किया जा रहा है...",
+      "fr": "Importation des données...",
+      "ar": "جار استيراد البيانات...",
+      "ru": "Идёт импорт данных...",
+      "pt": "Importando dados...",
+      "id": "Mengimpor data...",
+      "vi": "Đang nhập dữ liệu...",
+      "th": "กำลังนำเข้าข้อมูล..."
+    }
+  },
+  "blocklet.restoreFromSpaces.progress.downloading": {
+    "en": "Downloading files, progress: {progress}",
+    "value": {
+      "en": "Downloading files, progress: {progress}",
+      "es": "Descargando archivos, progreso: {progress}",
+      "zh": "正在下载文件，进度： {progress}",
+      "zh-TW": "正在下載檔案，進度： {progress}",
+      "ja": "ファイルをダウンロード中、進捗: {progress}",
+      "ko": "파일 다운로드 중, 진행률: {progress}",
+      "de": "Dateien herunterladen, Fortschritt: {progress}",
+      "hi": "फ़ाइलें डाउनलोड हो रही हैं, प्रगति: {progress}",
+      "fr": "Téléchargement des fichiers, progression : {progress}",
+      "ar": "تنزيل الملفات، التقدم: {progress}",
+      "ru": "Загрузка файлов, прогресс: {progress}",
+      "pt": "Baixando arquivos, progresso: {progress}",
+      "id": "Mengunduh berkas, kemajuan: {progress}",
+      "vi": "Đang tải tệp tin, tiến độ: {progress}",
+      "th": "กำลังดาวน์โหลดไฟล์, ความคืบหน้า: {progress}"
+    }
+  },
+  "blocklet.restoreFromSpaces.progress.importSuccess": {
+    "en": "Successfully imported!",
+    "value": {
+      "en": "Successfully imported!",
+      "es": "¡Importado con éxito!",
+      "zh": "已成功导入！",
+      "zh-TW": "已成功匯入！",
+      "ja": "インポートに成功しました！",
+      "ko": "성공적으로 가져왔습니다!",
+      "de": "Erfolgreich importiert!",
+      "hi": "सफलतापूर्वक आयात किया गया!",
+      "fr": "Importé avec succès!",
+      "ar": "تم الاستيراد بنجاح!",
+      "ru": "Успешно импортировано!",
+      "pt": "Importado com sucesso!",
+      "id": "Berhasil diimpor!",
+      "vi": "Đã nhập khẩu thành công!",
+      "th": "นำเข้าเรียบร้อยแล้ว"
+    }
+  },
+  "blocklet.restoreFromSpaces.progress.installing": {
+    "en": "Installing...",
+    "value": {
+      "en": "Installing...",
+      "es": "Instalando...",
+      "zh": "正在安装...",
+      "zh-TW": "正在安裝...",
+      "ja": "インストール中...",
+      "ko": "설치 중...",
+      "de": "Installieren...",
+      "hi": "इंस्टॉल हो रहा है...",
+      "fr": "Installation en cours...",
+      "ar": "جارٍ التثبيت...",
+      "ru": "Установка...",
+      "pt": "Instalando...",
+      "id": "Menginstal...",
+      "vi": "Đang cài đặt...",
+      "th": "กำลังติดตั้ง..."
+    }
+  },
+  "server.checkUpgrade": {
+    "en": "Check new version",
+    "value": {
+      "en": "Check new version",
+      "es": "Ver la nueva versión",
+      "zh": "检查新版本",
+      "zh-TW": "檢查新版本",
+      "ja": "新しいバージョンを確認",
+      "ko": "새 버전 확인",
+      "de": "Neue Version überprüfen",
+      "hi": "नया संस्करण जाँचें",
+      "fr": "Vérifiez la nouvelle version",
+      "ar": "تحقق من الإصدار الجديد",
+      "ru": "Проверьте новую версию",
+      "pt": "Ver a nova versão",
+      "id": "Periksa versi baru",
+      "vi": "Kiểm tra phiên bản mới",
+      "th": "ตรวจสอบเวอร์ชันใหม่"
+    }
+  }
+}

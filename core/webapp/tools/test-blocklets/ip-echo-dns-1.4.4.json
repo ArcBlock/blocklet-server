@@ -1,0 +1,86 @@
+{
+  "name": "ip-echo-dns",
+  "version": "1.4.4",
+  "description": "An IP Echo DNS server",
+  "keywords": ["dapp", "dns"],
+  "author": {
+    "name": "polunzh",
+    "email": "polunzh@gmail.com",
+    "url": "http://github.com/polunzh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blocklet/ip-echo-dns.git"
+  },
+  "title": "IP Echo DNS",
+  "homepage": "",
+  "license": "Apache-2.0",
+  "files": ["build", "screenshots", "logo.png", "blocklet.md", "README.md"],
+  "group": "dapp",
+  "main": "blocklet.zip",
+  "logo": "logo.png",
+  "community": "https://community.arcblockio.cn",
+  "support": "support@arcblock.io",
+  "environments": [
+    {
+      "name": "IP_REGEX",
+      "description": "ip regex string",
+      "required": true,
+      "default": "(\\d{1,3})-(\\d{1,3})-(\\d{1,3})-(\\d{1,3})\\.ip\\.abtnet\\.io",
+      "secure": false
+    }
+  ],
+  "scripts": {
+    "dev": "npm run start"
+  },
+  "specVersion": "1.0.2",
+  "did": "z8iZuGaHf4BxN4XxFWhjuX1zP99ySPmZUFNJf",
+  "documentation": "",
+  "interfaces": [
+    {
+      "type": "web",
+      "name": "adminUrl",
+      "path": "/",
+      "prefix": "*",
+      "protocol": "tcp",
+      "port": "BLOCKLET_PORT"
+    },
+    {
+      "type": "service",
+      "name": "dns",
+      "protocol": "udp",
+      "port": {
+        "internal": "BLOCKLET_DNS_PORT",
+        "external": 53
+      },
+      "path": "/",
+      "prefix": "*"
+    }
+  ],
+  "timeout": {
+    "start": 10
+  },
+  "screenshots": ["dig.png"],
+  "gitHash": "542ba910cc00f4a1f29136c0f1f9a75748c644b3",
+  "path": "/dapp/ip-echo-dns",
+  "payment": {
+    "price": [],
+    "share": []
+  },
+  "dist": {
+    "tarball": "http://localhost:9090/ip-echo-dns-1.4.4.tgz",
+    "integrity": "sha512-daIiN1JacvDlyZMggvzM7YFaGiJiQwKEgtOwKbRbIT9gfmbwyHWOd1mwB3b7ntGWV5fC5yt8xrk4/8uyJ/ToKQ==",
+    "shasum": "c008c65bbc89503a696c9a33e203747b23c88aed"
+  },
+  "signatures": [
+    {
+      "type": "ED25519",
+      "name": "ip-echo-dns",
+      "signer": "z1aEhK8DBzUcQoaYzpNs8bHv4AgFn22fcXu",
+      "pk": "zBCfqy5Z4vbQhVYmCBEK9aSL8MNjcQL8o7vFL8mgfegjZ",
+      "created": "2021-12-03T15:44:51.409Z",
+      "sig": "z2yDTbRmi2Ewqi6M63rt7BAAuPj6ez9WcpQV5me9YSJefYa6dVxX5h71p4wS1QMMbXNhdN68Z81A9rqucEzY4UMfN"
+    }
+  ],
+  "lastPublishedAt": "2021-12-03T15:44:51.422Z"
+}

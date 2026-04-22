@@ -1,0 +1,59 @@
+{
+  "name": "rpgmaker-demo",
+  "version": "1.0.3",
+  "author": {
+    "name": "Arcblock"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/blocklet/rpgmaker-demo.git"
+  },
+  "license": "MIT",
+  "main": "www",
+  "files": ["www"],
+  "description": "RPG Maker Demo Blocklet, a simple web based RPG game.",
+  "group": "static",
+  "specVersion": "1.0.1",
+  "did": "z8ia4ejtwVATdwMqF5f1uSjHkhp6K2t6DCJGR",
+  "community": "",
+  "documentation": "",
+  "homepage": "",
+  "interfaces": [
+    {
+      "type": "web",
+      "name": "publicUrl",
+      "path": "/",
+      "prefix": "*",
+      "port": "BLOCKLET_PORT",
+      "protocol": "tcp"
+    }
+  ],
+  "environments": [],
+  "screenshots": [],
+  "scripts": {},
+  "timeout": {
+    "start": 10
+  },
+  "gitHash": "3b50d65988522bf799c597eac75e767a62b63bc6",
+  "path": "/static/rpgmaker-demo",
+  "payment": {
+    "price": [],
+    "share": []
+  },
+  "dist": {
+    "tarball": "https://github.com/blocklet/rpgmaker-demo/releases/download/1.0.3/rpgmaker-demo-1.0.3.tgz",
+    "integrity": "sha512-vf4wnakOhMYTCblXyLfX9C3fXybQ4xaMltYjm9cKQNBKUVF3i1UfRcSAYks1xxZDQ9V1h1xSA/hMdharzXv38g==",
+    "shasum": "2daab8440df1e90fb53db6eb73ac6b82746a1cf6"
+  },
+  "signatures": [
+    {
+      "type": "ED25519",
+      "name": "rpgmaker-demo",
+      "signer": "z1aEhK8DBzUcQoaYzpNs8bHv4AgFn22fcXu",
+      "pk": "zBCfqy5Z4vbQhVYmCBEK9aSL8MNjcQL8o7vFL8mgfegjZ",
+      "created": "2021-12-03T16:08:18.557Z",
+      "sig": "z3jcdfRSD1kdZQxYaZrXcDKib7gLm2oEXw2Kxrt5oeHJJWCLyj3EdoQ12epzmHTScpiPouaizcDqRbrTsa9BN7yYW"
+    }
+  ],
+  "lastPublishedAt": "2021-12-03T16:08:18.551Z"
+}

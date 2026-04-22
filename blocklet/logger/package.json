@@ -1,0 +1,40 @@
+{
+  "name": "@blocklet/logger",
+  "version": "1.17.12",
+  "description": "A library to facilitate Blocklet logging",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "blocklet"
+  ],
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/blocklet/logger#readme",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "lint": "eslint tests lib",
+    "lint:fix": "eslint --fix tests lib"
+  },
+  "dependencies": {
+    "@abtnode/logger": "1.17.12"
+  }
+}

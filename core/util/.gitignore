@@ -1,0 +1,3 @@
+!tests/server-data/**/*.log
+tests/server-data/logs/_abtnode/pm2.log
+test-lock.lock

@@ -1,0 +1,40 @@
+{
+  "name": "@abtnode/rbac",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "1.17.12",
+  "description": "Simple lib to manage access controls in ABT Node",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "lint": "eslint tests lib",
+    "lint:fix": "eslint --fix tests lib"
+  },
+  "keywords": [],
+  "author": {
+    "name": "ArcBlock",
+    "email": "blocklet@arcblock.io",
+    "url": "https://github.com/ArcBlock"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArcBlock/blocklet-server.git",
+    "directory": "core/rbac"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcBlock/blocklet-server/issues"
+  },
+  "homepage": "https://github.com/ArcBlock/blocklet-server/tree/main/core/rbac#readme",
+  "dependencies": {
+    "@abtnode/constant": "1.17.12",
+    "@abtnode/db": "1.17.12",
+    "@abtnode/db-cache": "1.17.12",
+    "@abtnode/util": "1.17.12",
+    "fs-extra": "^11.2.0",
+    "lodash": "^4.17.21"
+  }
+}

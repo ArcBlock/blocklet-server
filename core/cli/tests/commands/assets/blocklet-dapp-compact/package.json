@@ -1,0 +1,6 @@
+{
+  "name": "blocklet-dapp-compact",
+  "dependencies": {
+    "axios": "^1.7.9"
+  }
+}

@@ -1,0 +1,39 @@
+name: static-demo-blocklet
+title: Static Demo
+version: 1.1.5
+description: Demo blocklet that shows how to serve a static html5 game with ABT Node
+files:
+  - app/
+  - logo.png
+  - blocklet.yml
+  - blocklet.md
+  - README.md
+keywords:
+  - demo
+  - game
+  - blocklet
+author:
+  name: wangshijun
+  email: wangshijun2010@gmail.com
+  url: 'http://github.com/wangshijun'
+license: MIT
+group: static
+main: app
+logo: logo.png
+community: ''
+documentation: ''
+homepage: ''
+screenshots: []
+environments: []
+specVersion: 1.0.1
+interfaces:
+  - type: web
+    name: publicUrl
+    path: /
+    prefix: '*'
+    port: BLOCKLET_PORT
+    protocol: tcp
+did: z8ia4e5vAeDsQEE2P26bQqz9oWR1Lxg9qUMaV
+timeout:
+  start: 10
+gitHash: 2010e128f015afce19eff0aa05e4b02a135b8f38

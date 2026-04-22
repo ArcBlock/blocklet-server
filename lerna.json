@@ -1,0 +1,10 @@
+{
+  "version": "1.17.12",
+  "npmClient": "npm",
+  "command": {
+    "publish": {
+      "message": "[skip ci] %s"
+    }
+  },
+  "packages": ["apps/*", "core/*", "blocklet/*"]
+}
