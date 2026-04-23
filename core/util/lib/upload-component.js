@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs-extra');
-const tar = require('tar');
 const { types } = require('@ocap/mcrypto');
 const { fromRandom } = require('@ocap/wallet');
 const { update: updateMetaFile, read: readMetaFile } = require('@blocklet/meta/lib/file');
@@ -14,6 +13,7 @@ const {
   BLOCKLET_RELEASE_FILE,
 } = require('@blocklet/constant');
 const { MAX_UPLOAD_FILE_SIZE } = require('@abtnode/constant');
+const { safeTarExtract } = require('./safe-tar');
 const { zipToDir } = require('./zip');
 
 const { createRelease } = require('./create-blocklet-release');
@@ -154,7 +154,7 @@ const handleArchiveFile = async (srcFile, mimetype, tempDir, destDir) => {
   try {
     // extract based on file type
     if (mimetype === GZIP_MIME_TYPE) {
-      await tar.x({ file: srcFile, C: tempDir });
+      await safeTarExtract({ file: srcFile, cwd: tempDir });
     } else if (mimetype === ZIP_MIME_TYPE) {
       await zipToDir(srcFile, tempDir);
     }

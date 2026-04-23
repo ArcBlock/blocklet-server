@@ -136,7 +136,7 @@
     "sqlite3": "^5.1.7",
     "ssri": "^8.0.1",
     "strip-ansi": "6.0.1",
-    "tar": "^6.1.11",
+    "tar": "^7.5.13",
     "terminal-link": "^2.1.1",
     "tweetnacl": "^1.0.3",
     "tweetnacl-sealedbox-js": "^1.2.0",
@@ -151,7 +151,7 @@
     "colors": "1.4.0"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=22"
   },
   "gitHead": "e5764f753181ed6a7c615cd4fc6682aacf0cb7cd",
   "devDependencies": {

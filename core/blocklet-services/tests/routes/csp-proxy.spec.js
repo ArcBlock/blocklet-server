@@ -1,11 +1,10 @@
-const { describe, test, beforeEach, afterEach, expect, spyOn, mock } = require('bun:test');
+const { describe, test, beforeEach, afterEach, expect, mock } = require('bun:test');
 const express = require('express');
 const request = require('supertest');
 const axios = require('axios');
 const { Readable } = require('stream');
 const MockAdapter = require('axios-mock-adapter');
 const isUrl = require('is-url');
-const isPrivateIP = require('private-ip');
 const { init } = require('../../api/routes/csp-proxy');
 
 require('express-async-errors');
@@ -48,8 +47,6 @@ describe('CSP Proxy API', () => {
       expect(res.text).toBe('Invalid parameter: empty');
 
       const originalIsUrl = isUrl;
-      const originalPrivateIP = isPrivateIP;
-
       // Invalid URL format
       global.isUrl = () => false; // mock 返回 false
       res = await makeRequest('invalid-url');
@@ -63,7 +60,6 @@ describe('CSP Proxy API', () => {
       expect(res.text).toBe('Invalid parameter: protocol');
 
       global.isUrl = originalIsUrl;
-      global.isPrivateIP = originalPrivateIP;
     });
   });
 
@@ -80,8 +76,6 @@ describe('CSP Proxy API', () => {
       res = await makeRequest(validImageUrl, 'http://malicious.com');
       expect(res.status).toBe(403);
 
-      // Private IP (SSRF prevention)
-      spyOn(isPrivateIP, 'default' || isPrivateIP).mockReturnValueOnce(true);
       res = await makeRequest('https://192.168.1.1/image.jpg');
       expect(res.status).toBe(400);
       expect(res.text).toBe('Invalid parameter: internal');
@@ -190,15 +184,12 @@ describe('CSP Proxy API', () => {
         'https://example.com@127.0.0.1/',
         'https://127.0.0.1:443/',
         'https://[::1]:443/',
+        'https://[::ffff:127.0.0.1]/',
         'https://3232235777/',
         'https://loca%25%36%31lhost/',
       ];
 
-      const urls404 = [
-        'https://httpbin.org/redirect-to?url=https://127.0.0.1',
-        'https://127.0.0.1@example.com/',
-        'https://[::ffff:127.0.0.1]/',
-      ];
+      const urls404 = ['https://httpbin.org/redirect-to?url=https://127.0.0.1', 'https://127.0.0.1@example.com/'];
 
       for (const url of urls400) {
         // eslint-disable-next-line no-await-in-loop

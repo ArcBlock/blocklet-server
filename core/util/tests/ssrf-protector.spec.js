@@ -1,7 +1,18 @@
-const { describe, expect, test } = require('bun:test');
-const { isAllowedProtocol, isAllowedReferer, isAllowedURL } = require('../lib/ssrf-protector');
+const dns = require('dns');
+const { afterEach, describe, expect, mock, spyOn, test } = require('bun:test');
+const {
+  isAllowedProtocol,
+  isAllowedReferer,
+  isAllowedURL,
+  isBlockedIP,
+  resolveAndValidateHostname,
+} = require('../lib/ssrf-protector');
 
 describe('SSRF Protector', () => {
+  afterEach(() => {
+    mock.restore();
+  });
+
   describe('isAllowedProtocol', () => {
     test('should allow https protocol', () => {
       expect(isAllowedProtocol('https')).toBe(true);
@@ -127,7 +138,6 @@ describe('SSRF Protector', () => {
       expect(result).toBe(true);
     });
 
-    // Multicast IPs (224.0.0.0/4) are not covered by private-ip (CVE: GHSA-jm66-6qc7-hx83)
     test('should reject IPv4 multicast address 224.0.0.1', async () => {
       expect(await isAllowedURL('https://224.0.0.1/api')).toBe(false);
     });
@@ -138,6 +148,59 @@ describe('SSRF Protector', () => {
 
     test('should reject IPv4 multicast address 230.1.2.3', async () => {
       expect(await isAllowedURL('https://230.1.2.3/api')).toBe(false);
+    });
+
+    test('should reject blocked IPv6 addresses directly', async () => {
+      expect(await isAllowedURL('https://[::1]/api')).toBe(false);
+      expect(await isAllowedURL('https://[ff02::1]/api')).toBe(false);
+      expect(await isAllowedURL('https://[::ffff:127.0.0.1]/api')).toBe(false);
+    });
+  });
+
+  describe('isBlockedIP', () => {
+    test('should allow public unicast addresses', () => {
+      expect(isBlockedIP('8.8.8.8')).toBe(false);
+      expect(isBlockedIP('2606:4700:4700::1111')).toBe(false);
+    });
+
+    test('should block non-public address ranges', () => {
+      [
+        '0.0.0.0',
+        '10.0.0.1',
+        '100.64.0.1',
+        '127.0.0.1',
+        '169.254.169.254',
+        '172.16.0.1',
+        '192.168.1.1',
+        '224.0.0.1',
+        '255.255.255.255',
+        '::',
+        '::1',
+        'fc00::1',
+        'fe80::1',
+        'ff02::1',
+        '::ffff:127.0.0.1',
+      ].forEach((ip) => {
+        expect(isBlockedIP(ip)).toBe(true);
+      });
+    });
+  });
+
+  describe('resolveAndValidateHostname', () => {
+    test('should reject hostnames if any DNS answer is blocked', async () => {
+      spyOn(dns, 'lookup').mockImplementation((hostname, options, callback) => {
+        callback(null, [{ address: '8.8.8.8' }, { address: '10.0.0.1' }]);
+      });
+
+      expect(await resolveAndValidateHostname('mixed.example.com')).toBe(false);
+    });
+
+    test('should allow hostnames when all DNS answers are public', async () => {
+      spyOn(dns, 'lookup').mockImplementation((hostname, options, callback) => {
+        callback(null, [{ address: '8.8.8.8' }, { address: '2606:4700:4700::1111' }]);
+      });
+
+      expect(await resolveAndValidateHostname('public.example.com')).toBe(true);
     });
   });
 });

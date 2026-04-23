@@ -49,7 +49,7 @@ blocklet server start -a
 
 | Requirement | Minimum | Recommended |
 |-------------|---------|-------------|
-| Node.js | 20.x | 22.x or later |
+| Node.js | 22.x | 22.x or later |
 | Memory | 2 GB | 4 GB or more |
 | Disk Space | 10 GB | 50 GB or more |
 | OS | Linux, macOS, Windows (Docker) | Linux (Ubuntu 20.04+) |

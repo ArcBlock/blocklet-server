@@ -1,26 +1,42 @@
 /**
  * SSRF Protector
  */
-const isPrivateIP = require('private-ip');
-const isIP = require('is-ip');
 const dns = require('dns');
+const ipaddr = require('ipaddr.js');
 const { isDidDomainUrl } = require('./url-evaluation');
 
-// private-ip does not cover multicast ranges (CVE: GHSA-jm66-6qc7-hx83)
-// IPv4 multicast: 224.0.0.0/4 (224-239.x.x.x)
-// IPv6 multicast: ff00::/8
-function isMulticastIP(ip) {
-  if (!ip) return false;
-  const ipv4Match = ip.match(/^(\d{1,3})\./);
-  if (ipv4Match) {
-    const first = parseInt(ipv4Match[1], 10);
-    return first >= 224 && first <= 239;
+const BLOCKED_IP_RANGES = new Set([
+  'broadcast',
+  'carrierGradeNat',
+  'linkLocal',
+  'loopback',
+  'multicast',
+  'private',
+  'reserved',
+  'uniqueLocal',
+  'unspecified',
+]);
+
+function parseIP(ip) {
+  if (!ip || typeof ip !== 'string') {
+    return null;
   }
-  return /^[Ff][Ff]/i.test(ip);
+
+  const normalized = ip.startsWith('[') && ip.endsWith(']') ? ip.slice(1, -1) : ip;
+  if (!ipaddr.isValid(normalized)) {
+    return null;
+  }
+
+  const address = ipaddr.parse(normalized);
+  return address.kind() === 'ipv6' && address.isIPv4MappedAddress() ? address.toIPv4Address() : address;
 }
 
 function isBlockedIP(ip) {
-  return isPrivateIP(ip) || isMulticastIP(ip);
+  const address = parseIP(ip);
+  if (!address) {
+    return true;
+  }
+  return BLOCKED_IP_RANGES.has(address.range());
 }
 
 // allowed protocols; only https is allowed
@@ -52,9 +68,9 @@ function isAllowedReferer(referer, host) {
 
 const resolveDomain = (domain) => {
   return new Promise((resolve, reject) => {
-    dns.lookup(domain, { all: false }, (error, address) => {
+    dns.lookup(domain, { all: true, verbatim: true }, (error, addresses) => {
       if (!error) {
-        resolve(address);
+        resolve(addresses.map((x) => x.address));
       } else {
         reject(error);
       }
@@ -73,11 +89,9 @@ async function resolveAndValidateHostname(hostname) {
   }
 
   try {
-    // resolve hostname using lookup
-    const address = await resolveDomain(hostname);
+    const addresses = await resolveDomain(hostname);
 
-    // check whether it is a private or multicast IP and return the inverse
-    return !isBlockedIP(address);
+    return addresses.length > 0 && addresses.every((address) => !isBlockedIP(address));
   } catch (error) {
     // reject access when DNS resolution fails
     return false;
@@ -102,7 +116,7 @@ async function isAllowedURL(url) {
     }
 
     // if this is an IP address, validate directly
-    if (isIP(hostname)) {
+    if (parseIP(hostname)) {
       return !isBlockedIP(hostname);
     }
 
@@ -130,5 +144,7 @@ module.exports = {
   isAllowedProtocol,
   isAllowedReferer,
   isAllowedURL,
+  isBlockedIP,
+  parseIP,
   resolveAndValidateHostname,
 };

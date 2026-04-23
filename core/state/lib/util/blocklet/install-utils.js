@@ -8,7 +8,6 @@
 
 const fs = require('fs-extra');
 const path = require('node:path');
-const tar = require('tar');
 const get = require('lodash/get');
 const streamToPromise = require('stream-to-promise');
 const { Throttle } = require('stream-throttle');
@@ -18,6 +17,7 @@ const diff = require('deep-diff');
 const logger = require('@abtnode/logger')('@abtnode/core:util:blocklet:install-utils');
 const formatBackSlash = require('@abtnode/util/lib/format-back-slash');
 const hashFiles = require('@abtnode/util/lib/hash-files');
+const { createSafeTarExtractStream } = require('@abtnode/util/lib/safe-tar');
 const { BLOCKLET_INSTALL_TYPE } = require('@abtnode/constant');
 
 const { BlockletStatus, BlockletSource, fromBlockletStatus } = require('@blocklet/constant');
@@ -61,7 +61,7 @@ const expandTarball = async ({ source, dest, strip = 1 }) => {
     fs
       .createReadStream(source)
       .pipe(new Throttle({ rate: 1024 * 1024 * 20 })) // 20MB
-      .pipe(tar.x({ C: dest, strip }))
+      .pipe(createSafeTarExtractStream({ cwd: dest, strip }))
   );
 
   return dest;

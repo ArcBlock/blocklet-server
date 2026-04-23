@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
 import fs from 'fs-extra';
 import path from 'path';
-import tar from 'tar';
 import shell from 'shelljs';
 import Debug from 'debug';
 import { exec } from 'child_process';
 import runScript from '@abtnode/util/lib/run-script';
+import { safeTarExtract } from '@abtnode/util/lib/safe-tar';
 
 type LogGroup = {
   did: string;
@@ -45,7 +45,7 @@ export async function decompressLog(source: string, tmpDir: string): Promise<str
     fs.removeSync(dest);
   }
 
-  await tar.x({ file: source, C: tmpDir });
+  await safeTarExtract({ file: source, cwd: tmpDir });
   return dest;
 }
 

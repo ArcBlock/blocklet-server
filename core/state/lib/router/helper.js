@@ -3,7 +3,6 @@
 /* eslint-disable prefer-destructuring */
 const fs = require('fs-extra');
 const path = require('path');
-const tar = require('tar');
 const dns = require('dns').promises;
 const UUID = require('uuid');
 const dayjs = require('@abtnode/util/lib/dayjs');
@@ -27,6 +26,7 @@ const normalizePathPrefix = require('@abtnode/util/lib/normalize-path-prefix');
 const getTmpDir = require('@abtnode/util/lib/get-tmp-directory');
 const downloadFile = require('@abtnode/util/lib/download-file');
 const axios = require('@abtnode/util/lib/axios');
+const { safeTarExtract } = require('@abtnode/util/lib/safe-tar');
 const { getIpDnsDomainForBlocklet, getDidDomainForBlocklet } = require('@abtnode/util/lib/get-domain-for-blocklet');
 const { hasMountPoint } = require('@blocklet/meta/lib/engine');
 const { forEachBlockletSync } = require('@blocklet/meta/lib/util');
@@ -840,7 +840,7 @@ const ensureLatestInfo = async (sites = [], blocklets = [], teamManager = null, 
 
 const decompressCertificates = async (source, dest) => {
   fs.ensureDirSync(dest);
-  await tar.x({ file: source, C: dest });
+  await safeTarExtract({ file: source, cwd: dest });
   return dest;
 };
 

@@ -18,8 +18,40 @@ const cache = require('../cache');
 const { attachNotificationUTM, getUTMUrl } = require('../util/utm');
 
 const schemaEmail = Joi.string().email().required();
+const EMAIL_MAX_LENGTH = 320;
 
 const validateEmail = schemaEmail.validateAsync.bind(schemaEmail);
+
+function sanitizeEmailHeader(value, label = 'email header') {
+  const result = `${value || ''}`;
+  if (/[\r\n]/.test(result)) {
+    throw new Error(`Invalid ${label}`);
+  }
+  return result;
+}
+
+function validateEmailAddress(value, label = 'email') {
+  if (typeof value !== 'string') {
+    throw new Error(`Invalid ${label}`);
+  }
+
+  const email = value.trim();
+  if (
+    email.length === 0 ||
+    email.length > EMAIL_MAX_LENGTH ||
+    /[\r\n,;:<>]/.test(email) ||
+    /^"[^"]*@[^"]*"@/.test(email)
+  ) {
+    throw new Error(`Invalid ${label}`);
+  }
+
+  const { error } = schemaEmail.validate(email);
+  if (error) {
+    throw new Error(`Invalid ${label}`);
+  }
+
+  return email;
+}
 
 async function sendEmail(
   receiver,
@@ -39,6 +71,7 @@ async function sendEmail(
   if (!receiver) {
     throw new Error('receiver is required');
   }
+  const safeReceiver = validateEmailAddress(receiver, 'receiver');
 
   if (!notification.title && !notification.body) {
     throw new Error('notification is required');
@@ -87,6 +120,12 @@ async function sendEmail(
       { zh: '您收到了一个通知', en: 'You have received a notification' }[locale] ||
       'You have received a notification'
     }`;
+    const safeSubject = sanitizeEmailHeader(subject, 'subject');
+    const safeFrom = validateEmailAddress(config.from, 'sender email');
+    const safeAppTitle = sanitizeEmailHeader(appInfo.title || info.name || 'Blocklet', 'app title').replace(
+      /["\\]/g,
+      ''
+    );
 
     let html = '';
     try {
@@ -118,7 +157,7 @@ async function sendEmail(
               unsubscribeToken,
               userInfo: {
                 ...userInfo,
-                email: receiver,
+                email: safeReceiver,
               },
               signatureConfig: emailSignature,
               theme,
@@ -137,7 +176,7 @@ async function sendEmail(
               unsubscribeToken,
               userInfo: {
                 ...userInfo,
-                email: receiver,
+                email: safeReceiver,
               },
               signatureConfig: emailSignature,
               theme,
@@ -154,7 +193,7 @@ async function sendEmail(
             raw,
             userInfo: {
               ...userInfo,
-              email: receiver,
+              email: safeReceiver,
             },
             signatureConfig: emailSignature,
             theme,
@@ -171,7 +210,7 @@ async function sendEmail(
             unsubscribeToken,
             userInfo: {
               ...userInfo,
-              email: receiver,
+              email: safeReceiver,
             },
             signatureConfig: emailSignature,
             theme,
@@ -186,7 +225,7 @@ async function sendEmail(
             locale,
             userInfo: {
               ...userInfo,
-              email: receiver,
+              email: safeReceiver,
             },
             userSession: extraData?.userSession,
             theme,
@@ -199,12 +238,12 @@ async function sendEmail(
     }
 
     const emailData = {
-      from: `"${appInfo.title}" <${config.from}>`,
-      to: receiver,
-      title: notification.title,
-      subject,
+      from: `"${safeAppTitle}" <${safeFrom}>`,
+      to: safeReceiver,
+      title: safeSubject,
+      subject: safeSubject,
       html,
-      replyTo: config.from,
+      replyTo: safeFrom,
     };
 
     if (process.env.NODE_ENV === 'test') {
@@ -227,7 +266,7 @@ async function sendEmail(
 
     const info = await node.getNodeInfo({ useCache: true });
     const result = await sendEmailWithLauncher(info.sk, blocklet.controller, {
-      receiver,
+      receiver: safeReceiver,
       notification,
       options: { locale, raw },
     });
@@ -242,6 +281,8 @@ async function sendEmail(
 }
 
 module.exports = {
+  sanitizeEmailHeader,
   validateEmail,
+  validateEmailAddress,
   sendEmail,
 };

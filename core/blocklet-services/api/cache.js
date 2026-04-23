@@ -144,6 +144,7 @@ cache.getTransport = ({ did, config, force }) => {
     host: config.host,
     port: config.port,
     secure: !!config.secure,
+    name: 'blocklet-server',
     auth: { user: config.user, pass: config.password },
   });
   if (transporter) {

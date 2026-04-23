@@ -53,6 +53,10 @@ mock.module('../lib/zip', () => ({
   zipToDir: mock(),
 }));
 
+mock.module('../lib/safe-tar', () => ({
+  safeTarExtract: mock(),
+}));
+
 mock.module('../lib/create-blocklet-release', () => ({
   createRelease: mock(() => ({
     meta: {
@@ -71,11 +75,11 @@ afterAll(() => {
 const path = require('path');
 const fs = require('fs-extra');
 const os = require('os');
-const tar = require('tar');
 
 const { update: updateMetaFile, read: readMetaFile } = require('@blocklet/meta/lib/file');
 
 const { zipToDir } = require('../lib/zip');
+const { safeTarExtract } = require('../lib/safe-tar');
 const { createRelease } = require('../lib/create-blocklet-release');
 
 const {
@@ -323,12 +327,9 @@ describe('upload-component', () => {
       uploadMetadata.metadata.filetype = 'application/gzip';
       uploadMetadata.metadata.filename = 'test-component.tar.gz';
 
-      // Mock tar extraction with actual file creation
-      const originalTarX = tar.x;
-      tar.x = mock().mockImplementation(async ({ C: destDir }) => {
-        // simulate tar-extracted file structure
-        await fs.ensureDir(destDir);
-        await fs.writeFile(path.join(destDir, 'blocklet.yml'), 'name: test');
+      safeTarExtract.mockImplementation(async ({ cwd }) => {
+        await fs.ensureDir(cwd);
+        await fs.writeFile(path.join(cwd, 'blocklet.yml'), 'name: test');
       });
 
       const result = await onUploadComponent(mockNode, uploadMetadata, mockBlocklet, mockUser);
@@ -342,11 +343,11 @@ describe('upload-component', () => {
         inputUrl: expect.stringMatching(/^file:\/\//),
       });
 
-      expect(tar.x).toHaveBeenCalled();
+      expect(safeTarExtract).toHaveBeenCalledWith({
+        file: path.join(tempDir, 'test-file-id'),
+        cwd: expect.any(String),
+      });
       expect(createRelease).toHaveBeenCalled();
-
-      // Restore original tar.x
-      tar.x = originalTarX;
     });
 
     test('should throw error for invalid archive', async () => {
