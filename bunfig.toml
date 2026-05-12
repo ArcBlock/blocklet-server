@@ -1,3 +1,12 @@
+[install]
+# Force hoisted node_modules layout so tools/patch-dependencies.js can copy
+# patches into top-level node_modules/<pkg>/... and so transitive deps like
+# `glob`/`fs-extra` (used implicitly by helper scripts) stay reachable from
+# the project root without an explicit declaration.
+# Bun 1.3 defaults to "isolated" in workspaces, which broke
+# `make github-init` on CI (see commit history for the symptoms).
+linker = "hoisted"
+
 [test]
 preload = "./tools/bun-test-preload.js"
 isolation = true
