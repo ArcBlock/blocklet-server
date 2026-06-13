@@ -9,6 +9,7 @@ const isEmpty = require('lodash/isEmpty');
 
 const { toDid, toBuffer } = require('@ocap/util');
 const { fromPublicKey } = require('@ocap/wallet');
+const { isValid } = require('@arcblock/did');
 const logger = require('@abtnode/logger')('@abtnode/core:util:blocklet:did-document');
 const { isCustomDomain } = require('@abtnode/util/lib/url-evaluation');
 const { isInServerlessMode } = require('@abtnode/util/lib/serverless');
@@ -70,7 +71,10 @@ const getBlockletKnownAs = (blocklet) => {
       .forEach((x) => alsoKnownAs.push(x.appDid));
   }
 
-  return alsoKnownAs.filter(Boolean).map(toDid);
+  // NOTE: must use an arrow so Array.prototype.map does not pass the element index as toDid's
+  // second `method` argument — @ocap/util treats that arg as the DID method, so `.map(toDid)`
+  // would emit `did:0:`, `did:1:`, ... which the DID registry rejects ("alsoKnownAs[n] to be valid did").
+  return alsoKnownAs.filter(Boolean).map((did) => toDid(did));
 };
 
 /**
@@ -95,6 +99,21 @@ const publishDidDocument = async ({ blocklet, ownerInfo, nodeInfo }) => {
 
     if (alsoKnownAs.indexOf(slpDid) === -1) {
       alsoKnownAs.push(toDid(slpDid));
+    }
+  }
+
+  // defensive: never send a malformed alias to the registry — a single invalid entry makes it
+  // reject the whole document ("alsoKnownAs[n] to be valid did") and breaks DID/DNS resolution
+  const invalidAliases = alsoKnownAs.filter((x) => !isValid(x));
+  if (invalidAliases.length) {
+    logger.warn('dropping invalid alsoKnownAs entries before DID document update', {
+      blockletDid: blocklet.meta.did,
+      invalidAliases,
+    });
+    for (let i = alsoKnownAs.length - 1; i >= 0; i -= 1) {
+      if (!isValid(alsoKnownAs[i])) {
+        alsoKnownAs.splice(i, 1);
+      }
     }
   }
 
