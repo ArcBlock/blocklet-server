@@ -9,9 +9,9 @@ module.exports = function createRoutes() {
     action: 'pre-setup',
     authPrincipal: false,
     claims: getAppDidOwnerClaims(),
-    onAuth: ({ claims, userDid, userPk, extraParams: { locale, visitorId } }) => {
+    onAuth: async ({ claims, userDid, userPk, extraParams: { locale, visitorId } }) => {
       const claim = claims.find((x) => x.type === 'signature');
-      verifySignature(claim, userDid, userPk, locale);
+      await verifySignature(claim, userDid, userPk, locale);
       logger.info('pre-setup.connect.success', { userDid });
       return {
         nextWorkflowData: {

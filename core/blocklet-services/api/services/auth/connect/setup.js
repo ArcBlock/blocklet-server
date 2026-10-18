@@ -1,5 +1,6 @@
 /* eslint-disable arrow-parens */
 const get = require('lodash/get');
+const { toUint8Array } = require('@ocap/util');
 const { messages } = require('@abtnode/auth/lib/auth');
 const { extractUserAvatar } = require('@abtnode/util/lib/user');
 const formatContext = require('@abtnode/util/lib/format-context');
@@ -12,25 +13,60 @@ const { USER_SESSION_STATUS } = require('@blocklet/constant');
 
 const logger = require('../../../libs/logger')('setup');
 
+const NOT_OWNER_ERROR = 'You are not owner of the application';
+
+/**
+ * Only the following users can run setup:
+ * 1. the owner of the application, if the owner is already set
+ * 2. the first user, or the only existing user, of an application without owner
+ */
 const checkOwner = async ({ node, userDid, blocklet }) => {
   const teamDid = blocklet.meta.did;
-
-  const count = await node.getUsersCount({ teamDid });
-  if (count > 1) {
-    logger.error(`The number of members should be at most 1, got ${count}`, {
-      name: blocklet.meta.name,
-      did: blocklet.meta.did,
-    });
-  }
+  const ownerDid = blocklet.settings?.owner?.did;
 
   // NOTICE: blocklet 的 owner 目前限制为只能为 did-wallet 用户，不需要查询 connectedAccount
   const user = await node.getUser({ teamDid, user: { did: userDid } });
 
-  if (count === 1 && !user) {
-    throw new Error('You are not owner of the application');
+  if (ownerDid) {
+    if (ownerDid !== userDid) {
+      logger.warn('setup rejected: not the application owner', { teamDid, userDid });
+      throw new Error(NOT_OWNER_ERROR);
+    }
+
+    return user;
+  }
+
+  const count = await node.getUsersCount({ teamDid });
+  if (count > 1 || (count === 1 && !user)) {
+    logger.warn('setup rejected: application without owner already has other members', { teamDid, userDid, count });
+    throw new Error(NOT_OWNER_ERROR);
   }
 
   return user;
+};
+
+/**
+ * Ensure the proof from pre-setup workflow is signed by the application key pair
+ * NOTICE: the proof is passed from client through `previousWorkflowData`, so it must not be trusted
+ */
+const verifyOwnerProof = async ({ proof, blocklet, locale }) => {
+  if (!proof || !proof.claim || !proof.pk) {
+    throw new Error('No owner proof found from previous workflow');
+  }
+
+  // Compare decoded bytes, so that origin encoded as base58 or hex are both accepted
+  const expectedMessage = `I am the owner of app ${blocklet.appDid}`;
+  let message = '';
+  try {
+    message = Buffer.from(toUint8Array(proof.claim.origin)).toString('utf8');
+  } catch {
+    message = '';
+  }
+  if (message !== expectedMessage) {
+    throw new Error('Invalid owner proof from previous workflow');
+  }
+
+  await verifySignature(proof.claim, blocklet.appDid, proof.pk, locale);
 };
 
 module.exports = function createRoutes(node, authenticator, createSessionToken) {
@@ -56,10 +92,7 @@ module.exports = function createRoutes(node, authenticator, createSessionToken) 
       const { secret } = await req.getBlockletInfo();
 
       // ensure owner proof form previous workflow
-      if (!proof || !proof.claim || !proof.pk) {
-        throw new Error('No owner proof found from previous workflow');
-      }
-      verifySignature(proof.claim, blocklet.appDid, proof.pk, locale);
+      await verifyOwnerProof({ proof, blocklet, locale });
       const profile = claims.find((x) => x.type === 'profile');
 
       const lastLoginIp = getRequestIP(req);

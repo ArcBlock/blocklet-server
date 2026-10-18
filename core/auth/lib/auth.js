@@ -764,7 +764,7 @@ const handleInvitationResponse = async ({
   kycUpdates = {},
 }) => {
   const claim = claims.find((x) => x.type === 'signature');
-  verifySignature(claim, userDid, userPk, locale);
+  await verifySignature(claim, userDid, userPk, locale);
 
   const profile = claims.find((x) => x.type === 'profile');
 
@@ -882,7 +882,7 @@ const handleIssuePassportResponse = async ({
 }) => {
   // verify signature
   const claim = claims.find((x) => x.type === 'signature');
-  verifySignature(claim, userDid, userPk, locale);
+  await verifySignature(claim, userDid, userPk, locale);
 
   const inviteInfo = await node.getInvitation({ teamDid, inviteId });
 

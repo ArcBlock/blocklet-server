@@ -248,7 +248,7 @@ const createLostPassportIssueRoute = ({ node, type, authServicePrefix, createTok
 
     // Verify signature
     const claim = claims.find((x) => x.type === 'signature');
-    verifySignature(claim, userDid, userPk, locale);
+    await verifySignature(claim, userDid, userPk, locale);
 
     // check user approved
     const currentUser = await getUser(node, teamDid, userDid, {

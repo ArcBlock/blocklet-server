@@ -25,16 +25,26 @@ const logger = require('@abtnode/logger')(require('../../../package.json').name)
 const { createToken } = require('../../libs/login');
 
 module.exports = function createRoutes(node) {
+  // Server owner can only be claimed when the server is not initialized and is not owned by NFT
+  const ensureClaimable = async (locale = 'en') => {
+    const info = await node.getNodeInfo();
+    if (info.ownerNft && info.ownerNft.holder && info.ownerNft.issuer) {
+      throw new Error('The server owner can only be claimed with an NFT.');
+    }
+    if (await node.isInitialized()) {
+      logger.warn('connect owner rejected: server already initialized');
+      throw new Error(messages.alreadyInitiated[locale]);
+    }
+
+    return info;
+  };
+
   return {
     action: 'connect-owner',
     onConnect: () => {
       return {
         profile: async ({ extraParams: { locale } }) => {
-          const info = await node.getNodeInfo();
-
-          if (info.ownerNft && info.ownerNft.holder && info.ownerNft.issuer) {
-            throw new Error(messages.requestOwnershipNft[locale]);
-          }
+          await ensureClaimable(locale);
 
           return {
             fields: ['fullName', 'email', 'avatar'],
@@ -75,12 +85,12 @@ module.exports = function createRoutes(node) {
 
     onAuth: async ({ claims, userDid, userPk, updateSession, extraParams: { locale }, req, baseUrl }) => {
       const profile = claims.find(x => x.type === 'profile');
-      const info = await node.getNodeInfo();
+      const info = await ensureClaimable(locale);
       const teamDid = info.did;
 
       // Verify signature
       const claim = claims.find(x => x.type === 'signature');
-      verifySignature(claim, userDid, userPk, locale);
+      await verifySignature(claim, userDid, userPk, locale);
 
       // Add owner
       await node.updateNodeOwner({ nodeOwner: { did: userDid, pk: userPk } });

@@ -95,7 +95,8 @@ module.exports = function createRoutes(node, authenticator, createSessionToken) 
 
       if (!parseShouldCheckRole(shouldCheckRole)) {
         const claim = claims.find((x) => x.type === 'signature');
-        if (claim.origin && userWallet.verify(claim.origin, claim.sig, claim.method !== 'none') !== false) {
+        // NOTICE: wallet.verify is async since @ocap/wallet 1.30
+        if (claim?.origin && (await userWallet.verify(claim.origin, claim.sig, claim.method !== 'none')) === true) {
           return;
         }
         throw new Error(messages.signatureNotValid[locale]);
