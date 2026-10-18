@@ -77,7 +77,7 @@ const init = ({ states, teamManager, teamAPI }) => {
         pendingWebhooks: DEFAULT_PENDING_WEBHOOKS,
       });
 
-      logger.info('create webhook event result', result);
+      logger.info('create webhook event result', { id: result.id });
       webhookEventQueue.push({ id: event.id, job: { eventId: result.id, appDid }, persist: false });
     } catch (error) {
       logger.error('Failed to create webhook event:', error);

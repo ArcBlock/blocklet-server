@@ -11,6 +11,7 @@ require('@abtnode/winston-daily-rotate-file');
 const { LOG_RETAIN_IN_DAYS } = require('@abtnode/constant');
 const CustomRotateFileTransport = require('./transport');
 const { getAccessLogFilenameGenerator } = require('./util');
+const { redact } = require('./redact');
 
 if (!process.env.ABT_NODE_LOG_NAME) {
   process.env.ABT_NODE_LOG_NAME = 'daemon';
@@ -74,7 +75,7 @@ const customPrintfCallback = ({ level, message, label, timestamp, [Symbol.for('s
       return d;
     });
 
-    result = `${result} ${safeStringify(newMetadata)}`;
+    result = `${result} ${safeStringify(redact(newMetadata))}`;
   }
 
   return result;

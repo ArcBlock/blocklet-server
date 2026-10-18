@@ -61,7 +61,6 @@ const sendToEventBus = async ({ sender, channel, event, node, wsServer }) => {
       did: appInfo?.wallet?.address,
       pk: appInfo?.wallet?.publicKey,
     },
-    appInfo1: appInfo,
   });
 };
 
