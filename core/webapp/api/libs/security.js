@@ -1,5 +1,4 @@
-const get = require('lodash/get');
-const { parse } = require('graphql');
+const { parse, Kind, valueFromASTUntyped } = require('graphql');
 const {
   NODE_MODES,
   ROLES,
@@ -11,9 +10,60 @@ const {
 const { BLOCKLET_TENANT_MODES, ALLOW_VERIFY_PROVIDERS } = require('@blocklet/constant');
 const { isInServerlessMode } = require('@abtnode/util/lib/serverless');
 const { isE2E } = require('./env');
-const { ensureUserLoginWhiteList } = require('./white-list');
+const { ensureUserLoginWhiteList, ensureOrgScopedWhiteList } = require('./white-list');
+
+const INTROSPECTION_FIELDS = ['__schema', '__type', '__typename'];
 
 const isDebugMode = info => info.enableWelcomePage && info.mode === NODE_MODES.DEBUG;
+
+const parseVariables = req => {
+  const variables = req.body?.variables || req.query?.variables;
+  if (typeof variables === 'string') {
+    try {
+      return JSON.parse(variables);
+    } catch {
+      return {};
+    }
+  }
+  return variables && typeof variables === 'object' ? variables : {};
+};
+
+/**
+ * Collect all root fields of operations, including fields nested in inline fragments and fragment spreads,
+ * so that no root field can escape the permission check
+ */
+const collectOperations = (definitions, variables) => {
+  const fragments = definitions
+    .filter(x => x.kind === Kind.FRAGMENT_DEFINITION)
+    .reduce((acc, x) => {
+      acc[x.name.value] = x;
+      return acc;
+    }, {});
+
+  const result = [];
+  const visit = (selectionSet, visited) => {
+    (selectionSet?.selections || []).forEach(selection => {
+      if (selection.kind === Kind.FIELD) {
+        const args = (selection.arguments || []).reduce((acc, arg) => {
+          acc[arg.name.value] = valueFromASTUntyped(arg.value, variables);
+          return acc;
+        }, {});
+        result.push({ name: selection.name.value, args });
+      } else if (selection.kind === Kind.INLINE_FRAGMENT) {
+        visit(selection.selectionSet, visited);
+      } else if (selection.kind === Kind.FRAGMENT_SPREAD) {
+        const name = selection.name.value;
+        if (!visited.has(name) && fragments[name]) {
+          visit(fragments[name].selectionSet, new Set([...visited, name]));
+        }
+      }
+    });
+  };
+
+  definitions.filter(x => x.kind === Kind.OPERATION_DEFINITION).forEach(x => visit(x.selectionSet, new Set()));
+
+  return result;
+};
 
 const whiteList = {
   getNodeInfo: true,
@@ -26,6 +76,7 @@ const whiteList = {
   launchBlockletByLauncher: info => isInServerlessMode(info),
   handleLaunchBlockletWithoutWallet: true,
   ...ensureUserLoginWhiteList,
+  ...ensureOrgScopedWhiteList,
 };
 
 const protectGQL = (instance, gqlConfig) => async (req, res, next) => {
@@ -37,23 +88,15 @@ const protectGQL = (instance, gqlConfig) => async (req, res, next) => {
       const { definitions } = parse(query);
 
       // get operations that need checked, excluded by whitelist
-      const operations = definitions
-        .map(x => {
-          const selections = get(x, 'selectionSet.selections') || [];
-          const names = selections.map(y => get(y, 'name.value'));
-          return names;
-        })
-        .reduce((arr, names) => {
-          arr.push(...names);
-          return arr;
-        }, [])
-        .filter(d => d !== '__schema')
-        .filter(name => {
+      const operations = collectOperations(definitions, parseVariables(req))
+        .filter(({ name }) => !INTROSPECTION_FIELDS.includes(name))
+        .filter(({ name, args }) => {
           if (typeof whiteList[name] === 'function') {
-            return !whiteList[name](info, req.user);
+            return !whiteList[name](info, req.user, args);
           }
           return !whiteList[name];
-        });
+        })
+        .map(({ name }) => name);
 
       const hasPermission = async () => {
         if (req.user.role === ROLES.OWNER) {
@@ -63,8 +106,9 @@ const protectGQL = (instance, gqlConfig) => async (req, res, next) => {
         const rbac = await instance.getRBAC();
         const results = await Promise.all(
           operations.map(async apiName => {
+            // Unknown root fields are denied, they should never reach any resolver
             if (!gqlConfig[apiName]) {
-              return true;
+              return false;
             }
 
             return !!(await rbac.canAny(

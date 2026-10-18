@@ -41,7 +41,6 @@ function TeamProvider({ children, mode = 'dashboard' }) {
       const res = await client.doBatchQuery({
         getRoles: { input: { teamDid } },
         getPermissions: { input: { teamDid } },
-        getInvitations: { input: { teamDid } },
       });
 
       const mapRoles = (res.getRoles.roles || [])
@@ -58,7 +57,9 @@ function TeamProvider({ children, mode = 'dashboard' }) {
 
       setRoles(orderBy(mapRoles, [(item) => isProtectedRole(item.name)], ['desc']));
       setPermissions(res.getPermissions.permissions || []);
-      setInvitations(res.getInvitations.invitations || []);
+      // Listing invitations requires mutate_team, members are not allowed to see them
+      const { invitations: list } = await client.getInvitations({ input: { teamDid } }).catch(() => ({}));
+      setInvitations(list || []);
     } catch (err) {
       Toast.error(err.message);
     }

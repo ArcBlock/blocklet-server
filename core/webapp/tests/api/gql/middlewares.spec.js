@@ -8,6 +8,7 @@ const verifyBlocklet = require('../../../api/gql/middlewares/verify-blocklet');
 const mutateBlocklet = require('../../../api/gql/middlewares/mutate-blocklet');
 const addBlockletStore = require('../../../api/gql/middlewares/add-blocklet-store');
 const verifyDestroySession = require('../../../api/gql/middlewares/verify-destroy-session');
+const verifyOrgScope = require('../../../api/gql/middlewares/verify-org-scope');
 
 describe('verifyTeam', () => {
   test('should pass', () => {
@@ -379,5 +380,78 @@ describe('verifyDestroySession middleware', () => {
     ).resolves.toBeUndefined();
 
     expect(mockStates.session.end).not.toHaveBeenCalled();
+  });
+});
+
+describe('verifyOrgScope', () => {
+  const owner = { did: 'owner', role: 'blocklet-guest' };
+  const member = { did: 'member', role: 'blocklet-guest' };
+  let node;
+
+  beforeEach(() => {
+    node = {
+      getOrg: mock().mockResolvedValue({ id: 'org1', ownerDid: 'owner' }),
+      getRole: mock().mockResolvedValue({ name: 'r1', orgId: 'org1' }),
+    };
+  });
+
+  test('should skip requests without orgId', async () => {
+    await verifyOrgScope({ teamDid: 'app' }, { user: member }, node, 'createRole');
+    expect(node.getOrg).not.toHaveBeenCalled();
+  });
+
+  test('should skip admin and sdk', async () => {
+    const input = { teamDid: 'app', orgId: 'org1', permissions: ['mutate_team'] };
+    await verifyOrgScope(input, { user: { did: 'x', role: SERVER_ROLES.BLOCKLET_ADMIN } }, node, 'createRole');
+    await verifyOrgScope(input, { user: { did: 'x', role: SERVER_ROLES.BLOCKLET_SDK } }, node, 'createRole');
+    expect(node.getOrg).not.toHaveBeenCalled();
+  });
+
+  test('should allow org members to get roles', async () => {
+    await verifyOrgScope({ teamDid: 'app', orgId: 'org1' }, { user: member }, node, 'getRoles');
+    expect(node.getOrg).toHaveBeenCalled();
+  });
+
+  test('should reject non members', async () => {
+    node.getOrg.mockRejectedValue(new CustomError(403, "You cannot access other user's org"));
+    await expect(verifyOrgScope({ teamDid: 'app', orgId: 'org1' }, { user: member }, node, 'getRoles')).rejects.toThrow(
+      "You cannot access other user's org"
+    );
+  });
+
+  test('should reject role mutation from non owners', async () => {
+    await expect(
+      verifyOrgScope({ teamDid: 'app', orgId: 'org1', name: 'r2' }, { user: member }, node, 'createRole')
+    ).rejects.toThrow('You are not the owner of the org');
+  });
+
+  test('should reject granting permissions through org roles', async () => {
+    await expect(
+      verifyOrgScope(
+        { teamDid: 'app', orgId: 'org1', name: 'r2', permissions: ['mutate_team'] },
+        { user: owner },
+        node,
+        'createRole'
+      )
+    ).rejects.toThrow('You can not grant permissions to org roles');
+    await expect(
+      verifyOrgScope(
+        { teamDid: 'app', orgId: 'org1', name: 'r2', childName: 'admin' },
+        { user: owner },
+        node,
+        'createRole'
+      )
+    ).rejects.toThrow('You can not grant permissions to org roles');
+    await verifyOrgScope({ teamDid: 'app', orgId: 'org1', name: 'r2' }, { user: owner }, node, 'createRole');
+  });
+
+  test('should reject updating roles outside the org', async () => {
+    node.getRole.mockResolvedValue({ name: 'admin', orgId: '' });
+    await expect(
+      verifyOrgScope({ teamDid: 'app', orgId: 'org1', role: { name: 'admin' } }, { user: owner }, node, 'updateRole')
+    ).rejects.toThrow('You can only update roles of your own org');
+
+    node.getRole.mockResolvedValue({ name: 'r1', orgId: 'org1' });
+    await verifyOrgScope({ teamDid: 'app', orgId: 'org1', role: { name: 'r1' } }, { user: owner }, node, 'updateRole');
   });
 });

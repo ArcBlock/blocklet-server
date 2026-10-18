@@ -1,5 +1,6 @@
 const { test, expect, describe, beforeEach, mock } = require('bun:test');
 const { toBase64 } = require('@ocap/util');
+const { fromRandom } = require('@ocap/wallet');
 const { createPasskeyHandlers, formatBuffersToBase64 } = require('../lib/passkey');
 
 describe('Passkey Handlers', () => {
@@ -133,5 +134,89 @@ describe('Passkey Handlers', () => {
     });
   });
 
-  // Add more test suites for other functions...
+  describe('handleRegisterRequest in server mode', () => {
+    const wallet = fromRandom();
+    const info = { did: wallet.address, sk: wallet.secretKey, name: 'Test Server' };
+    const email = Buffer.from('attacker@example.com').toString('base64');
+
+    beforeEach(() => {
+      node.getNodeInfo.mockResolvedValue(info);
+      node.getSessionSecret.mockResolvedValue('secret');
+      node.startSession.mockResolvedValue({ id: 'session-id', challenge: '0x1234' });
+      node.checkInvitation = mock();
+      node.dataDirs = { data: '/tmp' };
+      req.get.mockImplementation((key) => (key === 'host' ? 'example.com' : ''));
+    });
+
+    test('should reject self registration without invitation', async () => {
+      req.query = { action: 'login', purpose: 'register', email };
+      await handlers.handleRegisterRequest(req, res);
+      expect(res.status).toHaveBeenCalledWith(403);
+      expect(node.startSession).not.toHaveBeenCalled();
+    });
+
+    test('should reject invite action without inviteId', async () => {
+      req.query = { action: 'invite', purpose: 'register', email };
+      await handlers.handleRegisterRequest(req, res);
+      expect(res.status).toHaveBeenCalledWith(403);
+      expect(node.startSession).not.toHaveBeenCalled();
+    });
+
+    test('should reject invite action with invalid inviteId', async () => {
+      node.checkInvitation.mockRejectedValue(new Error('The invitation does not exist'));
+      req.query = { action: 'invite', purpose: 'register', email, inviteId: 'fake' };
+      await handlers.handleRegisterRequest(req, res);
+      expect(node.checkInvitation).toHaveBeenCalledWith({ teamDid: info.did, inviteId: 'fake' });
+      expect(res.status).toHaveBeenCalledWith(403);
+      expect(node.startSession).not.toHaveBeenCalled();
+    });
+
+    test('should reject connect-owner when server is initialized', async () => {
+      node.isInitialized.mockResolvedValue(true);
+      req.query = { action: 'connect-owner', purpose: 'register', email };
+      await handlers.handleRegisterRequest(req, res);
+      expect(res.status).toHaveBeenCalledWith(403);
+      expect(node.startSession).not.toHaveBeenCalled();
+    });
+
+    test('should reject unknown purpose', async () => {
+      req.query = { action: 'login', purpose: 'whatever', email };
+      await handlers.handleRegisterRequest(req, res);
+      expect(res.status).toHaveBeenCalledWith(400);
+      expect(node.startSession).not.toHaveBeenCalled();
+    });
+
+    test('should allow registration with valid invitation', async () => {
+      node.checkInvitation.mockResolvedValue(true);
+      req.query = { action: 'invite', purpose: 'register', email, inviteId: 'valid' };
+      await handlers.handleRegisterRequest(req, res);
+      expect(res.status).not.toHaveBeenCalled();
+      expect(node.startSession).toHaveBeenCalled();
+    });
+
+    test('should allow connect-owner when server is not initialized', async () => {
+      node.isInitialized.mockResolvedValue(false);
+      req.query = { action: 'connect-owner', purpose: 'register', email };
+      await handlers.handleRegisterRequest(req, res);
+      expect(res.status).not.toHaveBeenCalled();
+      expect(node.startSession).toHaveBeenCalled();
+    });
+  });
+
+  describe('handleRegisterResponse in server mode', () => {
+    test('should reject registration when invitation becomes invalid', async () => {
+      const wallet = fromRandom();
+      node.getNodeInfo.mockResolvedValue({ did: wallet.address, sk: wallet.secretKey });
+      node.checkInvitation = mock().mockRejectedValue(new Error('The invitation has expired'));
+      req.passkeySession = {
+        id: 'session-id',
+        challenge: '0x1234',
+        data: { action: 'invite', purpose: 'register', email: 'a@example.com', inviteId: 'expired' },
+      };
+      await handlers.handleRegisterResponse(req, res);
+      expect(res.status).toHaveBeenCalledWith(403);
+      expect(node.addUser).not.toHaveBeenCalled();
+      expect(node.endSession).toHaveBeenCalledWith({ id: 'session-id' });
+    });
+  });
 });

@@ -300,6 +300,7 @@ describe('security.js', () => {
 
     it('should allow studio methods for users with proper permissions in single tenant mode', async () => {
       const studioMethod = Object.keys(STUDIO_ALLOWED_METHODS)[0];
+      mockGqlConfig[studioMethod] = { permissions: ['test_permission'] };
       mockReq.query.query = `{ ${studioMethod} }`;
       mockReq.user = {
         role: 'USER',
@@ -411,6 +412,7 @@ describe('security.js', () => {
 
     it('should allow studio methods for users with proper permissions in single tenant mode: mutation', async () => {
       const studioMethod = Object.keys(STUDIO_ALLOWED_METHODS)[0];
+      mockGqlConfig[studioMethod] = { permissions: ['test_permission'] };
       mockReq.query.query = `mutation { ${studioMethod} }`;
       mockReq.user = {
         role: 'USER',
@@ -539,6 +541,81 @@ describe('security.js', () => {
       expect(mockRes.json).toHaveBeenCalledWith({
         code: 'need verification',
         error: 'you need to verify your access as admin',
+      });
+    });
+    describe('operation collection', () => {
+      const denyAll = () => mockInstance.getRBAC.mockResolvedValue({ canAny: mock().mockResolvedValue(false) });
+
+      beforeEach(() => {
+        mockInstance.getNodeInfo.mockResolvedValue({ mode: NODE_MODES.PRODUCTION });
+        mockReq.user = { role: ROLES.GUEST, elevated: true };
+        mockReq.headers = {};
+        denyAll();
+      });
+
+      it('should check permissions of fields nested in inline fragments', async () => {
+        mockReq.body.query = 'mutation { ... on Mutation { testOperation } }';
+        await protectGQL(mockInstance, mockGqlConfig)(mockReq, mockRes, mockNext);
+        expect(mockRes.status).toHaveBeenCalledWith(403);
+        expect(mockNext).not.toHaveBeenCalled();
+      });
+
+      it('should check permissions of fields nested in fragment spreads', async () => {
+        mockReq.body.query = 'query { ...F } fragment F on Query { ... on Query { testOperation } }';
+        await protectGQL(mockInstance, mockGqlConfig)(mockReq, mockRes, mockNext);
+        expect(mockRes.status).toHaveBeenCalledWith(403);
+        expect(mockNext).not.toHaveBeenCalled();
+      });
+
+      it('should deny unknown root fields for non-owner users', async () => {
+        mockReq.body.query = '{ unknownOperation }';
+        mockInstance.getRBAC.mockResolvedValue({ canAny: mock().mockResolvedValue(true) });
+        await protectGQL(mockInstance, mockGqlConfig)(mockReq, mockRes, mockNext);
+        expect(mockRes.status).toHaveBeenCalledWith(403);
+      });
+
+      it('should allow introspection fields', async () => {
+        mockReq.body.query = '{ __typename }';
+        await protectGQL(mockInstance, mockGqlConfig)(mockReq, mockRes, mockNext);
+        expect(mockNext).toHaveBeenCalled();
+      });
+
+      it('should enforce RBAC on getInvitations without orgId', async () => {
+        mockGqlConfig.getInvitations = { permissions: ['mutate_team'] };
+        mockReq.body.query = '{ getInvitations(input: { teamDid: "z1" }) { code } }';
+        await protectGQL(mockInstance, mockGqlConfig)(mockReq, mockRes, mockNext);
+        expect(mockRes.status).toHaveBeenCalledWith(403);
+        expect(mockNext).not.toHaveBeenCalled();
+      });
+
+      it('should skip RBAC on getInvitations with orgId from inline value', async () => {
+        mockGqlConfig.getInvitations = { permissions: ['mutate_team'] };
+        mockReq.body.query = '{ getInvitations(input: { teamDid: "z1", orgId: "org1" }) { code } }';
+        await protectGQL(mockInstance, mockGqlConfig)(mockReq, mockRes, mockNext);
+        expect(mockNext).toHaveBeenCalled();
+      });
+
+      it('should skip RBAC on getRoles with orgId from variables', async () => {
+        mockGqlConfig.getRoles = { permissions: ['query_team'] };
+        mockReq.body.query = 'query ($input: RequestTeamRolesInput) { getRoles(input: $input) { code } }';
+        mockReq.body.variables = { input: { teamDid: 'z1', orgId: 'org1' } };
+        await protectGQL(mockInstance, mockGqlConfig)(mockReq, mockRes, mockNext);
+        expect(mockNext).toHaveBeenCalled();
+      });
+
+      it('should enforce RBAC on getRoles with empty orgId', async () => {
+        mockGqlConfig.getRoles = { permissions: ['query_team'] };
+        mockReq.query.query = 'query ($input: RequestTeamRolesInput) { getRoles(input: $input) { code } }';
+        mockReq.query.variables = JSON.stringify({ input: { teamDid: 'z1', orgId: '' } });
+        await protectGQL(mockInstance, mockGqlConfig)(mockReq, mockRes, mockNext);
+        expect(mockRes.status).toHaveBeenCalledWith(403);
+      });
+
+      it('should enforce RBAC on deleteRole', async () => {
+        mockGqlConfig.deleteRole = { permissions: ['mutate_team'] };
+        mockReq.body.query = 'mutation { deleteRole(input: { teamDid: "z1", name: "x", orgId: "org1" }) { code } }';
+        await protectGQL(mockInstance, mockGqlConfig)(mockReq, mockRes, mockNext);
+        expect(mockRes.status).toHaveBeenCalledWith(403);
       });
     });
   });

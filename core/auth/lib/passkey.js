@@ -176,6 +176,34 @@ function createPasskeyHandlers(node, mode, createToken) {
 
   const getLocale = (req) => req.passkeySession?.data?.locale || req.query?.locale || 'en';
 
+  // Blocklet Server team does not allow self registration, new users can only join by:
+  // 1. claiming the owner of an uninitialized server
+  // 2. accepting a valid invitation
+  // Returns an error message if registration is not allowed
+  const checkServerRegistration = async ({ action, inviteId, info }) => {
+    if (action === PASSKEY_ACTIONS['connect-owner']) {
+      if (info.ownerNft && info.ownerNft.issuer && info.ownerNft.holder) {
+        return 'The server owner can only be claimed with an NFT.';
+      }
+      if (await node.isInitialized()) {
+        return 'The server has already been initialized.';
+      }
+      return null;
+    }
+
+    if (action === PASSKEY_ACTIONS.invite && inviteId && typeof inviteId === 'string') {
+      try {
+        await node.checkInvitation({ teamDid: info.did, inviteId });
+        return null;
+      } catch (err) {
+        logger.warn('passkey.register.invalidInvitation', { inviteId, error: err.message });
+        return 'The invitation is invalid or has expired.';
+      }
+    }
+
+    return 'You need to be invited to register a passkey.';
+  };
+
   // Add new passkey credential to existing user or create new user
   // If we have user in session, we will update the user's connected accounts
   // If we don't have user in session, we will create a new user
@@ -210,8 +238,17 @@ function createPasskeyHandlers(node, mode, createToken) {
           transports: x.extra.transports,
         }));
     }
+    if (!['register', 'connect'].includes(purpose)) {
+      return res.status(400).send({ error: 'Invalid purpose requested. Please try again.' });
+    }
     if (purpose === 'register') {
-      if (info.did !== teamDid) {
+      if (info.did === teamDid) {
+        const error = await checkServerRegistration({ action, inviteId: req.query.inviteId, info });
+        if (error) {
+          logger.warn('passkey.register.rejected', { action, error, ip: getRequestIP(req) });
+          return res.status(403).send({ error });
+        }
+      } else {
         // Check if the team is invited user only
         const { accessPolicyConfig } = await req.getSecurityConfig({ id: SECURITY_RULE_DEFAULT_ID });
         const isInvitedUserOnly = await checkInvitedUserOnly(accessPolicyConfig, node, teamDid);
@@ -292,6 +329,16 @@ function createPasskeyHandlers(node, mode, createToken) {
 
     const info = await node.getNodeInfo({ useCache: true });
     const teamDid = mode === 'server' ? info.did : req.getBlockletDid();
+
+    // Re-check on response: the invitation may expire or the server may be initialized meanwhile
+    if (purpose === 'register' && info.did === teamDid) {
+      const error = await checkServerRegistration({ action, inviteId: req.passkeySession.data.inviteId, info });
+      if (error) {
+        logger.warn('passkey.register.rejected', { action, error, ip: getRequestIP(req) });
+        await node.endSession({ id: req.passkeySession.id });
+        return res.status(403).send({ error });
+      }
+    }
 
     const { body } = req;
     const { challenge } = req.query;
@@ -712,6 +759,17 @@ function createPasskeyHandlers(node, mode, createToken) {
             throw new Error('Target site not found');
           }
         } else {
+          // Blocklet Server dashboard only allows users holding a valid passport, same as wallet login
+          if (mode === 'server') {
+            const hasValidPassport = (user.passports || []).some(
+              (x) => x.status === PASSPORT_STATUS.VALID && x.scope === 'passport'
+            );
+            if (!hasValidPassport) {
+              logger.warn('passkey.auth.noValidPassport', { teamDid, userDid: user.did });
+              return res.status(403).send({ error: 'You do not have a valid passport to access this server.' });
+            }
+          }
+
           const updated = await loginUser();
           const passport = getLastUsedPassport(updated.passports);
           await createTokens(updated, passport, passport.role, user, result);

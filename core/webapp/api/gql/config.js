@@ -5,6 +5,7 @@ const verifyNotificationReceiver = require('./middlewares/verify-notification-re
 const verifyBlocklet = require('./middlewares/verify-blocklet');
 const verifyAdminRole = require('./middlewares/verify-admin-role');
 const verifyOrgEnabled = require('./middlewares/verify-org-enabled');
+const verifyOrgScope = require('./middlewares/verify-org-scope');
 const createAuditLog = require('./middlewares/create-audit-log');
 const mutateBlocklet = require('./middlewares/mutate-blocklet');
 const createReleaseBlocklet = require('./middlewares/create-release-blocklet');
@@ -324,10 +325,10 @@ const genConfig = node => {
     getBlockletBackupSummary: [['query_blocklet', 'query_blocklets'], 'summary', node.getBlockletBackupSummary, []],
 
     // Team Access Control
-    getRoles: [['query_team'], 'roles', node.getRoles, [verifyTeam]],
+    getRoles: [['query_team'], 'roles', node.getRoles, [verifyTeam, verifyOrgScope]],
     getRole: [['query_team'], 'role', node.getRole, [verifyTeam]],
-    createRole: [['mutate_team'], 'role', node.createRole, [verifyTeam], [createAuditLog]],
-    updateRole: [['mutate_team'], 'role', node.updateRole, [verifyTeam], [createAuditLog]],
+    createRole: [['mutate_team'], 'role', node.createRole, [verifyTeam, verifyOrgScope], [createAuditLog]],
+    updateRole: [['mutate_team'], 'role', node.updateRole, [verifyTeam, verifyOrgScope], [createAuditLog]],
     deleteRole: [['mutate_team'], 'success', node.deleteRole, [verifyTeam], [createAuditLog]],
 
     getPermissions: [['query_team'], 'permissions', node.getPermissions, [verifyTeam]],
@@ -407,7 +408,8 @@ const genConfig = node => {
     ],
     updateUserExtra: [['mutate_team'], 'user', node.updateUserExtra, [verifyTeam], [createAuditLog]],
     updateUserAddress: [['mutate_team'], 'user', node.updateUserAddress, [verifyTeam, sdkVerifyUser], [createAuditLog]],
-    getInvitations: [['query_team'], 'invitations', node.getInvitations, [verifyTeam]],
+    // invitation ids are bearer credentials, only those who can create invitations can list them
+    getInvitations: [['mutate_team'], 'invitations', node.getInvitations, [verifyTeam]],
     createMemberInvitation: [
       ['mutate_team'],
       'inviteInfo',
