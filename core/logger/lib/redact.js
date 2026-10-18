@@ -58,37 +58,60 @@ const looksLikeSecretName = (name) =>
     /(^|_)(sk|psk|ek)$|secret|password|passphrase|private_?key|token|api_?key/i.test(name));
 
 const PLACEHOLDER = '[REDACTED]';
+const TRUNCATED = '[TRUNCATED]';
 const MAX_DEPTH = 8;
 
 /**
  * 深拷贝并剥离密钥字段，不修改入参。
+ * 输出中不会出现入参里的任何原始对象（Buffer / Date 除外），否则同一对象被多处引用、
+ * 循环引用或嵌套过深时，未脱敏的原对象会被序列化进日志。
  * @param {unknown} value
  * @param {number} [depth]
- * @param {WeakSet<object>} [seen] 处理循环引用
+ * @param {WeakMap<object, unknown>} [memo] 原对象 -> 脱敏副本，处理重复引用与循环引用
  * @returns {unknown}
  */
-const redact = (value, depth = 0, seen = new WeakSet()) => {
+const redact = (value, depth = 0, memo = new WeakMap()) => {
   if (value === null || typeof value !== 'object') {
     return value;
-  }
-  if (depth >= MAX_DEPTH) {
-    return value;
-  }
-  if (seen.has(value)) {
-    return value;
-  }
-  seen.add(value);
-
-  if (Array.isArray(value)) {
-    return value.map((x) => redact(x, depth + 1, seen));
   }
 
   // Buffer / Uint8Array 等二进制对象原样返回，避免被展开成字节数组
   if (Buffer.isBuffer(value) || value instanceof Uint8Array || value instanceof Date) {
     return value;
   }
+  if (memo.has(value)) {
+    return memo.get(value);
+  }
+  if (depth >= MAX_DEPTH) {
+    return TRUNCATED;
+  }
+
+  // Sequelize 实例等对象按其 toJSON 结果脱敏，与 safeStringify 的序列化结果保持一致
+  if (typeof value.toJSON === 'function') {
+    let json;
+    try {
+      json = value.toJSON();
+    } catch {
+      return TRUNCATED;
+    }
+    // toJSON 返回自身时按普通对象处理
+    if (json !== value) {
+      memo.set(value, TRUNCATED);
+      const result = redact(json, depth, memo);
+      memo.set(value, result);
+      return result;
+    }
+  }
+
+  if (Array.isArray(value)) {
+    const arr = [];
+    memo.set(value, arr);
+    value.forEach((x) => arr.push(redact(x, depth + 1, memo)));
+    return arr;
+  }
 
   const out = {};
+  memo.set(value, out);
   const keys = Object.keys(value);
 
   // { key: 'BLOCKLET_APP_SK', value: '...' } / { key, value, secure: true }
@@ -102,10 +125,10 @@ const redact = (value, depth = 0, seen = new WeakSet()) => {
     } else if (key === 'value' && isSecretConfigEntry) {
       out[key] = PLACEHOLDER;
     } else {
-      out[key] = redact(value[key], depth + 1, seen);
+      out[key] = redact(value[key], depth + 1, memo);
     }
   }
   return out;
 };
 
-module.exports = { redact, SECRET_KEYS, PLACEHOLDER, looksLikeSecretName };
+module.exports = { redact, SECRET_KEYS, PLACEHOLDER, TRUNCATED, looksLikeSecretName };

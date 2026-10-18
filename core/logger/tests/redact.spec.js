@@ -1,5 +1,6 @@
 const { test, expect, describe } = require('bun:test');
-const { redact, PLACEHOLDER } = require('../lib/redact');
+const safeStringify = require('fast-safe-stringify').default;
+const { redact, PLACEHOLDER, TRUNCATED } = require('../lib/redact');
 
 describe('redact', () => {
   test('should pass primitives through', () => {
@@ -74,5 +75,39 @@ describe('redact', () => {
     a.self = a;
     const out = redact(a);
     expect(out.wallet.sk).toBe(PLACEHOLDER);
+    // Regression: the cyclic reference used to point back to the raw input
+    expect(out.self).toBe(out);
+    expect(safeStringify(out)).not.toContain('PRIVATE');
+  });
+
+  // Regression: an object referenced twice was returned raw on its second occurrence
+  test('should redact objects referenced more than once', () => {
+    const wallet = { address: 'zNK1', sk: 'PRIVATE' };
+    const out = redact({ wallet, accessWallet: wallet, list: [{ wallet }, { wallet }] });
+    expect(out.accessWallet.sk).toBe(PLACEHOLDER);
+    expect(out.list[1].wallet.sk).toBe(PLACEHOLDER);
+    expect(JSON.stringify(out)).not.toContain('PRIVATE');
+  });
+
+  // Regression: objects nested deeper than the limit were returned raw
+  test('should truncate instead of leaking deeply nested objects', () => {
+    let deep = { sk: 'PRIVATE' };
+    for (let i = 0; i < 20; i++) {
+      deep = { x: deep };
+    }
+    const out = redact(deep);
+    expect(JSON.stringify(out)).not.toContain('PRIVATE');
+    expect(JSON.stringify(out)).toContain(TRUNCATED);
+  });
+
+  test('should redact the toJSON output of model instances', () => {
+    const model = {
+      dataValues: { id: '1', appSk: 'PRIVATE' },
+      toJSON() {
+        return { ...this.dataValues };
+      },
+    };
+    const out = redact({ model });
+    expect(out.model).toEqual({ id: '1', appSk: PLACEHOLDER });
   });
 });
