@@ -241,25 +241,25 @@ class RouterManager extends EventEmitter {
 
     const results = await dns.promises.resolveTxt(domainTld).catch(() => []);
 
-    return !!results.find(
-      (x) =>
-        !!x.find((v) => {
-          try {
-            const [type, value] = v.split('=');
-            if (type === 'dv') {
-              const [sig, pk] = value.split('.');
-              const wallet = fromPublicKey(pk);
+    // NOTICE: wallet.verify is async, it can not be used in a sync predicate like Array.find
+    for (const record of results.flat()) {
+      try {
+        const [type, value] = record.split('=');
+        if (type === 'dv') {
+          const [sig, pk] = value.split('.');
+          const wallet = fromPublicKey(pk);
 
-              return wallet.verify(domainTld, sig);
-            }
-
-            return false;
-          } catch (error) {
-            // do nothing
-            return false;
+          // eslint-disable-next-line no-await-in-loop
+          if ((await wallet.verify(domainTld, sig)) === true) {
+            return true;
           }
-        })
-    );
+        }
+      } catch (error) {
+        // do nothing
+      }
+    }
+
+    return false;
   }
 
   async addDomainAlias(

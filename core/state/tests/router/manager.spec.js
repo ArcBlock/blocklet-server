@@ -250,6 +250,20 @@ describe('RouterManager', () => {
       mockResolveTxt.mockRestore();
     });
 
+    // Regression: wallet.verify is async, a pending promise used to be treated as a valid signature
+    test('should return false on did domain record with invalid signature', async () => {
+      const wallet = fromRandom();
+      const domain = 'test-1.arcblock.io';
+      const sig = await wallet.sign('another.io');
+
+      const mockResolveTxt = spyOn(dns.promises, 'resolveTxt').mockImplementationOnce(() =>
+        Promise.resolve([[`dv=${sig}.${wallet.publicKey}`]])
+      );
+
+      expect(await manager.isDidDomain({ domain })).toEqual(false);
+      mockResolveTxt.mockRestore();
+    });
+
     test('should return false on non did domain', async () => {
       const domain = 'test-1.arcblock.io';
 
