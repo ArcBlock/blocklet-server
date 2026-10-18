@@ -56,7 +56,13 @@ module.exports = {
     });
 
     server.get(`${prefixApi}/session`, async (req, res) => {
+      if (!req.query.sid) {
+        throw new CustomError(400, 'sid is required');
+      }
       const session = await node.getSession({ id: req.query.sid });
+      if (!session) {
+        throw new CustomError(404, 'Session not found');
+      }
       if (session.type !== 'access-key-simple') {
         throw new CustomError(403, 'Operation session not valid');
       }

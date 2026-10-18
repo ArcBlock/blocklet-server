@@ -1,11 +1,17 @@
 const fs = require('fs-extra');
 const { getHtmlResultPath } = require('@abtnode/analytics');
 
+const mutateBlockletPermission = require('../middlewares/mutate-blocklet-permission');
+const verifyBlockletScope = require('../middlewares/verify-blocklet-scope');
+
 // For reading and updating blocklet preferences
 module.exports = {
   init(app, node) {
-    // FIXME: how do we protect this
-    app.get('/api/analytics/traffic', async (req, res) => {
+    // 流量分析含访问者 IP / UA / referer，必须鉴权且限制为自己的应用
+    const ensurePermission = mutateBlockletPermission(node);
+    const ensureScope = verifyBlockletScope(req => req.query.did);
+
+    app.get('/api/analytics/traffic', ensurePermission, ensureScope, async (req, res) => {
       const { did, date, theme } = req.query;
       const info = await node.states.node.read();
       const color = theme === 'dark' ? '#ffffff' : '#000000';

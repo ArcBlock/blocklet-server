@@ -14,6 +14,7 @@ const { BLOCKLET_PREFERENCE_FILE, BLOCKLET_PREFERENCE_PREFIX, BLOCKLET_UPLOADS_D
 const { WELLKNOWN_SERVICE_PATH_PREFIX } = require('@abtnode/constant');
 
 const mutateBlockletPermission = require('../middlewares/mutate-blocklet-permission');
+const verifyBlockletScope = require('../middlewares/verify-blocklet-scope');
 const DiskStorage = require('../libs/storage');
 
 // For reading and updating blocklet preferences
@@ -48,6 +49,7 @@ module.exports = {
     };
 
     const ensurePermission = mutateBlockletPermission(node);
+    const ensureScope = verifyBlockletScope(req => req.query.id);
 
     const ensureBlocklet = async (req, res, next) => {
       if (!req.query.id) {
@@ -81,7 +83,7 @@ module.exports = {
     const uploadApi = '/api/uploads';
 
     // load preferences schema
-    app.get('/api/preferences', ensurePermission, ensureBlocklet, ensureComponent, async (req, res) => {
+    app.get('/api/preferences', ensurePermission, ensureScope, ensureBlocklet, ensureComponent, async (req, res) => {
       const schemaFile = path.join(req.component.env.appDir, BLOCKLET_PREFERENCE_FILE);
       if (fs.existsSync(schemaFile)) {
         try {
@@ -109,7 +111,7 @@ module.exports = {
     });
 
     // save preferences data
-    app.post('/api/preferences', ensurePermission, ensureBlocklet, ensureComponent, async (req, res) => {
+    app.post('/api/preferences', ensurePermission, ensureScope, ensureBlocklet, ensureComponent, async (req, res) => {
       const configs = Object.keys(req.body).reduce((acc, key) => {
         const value = req.body[key];
         acc.push({ key: `${BLOCKLET_PREFERENCE_PREFIX}${key}`, value });
@@ -129,7 +131,7 @@ module.exports = {
 
     // download dataDir
     // FIXME: we should limit this feature when dataDir is too large
-    app.get('/api/export', ensurePermission, ensureBlocklet, async (req, res) => {
+    app.get('/api/export', ensurePermission, ensureScope, ensureBlocklet, async (req, res) => {
       const timestamp = new Date().toISOString().split('.')[0].split(':').join('-').replaceAll('-', '');
       const fileName = `blocklet-${req.blocklet.env.appId}-${timestamp}.zip`;
       const filePath = await node.createBlockletDataArchive(req.blocklet.env.dataDir, fileName);
@@ -150,26 +152,34 @@ module.exports = {
 
     // handle upload for blocklet prefs
     // FIXME: should ensurePermission here
-    app.post(uploadApi, ensureBlocklet, ensureComponent, upload.single('file'), (req, res) => {
-      res.json({
-        url: joinURL(
-          req.blocklet?.environmentObj?.BLOCKLET_APP_URL,
-          WELLKNOWN_SERVICE_PATH_PREFIX,
-          BLOCKLET_UPLOADS_DIR,
-          req.file.filename
-        ),
-      });
-    });
+    app.post(
+      uploadApi,
+      ensurePermission,
+      ensureScope,
+      ensureBlocklet,
+      ensureComponent,
+      upload.single('file'),
+      (req, res) => {
+        res.json({
+          url: joinURL(
+            req.blocklet?.environmentObj?.BLOCKLET_APP_URL,
+            WELLKNOWN_SERVICE_PATH_PREFIX,
+            BLOCKLET_UPLOADS_DIR,
+            req.file.filename
+          ),
+        });
+      }
+    );
 
     // get theme data
-    app.get('/api/theme', ensurePermission, ensureBlocklet, (req, res) => {
+    app.get('/api/theme', ensurePermission, ensureScope, ensureBlocklet, (req, res) => {
       const { theme } = req.blocklet.settings;
 
       return res.json(theme.raw);
     });
 
     // save theme data
-    app.post('/api/theme', ensurePermission, ensureBlocklet, async (req, res) => {
+    app.post('/api/theme', ensurePermission, ensureScope, ensureBlocklet, async (req, res) => {
       try {
         const { theme } = req.body;
         await node.configTheme({ did: req.blocklet.meta.did, theme }, { user: req.user });

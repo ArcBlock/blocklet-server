@@ -19,6 +19,13 @@ const checkConnected = async ({ ip, nodeInfo }) => {
 
 const DNS_RESOLVER_CACHE_TTL = 5 * 60 * 1000;
 
+const ensureUser = (req, res, next) => {
+  if (!req.user) {
+    return res.status(401).json({ code: 'forbidden', error: 'not authorized' });
+  }
+  return next();
+};
+
 module.exports = {
   init(router, node) {
     const cache = new DBCache(() => ({
@@ -33,7 +40,8 @@ module.exports = {
       ...getAbtNodeRedisAndSQLiteUrl(),
     }));
 
-    router.get('/api/dns-resolve/', async (req, res) => {
+    // 该接口会代为解析任意主机名，未登录可用于内网与云元数据探测
+    router.get('/api/dns-resolve/', ensureUser, async (req, res) => {
       const hostname = req.query.hostname || req.hostname;
       const accessible = !!req.query.accessible;
 

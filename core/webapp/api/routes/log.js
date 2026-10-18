@@ -5,12 +5,14 @@ const { isValid: isValidDid } = require('@arcblock/did');
 const { getStatusFromError } = require('@blocklet/error');
 
 const mutateBlockletPermission = require('../middlewares/mutate-blocklet-permission');
+const verifyBlockletScope = require('../middlewares/verify-blocklet-scope');
 
 module.exports = {
   init(app, node) {
     const ensurePermission = mutateBlockletPermission(node);
+    const ensureScope = verifyBlockletScope(req => req.params.did);
 
-    app.get('/api/download/log/:did', ensurePermission, async (req, res) => {
+    app.get('/api/download/log/:did', ensurePermission, ensureScope, async (req, res) => {
       const { did } = req.params;
       const { days } = req.query;
 
