@@ -31,6 +31,21 @@ describe('isBlockedAddress', () => {
     }
   });
 
+  // Regression: WHATWG URL serializes mapped ipv4 in hex form, which bypassed the dotted form regex
+  test('should block mapped and embedded ipv4 in hex form', () => {
+    for (const ip of [
+      '::ffff:7f00:1',
+      '::ffff:a9fe:a9fe',
+      '::ffff:a00:1',
+      '::7f00:1', // ipv4-compatible
+      '64:ff9b::7f00:1', // nat64
+      '2002:7f00:1::', // 6to4
+      '2001:0:4136:e378:8000:63bf:3fff:fdd2', // teredo
+    ]) {
+      expect(isBlockedAddress(ip)).toBe(true);
+    }
+  });
+
   test('should allow public ipv6', () => {
     expect(isBlockedAddress('2606:4700:4700::1111')).toBe(false);
   });
@@ -59,6 +74,24 @@ describe('assertSafeUrl', () => {
     await expect(assertSafeUrl('http://169.254.169.254/latest/meta-data/')).rejects.toThrow('Host is not allowed');
     await expect(assertSafeUrl('http://127.0.0.1:8080/')).rejects.toThrow('Host is not allowed');
     await expect(assertSafeUrl('http://[::1]/')).rejects.toThrow('Host is not allowed');
+  });
+
+  test('should reject every encoding of internal hosts', async () => {
+    for (const url of [
+      'http://2130706433:8089/',
+      'http://0x7f000001:8089/',
+      'http://017700000001:8089/',
+      'http://0:8089/',
+      'http://[::ffff:127.0.0.1]:8089/',
+      'http://[::ffff:7f00:1]:8089/',
+      'http://[::ffff:169.254.169.254]/latest/meta-data/',
+      'http://[0:0:0:0:0:ffff:127.0.0.1]/',
+      'http://[::127.0.0.1]/',
+      'http://[64:ff9b::127.0.0.1]/',
+    ]) {
+      // eslint-disable-next-line no-await-in-loop
+      await expect(assertSafeUrl(url)).rejects.toThrow('Host is not allowed');
+    }
   });
 
   test('should accept public literal ips', async () => {

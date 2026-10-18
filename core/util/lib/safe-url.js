@@ -1,40 +1,40 @@
 const dns = require('dns');
 const net = require('net');
 
+const { isBlockedIP, parseIP } = require('./ssrf-protector');
+
 const ALLOWED_PROTOCOLS = ['http:', 'https:'];
+
+/**
+ * IPv6 ranges that embed or tunnel an IPv4 address, they may reach an internal IPv4 host
+ * through NAT64 / 6to4 / teredo gateways, so they are never allowed
+ */
+const BLOCKED_IPV6_TUNNEL_RANGES = new Set(['rfc6052', 'rfc6145', '6to4', 'teredo']);
 
 /**
  * Check whether an IP address belongs to a range that must never be reached by a
  * server side request: loopback, link-local (includes the cloud metadata service),
  * private ranges, CGNAT and other reserved blocks.
+ *
+ * NOTICE: WHATWG URL serializes `[::ffff:127.0.0.1]` as `[::ffff:7f00:1]`, so IPv4-mapped
+ * addresses must be parsed by ipaddr.js instead of matching the dotted form with regex
  * @param {string} ip
  * @returns {boolean}
  */
 const isBlockedAddress = (ip) => {
-  const type = net.isIP(ip);
-  if (!type) {
+  if (isBlockedIP(ip)) {
     return true;
   }
 
-  if (type === 6) {
-    const lower = ip.toLowerCase();
-    // IPv4-mapped (::ffff:169.254.169.254) must be checked as IPv4
-    const mapped = lower.match(/^::ffff:(\d+\.\d+\.\d+\.\d+)$/);
-    if (mapped) {
-      return isBlockedAddress(mapped[1]);
-    }
-    // unspecified, loopback, unique-local (fc00::/7), link-local (fe80::/10)
-    return lower === '::' || lower === '::1' || /^f[cd][0-9a-f]{2}:/.test(lower) || /^fe[89ab][0-9a-f]:/.test(lower);
+  const address = parseIP(ip);
+  if (address.kind() !== 'ipv6') {
+    return false;
   }
-
-  const [a, b] = ip.split('.').map(Number);
-  if (a === 0 || a === 10 || a === 127) return true;
-  if (a === 169 && b === 254) return true; // link-local + cloud metadata
-  if (a === 172 && b >= 16 && b <= 31) return true;
-  if (a === 192 && b === 168) return true;
-  if (a === 100 && b >= 64 && b <= 127) return true; // CGNAT
-  if (a === 198 && (b === 18 || b === 19)) return true; // benchmarking
-  return a >= 224; // multicast + reserved
+  // IPv4-compatible addresses (::a.b.c.d, deprecated)
+  if (address.parts.slice(0, 6).every((x) => x === 0)) {
+    return true;
+  }
+  return BLOCKED_IPV6_TUNNEL_RANGES.has(address.range());
 };
 
 /**
