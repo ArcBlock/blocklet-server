@@ -1,7 +1,8 @@
 const ensurePermission = node => async (req, res, next) => {
   if (req.user) {
     const rbac = await node.getRBAC();
-    const can = rbac.canAny(
+    // NOTICE: canAny is async, without await the returned promise is always truthy
+    const can = await rbac.canAny(
       req.user.role,
       ['mutate_blocklets', 'mutate_blocklet'].map(x => x.split('_'))
     );
