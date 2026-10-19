@@ -35,6 +35,7 @@ module.exports = {
   missingBlockletDid: 'Fehlende Blocklette',
   missingChainHost: 'Fehlender Kettenhost',
   missingLauncherSession: 'Fehlende launcherUrl und launcherSessionId',
+  untrustedLauncher: 'Dieser Launcher wird von diesem Server nicht vertraut',
   invalidBlocklet: 'Ungültiges Blocklet',
   blockletExists: 'Das Blocklet existiert bereits',
   invalidBlockletVc: 'Ungültige Blocklet-VC',

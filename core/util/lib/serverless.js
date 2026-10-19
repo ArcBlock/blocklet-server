@@ -18,7 +18,37 @@ const isInServerlessMode = ({ mode, previousMode } = {}) =>
  */
 const isLaunchDisabled = () => process.env.ABT_NODE_DISABLE_LAUNCH === 'true';
 
+const getOrigin = (url) => {
+  try {
+    const { protocol, origin } = new URL(url);
+    return ['http:', 'https:'].includes(protocol) ? origin : '';
+  } catch {
+    return '';
+  }
+};
+
+/**
+ * Check if a caller supplied launcher url points to the launcher this node is registered with.
+ * The url is used for outbound requests (some signed with the node sk) before the launch is
+ * authorized, so it must never be taken from the request as is.
+ * @param {object} info node info
+ * @param {string} launcherUrl
+ * @returns {boolean}
+ */
+const isTrustedLauncherUrl = (info = {}, launcherUrl = '') => {
+  const origin = getOrigin(launcherUrl);
+  if (!origin) {
+    return false;
+  }
+  // same exemption as the launcher nft issuer check: local launcher during development
+  if (info.launcher?.mode === 'development') {
+    return true;
+  }
+  return [info.launcher?.url, info.registerUrl].map(getOrigin).filter(Boolean).includes(origin);
+};
+
 module.exports = {
   isInServerlessMode,
   isLaunchDisabled,
+  isTrustedLauncherUrl,
 };

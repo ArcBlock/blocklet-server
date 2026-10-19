@@ -115,6 +115,7 @@ const messages = {
   missingBlockletDid: getLocaleMap('missingBlockletDid'),
   missingChainHost: getLocaleMap('missingChainHost'),
   missingLauncherSession: getLocaleMap('missingLauncherSession'),
+  untrustedLauncher: getLocaleMap('untrustedLauncher'),
   invalidBlocklet: getLocaleMap('invalidBlocklet'),
   blockletExists: getLocaleMap('blockletExists'),
   invalidBlockletVc: getLocaleMap('invalidBlockletVc'),

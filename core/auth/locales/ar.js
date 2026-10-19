@@ -35,6 +35,7 @@ module.exports = {
   missingBlockletDid: 'قطعة مفقودة',
   missingChainHost: 'مضيف سلسلة مفقود',
   missingLauncherSession: 'مفقودة رابط ومعرف جلسة المشغل',
+  untrustedLauncher: 'هذا المشغل غير موثوق به من قبل هذا الخادم',
   invalidBlocklet: 'البلوكليت غير صالح',
   blockletExists: 'البلوكلت موجود بالفعل',
   invalidBlockletVc: 'مكعب الكتروني غير صالح',

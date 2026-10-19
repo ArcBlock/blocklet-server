@@ -35,6 +35,7 @@ module.exports = {
   missingBlockletDid: 'Mất khối',
   missingChainHost: 'Thiếu máy chủ chuỗi',
   missingLauncherSession: 'Thiếu launcherUrl và launcherSessionId',
+  untrustedLauncher: 'Trình khởi chạy này không được máy chủ này tin cậy',
   invalidBlocklet: 'Blocklet không hợp lệ',
   blockletExists: 'Blocklet đã tồn tại',
   invalidBlockletVc: 'Khối Khối Không Hợp lệ VC',

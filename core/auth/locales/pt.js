@@ -35,6 +35,7 @@ module.exports = {
   missingBlockletDid: 'Bloquete ausente',
   missingChainHost: 'Falta o host da cadeia',
   missingLauncherSession: 'Faltando launcherUrl e launcherSessionId',
+  untrustedLauncher: 'Este inicializador não é confiável para este servidor',
   invalidBlocklet: 'Bloco inválido',
   blockletExists: 'O blocklet já existe',
   invalidBlockletVc: 'Bloco de Bloco Inválido VC',

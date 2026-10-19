@@ -19,7 +19,7 @@ const { getChainClient } = require('@abtnode/util/lib/get-chain-client');
 const { getBlockletInfo } = require('@blocklet/meta/lib/info');
 const { getBlockletAppIdList } = require('@blocklet/meta/lib/util');
 const formatContext = require('@abtnode/util/lib/format-context');
-const { isInServerlessMode, isLaunchDisabled } = require('@abtnode/util/lib/serverless');
+const { isInServerlessMode, isLaunchDisabled, isTrustedLauncherUrl } = require('@abtnode/util/lib/serverless');
 const getRequestIP = require('@abtnode/util/lib/get-request-ip');
 const { convertToMoniker } = require('@abtnode/util/lib/transfer-to-moniker');
 const { LOGIN_PROVIDER } = require('@blocklet/constant');
@@ -1293,33 +1293,45 @@ const createRestoreByNftHandler =
 const createServerlessInstallGuard = (node, force = false) => {
   return async ({ extraParams }) => {
     const { locale, blockletMetaUrl, launcherUrl, launcherSessionId } = extraParams;
-    const [info, blocklet] = await Promise.all([
-      node.getNodeInfo(),
-      blockletMetaUrl ? node.getBlockletMetaFromUrl({ url: blockletMetaUrl, checkPrice: true }) : null,
-    ]);
+    const info = await node.getNodeInfo();
+    const serverless = isInServerlessMode(info);
 
-    if (force) {
-      if (!isInServerlessMode(info)) {
-        throw new CustomError(403, messages.notSupported[locale]);
-      }
-      if (!blocklet) {
-        throw new CustomError(400, messages.missingBlockletUrl[locale]);
-      }
+    if (force && !serverless) {
+      throw new CustomError(403, messages.notSupported[locale]);
     }
 
-    // check if serverless is supported
-    if (blocklet && isInServerlessMode(info)) {
-      const isServerlessSupported = get(blocklet.meta, 'capabilities.serverless', true);
-      if (!isServerlessSupported) {
-        throw new CustomError(403, messages.notSupported[locale]);
+    // The launcher url comes from the caller and is used for outbound requests (some signed with the node sk)
+    // before the launch is authorized, so it must point to the launcher this node is registered with.
+    // Checked before any outbound request, including fetching the blocklet meta.
+    if (serverless) {
+      if (force && (!launcherUrl || !launcherSessionId)) {
+        throw new CustomError(400, messages.missingLauncherSession[locale]);
+      }
+      if (launcherUrl && !isTrustedLauncherUrl(info, launcherUrl)) {
+        throw new CustomError(403, messages.untrustedLauncher[locale]);
       }
     }
 
     // check if launcher session consumed
     // 只在 launch serverless 时校验 launch session 的合法性
-    if (launcherUrl && launcherSessionId && isInServerlessMode(info)) {
+    if (launcherUrl && launcherSessionId && serverless) {
       if (await node.isLauncherSessionConsumed({ launcherUrl, launcherSessionId })) {
         throw new CustomError(403, messages.sessionAlreadyConsumed[locale]);
+      }
+    }
+
+    const blocklet = blockletMetaUrl
+      ? await node.getBlockletMetaFromUrl({ url: blockletMetaUrl, checkPrice: true })
+      : null;
+    if (force && !blocklet) {
+      throw new CustomError(400, messages.missingBlockletUrl[locale]);
+    }
+
+    // check if serverless is supported
+    if (blocklet && serverless) {
+      const isServerlessSupported = get(blocklet.meta, 'capabilities.serverless', true);
+      if (!isServerlessSupported) {
+        throw new CustomError(403, messages.notSupported[locale]);
       }
     }
 

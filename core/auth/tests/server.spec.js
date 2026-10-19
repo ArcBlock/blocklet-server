@@ -15,6 +15,7 @@ const {
   getBlockletPermissionChecker,
   getLauncherAppIdList,
   assertLocalPassportUsable,
+  createServerlessInstallGuard,
 } = require('../lib/server');
 
 const { messages } = lib;
@@ -633,6 +634,97 @@ describe('server', () => {
 
       await assertLocalPassportUsable({ node, vc, teamDid, userDid: 'z1someoneElse', locale: 'en' }).catch(() => {});
       expect(called).toBe(0);
+    });
+  });
+  describe('createServerlessInstallGuard', () => {
+    const LAUNCHER = 'https://launcher.arcblock.io/';
+    const META_URL = 'https://store.blocklet.dev/api/blocklets/z8ia/blocklet.json';
+    const createNode = ({ mode = 'serverless', consumed = false } = {}) => {
+      const calls = [];
+      const node = {
+        getNodeInfo: () => ({ mode, launcher: { url: LAUNCHER }, registerUrl: LAUNCHER }),
+        isLauncherSessionConsumed: mock(() => {
+          calls.push('session');
+          return Promise.resolve(consumed);
+        }),
+        getBlockletMetaFromUrl: mock(() => {
+          calls.push('meta');
+          return Promise.resolve({ meta: { did: 'z8ia', capabilities: { serverless: true } } });
+        }),
+      };
+      return { node, calls };
+    };
+    const params = (extra) => ({ extraParams: { locale: 'en', blockletMetaUrl: META_URL, ...extra } });
+
+    test('should reject a caller supplied launcher before making any outbound request', async () => {
+      for (const launcherUrl of [
+        'http://203.0.113.42:18503',
+        'https://www.arcblock.io/launch',
+        'https://launcher.arcblock.io.evil.com',
+      ]) {
+        const { node, calls } = createNode();
+        // eslint-disable-next-line no-await-in-loop
+        await expect(
+          createServerlessInstallGuard(node, true)(params({ launcherUrl, launcherSessionId: 'sess1' }))
+        ).rejects.toThrow(messages.untrustedLauncher.en);
+        expect(calls).toEqual([]);
+      }
+    });
+
+    test('should require launcher url and session id when launching on a serverless node', async () => {
+      const { node, calls } = createNode();
+      await expect(createServerlessInstallGuard(node, true)(params({ launcherUrl: `${LAUNCHER}app` }))).rejects.toThrow(
+        messages.missingLauncherSession.en
+      );
+      await expect(createServerlessInstallGuard(node, true)(params({}))).rejects.toThrow(
+        messages.missingLauncherSession.en
+      );
+      expect(calls).toEqual([]);
+    });
+
+    test('should verify the session with the trusted launcher before fetching the blocklet meta', async () => {
+      const { node, calls } = createNode();
+      const blocklet = await createServerlessInstallGuard(
+        node,
+        true
+      )(params({ launcherUrl: `${LAUNCHER}app`, launcherSessionId: 'sess1' }));
+      expect(blocklet.meta.did).toBe('z8ia');
+      expect(calls).toEqual(['session', 'meta']);
+      expect(node.isLauncherSessionConsumed.mock.calls[0][0]).toEqual({
+        launcherUrl: `${LAUNCHER}app`,
+        launcherSessionId: 'sess1',
+      });
+    });
+
+    test('should reject a consumed session without fetching the blocklet meta', async () => {
+      const { node, calls } = createNode({ consumed: true });
+      await expect(
+        createServerlessInstallGuard(node, true)(params({ launcherUrl: `${LAUNCHER}app`, launcherSessionId: 'sess1' }))
+      ).rejects.toThrow(messages.sessionAlreadyConsumed.en);
+      expect(calls).toEqual(['session']);
+    });
+
+    test('should reject forced launch on a non-serverless node', async () => {
+      const { node, calls } = createNode({ mode: 'production' });
+      await expect(
+        createServerlessInstallGuard(node, true)(params({ launcherUrl: `${LAUNCHER}app`, launcherSessionId: 'sess1' }))
+      ).rejects.toThrow(messages.notSupported.en);
+      expect(calls).toEqual([]);
+    });
+
+    test('should keep the non-forced flow working without launcher params', async () => {
+      const { node, calls } = createNode();
+      const blocklet = await createServerlessInstallGuard(node)(params({}));
+      expect(blocklet.meta.did).toBe('z8ia');
+      expect(calls).toEqual(['meta']);
+
+      const untrusted = createNode();
+      await expect(
+        createServerlessInstallGuard(untrusted.node)(
+          params({ launcherUrl: 'http://203.0.113.42:18503', launcherSessionId: 's' })
+        )
+      ).rejects.toThrow(messages.untrustedLauncher.en);
+      expect(untrusted.calls).toEqual([]);
     });
   });
 });

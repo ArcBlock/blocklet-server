@@ -35,6 +35,7 @@ module.exports = {
   missingBlockletDid: 'บล็อกเกิดข้อผิดพลาด',
   missingChainHost: 'หาโฮสต์ของโซ่ไม่พบ',
   missingLauncherSession: 'ไม่มี launcherUrl และ launcherSessionId',
+  untrustedLauncher: 'เซิร์ฟเวอร์นี้ไม่เชื่อถือตัวเปิดใช้งานนี้',
   invalidBlocklet: 'บล็อกและเล"็ตไม่ถูกต้อง',
   blockletExists: 'Blocklet มีอยู่ก่อนแล้ว',
   invalidBlockletVc: 'บล็อกไม่ถูกต้อง VC',

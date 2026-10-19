@@ -35,6 +35,7 @@ module.exports = {
   missingBlockletDid: 'ブロックレットがありません',
   missingChainHost: '欠損したチェーンホスト',
   missingLauncherSession: 'launcherUrlとlauncherSessionIdがありません',
+  untrustedLauncher: 'このサーバーはこのランチャーを信頼していません',
   invalidBlocklet: '無効なブロックレット',
   blockletExists: 'ブロックレットはすでに存在しています',
   invalidBlockletVc: '無効なBlocklet VC',

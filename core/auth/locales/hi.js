@@ -35,6 +35,7 @@ module.exports = {
   missingBlockletDid: 'हारित ब्लॉक्लेट',
   missingChainHost: 'खोई चेन होस्ट',
   missingLauncherSession: 'लॉन्चर Url और लॉन्चर सत्र आईडी गुम हैं',
+  untrustedLauncher: 'यह लॉन्चर इस सर्वर द्वारा विश्वसनीय नहीं है',
   invalidBlocklet: 'अमान्य ब्लॉकलेट',
   blockletExists: 'ब्लॉकलेट पहले से मौजूद है',
   invalidBlockletVc: 'अमान्य ब्लॉकलेट वीसी',

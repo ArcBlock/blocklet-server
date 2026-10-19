@@ -54,6 +54,7 @@ module.exports = {
   missingBlockletDid: 'Blocklet DID required',
   missingChainHost: 'Chain host required',
   missingLauncherSession: 'Launcher URL and session ID required',
+  untrustedLauncher: 'Launcher is not trusted by this server',
   invalidBlocklet: 'Invalid blocklet',
   blockletExists: 'This blocklet already exists',
   invalidBlockletVc: 'Invalid blocklet credential',

@@ -35,6 +35,7 @@ module.exports = {
   missingBlockletDid: '缺少应用 DID',
   missingChainHost: '缺少链的端点地址',
   missingLauncherSession: '缺少启动器会话参数',
+  untrustedLauncher: '启动器不受此服务器信任',
   invalidBlocklet: '无效的 Blocklet',
   blockletExists: '应用已安装',
   invalidBlockletVc: '无效的 Blocklet VC',

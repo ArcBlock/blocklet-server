@@ -1059,6 +1059,26 @@
       "th": "Launcher URL และ ID เซสชันที่จำเป็น."
     }
   },
+  "untrustedLauncher": {
+    "en": "Launcher is not trusted by this server",
+    "value": {
+      "en": "Launcher is not trusted by this server",
+      "es": "Este lanzador no es de confianza para este servidor",
+      "zh": "启动器不受此服务器信任",
+      "zh-TW": "啟動器不受此伺服器信任",
+      "ja": "このサーバーはこのランチャーを信頼していません",
+      "ko": "이 서버에서 신뢰하지 않는 런처입니다",
+      "de": "Dieser Launcher wird von diesem Server nicht vertraut",
+      "hi": "यह लॉन्चर इस सर्वर द्वारा विश्वसनीय नहीं है",
+      "fr": "Ce lanceur n'est pas approuvé par ce serveur",
+      "ar": "هذا المشغل غير موثوق به من قبل هذا الخادم",
+      "ru": "Этот лаунчер не является доверенным для этого сервера",
+      "pt": "Este inicializador não é confiável para este servidor",
+      "id": "Peluncur ini tidak dipercaya oleh server ini",
+      "vi": "Trình khởi chạy này không được máy chủ này tin cậy",
+      "th": "เซิร์ฟเวอร์นี้ไม่เชื่อถือตัวเปิดใช้งานนี้"
+    }
+  },
   "blockletExists": {
     "en": "This blocklet already exists",
     "value": {

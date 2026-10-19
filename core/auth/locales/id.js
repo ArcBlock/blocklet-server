@@ -35,6 +35,7 @@ module.exports = {
   missingBlockletDid: 'Bloklet hilang',
   missingChainHost: 'Host rantai tidak ditemukan',
   missingLauncherSession: 'Kehilangan launcherUrl dan launcherSessionId',
+  untrustedLauncher: 'Peluncur ini tidak dipercaya oleh server ini',
   invalidBlocklet: 'Blocklet tidak valid',
   blockletExists: 'Blocklet sudah ada',
   invalidBlockletVc: 'Blok Blok Tidak Valid VC',

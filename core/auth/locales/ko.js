@@ -35,6 +35,7 @@ module.exports = {
   missingBlockletDid: '누락된 블록릿이 있습니다',
   missingChainHost: '누락된 체인 호스트',
   missingLauncherSession: 'launcherUrl과 launcherSessionId가 없습니다',
+  untrustedLauncher: '이 서버에서 신뢰하지 않는 런처입니다',
   invalidBlocklet: '잘못된 블록렛',
   blockletExists: '블록이 이미 존재합니다',
   invalidBlockletVc: '잘못된 Blocklet VC',

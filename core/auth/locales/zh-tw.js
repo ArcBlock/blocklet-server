@@ -34,6 +34,7 @@ module.exports = {
   missingBlockletDid: '缺少 Blocklet DID',
   missingChainHost: '遺失的鏈主機',
   missingLauncherSession: '缺少launcherUrl和launcherSessionId',
+  untrustedLauncher: '啟動器不受此伺服器信任',
   invalidBlocklet: '無效的 Blocklet',
   blockletExists: 'Blocklet 已存在',
   invalidBlockletVc: '無效的Blocklet VC',
