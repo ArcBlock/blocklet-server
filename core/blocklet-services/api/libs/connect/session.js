@@ -1209,6 +1209,14 @@ module.exports = {
         throw new Error(messages.missingPassport[locale]);
       }
 
+      // NOTICE: getRoleFromVC trusts the role inside a passport issued by this app verbatim
+      // (getBlockletAppIdList covers retired dids in migratedFrom too), so a leaked app sk is
+      // enough to sign an owner passport whose signature verifies. The two login paths guard
+      // against that by requiring the passport to exist in the db; this one must do the same,
+      // otherwise a forged passport reaches migrateApplicationToStructV2 and lets the caller
+      // replace the app's own appSk.
+      await validateLocalPassport({ vc, node, locale, blocklet, teamDid, userDid });
+
       const role = await getRoleFromVC({ vc, appId, node, locale, blocklet, teamDid });
       if (role !== ROLES.OWNER) {
         throw new Error(messages.onlyOwnerCanPerformThisAction[locale]);
