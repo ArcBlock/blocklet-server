@@ -364,7 +364,7 @@ const authenticateByNFT = async ({ node, claims, userDid, challenge, locale, isA
 
 const authenticateByLauncher = async ({ node, claims, launcherSessionId, launcherUrl, chainHost }) => {
   const info = await node.getNodeInfo();
-  const { error, launcherSession } = await getLauncherSession(info.sk, { launcherSessionId, launcherUrl });
+  const { error, launcherSession } = await getLauncherSession(info, { launcherSessionId, launcherUrl });
   if (error) {
     throw new CustomError(400, error);
   }

@@ -265,7 +265,7 @@ async function sendEmail(
     }
 
     const info = await node.getNodeInfo({ useCache: true });
-    const result = await sendEmailWithLauncher(info.sk, blocklet.controller, {
+    const result = await sendEmailWithLauncher(info, blocklet.controller, {
       receiver: safeReceiver,
       notification,
       options: { locale, raw },

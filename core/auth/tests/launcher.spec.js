@@ -54,6 +54,8 @@ const launchSession = {
 
 describe('LauncherUtil', () => {
   const serverSk = fromRandom().secretKey;
+  // what node.getNodeInfo() returns: production hosts have only registerUrl, serverless hosts have both
+  const nodeInfo = { sk: serverSk, registerUrl: `${launcherUrl}/`, launcher: { url: launcherUrl } };
 
   beforeEach(() => {
     axios.reset();
@@ -65,7 +67,54 @@ describe('LauncherUtil', () => {
 
   describe('doRequest', () => {
     test('should work', async () => {
-      await expect(doRequest('', {})).rejects.toThrow(/serverSk is required/);
+      await expect(doRequest({}, {})).rejects.toThrow(/node info with sk is required/);
+    });
+  });
+
+  describe('trusted launcher', () => {
+    const outbound = () => axios.history.get.length + axios.history.post.length;
+
+    test('should refuse an untrusted launcher before any outbound request', async () => {
+      for (const url of [
+        'http://203.0.113.42:18503',
+        'https://jaguar-muscles-long-duncan.trycloudflare.com',
+        'https://httpbin.org/redirect-to?url=https%3A%2F%2Flauncher.arcblock.io',
+        'https://www.arcblock.io/api/launches/x',
+        'https://launcher.arcblock.io.evil.com',
+        'http://launcher.arcblock.io',
+      ]) {
+        axios.reset();
+        // eslint-disable-next-line no-await-in-loop
+        await expect(doRequest(nodeInfo, { launcherUrl: url, pathname: '/api/launches/x' })).rejects.toThrow(
+          /not trusted/
+        );
+        expect(outbound()).toBe(0);
+      }
+    });
+
+    test('should refuse when the node has no launcher configured', async () => {
+      await expect(doRequest({ sk: serverSk }, { launcherUrl, pathname: '/api/launches/x' })).rejects.toThrow(
+        /not trusted/
+      );
+      expect(outbound()).toBe(0);
+    });
+
+    test('should accept the registered launcher, with either field set', async () => {
+      for (const [info, url] of [
+        [{ sk: serverSk, registerUrl: `${launcherUrl}/` }, launcherUrl],
+        [{ sk: serverSk, launcher: { url: launcherUrl } }, launcherUrl],
+        // production hosts registered with another official origin
+        [{ sk: serverSk, registerUrl: 'https://install.arcblock.io/' }, 'https://install.arcblock.io'],
+      ]) {
+        axios.reset();
+        axios.onGet().replyOnce(200, { componentMountPoints: [{ did: LAUNCHER_BLOCKLET_DID, mountPoint: '/app' }] });
+        axios.onGet().replyOnce(200, { ok: true });
+        // eslint-disable-next-line no-await-in-loop
+        await expect(
+          doRequest(info, { launcherUrl: url, pathname: '/api/launches/x', method: 'get' })
+        ).resolves.toEqual({ ok: true });
+        expect(outbound()).toBe(2);
+      }
     });
   });
 
@@ -78,7 +127,7 @@ describe('LauncherUtil', () => {
       // Mock the actual getLauncherSession request
       axios.onGet().replyOnce(200, { launch: launchSession });
 
-      const result = await getLauncherSession(serverSk, { launcherUrl, launcherSessionId });
+      const result = await getLauncherSession(nodeInfo, { launcherUrl, launcherSessionId });
       expect(result.error).toBeFalsy();
       expect(result.launcherSession).toEqual(launchSession);
     });
@@ -91,7 +140,7 @@ describe('LauncherUtil', () => {
       // Mock the actual getLauncherSession request
       axios.onGet().replyOnce(200, { launch: null });
 
-      const result = await getLauncherSession(serverSk, { launcherUrl, launcherSessionId: 'a' });
+      const result = await getLauncherSession(nodeInfo, { launcherUrl, launcherSessionId: 'a' });
 
       expect(result.error).toBeFalsy();
       expect(result.launcherSession).toBeFalsy();
@@ -107,7 +156,7 @@ describe('LauncherUtil', () => {
       // Mock the actual getLauncherUser request
       axios.onGet().replyOnce(200, { user });
 
-      const result = await getLauncherUser(serverSk, { launcherUrl, launcherSessionId });
+      const result = await getLauncherUser(nodeInfo, { launcherUrl, launcherSessionId });
 
       expect(result).toEqual(user);
     });

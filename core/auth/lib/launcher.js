@@ -6,9 +6,12 @@ const pRetry = require('p-retry');
 const { stableStringify } = require('@arcblock/vc');
 const { toBase58 } = require('@ocap/util');
 const getNodeWallet = require('@abtnode/util/lib/get-app-wallet');
-const { formatError } = require('@blocklet/error');
+const { formatError, CustomError } = require('@blocklet/error');
+const { isTrustedLauncherUrl } = require('@abtnode/util/lib/serverless');
 
 const logger = require('@abtnode/logger')('@abtnode/auth:launcher');
+
+const { messages } = require('./auth');
 
 const { version } = require('../package.json');
 
@@ -50,9 +53,18 @@ const buildRequestHeaders = async (serverSk, payload) => {
 };
 
 // eslint-disable-next-line require-await
-const doRequest = async (serverSk, { launcherUrl, pathname, payload, method = 'post', locale = 'en' }) => {
+const doRequest = async (nodeInfo, { launcherUrl, pathname, payload, method = 'post', locale = 'en' }) => {
+  const serverSk = nodeInfo?.sk;
   if (!serverSk) {
-    throw new Error('serverSk is required to request launcher');
+    throw new Error('node info with sk is required to request launcher');
+  }
+
+  // launcherUrl often comes from the caller (gql query, DID Connect extraParams, app controller), and these
+  // requests are signed with the node sk: only ever talk to the launcher this node is registered with.
+  // Checked before buildLauncherUrl, which itself fetches __blocklet__.js from the url.
+  if (!isTrustedLauncherUrl(nodeInfo, launcherUrl)) {
+    logger.error('refuse to call untrusted launcher', { launcherUrl, pathname });
+    throw new CustomError(403, messages.untrustedLauncher[locale]);
   }
 
   const fn = async () => {
@@ -93,7 +105,7 @@ const doRequest = async (serverSk, { launcherUrl, pathname, payload, method = 'p
   });
 };
 
-const getLauncherSession = async (serverSk, params) => {
+const getLauncherSession = async (nodeInfo, params) => {
   const { error } = schema.validate(params);
   if (error) {
     return { error: formatError(error) };
@@ -101,8 +113,8 @@ const getLauncherSession = async (serverSk, params) => {
 
   const { launcherSessionId, launcherUrl, locale } = params;
   try {
-    const result = await doRequest(serverSk, {
-      launcherUrl: launcherUrl || 'https://launcher.arcblock.io/',
+    const result = await doRequest(nodeInfo, {
+      launcherUrl,
       pathname: `/api/launches/${launcherSessionId}`,
       payload: {},
       method: 'get',
@@ -114,9 +126,9 @@ const getLauncherSession = async (serverSk, params) => {
   }
 };
 
-const getLauncherUser = async (serverSk, params) => {
+const getLauncherUser = async (nodeInfo, params) => {
   const { launcherSessionId, launcherUrl } = params;
-  const result = await doRequest(serverSk, {
+  const result = await doRequest(nodeInfo, {
     launcherUrl,
     pathname: `/api/launches/${launcherSessionId}/user`,
     payload: {},
@@ -126,7 +138,7 @@ const getLauncherUser = async (serverSk, params) => {
   return result.user;
 };
 
-const sendEmailWithLauncher = async (serverSk, params, payload) => {
+const sendEmailWithLauncher = async (nodeInfo, params, payload) => {
   const { error } = schema.validate(params);
   if (error) {
     return { error: formatError(error) };
@@ -134,8 +146,8 @@ const sendEmailWithLauncher = async (serverSk, params, payload) => {
 
   const { launcherSessionId, launcherUrl, locale } = params;
   try {
-    const result = await doRequest(serverSk, {
-      launcherUrl: launcherUrl || 'https://launcher.arcblock.io/',
+    const result = await doRequest(nodeInfo, {
+      launcherUrl,
       pathname: `/api/launches/${launcherSessionId}/service/email`,
       payload,
       locale,

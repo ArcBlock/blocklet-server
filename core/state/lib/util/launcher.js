@@ -59,7 +59,7 @@ const consumeServerlessNFT = async ({ nftId, blocklet }) => {
     logger.info('Consuming serverless nft params', { appURL, nftId });
 
     const { launcherUrl } = state.data.value;
-    const result = await doRequest(nodeInfo.sk, {
+    const result = await doRequest(nodeInfo, {
       launcherUrl,
       pathname: '/api/serverless/consume',
       payload: { nftId, appURL },
@@ -86,7 +86,7 @@ const reportComponentsEvent = async ({ blocklet, dids, type, time }) => {
   try {
     const info = await states.node.read();
 
-    const result = await doRequest(info.sk, {
+    const result = await doRequest(info, {
       launcherUrl: controller.launcherUrl,
       pathname: `/api/launches/${controller.launcherSessionId}/events`,
       payload,
@@ -137,7 +137,7 @@ const notifyLauncher = async (type, blocklet) => {
 
     logger.info('notify blocklet updated payload', { controller, blockletPid: blocklet.appPid, payload });
 
-    const result = await doRequest(info.sk, {
+    const result = await doRequest(info, {
       launcherUrl: controller.launcherUrl,
       pathname: `/api/launches/${controller.launcherSessionId}/webhook`,
       payload,
@@ -222,7 +222,7 @@ const sendServerlessHeartbeat = async () => {
   logger.debug('send serverless heartbeat payload', { did, launcherUrl, payload });
 
   try {
-    const result = await doRequest(nodeInfo.sk, {
+    const result = await doRequest(nodeInfo, {
       launcherUrl,
       pathname: '/api/serverless/heartbeat',
       payload,
@@ -245,7 +245,7 @@ const consumeLauncherSession = async ({ params, blocklet }) => {
     let componentDids = blocklet.children.map((x) => x.meta.did);
     componentDids = uniq(componentDids);
 
-    const result = await doRequest(info.sk, {
+    const result = await doRequest(info, {
       launcherUrl: params.launcherUrl,
       pathname: `/api/launches/${params.launcherSessionId}/installed`,
       payload: {
@@ -329,7 +329,7 @@ const setupAppOwner = async ({
   let appOwnerProfile;
   // get user from launcher or server
   if (launcherUrl && launcherSessionId) {
-    user = await getLauncherUser(info.sk, { launcherUrl, launcherSessionId });
+    user = await getLauncherUser(info, { launcherUrl, launcherSessionId });
     if (!user) {
       throw new Error(`Owner user not found from launcher: ${launcherUrl}`);
     }
@@ -481,7 +481,7 @@ const setupAppOwner = async ({
 
 const getLauncherSession = async ({ launcherUrl, launcherSessionId, external = true }, context) => {
   const info = await states.node.read();
-  const result = await getLauncherSessionRaw(info.sk, {
+  const result = await getLauncherSessionRaw(info, {
     launcherUrl,
     launcherSessionId,
     locale: context?.query?.locale,
@@ -618,7 +618,7 @@ const launchBlockletByLauncher = async (node, extraParams, context) => {
 
   // generate owner key pair
   const info = await states.node.read();
-  const user = await getLauncherUser(info.sk, extraParams);
+  const user = await getLauncherUser(info, extraParams);
 
   const userWallet = fromAppDid(`email|${user.email}`, appWallet.secretKey);
 
