@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
-const { test, describe, expect, beforeAll, mock, beforeEach, afterAll } = require('bun:test');
+const { test, describe, expect, beforeAll, mock, beforeEach, afterAll, spyOn } = require('bun:test');
 const fs = require('fs-extra');
 const path = require('path');
 const { http } = require('follow-redirects');
@@ -41,6 +41,7 @@ const getSender = (name) => {
 };
 
 const states = require('../../../api/state');
+const { api } = require('../../../api/libs/api');
 const { init } = require('../../../api/services/notification');
 
 const DEFAULT_WEBHOOK_SLACK_URL = 'https://webhook.site/81535232-441a-4e80-8600-129850112500';
@@ -1213,13 +1214,22 @@ describe('notification', () => {
       expect(err.message).toContain('Push Kit Service is not Enabled');
     }
 
+    // Resolve the push kit component locally instead of fetching __blocklet__.js from the live endpoint
+    const getPushKitMeta = spyOn(api, 'get').mockResolvedValue({
+      data: { componentMountPoints: [{ did: 'z2qa6xfPH6zHq5AQjb2Qm5CfmpndyQsvZrTKH', mountPoint: '/push-kit' }] },
+    });
     try {
-      await sendToPush({
-        receiver: account.address,
-        notification: { title: 'title', body: 'body' },
-      });
-    } catch (err) {
-      expect(err.message).toMatch('Invalid receiver: empty target');
+      await expect(
+        sendToPush({
+          receiver: account.address,
+          notification: { title: 'title', body: 'body' },
+        })
+      ).rejects.toThrow('Invalid receiver: empty target');
+      expect(getPushKitMeta).toHaveBeenCalledWith(
+        'https://bbqaufnnsc3kq2fyvebddqkqxn6emk4ajoy4w7lohxm.did.abtnet.io/__blocklet__.js?type=json'
+      );
+    } finally {
+      getPushKitMeta.mockRestore();
     }
   }, 20_000);
 
