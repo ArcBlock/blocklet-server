@@ -2,7 +2,7 @@ const { test, describe, expect, beforeAll, spyOn, mock, beforeEach, afterAll } =
 const path = require('path');
 const os = require('os');
 const { init } = require('../../../api/services/auth');
-const { sessionCacheDisabledUser } = require('../../../api/cache');
+const { sessionCacheDisabledUser, markSessionCacheDisabledUser } = require('../../../api/cache');
 const initJwt = require('../../../api/libs/jwt');
 const attachSharedUtils = require('../../../api/util/attach-shared-utils');
 
@@ -59,8 +59,8 @@ describe('auth service', () => {
   });
 
   test('userInfo', async () => {
-    // mock: disable cache for user did in token
-    await sessionCacheDisabledUser.set('did1', {});
+    // disable cache for user did in token, via the same path as the userPermissionUpdated handler
+    await markSessionCacheDisabledUser('did1');
 
     const getUser = spyOn(node, 'getUserByDid');
     const isPassportValid = spyOn(node, 'isPassportValid');
@@ -95,6 +95,58 @@ describe('auth service', () => {
     });
 
     getUser.mockRestore();
+  });
+
+  describe('markSessionCacheDisabledUser', () => {
+    const runUserInfo = (req) =>
+      new Promise((resolve) => {
+        service.middlewares.userInfo(req, { locals: {} }, () => resolve(req));
+      });
+
+    const buildReq = (sessionToken) => {
+      const req = { token: sessionToken, headers: {} };
+      attachSharedUtils({ node, req, options: {} });
+      req.getBlocklet = () => ({ appPid: 'xxx', appId: 'xxx' });
+      req.getBlockletDid = () => 'xxx';
+      req.getBlockletInfo = () => ({ secret: 'abc' });
+      req.getUserOrg = () => '';
+      return req;
+    };
+
+    test('should store a truthy marker that reads back from the cache', async () => {
+      await markSessionCacheDisabledUser('did-marker');
+      expect(await sessionCacheDisabledUser.get('did-marker')).toBeTruthy();
+    });
+
+    test('should ignore empty did', async () => {
+      expect(await markSessionCacheDisabledUser(undefined)).toBe(false);
+      expect(await markSessionCacheDisabledUser('')).toBe(false);
+    });
+
+    test('should reject an issued session token once the user is disabled', async () => {
+      const did = 'did-disabled-after-issue';
+      const sessionToken = await createSessionToken(did, {
+        secret: 'abc',
+        role: 'owner',
+        passport: { id: 'p-owner', name: 'owner' },
+      });
+      const getUser = spyOn(node, 'getUserByDid').mockImplementation(() => ({ approved: false }));
+      const isPassportValid = spyOn(node, 'isPassportValid').mockImplementation(() => false);
+
+      // before marking: token claims are trusted without hitting db
+      const before = await runUserInfo(buildReq(sessionToken));
+      expect(before.user?.role).toBe('owner');
+      expect(getUser).not.toHaveBeenCalled();
+
+      // after the user is disabled / passport revoked, the same token must be re-checked against db and rejected
+      await markSessionCacheDisabledUser(did);
+      const after = await runUserInfo(buildReq(sessionToken));
+      expect(getUser).toHaveBeenCalled();
+      expect(after.user).toBeFalsy();
+
+      getUser.mockRestore();
+      isPassportValid.mockRestore();
+    });
   });
 
   describe('checkAuth', () => {

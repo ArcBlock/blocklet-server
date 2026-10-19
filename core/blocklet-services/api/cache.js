@@ -178,6 +178,15 @@ cache.notificationConfig = cacheNotificationConfig;
 
 cache.sessionCacheDisabledUser = cacheSessionDisabledUser;
 
+// Force session tokens of this user to be re-validated against db (approved / passport status) on every request.
+// The stored value must be truthy: DBCache keeps `{ v: value }`, so set(did) without a value reads back as undefined.
+cache.markSessionCacheDisabledUser = (did) => {
+  if (!did) {
+    return Promise.resolve(false);
+  }
+  return cacheSessionDisabledUser.set(did, true);
+};
+
 cache.blockletInfo = cacheBlockletInfo;
 
 cache.sessionToken = cacheSessionToken;

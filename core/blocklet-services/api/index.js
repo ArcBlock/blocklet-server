@@ -314,7 +314,7 @@ module.exports = function createServer(node, serverOptions = {}) {
   });
   eventHub.on(TeamEvents.userPermissionUpdated, async ({ teamDid, user } = {}) => {
     logger.info('user permission updated', { teamDid, userDid: user?.did });
-    await cache.sessionCacheDisabledUser.set(user?.did);
+    await cache.markSessionCacheDisabledUser(user?.did);
   });
 
   // Events to broadcast to all components
