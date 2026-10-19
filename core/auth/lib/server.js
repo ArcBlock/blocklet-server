@@ -153,6 +153,49 @@ const getKnownIssuerDids = async ({ issuerDid }) => {
   }
 };
 
+/**
+ * 要求 vc 对应的 passport 在本地数据库中真实存在、属于当前用户、且未吊销未过期。
+ *
+ * NOTICE: 采信本地签发者的分支只凭 "issuer 在 getBlockletAppIdList 里" 就原样采用 passport 里的 role，
+ * 而该列表包含 appPid 与全部 migratedFrom 中的退役 did，所以持有任何一把历史 appSk
+ * （含永久钉死在 migratedFrom[0]、轮换 appSk 也不会改变的 BLOCKLET_APP_PSK）都能签出
+ * 一个签名真实可验的 owner passport。isUserPassportRevoked 挡不住这种情况：伪造的 passport
+ * 从未入库，不在 user.passports 里，匹配不到也就不算 revoked —— "不存在" 被当成了 "没问题"。
+ *
+ * 签发时间不可用于判断：VC 的 issuanceDate 由签发方自己填，完全可控，
+ * 所以只能以 "库内存在且有效" 作为判据。
+ *
+ * 与 blocklet-services 的 connect/session.js: validateLocalPassport 保持同一套语义。
+ */
+const assertLocalPassportUsable = async ({ node, vc, teamDid, userDid, blocklet = null, locale = 'en' }) => {
+  // 与 connect/session.js 的 validateLocalPassport 保持一致：e2e 用例不做 passport 校验
+  if (blocklet?.settings?.purpose === 'e2e') {
+    return;
+  }
+
+  if (get(vc, 'credentialSubject.id') !== userDid) {
+    throw new CustomError(403, messages.passportNotBelongToYou[locale]);
+  }
+
+  const stored = await node.getPassportById({ teamDid, passportId: vc.id });
+  if (!stored) {
+    logger.error('local passport not found in db', { passportId: vc.id, teamDid, issuer: get(vc, 'issuer.id') });
+    throw new CustomError(403, messages.passportNotFound[locale]);
+  }
+
+  if (stored.status === PASSPORT_STATUS.REVOKED) {
+    throw new CustomError(403, messages.passportRevoked[locale](stored.title, stored.issuer?.name));
+  }
+
+  if (stored.status === PASSPORT_STATUS.EXPIRED) {
+    throw new CustomError(403, messages.passportExpired[locale]);
+  }
+
+  if (!(await node.isPassportValid({ teamDid, passportId: vc.id }))) {
+    throw new CustomError(403, messages.passportNotFound[locale]);
+  }
+};
+
 const authenticateByVc = async ({
   node,
   locale,
@@ -230,6 +273,7 @@ const authenticateByVc = async ({
 
     // 如果 issuerId 存在于 blocklet 的 alsoKnownAs 中认为是相同的 blocklet
     if (knownTeamDids.includes(issuerId)) {
+      await assertLocalPassportUsable({ node, vc, teamDid, userDid, blocklet, locale });
       role = getRoleFromLocalPassport(get(vc, 'credentialSubject.passport'));
     } else {
       // map external passport to local role
@@ -1369,6 +1413,7 @@ module.exports = {
   getAuthNFTClaim,
   getServerlessNFTClaim,
   getLauncherAppIdList,
+  assertLocalPassportUsable,
   getAuthPrincipalForMigrateAppToV2,
   getAuthPrincipalForTransferAppOwnerShip,
   createServerlessInstallGuard,

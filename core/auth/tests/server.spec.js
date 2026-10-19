@@ -14,6 +14,7 @@ const {
   createRotateKeyPairHandler,
   getBlockletPermissionChecker,
   getLauncherAppIdList,
+  assertLocalPassportUsable,
 } = require('../lib/server');
 
 const { messages } = lib;
@@ -540,5 +541,77 @@ describe('server', () => {
       expect(mockGet).toHaveBeenCalledTimes(1);
       expect(result).toEqual(['zNKobn3BJYBkhBPnRzofGoQSMfLXDYnnrBg2', 'zNKjDm4Xsoaffb19UE6QxVeevuaTaLCS1n1S']);
     }, 20000);
+  });
+
+  // Regression: 采信本地签发者的分支原先不查库，持有任何一把历史 appSk
+  // （含永久不变的 BLOCKLET_APP_PSK）即可签出签名可验的 owner passport 并被原样采信
+  describe('assertLocalPassportUsable', () => {
+    const teamDid = 'zNKteam01';
+    const userDid = 'z1user01';
+    const vc = { id: 'z2ipassport01', credentialSubject: { id: userDid }, issuer: { id: teamDid } };
+    const makeNode = ({ stored = { id: vc.id, status: 'valid', title: 'Owner' }, valid = true } = {}) => ({
+      getPassportById: () => stored,
+      isPassportValid: () => valid,
+    });
+
+    test('should pass when passport exists and is valid', async () => {
+      expect(await assertLocalPassportUsable({ node: makeNode(), vc, teamDid, userDid, locale: 'en' })).toBeUndefined();
+    });
+
+    test('should reject a forged passport that is absent from db', async () => {
+      const node = makeNode({ stored: null });
+      await expect(assertLocalPassportUsable({ node, vc, teamDid, userDid, locale: 'en' })).rejects.toThrow(
+        messages.passportNotFound.en
+      );
+    });
+
+    test('should reject a revoked passport', async () => {
+      const node = makeNode({ stored: { id: vc.id, status: 'revoked', title: 'Owner' } });
+      await expect(assertLocalPassportUsable({ node, vc, teamDid, userDid, locale: 'en' })).rejects.toThrow();
+    });
+
+    test('should reject an expired passport', async () => {
+      const node = makeNode({ stored: { id: vc.id, status: 'expired', title: 'Owner' } });
+      await expect(assertLocalPassportUsable({ node, vc, teamDid, userDid, locale: 'en' })).rejects.toThrow(
+        messages.passportExpired.en
+      );
+    });
+
+    test('should reject when isPassportValid says no', async () => {
+      const node = makeNode({ valid: false });
+      await expect(assertLocalPassportUsable({ node, vc, teamDid, userDid, locale: 'en' })).rejects.toThrow(
+        messages.passportNotFound.en
+      );
+    });
+
+    test('should reject a passport issued to somebody else', async () => {
+      const node = makeNode();
+      await expect(
+        assertLocalPassportUsable({ node, vc, teamDid, userDid: 'z1someoneElse', locale: 'en' })
+      ).rejects.toThrow(messages.passportNotBelongToYou.en);
+    });
+
+    test('should skip validation for e2e blocklets, same as connect/session.js', async () => {
+      const node = makeNode({ stored: null });
+      const blocklet = { settings: { purpose: 'e2e' } };
+
+      expect(
+        await assertLocalPassportUsable({ node, vc, teamDid, userDid: 'z1anyone', blocklet, locale: 'en' })
+      ).toBeUndefined();
+    });
+
+    test('should not consult the db before the subject check', async () => {
+      let called = 0;
+      const node = {
+        getPassportById: () => {
+          called += 1;
+          return { id: vc.id, status: 'valid' };
+        },
+        isPassportValid: () => true,
+      };
+
+      await assertLocalPassportUsable({ node, vc, teamDid, userDid: 'z1someoneElse', locale: 'en' }).catch(() => {});
+      expect(called).toBe(0);
+    });
   });
 });
