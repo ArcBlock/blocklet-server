@@ -10,6 +10,66 @@ const clearCacheDir = (dir) => {
   }
 };
 
+// nginx stores `KEY: ...` in the cache file header, no need to read the body
+const readCacheHeader = (file) => {
+  const fd = fs.openSync(file, 'r');
+  try {
+    const buf = Buffer.alloc(4096);
+    const bytes = fs.readSync(fd, buf, 0, buf.length, 0);
+    return buf.toString('latin1', 0, bytes);
+  } finally {
+    fs.closeSync(fd);
+  }
+};
+
+/**
+ * Router providers are initialized lazily (see ensureRoutingProvider), so in processes that never
+ * handled routing (e.g. CLI) there is no provider instance. Constructing one has side effects on the
+ * gateway config, so fall back to operating on the provider cache dir directly.
+ */
+const getCacheProvider = (node, providerName) => {
+  const provider = node.getRouterProvider(providerName);
+  if (provider) {
+    return provider;
+  }
+
+  const rootDir = path.join(node.dataDirs.router, providerName, 'cache');
+  return {
+    searchCache: (pattern, group = '') => {
+      const dir = group ? path.join(rootDir, group) : rootDir;
+      if (!pattern || !fs.existsSync(dir)) {
+        return [];
+      }
+      const files = [];
+      const walk = (d) => {
+        fs.readdirSync(d, { withFileTypes: true }).forEach((x) => {
+          const file = path.join(d, x.name);
+          if (x.isDirectory()) {
+            walk(file);
+          } else if (x.isFile()) {
+            const key = readCacheHeader(file)
+              .split('\n')
+              .find((line) => line.startsWith('KEY:'));
+            if (key && key.includes(pattern)) {
+              files.push(file);
+            }
+          }
+        });
+      };
+      walk(dir);
+      return files;
+    },
+    clearCache: (group = '') => {
+      const dir = group ? path.join(rootDir, group) : rootDir;
+      if (!fs.existsSync(dir)) {
+        return [];
+      }
+      clearCacheDir(dir);
+      return [dir];
+    },
+  };
+};
+
 const clearDBCache = async () => {
   const dbCache = new DBCache(() => ({
     prefix: '*',
@@ -34,7 +94,7 @@ const clearCache = async (params, node, blockletManager) => {
 
   // reset cache by pattern
   const info = await node.getNodeInfo({ useCache: true });
-  const provider = node.getRouterProvider(info.routing.provider);
+  const provider = getCacheProvider(node, info.routing.provider);
   if (params.pattern) {
     const files = await provider.searchCache(params.pattern, params.teamDid);
     files.forEach((x) => fs.rmSync(x, { force: true }));
@@ -72,4 +132,5 @@ const clearCache = async (params, node, blockletManager) => {
 
 module.exports = {
   clearCache,
+  getCacheProvider,
 };
