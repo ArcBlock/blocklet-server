@@ -1293,6 +1293,12 @@ const createRestoreByNftHandler =
 const createServerlessInstallGuard = (node, force = false) => {
   return async ({ extraParams }) => {
     const { locale, blockletMetaUrl, launcherUrl, launcherSessionId } = extraParams;
+
+    // Callers of this guard always launch a new app, so reject before any db read or outbound request
+    if (isLaunchDisabled()) {
+      throw new CustomError(403, messages.launchDisabled[locale]);
+    }
+
     const info = await node.getNodeInfo();
     const serverless = isInServerlessMode(info);
 

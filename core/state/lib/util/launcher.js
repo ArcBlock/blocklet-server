@@ -17,6 +17,7 @@ const {
   getAppAvatarUrl,
 } = require('@abtnode/util/lib/user');
 const { CustomError } = require('@blocklet/error');
+const { isLaunchDisabled } = require('@abtnode/util/lib/serverless');
 const { createLaunchBlockletHandler, createServerlessInstallGuard } = require('@abtnode/auth/lib/server');
 const { getDisplayName } = require('@blocklet/meta/lib/util');
 const { fromAppDid } = require('@arcblock/did-ext');
@@ -664,6 +665,11 @@ const launchBlockletWithoutWallet = async (node, extraParams, context) => {
   extraParams.locale = context.locale || 'en';
 
   const { blockletMetaUrl, title, description, locale } = extraParams;
+
+  // A random app wallet is generated below, so this always launches a new app: reject before fetching the meta
+  if (isLaunchDisabled()) {
+    throw new CustomError(403, messages.launchDisabled[locale]);
+  }
 
   if (!blockletMetaUrl && !title && !description) {
     logger.error('blockletMetaUrl | title + description must be provided');

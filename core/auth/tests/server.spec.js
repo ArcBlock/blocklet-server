@@ -656,6 +656,27 @@ describe('server', () => {
     };
     const params = (extra) => ({ extraParams: { locale: 'en', blockletMetaUrl: META_URL, ...extra } });
 
+    test('should reject before any db read or outbound request when launch is disabled', async () => {
+      process.env.ABT_NODE_DISABLE_LAUNCH = 'true';
+      try {
+        const { node, calls } = createNode();
+        node.getNodeInfo = mock(node.getNodeInfo);
+        for (const force of [true, false]) {
+          // eslint-disable-next-line no-await-in-loop
+          await expect(
+            createServerlessInstallGuard(
+              node,
+              force
+            )(params({ launcherUrl: `${LAUNCHER}app`, launcherSessionId: 's1' }))
+          ).rejects.toThrow(messages.launchDisabled.en);
+        }
+        expect(node.getNodeInfo).not.toHaveBeenCalled();
+        expect(calls).toEqual([]);
+      } finally {
+        delete process.env.ABT_NODE_DISABLE_LAUNCH;
+      }
+    });
+
     test('should reject a caller supplied launcher before making any outbound request', async () => {
       for (const launcherUrl of [
         'http://203.0.113.42:18503',

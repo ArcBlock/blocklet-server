@@ -27,6 +27,7 @@ const { BlockletStatus } = require('@blocklet/constant');
 
 const {
   setupAppOwner,
+  launchBlockletWithoutWallet,
   isBlockletExpired,
   isBlockletTerminated,
   isDataRetentionExceeded,
@@ -350,6 +351,39 @@ describe('LauncherUtil', () => {
           metadata: { terminateImmediately: false },
         })
       ).toBe(false);
+    });
+  });
+
+  describe('launchBlockletWithoutWallet', () => {
+    afterEach(() => {
+      delete process.env.ABT_NODE_DISABLE_LAUNCH;
+    });
+
+    test('should reject before fetching the blocklet meta when launch is disabled', async () => {
+      process.env.ABT_NODE_DISABLE_LAUNCH = 'true';
+      const node = { getBlockletMetaFromUrl: mock(() => Promise.resolve(null)) };
+
+      await expect(
+        launchBlockletWithoutWallet(
+          node,
+          { blockletMetaUrl: 'https://store.blocklet.dev/blocklet.json' },
+          { locale: 'en' }
+        )
+      ).rejects.toThrow('This server is not accepting new applications');
+      expect(node.getBlockletMetaFromUrl).not.toHaveBeenCalled();
+    });
+
+    test('should fetch the blocklet meta when launch is enabled', async () => {
+      const node = { getBlockletMetaFromUrl: mock(() => Promise.resolve(null)) };
+
+      await expect(
+        launchBlockletWithoutWallet(
+          node,
+          { blockletMetaUrl: 'https://store.blocklet.dev/blocklet.json' },
+          { locale: 'en' }
+        )
+      ).rejects.toThrow('Blocklet not found');
+      expect(node.getBlockletMetaFromUrl).toHaveBeenCalledTimes(1);
     });
   });
 });
