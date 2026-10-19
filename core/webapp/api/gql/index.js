@@ -124,8 +124,9 @@ const ensureInputPaging = input => {
 /**
  * @param {object} configs { <api>: { dataKeys, handler } }
  * @param {boolean} graphiql
+ * @param {boolean} exposeStack whether to include server stack traces in error responses, never enable in production
  */
-const createMiddleware = (configs = {}, graphiql = true) => {
+const createMiddleware = (configs = {}, graphiql = true, exposeStack = graphiql) => {
   /* istanbul ignore next */
   const specials = {
     addRoutingSite: input => ({ site: input }),
@@ -158,12 +159,15 @@ const createMiddleware = (configs = {}, graphiql = true) => {
     }),
     customFormatErrorFn: error => {
       logger.error('graphql error', { error });
-      return {
+      const formatted = {
         message: error.message,
         locations: error.locations,
-        stack: error.stack ? error.stack.split('\n') : [],
         path: error.path,
       };
+      if (exposeStack) {
+        formatted.stack = error.stack ? error.stack.split('\n') : [];
+      }
+      return formatted;
     },
     rootValue: resolvers,
     graphiql,

@@ -34,6 +34,34 @@ describe('GQL', () => {
     })();
   }, 5000);
 
+  const queryWithError = async (...args) => {
+    const app = express();
+    app.use('/api/gql', gql(...args));
+    const server = app.listen(await getPort());
+    try {
+      const { data } = await axios.post(
+        `http://127.0.0.1:${server.address().port}/api/gql`,
+        { query: '{ notExistField }' },
+        { validateStatus: () => true }
+      );
+      return data;
+    } finally {
+      server.close();
+    }
+  };
+
+  test('should not expose stack in error response when graphiql is disabled', async () => {
+    const data = await queryWithError({}, false);
+    expect(data.errors.length).toBeGreaterThan(0);
+    expect(data.errors[0].message).toBeTruthy();
+    expect(data.errors[0]).not.toHaveProperty('stack');
+  });
+
+  test('should expose stack in error response only when explicitly allowed', async () => {
+    expect((await queryWithError({}, true)).errors[0]).toHaveProperty('stack');
+    expect((await queryWithError({}, true, false)).errors[0]).not.toHaveProperty('stack');
+  });
+
   test('should have wrapResolver method', async () => {
     expect(typeof gql.wrapResolver).toEqual('function');
 
