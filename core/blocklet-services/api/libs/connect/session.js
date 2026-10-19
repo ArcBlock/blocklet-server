@@ -1,5 +1,6 @@
 // Holds shared logic for session-manager v1 and v2
 const get = require('lodash/get');
+const pick = require('lodash/pick');
 const { joinURL } = require('ufo');
 const formatContext = require('@abtnode/util/lib/format-context');
 const { extractUserAvatar, getAppAvatarUrl } = require('@abtnode/util/lib/user');
@@ -65,6 +66,13 @@ const {
 } = require('../../util/federated');
 const { Profile } = require('../../state/profile');
 const { getDefaultPassport } = require('../../util/user-util');
+
+// DID Wallet 提交的 profile claim 完全由客户端控制，而它会被展开进 loginUser/updateUser
+// 的 user 对象。user 的 passport / role / approved / did 等字段由服务端决定，一旦被 profile
+// 覆盖即等于任意提权（例如在 profile 里夹带 { role: 'owner' } 的 passport 对象，
+// 会被原样写入 passports 表）。因此只取 profile 真正承载的展示类字段。
+const PROFILE_FIELDS = ['fullName', 'email', 'phone', 'avatar', 'url'];
+const sanitizeProfile = (profile) => (profile ? pick(profile, PROFILE_FIELDS) : profile);
 
 // do some check if the passport issued by the blocklet itself
 const validateLocalPassport = async ({ vc, node, locale, blocklet, teamDid, userDid }) => {
@@ -560,7 +568,7 @@ module.exports = {
       const connectAccount = { provider, did: userDid, pk: userPk };
 
       let updatedUser;
-      const profile = claims.find((x) => x.type === 'profile');
+      const profile = sanitizeProfile(claims.find((x) => x.type === 'profile'));
 
       if (profile) {
         profile.url = profile?.url || '';
@@ -905,8 +913,9 @@ module.exports = {
       }
 
       // 兼容新版本和老版本的 DID Wallet之间来回切换 Profile
-      if (profile) {
-        profile.url = profile.url || '';
+      const safeProfile = sanitizeProfile(profile);
+      if (safeProfile) {
+        safeProfile.url = safeProfile.url || '';
       }
 
       const kycUpdates = await verifyKycClaims({
@@ -925,9 +934,9 @@ module.exports = {
         teamDid,
         user: {
           ...user,
-          ...profile,
+          ...safeProfile,
           ...kycUpdates,
-          avatar: await extractUserAvatar(get(profile, 'avatar'), {
+          avatar: await extractUserAvatar(get(safeProfile, 'avatar'), {
             dataDir: blocklet.env.dataDir,
           }),
         },
@@ -936,7 +945,7 @@ module.exports = {
       await node.createAuditLog(
         {
           action: 'switchProfile',
-          args: { teamDid, userDid: user.did, profile },
+          args: { teamDid, userDid: user.did, profile: safeProfile },
           context: formatContext(Object.assign(request, { user })),
           result: doc,
         },
@@ -1217,5 +1226,6 @@ module.exports = {
   utils: {
     checkAppOwner,
     checkUserRole,
+    sanitizeProfile,
   },
 };
