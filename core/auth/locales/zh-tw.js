@@ -50,6 +50,7 @@ module.exports = {
   blockletSpaceNftIdRequired: '需要 Blocklet Space NFT ID',
   nftAlreadyConsumed: '這個NFT已經被使用過',
   sessionAlreadyConsumed: '此次會話已被使用',
+  launchDisabled: '該節點已停止接受新應用',
   nftAlreadyExpired: '此 NFT 已過期',
   nftAlreadyUsed: '此NFT已經連接到另一個用户',
   missingNftClaim: '沒有提供所有權NFT',

@@ -19,7 +19,7 @@ const { getChainClient } = require('@abtnode/util/lib/get-chain-client');
 const { getBlockletInfo } = require('@blocklet/meta/lib/info');
 const { getBlockletAppIdList } = require('@blocklet/meta/lib/util');
 const formatContext = require('@abtnode/util/lib/format-context');
-const { isInServerlessMode } = require('@abtnode/util/lib/serverless');
+const { isInServerlessMode, isLaunchDisabled } = require('@abtnode/util/lib/serverless');
 const getRequestIP = require('@abtnode/util/lib/get-request-ip');
 const { convertToMoniker } = require('@abtnode/util/lib/transfer-to-moniker');
 const { LOGIN_PROVIDER } = require('@blocklet/constant');
@@ -922,6 +922,12 @@ const createLaunchBlockletHandler =
           throw new CustomError(403, messages.sessionAlreadyConsumed[locale]);
         }
       }
+    }
+
+    // 已安装的应用不受影响，仅禁止安装新应用
+    if (isLaunchDisabled()) {
+      logger.warn('launch blocklet rejected: launch is disabled on this server', { appDid, authMethod });
+      throw new CustomError(403, messages.launchDisabled[locale]);
     }
 
     logger.info('start install blocklet', { blockletMetaUrl, title, description, controller });

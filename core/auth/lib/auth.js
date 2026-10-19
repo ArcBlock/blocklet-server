@@ -133,6 +133,7 @@ const messages = {
   blockletSpaceNftIdRequired: getLocaleMap('blockletSpaceNftIdRequired'),
   nftAlreadyConsumed: getLocaleMap('nftAlreadyConsumed'),
   sessionAlreadyConsumed: getLocaleMap('sessionAlreadyConsumed'),
+  launchDisabled: getLocaleMap('launchDisabled'),
   nftAlreadyExpired: getLocaleMap('nftAlreadyExpired'),
   nftAlreadyUsed: getLocaleMap('nftAlreadyUsed'),
   missingNftClaim: getLocaleMap('missingNftClaim'),

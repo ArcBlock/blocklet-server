@@ -51,6 +51,7 @@ module.exports = {
   blockletSpaceNftIdRequired: 'Yêu cầu ID Blocklet Space NFT',
   nftAlreadyConsumed: 'NFT này đã được sử dụng',
   sessionAlreadyConsumed: 'Phiên này đã được sử dụng',
+  launchDisabled: 'Máy chủ này không nhận ứng dụng mới',
   nftAlreadyExpired: 'NFT này đã hết hạn',
   nftAlreadyUsed: 'NFT này đã được kết nối với một người dùng khác',
   missingNftClaim: 'Không cung cấp quyền sở hữu NFT',

@@ -51,6 +51,7 @@ module.exports = {
   blockletSpaceNftIdRequired: 'ब्लॉकलेट स्पेस NFT आईडी की आवश्यकता है',
   nftAlreadyConsumed: 'यह NFT पहले से ही उपयोग किया जा चुका है',
   sessionAlreadyConsumed: 'इस सत्र का पहले से ही उपयोग हो चुका है',
+  launchDisabled: 'यह सर्वर नए एप्लिकेशन स्वीकार नहीं कर रहा है',
   nftAlreadyExpired: 'यह एनएफटी समाप्त हो गया है',
   nftAlreadyUsed: 'इस NFT को पहले से ही दूसरे उपयोगकर्ता के साथ कनेक्ट कर दिया गया है',
   missingNftClaim: 'स्वामित्व NFT उपलब्ध नहीं है',

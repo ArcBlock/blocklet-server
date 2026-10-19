@@ -51,6 +51,7 @@ module.exports = {
   blockletSpaceNftIdRequired: 'Blocklet Space NFT IDが必要です',
   nftAlreadyConsumed: 'このNFTはすでに使用されています',
   sessionAlreadyConsumed: 'このセッションはすでに使用されています',
+  launchDisabled: 'このサーバーは新しいアプリケーションを受け付けていません',
   nftAlreadyExpired: 'この NFT は期限切れです',
   nftAlreadyUsed: 'このNFTはすでに別のユーザーに接続されています',
   missingNftClaim: '所有権NFTが提供されていません',

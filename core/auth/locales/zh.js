@@ -51,6 +51,7 @@ module.exports = {
   blockletSpaceNftIdRequired: '应用空间 NFT ID 是必须的',
   nftAlreadyConsumed: '该 NFT 已经被使用过了',
   sessionAlreadyConsumed: '该会话已经被使用过了',
+  launchDisabled: '该节点已停止接受新应用',
   nftAlreadyExpired: '该 NFT 已经过期',
   nftAlreadyUsed: '该 NFT 已经被起它用户使用过',
   missingNftClaim: '节点所有权 NFT 必须提供',

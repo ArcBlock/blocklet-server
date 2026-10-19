@@ -1,7 +1,7 @@
-const { describe, expect, it } = require('bun:test');
+const { describe, expect, it, afterEach } = require('bun:test');
 const { NODE_MODES } = require('@abtnode/constant');
 
-const { isInServerlessMode } = require('../lib/serverless');
+const { isInServerlessMode, isLaunchDisabled } = require('../lib/serverless');
 
 describe('serverless', () => {
   it('should return true when the node is in serverless mode', () => {
@@ -18,5 +18,19 @@ describe('serverless', () => {
   it('should return false when params are empty', () => {
     expect(isInServerlessMode()).toBe(false);
     expect(isInServerlessMode({})).toBe(false);
+  });
+});
+
+describe('isLaunchDisabled', () => {
+  afterEach(() => {
+    delete process.env.ABT_NODE_DISABLE_LAUNCH;
+  });
+
+  it('should be disabled only when env is true', () => {
+    expect(isLaunchDisabled()).toBe(false);
+    process.env.ABT_NODE_DISABLE_LAUNCH = 'false';
+    expect(isLaunchDisabled()).toBe(false);
+    process.env.ABT_NODE_DISABLE_LAUNCH = 'true';
+    expect(isLaunchDisabled()).toBe(true);
   });
 });

@@ -1379,6 +1379,26 @@
       "th": "เซสชันนี้ถูกใช้งานไปแล้ว"
     }
   },
+  "launchDisabled": {
+    "en": "This server is not accepting new applications",
+    "value": {
+      "en": "This server is not accepting new applications",
+      "zh": "该节点已停止接受新应用",
+      "zh-TW": "該節點已停止接受新應用",
+      "ja": "このサーバーは新しいアプリケーションを受け付けていません",
+      "ko": "이 서버는 새 애플리케이션을 받지 않습니다",
+      "de": "Dieser Server nimmt keine neuen Anwendungen an",
+      "es": "Este servidor no acepta nuevas aplicaciones",
+      "fr": "Ce serveur n'accepte plus de nouvelles applications",
+      "pt": "Este servidor não está aceitando novos aplicativos",
+      "ru": "Этот сервер не принимает новые приложения",
+      "ar": "هذا الخادم لا يقبل تطبيقات جديدة",
+      "hi": "यह सर्वर नए एप्लिकेशन स्वीकार नहीं कर रहा है",
+      "id": "Server ini tidak menerima aplikasi baru",
+      "vi": "Máy chủ này không nhận ứng dụng mới",
+      "th": "เซิร์ฟเวอร์นี้ไม่รับแอปพลิเคชันใหม่"
+    }
+  },
   "nftAlreadyExpired": {
     "en": "This NFT has expired",
     "value": {

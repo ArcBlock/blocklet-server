@@ -661,6 +661,7 @@ const exec = async ({ workingDir, config, dataDir, mode, updateDb, forceIntranet
           ABT_NODE_ENSURE_RUNNING_HIGH_LOAD_DISK: process.env.ABT_NODE_ENSURE_RUNNING_HIGH_LOAD_DISK,
           ABT_NODE_REDIRECTION_SERVICE_PORTS: process.env.ABT_NODE_REDIRECTION_SERVICE_PORTS,
           ABT_NODE_START_ROUTING: routing || process.env.ABT_NODE_START_ROUTING || 'system',
+          ABT_NODE_DISABLE_LAUNCH: process.env.ABT_NODE_DISABLE_LAUNCH,
           ...(config.env || {}),
         };
         if (process.env.DEBUG) {

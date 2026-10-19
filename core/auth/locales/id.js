@@ -51,6 +51,7 @@ module.exports = {
   blockletSpaceNftIdRequired: 'ID Blocklet Space NFT diperlukan',
   nftAlreadyConsumed: 'NFT ini sudah digunakan',
   sessionAlreadyConsumed: 'Sesi ini sudah digunakan',
+  launchDisabled: 'Server ini tidak menerima aplikasi baru',
   nftAlreadyExpired: 'NFT ini sudah kedaluwarsa',
   nftAlreadyUsed: 'NFT ini telah terhubung dengan pengguna lain',
   missingNftClaim: 'Kepemilikan NFT tidak disediakan',

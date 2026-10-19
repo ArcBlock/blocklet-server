@@ -278,6 +278,27 @@ describe('server', () => {
       expect(params.updateSession).toHaveBeenCalledWith({ appDid: appWallet.address, sessionId: 'sessionId' });
       expect(params.updateSession).toHaveBeenCalledWith({ isInstalled: true });
     });
+
+    test('should reject new install but allow installed app when launch is disabled', async () => {
+      process.env.ABT_NODE_DISABLE_LAUNCH = 'true';
+      const disabledNode = {
+        ...node,
+        getBlocklet: () => null,
+        installBlocklet: mock(),
+      };
+      const handler = createLaunchBlockletHandler(disabledNode, 'session');
+      const extraParams = { locale: 'en', blockletMetaUrl: 'https://example.com/blocklet.json' };
+
+      await expect(handler({ ...params, extraParams })).rejects.toThrow(messages.launchDisabled.en);
+      expect(disabledNode.installBlocklet).not.toHaveBeenCalled();
+
+      disabledNode.getBlocklet = () => ({ meta: {} });
+      params.updateSession.mockClear();
+      await expect(handler({ ...params, extraParams })).resolves.toBeNull();
+      expect(params.updateSession).toHaveBeenCalledWith({ isInstalled: true });
+      expect(disabledNode.installBlocklet).not.toHaveBeenCalled();
+      delete process.env.ABT_NODE_DISABLE_LAUNCH;
+    });
   });
 
   describe('getKeyPairClaim', () => {
